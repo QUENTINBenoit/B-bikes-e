@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CatégoriesRepository;
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CatégoriesRepository::class)]
@@ -21,6 +22,14 @@ class Catégories
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $udapted_At = null;
+
+
+    public function __construct()
+    {
+        $this->updated_At = new \DateTimeImmutable(); 
+        $this->created_At = new \DateTimeImmutable(); 
+    }
+
 
     public function getId(): ?int
     {
