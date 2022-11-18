@@ -2,11 +2,10 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Catégories;
-use DateTime;
-use DateTimeImmutable;
-use Doctrine\Bundle\FixturesBundle\Fixture;
+
 use Faker;
+use App\Entity\Catégories;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
 
@@ -18,7 +17,7 @@ class MarquesFixtures extends Fixture
         $faker = Faker\Factory::create('fr_FR'); 
         
     
-        // Creation de 8 catégories 
+        // Creation des catégories  
         $cotegoriesList = [
             'Loisir',
             'Cross-Country',
@@ -27,25 +26,11 @@ class MarquesFixtures extends Fixture
             'Enduro', 
             'Descente',  
         ];
-          $cotegoriesListTotal = count($cotegoriesList);      
-
-
         foreach( $cotegoriesList as $cat){
-      
-             
                 $categories = new Catégories(); 
-      
-                 
                  $categories->setName($cat);  
                  $manager->persist($categories);     
             }
-                
-      
-
-
-        // $product = new Product();
-
-
         $manager->flush();
     }
 }
