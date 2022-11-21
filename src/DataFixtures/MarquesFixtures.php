@@ -2,13 +2,10 @@
 
 namespace App\DataFixtures;
 
-
+use App\Entity\Category;
 use Faker;
-use App\Entity\Catégories;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-
-
 class MarquesFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
@@ -19,17 +16,16 @@ class MarquesFixtures extends Fixture
     
         // Creation des catégories  
         $cotegoriesList = [
-            'Loisir',
-            'Cross-Country',
-            'Tout-Suspendu', 
-            'All-Mountain',
-            'Enduro', 
-            'Descente',  
+            'trail', 
+            'enduro', 
+            'loisir', 
+            'Descentes',
         ];
-        foreach( $cotegoriesList as $cat){
-                $categories = new Catégories(); 
-                 $categories->setName($cat);  
-                 $manager->persist($categories);     
+        foreach($cotegoriesList as $cat){ 
+            $categories = new Category();  
+            $categories->setName($cat);
+            $manager->persist($categories);  
+           
             }
         $manager->flush();
     }
