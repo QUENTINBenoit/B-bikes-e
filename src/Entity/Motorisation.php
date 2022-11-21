@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MotorisationRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -37,6 +39,14 @@ class Motorisation
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updated_At = null;
+
+    #[ORM\OneToMany(mappedBy: 'motorisation', targetEntity: Produits::class)]
+    private Collection $Products;
+
+    public function __construct()
+    {
+        $this->Products = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -135,6 +145,36 @@ class Motorisation
     public function setUpdatedAt(?\DateTimeImmutable $updated_At): self
     {
         $this->updated_At = $updated_At;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Produits>
+     */
+    public function getProducts(): Collection
+    {
+        return $this->Products;
+    }
+
+    public function addProduct(Produits $product): self
+    {
+        if (!$this->Products->contains($product)) {
+            $this->Products->add($product);
+            $product->setMotorisation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduct(Produits $product): self
+    {
+        if ($this->Products->removeElement($product)) {
+            // set the owning side to null (unless already changed)
+            if ($product->getMotorisation() === $this) {
+                $product->setMotorisation(null);
+            }
+        }
 
         return $this;
     }

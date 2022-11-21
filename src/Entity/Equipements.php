@@ -73,6 +73,9 @@ class Equipements
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updated_At = null;
 
+    #[ORM\OneToOne(inversedBy: 'equipements', cascade: ['persist', 'remove'])]
+    private ?Produits $Products = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -314,6 +317,18 @@ class Equipements
     public function setUpdatedAt(?\DateTimeImmutable $updated_At): self
     {
         $this->updated_At = $updated_At;
+
+        return $this;
+    }
+
+    public function getProducts(): ?Produits
+    {
+        return $this->Products;
+    }
+
+    public function setProducts(?Produits $Products): self
+    {
+        $this->Products = $Products;
 
         return $this;
     }

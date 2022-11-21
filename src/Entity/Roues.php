@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\RouesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: RouesRepository::class)]
@@ -27,6 +29,14 @@ class Roues
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updated_At = null;
+
+    #[ORM\ManyToMany(targetEntity: Produits::class, inversedBy: 'roues')]
+    private Collection $Products;
+
+    public function __construct()
+    {
+        $this->Products = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -89,6 +99,30 @@ class Roues
     public function setUpdatedAt(?\DateTimeImmutable $updated_At): self
     {
         $this->updated_At = $updated_At;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Produits>
+     */
+    public function getProducts(): Collection
+    {
+        return $this->Products;
+    }
+
+    public function addProduct(Produits $product): self
+    {
+        if (!$this->Products->contains($product)) {
+            $this->Products->add($product);
+        }
+
+        return $this;
+    }
+
+    public function removeProduct(Produits $product): self
+    {
+        $this->Products->removeElement($product);
 
         return $this;
     }

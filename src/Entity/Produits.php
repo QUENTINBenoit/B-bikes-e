@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProduitsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -49,6 +51,27 @@ class Produits
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updated_At = null;
+
+    #[ORM\ManyToOne(inversedBy: 'Products')]
+    private ?Motorisation $motorisation = null;
+
+    #[ORM\ManyToMany(targetEntity: Roues::class, mappedBy: 'Products')]
+    private Collection $roues;
+
+    #[ORM\OneToMany(mappedBy: 'Products', targetEntity: Images::class)]
+    private Collection $images;
+
+    #[ORM\ManyToOne(inversedBy: 'Products')]
+    private ?Marques $marques = null;
+
+    #[ORM\OneToOne(mappedBy: 'Products', cascade: ['persist', 'remove'])]
+    private ?Equipements $equipements = null;
+
+    public function __construct()
+    {
+        $this->roues = new ArrayCollection();
+        $this->images = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -195,6 +218,109 @@ class Produits
     public function setUpdatedAt(?\DateTimeImmutable $updated_At): self
     {
         $this->updated_At = $updated_At;
+
+        return $this;
+    }
+
+    public function getMotorisation(): ?Motorisation
+    {
+        return $this->motorisation;
+    }
+
+    public function setMotorisation(?Motorisation $motorisation): self
+    {
+        $this->motorisation = $motorisation;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Roues>
+     */
+    public function getRoues(): Collection
+    {
+        return $this->roues;
+    }
+
+    public function addRoue(Roues $roue): self
+    {
+        if (!$this->roues->contains($roue)) {
+            $this->roues->add($roue);
+            $roue->addProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRoue(Roues $roue): self
+    {
+        if ($this->roues->removeElement($roue)) {
+            $roue->removeProduct($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Images>
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Images $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images->add($image);
+            $image->setProducts($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Images $image): self
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getProducts() === $this) {
+                $image->setProducts(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getMarques(): ?Marques
+    {
+        return $this->marques;
+    }
+
+    public function setMarques(?Marques $marques): self
+    {
+        $this->marques = $marques;
+
+        return $this;
+    }
+
+    public function getEquipements(): ?Equipements
+    {
+        return $this->equipements;
+    }
+
+    public function setEquipements(?Equipements $equipements): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($equipements === null && $this->equipements !== null) {
+            $this->equipements->setProducts(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($equipements !== null && $equipements->getProducts() !== $this) {
+            $equipements->setProducts($this);
+        }
+
+        $this->equipements = $equipements;
 
         return $this;
     }
