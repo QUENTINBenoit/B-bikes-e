@@ -26,7 +26,7 @@ class Equipements
     private ?string $Dérailleur_AV = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Dérailleur_AR = null;
+    private ?string $DerailleurAR = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $Commandes_de_vitesse = null;
@@ -129,14 +129,14 @@ class Equipements
         return $this;
     }
 
-    public function getDérailleurAR(): ?string
+    public function getDerailleurAR(): ?string
     {
-        return $this->Dérailleur_AR;
+        return $this->DerailleurAR;
     }
 
-    public function setDérailleurAR(?string $Dérailleur_AR): self
+    public function setDerailleurAR(?string $DerailleurAR): self
     {
-        $this->Dérailleur_AR = $Dérailleur_AR;
+        $this->DerailleurAR = $DerailleurAR;
 
         return $this;
     }

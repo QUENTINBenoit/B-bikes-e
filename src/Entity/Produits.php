@@ -71,6 +71,7 @@ class Produits
     {
         $this->roues = new ArrayCollection();
         $this->images = new ArrayCollection();
+        $this->marques =new ArrayCollection(); 
     }
 
     public function getId(): ?int

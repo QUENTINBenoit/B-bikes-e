@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Category;
+use App\Entity\Motorisation;
 use Faker;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -27,6 +28,27 @@ class MarquesFixtures extends Fixture
             $manager->persist($categories);  
            
             }
+       
+
+
+          // Creation des Motorisations 
+        $motoristationsList = [
+            'Bosh', 
+            'Shimano', 
+            'Yamaha', 
+            'Panasonic',
+            'Inpulse', 
+            'Aeg', 
+            ];
+
+        foreach($motoristationsList as $motList){
+            $motorisation = new Motorisation();
+            $motorisation->setNom($motList);  
+            $manager->persist($motorisation); 
+        }
+
+
         $manager->flush();
+
     }
 }

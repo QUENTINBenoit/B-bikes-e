@@ -1,3 +1,22 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Gluten:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+/*tailwindCSS*/
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Composants avec Tailwind CSS */
+.buttonNav {
+  @apply rounded-l-full text-sm  flex justify-start p-3  border-none hover:bg-white hover:text-blue-400 hover:shadow-lg hover:shadow-black;
+}
+.buttonLien {
+  @apply flex whitespace-nowrap  justify-center items-center;
+}
+.title {
+  @apply ml-6 text-gray-500;
+}
+
+.card {
+  @apply border-b border-r border-gray-300 p-2 text-center;
+}
