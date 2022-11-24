@@ -153,6 +153,17 @@ const acc = {
   },
   toggleFrilterSelection: function () {
     console.log(" je suis bien dans la fonction selection");
+    const menuSelection = document.querySelector(
+      "#submenuFilterSelection"
+    );
+    const toggleFilterSelection =
+      menuSelection.classList.toggle("-translate-y-full");
+    if (toggleFilterSelection == true) {
+      menuSelection.classList.add("-translate-y-full");
+      menuSelection.classList.add("duration-700");
+    } else {
+      menuSelection.classList.remove("-translate-y-full");
+    }
     document
       .querySelector("#arrowFilterSelection")
       .classList.toggle("rotate-180");
