@@ -36,8 +36,6 @@ const acc = {
   },
 
   toggleNav: function () {
-    console.log("toooglle ");
-
     // Reécupèration des svg's'
     const burgger = document.querySelector("#burgerSvg");
     const croix = document.querySelector("#croixSvg");
@@ -60,7 +58,6 @@ const acc = {
 
   // fonction  du dropdown du filtre categories
   toggleDropCategories: function () {
-    console.log("je suis bien dans la fonction Catégories");
     document
       .querySelector("#submenuFiltre")
       .classList.toggle("hidden");
@@ -100,7 +97,6 @@ const acc = {
 
   // fonction drop filtre Genre
   toggleDropGenre: function () {
-    console.log("je suis bien dans la fonction Genre");
     document
       .querySelector("#submenuFiltreGenre")
       .classList.toggle("hidden");
@@ -120,7 +116,6 @@ const acc = {
 
   // fonction drop filtre Couleurs
   toggleDropCouleurs: function () {
-    console.log("je suis bien dan la fonction Coulers");
     document
       .querySelector("#submenuFiltreCouleurs")
       .classList.toggle("hidden");
@@ -140,9 +135,6 @@ const acc = {
   },
 
   toggleFiltreMobile: function () {
-    console.log(
-      "je suis bien dans la fonction tooggleFriltreMobile"
-    );
     document
       .querySelector("#filtreMobile")
       .classList.toggle("rotate-180");
@@ -152,7 +144,6 @@ const acc = {
       .classList.toggle("hidden");
   },
   toggleFrilterSelection: function () {
-    console.log(" je suis bien dans la fonction selection");
     const menuSelection = document.querySelector(
       "#submenuFilterSelection"
     );
@@ -164,29 +155,11 @@ const acc = {
     } else {
       menuSelection.classList.remove("-translate-y-full");
     }
+
     document
       .querySelector("#arrowFilterSelection")
       .classList.toggle("rotate-180");
   },
 };
-
-// function toggleNav() {
-//   const toggleMenuBtn = document.querySelector("#menu-btn");
-//   const toggleMenuImg =
-//     document.querySelector("#menu-btn img");
-//   const toggledMenu =
-//     document.querySelector("#toggled-menu");
-
-//   console.log("je click");
-
-//   toggledMenu.classList.toggle("-translate-y-full");
-//   if (toggledMenu.classList.contains("-translate-y-full")) {
-//     //toggleMenuImg.setAttribute("src", "images/menu.svg");
-//     toggleMenuBtn.setAttribute("aria-expanded", "false");
-//   } else {
-//     //toggleMenuImg.setAttribute("src", "images/cross.svg");
-//     toggleMenuBtn.setAttribute("aria-expanded", "true");
-//   }
-// }
 
 document.addEventListener("DOMContentLoaded", acc.init);
