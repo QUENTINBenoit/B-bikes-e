@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: ProduitsRepository::class)]
 class Produits
 {
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -69,9 +70,11 @@ class Produits
 
     public function __construct()
     {
+        $this->updated_At = new \DateTimeImmutable(); 
+        $this->created_At = new \DateTimeImmutable();
         $this->roues = new ArrayCollection();
         $this->images = new ArrayCollection();
-        $this->marques =new ArrayCollection(); 
+        // $this->marques =new ArrayCollection(); 
     }
 
     public function getId(): ?int

@@ -1,0 +1,41 @@
+  <a
+            href="#"
+            class="bg-white shadow-xl h-96 shadow-black rounded-2xl h- md:hover:shadow-2xl md:hover:shadow-black md:hover:transition md:ease-in-out md:hover:-translate-y-2 md:hover:scale-110"
+          >
+            <div class="relative h-3/6 rounded-t-2x">
+              <!-- Etiquette promotion -->
+              <div class="w-24 absolute bottom-36 left-0">
+                <p
+                  class="h-auto pl-2 text-sm text-white w-auto bg-stone-900 rounded-r-2xl"
+                >
+                  Promotion
+                </p>
+                <p
+                  class="h-auto mt-2 pl-2 text-sm w-12 bg-red-600 rounded-r-2xl"
+                >
+                  -15%
+                </p>
+              </div>
+
+              <img
+                src="{{ asset('images/produits/vtt-cube-stereo-120.jpg')  }}"
+                class="rounded-t-2xl mt-6"
+                alt="images VTT cube"
+              />
+            </div>
+            <div class="mx-4 p-2 w-auto h-2/6">
+              <h4 class="text-sm font-semibold">{{ productd.name}}</h4>
+              <p class="mt-1 text-xs text-gray-400">
+           {{productd.description | u.truncate(60)}}
+              </p>
+              <p class="mt-2">
+                Prix: 
+                <span
+                  class="line-through text-gray-400 mr-3"
+                >
+                  15
+                </span>
+                <span class="text-red-600">{{productd.prix}}€</span>
+              </p>
+            </div>
+          </a>

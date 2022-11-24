@@ -37,17 +37,17 @@
           </h3>
 
           <div
-            class="flex items-center px-2 h-auto w-auto space-x-2 bg-yellow-200"
+            class=" hidden flex items-center  px-2 h-auto w-auto space-x-2 bg-yellow-200"
           >
             <span> Trier par:</span>
-            <ul class="bg-blue-200 h-auto w-auto">
-              <li
+            <div class="bg-blue-200 h-auto w-auto  ">
+              <div
                 class="flex items-center justify-between py-1 px-2 cursor-pointer hover:text-stone-500"
                  id="filterSelection">
                 Sélection
 
                 <span
-                  class="duration-200 rotate-0 hover:text-stone-500"
+                  class="duration-200  hover:text-stone-500"
                   id="arrowFilterSelection"
                 >
                   <svg
@@ -65,11 +65,42 @@
                     />
                   </svg>
                 </span>
-              </li>
-            </ul>
+              </div>
+ <ul
+            class="text-left text-sm font-thin bg-pink-600   h-auto w-auto "
+            id="submenuFilterSelection"
+          >
+            <li
+              class="p-1 cursor-pointer hover:bg-stone-600 rounded-md mt-1 ml-4"
+            >
+           benoit
+            </li>
+            <li
+              class="cursor-pointer p-1 hover:bg-stone-600 rounded-md mt-1 ml-4"
+            >
+         benoit
+            </li>
+            <li
+              class="cursor-pointer p-1 hover:bg-stone-600 rounded-md mt-1 ml-4"
+            >
+              Vélos éléctriques
+            </li>
+            <li
+              class="cursor-pointer p-1 hover:bg-stone-600 rounded-md mt-1 ml-4"
+            >
+              Vélo de ville
+            </li>
+          </ul>
+
+
+            </div>         
           </div>
         </div>
       </div>
+
+    <!--slection-->
+           
+
 
       <div
         class="mx-auto max-w-10xl flex justify-center z-20 mt-24 relative"
@@ -86,7 +117,7 @@
           >
             Catégories
             <span
-              class="duration-200  hover:text-stone-500"
+              class="duration-200 hover:text-stone-500"
               id="arrowCategories"
             >
               <svg
@@ -280,485 +311,16 @@
             </div>
           </div>
         </ul>
-        <!--    --------- -->
+
         <!-- Affichage des produits -->
         <div
-          class="grid grid-cols-1 m-2 lg:grid-cols-4 md:grid-cols-2 w-full md:h-full p-16 gap-12"
+          class=" grid grid-cols-1 m-2 lg:grid-cols-4 md:grid-cols-2 w-full md:h-full p-16 gap-12"
         >
-          <a
-            href="#"
-            class="bg-white shadow-xl h-auto shadow-black rounded-2xl h- md:hover:shadow-2xl md:hover:shadow-black md:hover:transition md:ease-in-out md:hover:-translate-y-2 md:hover:scale-110"
-          >
-            <div class="relative h-3/6 rounded-t-2x">
-              <!-- Etiquette promotion -->
-              <div class="w-24 absolute bottom-36 left-0">
-                <p
-                  class="h-auto pl-2 text-sm text-white w-auto bg-stone-900 rounded-r-2xl"
-                >
-                  Promotion
-                </p>
-                <p
-                  class="h-auto mt-2 pl-2 text-sm w-12 bg-red-600 rounded-r-2xl"
-                >
-                  -15%
-                </p>
-              </div>
-
-              <img
-                src="{{ asset('images/produits/vtt-cube-stereo-120.jpg')  }}"
-                class="rounded-t-2xl mt-6"
-                alt="images VTT cube"
-              />
-            </div>
-            <div class="mx-4 p-2 w-auto h-2/6">
-              <h4 class="text-sm font-semibold">Marque</h4>
-              <p class="mt-1 text-xs text-gray-400">
-                Model du velo avec une ou deux option Model
-                du velo avec une ou deux option
-              </p>
-              <p class="mt-2">
-                Prix:
-                <span
-                  class="line-through text-gray-400 mr-3"
-                >
-                  2700€
-                </span>
-                <span class="text-red-600">2500 €</span>
-              </p>
-            </div>
-          </a>
-          <a
-            href="#"
-            class="bg-white shadow-xl shadow-black rounded-3xl h-96 z-0 md:hover:shadow-2xl md:hover:shadow-black md:hover:transition md:ease-in-out md:hover:-translate-y-2 md:hover:scale-110"
-          >
-            <div class="relative h-3/6 rounded-t-2x">
-              <!-- Etiquette promotion -->
-              <div class="w-24 absolute bottom-36 left-0">
-                <p
-                  class="h-auto pl-2 text-sm text-white w-auto bg-stone-900 rounded-r-2xl"
-                >
-                  Promotion
-                </p>
-                <p
-                  class="h-auto mt-2 pl-2 text-sm w-12 bg-red-600 rounded-r-2xl"
-                >
-                  -15%
-                </p>
-              </div>
-
-              <img
-                src="/public/images/produits/vtt-cube-stereo-120.jpg"
-                class="rounded-t-2xl mt-6"
-                alt="images VTT cube"
-              />
-            </div>
-            <div class="ml-6 w-2/3">
-              <h4 class="text-sm font-semibold">Marque</h4>
-              <p class="mt-1 text-xs text-gray-400">
-                Model du velo avec une ou deux option Model
-                du velo avec une ou deux option
-              </p>
-              <p class="mt-2 text-red-700">
-                <span class="line-through text-gray-400"
-                  >2700€</span
-                >
-                2500€
-              </p>
-            </div>
-          </a>
-          <a
-            href="#"
-            class="bg-white shadow-xl shadow-black rounded-3xl h-96 z-0 md:hover:shadow-2xl md:hover:shadow-black md:hover:transition md:ease-in-out md:hover:-translate-y-2 md:hover:scale-110"
-          >
-            <div class="relative h-3/6 rounded-t-2x">
-              <!-- Etiquette promotion -->
-              <div class="w-24 absolute bottom-36 left-0">
-                <p
-                  class="h-auto pl-2 text-sm text-white w-auto bg-stone-900 rounded-r-2xl"
-                >
-                  Promotion
-                </p>
-                <p
-                  class="h-auto mt-2 pl-2 text-sm w-12 bg-red-600 rounded-r-2xl"
-                >
-                  -15%
-                </p>
-              </div>
-
-              <img
-                src="/public/images/produits/vtt-cube-stereo-120.jpg"
-                class="rounded-t-2xl object-scale-down mt-6"
-                alt="images VTT cube"
-              />
-            </div>
-            <div class="ml-6 w-2/3">
-              <h4 class="text-sm font-semibold">Marque</h4>
-              <p class="mt-1 text-xs text-gray-400">
-                Model du velo avec une ou deux option Model
-                du velo avec une ou deux option
-              </p>
-              <p class="mt-2 text-red-700">
-                <span class="line-through text-gray-400"
-                  >2700€</span
-                >
-                2500€
-              </p>
-            </div>
-          </a>
-          <a
-            href="#"
-            class="bg-white shadow-xl shadow-black rounded-3xl h-96 z-0 md:hover:shadow-2xl md:hover:shadow-black md:hover:transition md:ease-in-out md:hover:-translate-y-2 md:hover:scale-110"
-          >
-            <div class="relative h-3/6 rounded-t-2x">
-              <!-- Etiquette promotion -->
-              <div class="w-24 absolute bottom-36 left-0">
-                <p
-                  class="h-auto pl-2 text-sm text-white w-auto bg-stone-900 rounded-r-2xl"
-                >
-                  Promotion
-                </p>
-                <p
-                  class="h-auto mt-2 pl-2 text-sm w-12 bg-red-600 rounded-r-2xl"
-                >
-                  -15%
-                </p>
-              </div>
-
-              <img
-                src="/public/images/produits/vtt-cube-stereo-120.jpg"
-                class="rounded-t-2xl object-scale-down mt-6"
-                alt="images VTT cube"
-              />
-            </div>
-            <div class="ml-6 w-2/3">
-              <h4 class="text-sm font-semibold">Marque</h4>
-              <p class="mt-1 text-xs text-gray-400">
-                Model du velo avec une ou deux option Model
-                du velo avec une ou deux option
-              </p>
-              <p class="mt-2 text-red-700">
-                <span class="line-through text-gray-400"
-                  >2700€</span
-                >
-                2500€
-              </p>
-            </div>
-          </a>
-          <a
-            href="#"
-            class="bg-white shadow-xl shadow-black rounded-3xl h-96 z-0 md:hover:shadow-2xl md:hover:shadow-black md:hover:transition md:ease-in-out md:hover:-translate-y-2 md:hover:scale-110"
-          >
-            <div class="relative h-3/6 rounded-t-2x">
-              <!-- Etiquette promotion -->
-              <div class="w-24 absolute bottom-36 left-0">
-                <p
-                  class="h-auto pl-2 text-sm text-white w-auto bg-stone-900 rounded-r-2xl"
-                >
-                  Promotion
-                </p>
-                <p
-                  class="h-auto mt-2 pl-2 text-sm w-12 bg-red-600 rounded-r-2xl"
-                >
-                  -15%
-                </p>
-              </div>
-
-              <img
-                src="/public/images/produits/vtt-cube-stereo-120.jpg"
-                class="rounded-t-2xl object-scale-down mt-6"
-                alt="images VTT cube"
-              />
-            </div>
-            <div class="ml-6 w-2/3">
-              <h4 class="text-sm font-semibold">Marque</h4>
-              <p class="mt-1 text-xs text-gray-400">
-                Model du velo avec une ou deux option Model
-                du velo avec une ou deux option
-              </p>
-              <p class="mt-2 text-red-700">
-                <span class="line-through text-gray-400"
-                  >2700€</span
-                >
-                2500€
-              </p>
-            </div>
-          </a>
-          <a
-            href="#"
-            class="bg-white shadow-xl shadow-black rounded-3xl h-96 z-0 md:hover:shadow-2xl md:hover:shadow-black md:hover:transition md:ease-in-out md:hover:-translate-y-2 md:hover:scale-110"
-          >
-            <div class="relative h-3/6 rounded-t-2x">
-              <!-- Etiquette promotion -->
-              <div class="w-24 absolute bottom-36 left-0">
-                <p
-                  class="h-auto pl-2 text-sm text-white w-auto bg-stone-900 rounded-r-2xl"
-                >
-                  Promotion
-                </p>
-                <p
-                  class="h-auto mt-2 pl-2 text-sm w-12 bg-red-600 rounded-r-2xl"
-                >
-                  -15%
-                </p>
-              </div>
-
-              <img
-                src="/public/images/produits/vtt-cube-stereo-120.jpg"
-                class="rounded-t-2xl object-scale-down mt-6"
-                alt="images VTT cube"
-              />
-            </div>
-            <div class="ml-6 w-2/3">
-              <h4 class="text-sm font-semibold">Marque</h4>
-              <p class="mt-1 text-xs text-gray-400">
-                Model du velo avec une ou deux option Model
-                du velo avec une ou deux option
-              </p>
-              <p class="mt-2 text-red-700">
-                <span class="line-through text-gray-400"
-                  >2700€</span
-                >
-                2500€
-              </p>
-            </div>
-          </a>
-
-          <a
-            href="#"
-            class="bg-white shadow-xl shadow-black rounded-3xl h-96 z-0 md:hover:shadow-2xl md:hover:shadow-black md:hover:transition md:ease-in-out md:hover:-translate-y-2 md:hover:scale-110"
-          >
-            <div class="relative h-3/6 rounded-t-2x">
-              <!-- Etiquette promotion -->
-              <div class="w-24 absolute bottom-36 left-0">
-                <p
-                  class="h-auto pl-2 text-sm text-white w-auto bg-stone-900 rounded-r-2xl"
-                >
-                  Promotion
-                </p>
-                <p
-                  class="h-auto mt-2 pl-2 text-sm w-12 bg-red-600 rounded-r-2xl"
-                >
-                  -15%
-                </p>
-              </div>
-
-              <img
-                src="/public/images/produits/vtt-cube-stereo-120.jpg"
-                class="rounded-t-2xl object-scale-down mt-6"
-                alt="images VTT cube"
-              />
-            </div>
-            <div class="ml-6 w-2/3">
-              <h4 class="text-sm font-semibold">Marque</h4>
-              <p class="mt-1 text-xs text-gray-400">
-                Model du velo avec une ou deux option Model
-                du velo avec une ou deux option
-              </p>
-              <p class="mt-2 text-red-700">
-                <span class="line-through text-gray-400"
-                  >2700€</span
-                >
-                2500€
-              </p>
-            </div>
-          </a>
-          <a
-            href="#"
-            class="bg-white shadow-xl shadow-black rounded-3xl h-96 z-0 md:hover:shadow-2xl md:hover:shadow-black md:hover:transition md:ease-in-out md:hover:-translate-y-2 md:hover:scale-110"
-          >
-            <div class="relative h-3/6 rounded-t-2x">
-              <!-- Etiquette promotion -->
-              <div class="w-24 absolute bottom-36 left-0">
-                <p
-                  class="h-auto pl-2 text-sm text-white w-auto bg-stone-900 rounded-r-2xl"
-                >
-                  Promotion
-                </p>
-                <p
-                  class="h-auto mt-2 pl-2 text-sm w-12 bg-red-600 rounded-r-2xl"
-                >
-                  -15%
-                </p>
-              </div>
-
-              <img
-                src="/public/images/produits/vtt-cube-stereo-120.jpg"
-                class="rounded-t-2xl object-scale-down mt-6"
-                alt="images VTT cube"
-              />
-            </div>
-            <div class="ml-6 w-2/3">
-              <h4 class="text-sm font-semibold">Marque</h4>
-              <p class="mt-1 text-xs text-gray-400">
-                Model du velo avec une ou deux option Model
-                du velo avec une ou deux option
-              </p>
-              <p class="mt-2 text-red-700">
-                <span class="line-through text-gray-400"
-                  >2700€</span
-                >
-                2500€
-              </p>
-            </div>
-          </a>
-          <a
-            href="#"
-            class="bg-white shadow-xl shadow-black rounded-3xl h-96 z-0 md:hover:shadow-2xl md:hover:shadow-black md:hover:transition md:ease-in-out md:hover:-translate-y-2 md:hover:scale-110"
-          >
-            <div class="relative h-3/6 rounded-t-2x">
-              <!-- Etiquette promotion -->
-              <div class="w-24 absolute bottom-36 left-0">
-                <p
-                  class="h-auto pl-2 text-sm text-white w-auto bg-stone-900 rounded-r-2xl"
-                >
-                  Promotion
-                </p>
-                <p
-                  class="h-auto mt-2 pl-2 text-sm w-12 bg-red-600 rounded-r-2xl"
-                >
-                  -15%
-                </p>
-              </div>
-
-              <img
-                src="/public/images/produits/vtt-cube-stereo-120.jpg"
-                class="rounded-t-2xl object-scale-down mt-6"
-                alt="images VTT cube"
-              />
-            </div>
-            <div class="ml-6 w-2/3">
-              <h4 class="text-sm font-semibold">Marque</h4>
-              <p class="mt-1 text-xs text-gray-400">
-                Model du velo avec une ou deux option Model
-                du velo avec une ou deux option
-              </p>
-              <p class="mt-2 text-red-700">
-                <span class="line-through text-gray-400"
-                  >2700€</span
-                >
-                2500€
-              </p>
-            </div>
-          </a>
-          <a
-            href="#"
-            class="bg-white shadow-xl shadow-black rounded-3xl h-96 z-0 md:hover:shadow-2xl md:hover:shadow-black md:hover:transition md:ease-in-out md:hover:-translate-y-2 md:hover:scale-110"
-          >
-            <div class="relative h-3/6 rounded-t-2x">
-              <!-- Etiquette promotion -->
-              <div class="w-24 absolute bottom-36 left-0">
-                <p
-                  class="h-auto pl-2 text-sm text-white w-auto bg-stone-900 rounded-r-2xl"
-                >
-                  Promotion
-                </p>
-                <p
-                  class="h-auto mt-2 pl-2 text-sm w-12 bg-red-600 rounded-r-2xl"
-                >
-                  -15%
-                </p>
-              </div>
-
-              <img
-                src="/public/images/produits/vtt-cube-stereo-120.jpg"
-                class="rounded-t-2xl object-scale-down mt-6"
-                alt="images VTT cube"
-              />
-            </div>
-            <div class="ml-6 w-2/3">
-              <h4 class="text-sm font-semibold">Marque</h4>
-              <p class="mt-1 text-xs text-gray-400">
-                Model du velo avec une ou deux option Model
-                du velo avec une ou deux option
-              </p>
-              <p class="mt-2 text-red-700">
-                <span class="line-through text-gray-400"
-                  >2700€</span
-                >
-                2500€
-              </p>
-            </div>
-          </a>
-          <a
-            href="#"
-            class="bg-white shadow-xl shadow-black rounded-3xl h-96 z-0 md:hover:shadow-2xl md:hover:shadow-black md:hover:transition md:ease-in-out md:hover:-translate-y-2 md:hover:scale-110"
-          >
-            <div class="relative h-3/6 rounded-t-2x">
-              <!-- Etiquette promotion -->
-              <div class="w-24 absolute bottom-36 left-0">
-                <p
-                  class="h-auto pl-2 text-sm text-white w-auto bg-stone-900 rounded-r-2xl"
-                >
-                  Promotion
-                </p>
-                <p
-                  class="h-auto mt-2 pl-2 text-sm w-12 bg-red-600 rounded-r-2xl"
-                >
-                  -15%
-                </p>
-              </div>
-
-              <img
-                src="/public/images/produits/vtt-cube-stereo-120.jpg"
-                class="rounded-t-2xl object-scale-down mt-6"
-                alt="images VTT cube"
-              />
-            </div>
-            <div class="ml-6 w-2/3">
-              <h4 class="text-sm font-semibold">Marque</h4>
-              <p class="mt-1 text-xs text-gray-400">
-                Model du velo avec une ou deux option Model
-                du velo avec une ou deux option
-              </p>
-              <p class="mt-2 text-red-700">
-                <span class="line-through text-gray-400"
-                  >2700€</span
-                >
-                2500€
-              </p>
-            </div>
-          </a>
-          <a
-            href="#"
-            class="bg-white shadow-xl shadow-black rounded-3xl h-96 z-0 md:hover:shadow-2xl md:hover:shadow-black md:hover:transition md:ease-in-out md:hover:-translate-y-2 md:hover:scale-110"
-          >
-            <div class="relative h-3/6 rounded-t-2x">
-              <!-- Etiquette promotion -->
-              <div class="w-24 absolute bottom-36 left-0">
-                <p
-                  class="h-auto pl-2 text-sm text-white w-auto bg-stone-900 rounded-r-2xl"
-                >
-                  Promotion
-                </p>
-                <p
-                  class="h-auto mt-2 pl-2 text-sm w-12 bg-red-600 rounded-r-2xl"
-                >
-                  -15%
-                </p>
-              </div>
-
-              <img
-                src="/public/images/produits/vtt-cube-stereo-120.jpg"
-                class="rounded-t-2xl object-scale-down mt-6"
-                alt="images VTT cube"
-              />
-            </div>
-            <div class="ml-6 w-2/3">
-              <h4 class="text-sm font-semibold">Marque</h4>
-              <p class="mt-1 text-xs text-gray-400">
-                Model du velo avec une ou deux option Model
-                du velo avec une ou deux option
-              </p>
-              <p class="mt-2 text-red-700">
-                <span class="line-through text-gray-400"
-                  >2700€</span
-                >
-                2500€
-              </p>
-            </div>
-          </a>
+         {% for   productd in produits %}
+           {% include "components/_cardsVtt.html.twig" %}
+         {% endfor %}    
         </div>
-        <!--    --------- -->
+ 
       </div>
     </main>
 

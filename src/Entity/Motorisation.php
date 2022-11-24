@@ -45,6 +45,8 @@ class Motorisation
 
     public function __construct()
     {
+        $this->updated_At = new \DateTimeImmutable(); 
+        $this->created_At = new \DateTimeImmutable();
         $this->Products = new ArrayCollection();
     }
 

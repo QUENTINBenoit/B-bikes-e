@@ -152,7 +152,10 @@ const acc = {
       .classList.toggle("hidden");
   },
   toggleFrilterSelection: function () {
-    console.log("");
+    console.log(" je suis bien dans la fonction selection");
+    document
+      .querySelector("#arrowFilterSelection")
+      .classList.toggle("rotate-180");
   },
 };
 
