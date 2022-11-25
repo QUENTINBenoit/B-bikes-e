@@ -63,4 +63,20 @@ class ProduitsRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+
+   public function findWithDetailsProduct($id)
+   {
+    $qb = $this->createQueryBuilder('product');
+    $qb->where('product.id = :id'); 
+    $qb->setParameter(':id', $id); 
+    $qb->leftJoin('product.equipements', 'eqpmts');
+    $qb->addSelect('eqpmts'); 
+    $query = $qb->getQuery(); 
+     return $query->getOneOrNullResult();   
+   }
+
+
+
+
 }

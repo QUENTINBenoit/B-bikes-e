@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Produits;
 use App\Repository\ProduitsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,11 +30,15 @@ class ProductController extends AbstractController
         }
 
        
-    #[Route('/details', name:'details', methods:['GET'])] 
-        public function detailsProduct(): Response
+    #[Route('/{id}', name:'details', methods:['GET'], requirements: ['id' => '\d+'])] 
+        public function detailsProduct(int $id, ProduitsRepository $produitsRepository): Response
         {
-        \dump('route de details produits '); 
-        return $this->render('product/detailsProduit.html.twig');    
+        \dump('route de details produits ');
+         $detailsProduct = $produitsRepository->findWithDetailsProduct($id) ; 
+         \dd($detailsProduct); 
+        return $this->render('product/detailsProduit.html.twig', [
+        
+        ]);    
        
         }
 
