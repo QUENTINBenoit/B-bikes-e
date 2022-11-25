@@ -38,6 +38,12 @@ class Roues
         $this->Products = new ArrayCollection();
     }
 
+
+     public function __toString()
+     {
+        return $this->Jantes;  
+     }
+ 
     public function getId(): ?int
     {
         return $this->id;

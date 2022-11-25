@@ -35,9 +35,9 @@ class ProductController extends AbstractController
         {
         \dump('route de details produits ');
          $detailsProduct = $produitsRepository->findWithDetailsProduct($id) ; 
-         \dd($detailsProduct); 
+         \dump($detailsProduct); 
         return $this->render('product/detailsProduit.html.twig', [
-        
+                'productId' => $detailsProduct,         
         ]);    
        
         }

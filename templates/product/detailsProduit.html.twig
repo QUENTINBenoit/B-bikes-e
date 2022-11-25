@@ -1,10 +1,97 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des produits{% endblock %}
+{% block title %}{{ parent()}} {{productId.marques.Name }}{% endblock %}
 
 
 {% block body %}
-<main class="w-full mt-20 top-20 bg-slate-500 h-[56rem]">
-<h1> Page des details d'un produits </h1>
+<main class="w-full mt-28 top-20 h-auto font-gluten">
+     {# section presentation  #}
+    <section class=" container  ">
+        <div class="md:flex p-2 md:justify-around">
+            {# section image #} 
+            <div class"aspect-square m-4 md:w-2/6 ">
+                <img src="{{ asset('images/produits/vtt-cube-stereo-120.jpg') }}"class="rounded-2xl w-[46rem] h-[26rem]  object-center "alt="images VTT cube"/>
+            </div>
+            {# section info velo #}
+            <div  class="flex flex-col md:justify-between md:w-1/6 md:p-4 rounded-3xl md:shadow-xl md:shadow-black ">
+                <div>
+                    <h1 class=" font-semiblod mt-2 text-3xl  ">{{productId.marques.Name}}</h1>
+                    <h2 class=" text-lg mt-2 text-slate-600  ">{{productId.Name}}</h2>
+                    <p class=" text-sm mt-2  text-slate-600"  > id:{{productId.reference}} </p>
+                    <p class=" text-lg mt-4">Prix: <span class="text-2xl text-red-600 font-medium  "> {{productId.Prix}} € </span> </p>
+                </div>
+                <a href="#" class=" bg-blue-600  rounded-b-2xl text-white text-center p-2 md:rounded-2xl  "> Panier</a>
+            </div>  
+        </div> 
+    </section >
+     <section class=" w-full bg-slate-200 mt-2 p-2">
+        <div class=" container p-2 ">
+            <h3 class="text-center text-lg font-medium">Description </h3>
+            <h4 class="text-center text-slate-600 text-sm font-medium">{{ productId.Name}}</h4> 
+            <p class="text-align-left whitespace-pre-wrap ">{{productId.Description}}</p>
+        </div>
+     </section>
+     <section class=" w-full bg-stone-300 mt-2 p-2">
+        <div class=" container p-2 ">
+            <h3 class="text-center text-lg font-medium">Equipements </h3>
+            <div class=" flex flex-col md:flex-row space-x-2   ">
+                <div class=" md:w-1/2 divide-y-2 divide-slate-600 p-4  ">
+                    <div class="mb-2">
+                        <h6 class="text-slate-800">Utilisation</h6>
+                        <p class="text-slate-600">enduro </p>
+                     </div>
+                       <div class="">
+                        <h6 class="text-slate-800 mt-2">Genre</h6>
+                        <p class="text-slate-600">enduro </p>
+                     </div>
+                       <div class="">
+                        <h6 class="text-slate-800 mt-2">Dimendions</h6>
+                        <p class="text-slate-600">enduro </p>
+                     </div>
+                       <div class="">
+                        <h6 class="text-slate-800 mt-2">Cadre</h6>
+                        <p class="text-slate-600">enduro </p>
+                     </div>
+                 </div>
+                     
+                    <div class=" md:w-1/2 divide-y-2 divide-slate-600 p-4  ">
+                    <div class="mb-2">
+                        <h6 class="text-slate-800">Moteur</h6>
+                        <p class="text-slate-600"> Marque: enduro </p>
+                        <p class="text-slate-600"> Model: enduro </p>
+                        <p class="text-slate-600"> Performance: enduro </p>
+                     </div>
+                       <div class="">
+                        <h6 class="text-slate-800 mt-2">Batterie</h6>
+                        <p class="text-slate-600">Type: <span class="font-thin">benoit</span>  </p>
+                        <p class="text-slate-600">Puissance: benoit </p>
+                        <p class="text-slate-600">Montage: benoit </p>
+                     </div>
+                       <div class="">
+                        <h6 class="text-slate-800 mt-2">Utilisation</h6>
+                        <p class="text-slate-600">enduro </p>
+                     </div>
+                       <div class="">
+                        <h6 class="text-slate-800 mt-2">Utilisation</h6>
+                        <p class="text-slate-600">enduro </p>
+                     </div>
+                 </div>
+            </div>
+     
+            
+        </div>
+     </section>  
+
+             
+
+
+
+         {% for  product in productId.roues %}
+            <h4 class"h-auto w-auto ">type de roues : {{ product.Jantes}}</h4>
+         {% endfor %}
+
+   
+     
+
 </main>
 {% endblock %}

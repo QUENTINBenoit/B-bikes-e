@@ -74,7 +74,12 @@ class Produits
         $this->created_At = new \DateTimeImmutable();
         $this->roues = new ArrayCollection();
         $this->images = new ArrayCollection();
-        // $this->marques =new ArrayCollection(); 
+        $this->marques =new ArrayCollection(); 
+    }
+    public function __toString()
+    {
+       return $this->Name;
+
     }
 
     public function getId(): ?int
