@@ -18,7 +18,18 @@
                     <h1 class=" font-semiblod mt-2 text-3xl  ">{{productId.marques.Name}}</h1>
                     <h2 class=" text-lg mt-2 text-slate-600  ">{{productId.Name}}</h2>
                     <p class=" text-sm mt-2  text-slate-600"  > id:{{productId.reference}} </p>
-                    <p class=" text-lg mt-4">Prix: <span class="text-2xl text-red-600 font-medium  "> {{productId.Prix}} € </span> </p>
+                    {% if productId.Promotion %}
+                        <p class=" text-lg mt-4">Prix:
+                            <span class="line-through font-medium  text-gray-400 mr-3">
+                                {{productId.prix}}€
+                            </span>
+                            <span class=" text-2xl text-red-600 font-medium ">
+                                {{ productId.PrixPromotion}}€
+                            </span>
+                        </p>
+                     {% else %}                  
+                        <p class=" text-lg mt-4">Prix: <span class="text-2xl text-blue-600 font-medium  "> {{productId.Prix}} € </span> </p>
+                    {% endif %}
                 </div>
                 <a href="#" class=" bg-blue-600  rounded-b-2xl text-white text-center p-2 md:rounded-2xl  "> Panier</a>
             </div>  
