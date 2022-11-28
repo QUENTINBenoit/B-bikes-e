@@ -46,38 +46,70 @@
         <div class=" container p-2 ">
             <h3 class="text-center text-lg font-medium">Equipements </h3>
             <div class=" flex flex-col md:flex-row space-x-2   ">
-                <div class=" md:w-1/2 divide-y-2 divide-slate-600 p-4  ">
+                <div class=" md:w-1/2 divide-y-2 divide-slate-600 p-4 flex flex-col h-auto ">
                     <div class="mb-2">
                         <h6 class="text-slate-800">Utilisation</h6>
-                        <p class="text-slate-600">enduro </p>
-                     </div>
-                       <div class="">
+                        <p class="text-slate-600 font-light">{{productId.Utilisation}} </p>
+                    </div>
+                    <div class="">
                         <h6 class="text-slate-800 mt-2">Genre</h6>
-                        <p class="text-slate-600">enduro </p>
-                     </div>
-                       <div class="">
-                        <h6 class="text-slate-800 mt-2">Dimendions</h6>
-                        <p class="text-slate-600">enduro </p>
-                     </div>
-                       <div class="">
+                        <p class="text-slate-600 font-light">{{productId.genre}} </p>
+                    </div>
+                    <div class="">
                         <h6 class="text-slate-800 mt-2">Cadre</h6>
-                        <p class="text-slate-600">enduro </p>
-                     </div>
-                 </div>
+                        <p class="text-slate-600 font-light">{{productId.equipements.cadre}} </p>
+                    </div>
+                    <div class="">
+                        <h6 class="text-slate-800 mt-2">Fourche</h6>
+                        <p class="text-slate-600 font-light">{{productId.equipements.fourche}} </p>
+                    </div>
+                    <div class="">
+                        <h6 class="text-slate-800 mt-2">Jeu De Direction </h6>
+                        <p class="text-slate-600 font-light">{{productId.equipements.jeuDeDirection}} </p>
+                    </div>
+                    <div class="">
+                        <h6 class="text-slate-800 mt-2">Fourche</h6>
+                        <p class="text-slate-600 font-light">{{productId.equipements.fourche}} </p>
+                    </div>  
+                    <div class="">
+                        <h6 class="text-slate-800 mt-2">Dérailleur arrière</h6>
+                        <p class="text-slate-600 font-light">{{productId.equipements.derailleurAR}} </p>
+                    </div> 
+                   
+                      <div class="">
+                        <h6 class="text-slate-800 mt-2">Dérailleur avant</h6>
+                        <p class="text-slate-600 font-light">{{productId.equipements.derailleurAV}} </p>
+                    </div> 
+                  
+                    <div class="">
+                        <h6 class="text-slate-800 mt-2">Commande de vitesse</h6>
+                        <p class="text-slate-600 font-light">{{productId.equipements.commandesDeVitesse }} </p>
+                    </div>  
+                    <div class="">
+                        <h6 class="text-slate-800 mt-2">Pédalier</h6>
+                        <p class="text-slate-600 font-light">{{productId.equipements.pedalier}} </p>
+                    </div>  
+                    <div class="">
+                        <h6 class="text-slate-800 mt-2">Chaîne</h6>
+                        <p class="text-slate-600 font-light">Modèl: {{productId.equipements.guideChaine}} </p>
+                    </div>                      
+                </div>
                      
-                    <div class=" md:w-1/2 divide-y-2 divide-slate-600 p-4  ">
-                    <div class="mb-2">
+                <div class=" md:w-1/2 divide-y-2 divide-slate-600 p-4  ">
+                       <div class="mb-2">
                         <h6 class="text-slate-800">Moteur</h6>
-                        <p class="text-slate-600"> Marque: enduro </p>
-                        <p class="text-slate-600"> Model: enduro </p>
-                        <p class="text-slate-600"> Performance: enduro </p>
-                     </div>
+                        <p class="text-slate-600"> Marque: {{productId.motorisation.name}} </p>
+                        <p class="text-slate-600"> Model: {{productId.motorisation.marqueMoteur}} </p>
+                        <p class="text-slate-600"> Performance: {{productId.motorisation.performance}} Watt </p>
+                     </div>                                    
+                  {% if productId.motorisation.name %}
                        <div class="">
                         <h6 class="text-slate-800 mt-2">Batterie</h6>
-                        <p class="text-slate-600">Type: <span class="font-thin">benoit</span>  </p>
-                        <p class="text-slate-600">Puissance: benoit </p>
-                        <p class="text-slate-600">Montage: benoit </p>
+                        <p class="text-slate-600">Type: {{productId.motorisation.batterie}}</p>
+                        <p class="text-slate-600">Puissance: {{productId.motorisation.puissanceBatterie}}  Wh </p>
+                        <p class="text-slate-600">Montage:  {{productId.motorisation.console}}  </p>
                      </div>
+                     {% endif %}
                        <div class="">
                         <h6 class="text-slate-800 mt-2">Utilisation</h6>
                         <p class="text-slate-600">enduro </p>
@@ -86,14 +118,14 @@
                         <h6 class="text-slate-800 mt-2">Utilisation</h6>
                         <p class="text-slate-600">enduro </p>
                      </div>
-                 </div>
+                </div>
+
             </div>
      
             
         </div>
      </section>  
 
-             
 
 
 

@@ -17,22 +17,22 @@ class Motorisation
     private ?int $id = null;
 
     #[ORM\Column(length: 100)]
-    private ?string $Nom = null;
+    private ?string $name = null;
 
     #[ORM\Column(length: 60)]
-    private ?string $MarqueMoteur = null;
+    private ?string $marqueMoteur = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $Description_Moteur = null;
+    private ?string $descriptionMoteur = null;
 
     #[ORM\Column(length: 60, nullable: true)]
-    private ?string $Batterie = null;
+    private ?string $batterie = null;
 
     #[ORM\Column]
-    private ?float $Puissance_Batterie = null;
+    private ?float $puissanceBatterie = null;
 
     #[ORM\Column(length: 30)]
-    private ?string $Console = null;
+    private ?string $console = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $created_At = null;
@@ -42,6 +42,9 @@ class Motorisation
 
     #[ORM\OneToMany(mappedBy: 'motorisation', targetEntity: Produits::class)]
     private Collection $Products;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $performance = null;
 
     public function __construct()
     {
@@ -55,74 +58,74 @@ class Motorisation
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getName(): ?string
     {
-        return $this->Nom;
+        return $this->name;
     }
 
-    public function setNom(string $Nom): self
+    public function setName(string $name): self
     {
-        $this->Nom = $Nom;
+        $this->name = $name;
 
         return $this;
     }
 
     public function getMarqueMoteur(): ?string
     {
-        return $this->MarqueMoteur;
+        return $this->marqueMoteur;
     }
 
-    public function setMarqueMoteur(string $MarqueMoteur): self
+    public function setMarqueMoteur(string $marqueMoteur): self
     {
-        $this->MarqueMoteur = $MarqueMoteur;
+        $this->marqueMoteur = $marqueMoteur;
 
         return $this;
     }
 
     public function getDescriptionMoteur(): ?string
     {
-        return $this->Description_Moteur;
+        return $this->descriptionMoteur;
     }
 
-    public function setDescriptionMoteur(?string $Description_Moteur): self
+    public function setDescriptionMoteur(?string $descriptionMoteur): self
     {
-        $this->Description_Moteur = $Description_Moteur;
+        $this->descriptionMoteur = $descriptionMoteur;
 
         return $this;
     }
 
     public function getBatterie(): ?string
     {
-        return $this->Batterie;
+        return $this->batterie;
     }
 
-    public function setBatterie(?string $Batterie): self
+    public function setBatterie(?string $batterie): self
     {
-        $this->Batterie = $Batterie;
+        $this->batterie = $batterie;
 
         return $this;
     }
 
     public function getPuissanceBatterie(): ?float
     {
-        return $this->Puissance_Batterie;
+        return $this->puissanceBatterie;
     }
 
-    public function setPuissanceBatterie(float $Puissance_Batterie): self
+    public function setPuissanceBatterie(float $puissanceBatterie): self
     {
-        $this->Puissance_Batterie = $Puissance_Batterie;
+        $this->puissanceBatterie = $puissanceBatterie;
 
         return $this;
     }
 
     public function getConsole(): ?string
     {
-        return $this->Console;
+        return $this->console;
     }
 
-    public function setConsole(string $Console): self
+    public function setConsole(string $console): self
     {
-        $this->Console = $Console;
+        $this->console = $console;
 
         return $this;
     }
@@ -177,6 +180,18 @@ class Motorisation
                 $product->setMotorisation(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPerformance(): ?int
+    {
+        return $this->performance;
+    }
+
+    public function setPerformance(?int $performance): self
+    {
+        $this->performance = $performance;
 
         return $this;
     }

@@ -14,58 +14,58 @@ class Equipements
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Cadre = null;
+    private ?string $cadre = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Fourche = null;
+    private ?string $fourche = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Jeu_de_direction = null;
+    private ?string $jeuDeDirection = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Dérailleur_AV = null;
+    private ?string $derailleurAV = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $DerailleurAR = null;
+    private ?string $derailleurAR = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Commandes_de_vitesse = null;
+    private ?string $commandesDeVitesse = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Pédalier = null;
+    private ?string $pedalier = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Boitier_de_Pédalier = null;
+    private ?string $boitierDePedalier = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Guide_chaîne = null;
+    private ?string $guideChaine = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Cassette = null;
+    private ?string $cassette = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Cintre = null;
+    private ?string $cintre = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Poignées = null;
+    private ?string $poignees = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Potence = null;
+    private ?string $potence = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Tige_de_selle = null;
+    private ?string $tigeDeSelle = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Selle = null;
+    private ?string $selle = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Pneu_AV = null;
+    private ?string $pneuAV = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Pneu_AR = null;
+    private ?string $pneuAR = null;
 
     #[ORM\Column(nullable: true)]
-    private ?float $Poids = null;
+    private ?float $poids = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $created_At = null;
@@ -83,216 +83,216 @@ class Equipements
 
     public function getCadre(): ?string
     {
-        return $this->Cadre;
+        return $this->cadre;
     }
 
-    public function setCadre(?string $Cadre): self
+    public function setCadre(?string $cadre): self
     {
-        $this->Cadre = $Cadre;
+        $this->cadre = $cadre;
 
         return $this;
     }
 
     public function getFourche(): ?string
     {
-        return $this->Fourche;
+        return $this->fourche;
     }
 
-    public function setFourche(?string $Fourche): self
+    public function setFourche(?string $fourche): self
     {
-        $this->Fourche = $Fourche;
+        $this->fourche = $fourche;
 
         return $this;
     }
 
     public function getJeuDeDirection(): ?string
     {
-        return $this->Jeu_de_direction;
+        return $this->jeuDeDirection;
     }
 
-    public function setJeuDeDirection(?string $Jeu_de_direction): self
+    public function setJeuDeDirection(?string $jeuDeDirection): self
     {
-        $this->Jeu_de_direction = $Jeu_de_direction;
+        $this->jeuDeDirection = $jeuDeDirection;
 
         return $this;
     }
 
-    public function getDérailleurAV(): ?string
+    public function getDerailleurAV(): ?string
     {
-        return $this->Dérailleur_AV;
+        return $this->derailleurAV;
     }
 
-    public function setDérailleurAV(?string $Dérailleur_AV): self
+    public function setDerailleurAV(?string $derailleurAV): self
     {
-        $this->Dérailleur_AV = $Dérailleur_AV;
+        $this->derailleurAV= $derailleurAV;
 
         return $this;
     }
 
     public function getDerailleurAR(): ?string
     {
-        return $this->DerailleurAR;
+        return $this->derailleurAR;
     }
 
-    public function setDerailleurAR(?string $DerailleurAR): self
+    public function setDerailleurAR(?string $derailleurAR): self
     {
-        $this->DerailleurAR = $DerailleurAR;
+        $this->derailleurAR = $derailleurAR;
 
         return $this;
     }
 
     public function getCommandesDeVitesse(): ?string
     {
-        return $this->Commandes_de_vitesse;
+        return $this->commandesDeVitesse ;
     }
 
-    public function setCommandesDeVitesse(?string $Commandes_de_vitesse): self
+    public function setCommandesDeVitesse(?string $commandesDeVitesse ): self
     {
-        $this->Commandes_de_vitesse = $Commandes_de_vitesse;
+        $this->commandesDeVitesse  = $commandesDeVitesse ;
 
         return $this;
     }
 
-    public function getPédalier(): ?string
+    public function getPedalier(): ?string
     {
-        return $this->Pédalier;
+        return $this->pedalier;
     }
 
-    public function setPédalier(?string $Pédalier): self
+    public function setPedalier(?string $pedalier): self
     {
-        $this->Pédalier = $Pédalier;
+        $this->pedalier = $pedalier;
 
         return $this;
     }
 
     public function getBoitierDePédalier(): ?string
     {
-        return $this->Boitier_de_Pédalier;
+        return $this->boitierDePedalier;
     }
 
-    public function setBoitierDePédalier(?string $Boitier_de_Pédalier): self
+    public function setBoitierDePedalier(?string $boitierDePedalier): self
     {
-        $this->Boitier_de_Pédalier = $Boitier_de_Pédalier;
+        $this->boitierDePedalier = $boitierDePedalier;
 
         return $this;
     }
 
-    public function getGuideChaîne(): ?string
+    public function getGuideChaine(): ?string
     {
-        return $this->Guide_chaîne;
+        return $this->guideChaine;
     }
 
-    public function setGuideChaîne(?string $Guide_chaîne): self
+    public function setGuideChaine(?string $guideChaine): self
     {
-        $this->Guide_chaîne = $Guide_chaîne;
+        $this->guideChaine= $guideChaine;
 
         return $this;
     }
 
     public function getCassette(): ?string
     {
-        return $this->Cassette;
+        return $this->cassette;
     }
 
-    public function setCassette(?string $Cassette): self
+    public function setCassette(?string $cassette): self
     {
-        $this->Cassette = $Cassette;
+        $this->cassette = $cassette;
 
         return $this;
     }
 
     public function getCintre(): ?string
     {
-        return $this->Cintre;
+        return $this->cintre;
     }
 
-    public function setCintre(?string $Cintre): self
+    public function setCintre(?string $cintre): self
     {
-        $this->Cintre = $Cintre;
+        $this->cintre = $cintre;
 
         return $this;
     }
 
     public function getPoignées(): ?string
     {
-        return $this->Poignées;
+        return $this->poignees;
     }
 
-    public function setPoignées(?string $Poignées): self
+    public function setPoignees(?string $poignees): self
     {
-        $this->Poignées = $Poignées;
+        $this->poignees = $poignees;
 
         return $this;
     }
 
     public function getPotence(): ?string
     {
-        return $this->Potence;
+        return $this->potence;
     }
 
-    public function setPotence(?string $Potence): self
+    public function setPotence(?string $potence): self
     {
-        $this->Potence = $Potence;
+        $this->potence = $potence;
 
         return $this;
     }
 
     public function getTigeDeSelle(): ?string
     {
-        return $this->Tige_de_selle;
+        return $this->tigeDeSelle;
     }
 
-    public function setTigeDeSelle(?string $Tige_de_selle): self
+    public function setTigeDeSelle(?string $tigeDeSelle): self
     {
-        $this->Tige_de_selle = $Tige_de_selle;
+        $this->tigeDeSelle = $tigeDeSelle;
 
         return $this;
     }
 
     public function getSelle(): ?string
     {
-        return $this->Selle;
+        return $this->selle;
     }
 
-    public function setSelle(?string $Selle): self
+    public function setSelle(?string $selle): self
     {
-        $this->Selle = $Selle;
+        $this->selle = $selle;
 
         return $this;
     }
 
     public function getPneuAV(): ?string
     {
-        return $this->Pneu_AV;
+        return $this->pneuAV;
     }
 
-    public function setPneuAV(?string $Pneu_AV): self
+    public function setPneuAV(?string $pneuAV): self
     {
-        $this->Pneu_AV = $Pneu_AV;
+        $this->pneuAV = $pneuAV;
 
         return $this;
     }
 
     public function getPneuAR(): ?string
     {
-        return $this->Pneu_AR;
+        return $this->pneuAR;
     }
 
-    public function setPneuAR(?string $Pneu_AR): self
+    public function setPneuAR(?string $pneuAR): self
     {
-        $this->Pneu_AR = $Pneu_AR;
+        $this->pneuAR = $pneuAR;
 
         return $this;
     }
 
     public function getPoids(): ?float
     {
-        return $this->Poids;
+        return $this->poids;
     }
 
-    public function setPoids(?float $Poids): self
+    public function setPoids(?float $poids): self
     {
-        $this->Poids = $Poids;
+        $this->poids = $poids;
 
         return $this;
     }

@@ -68,6 +68,12 @@ class Produits
     #[ORM\OneToOne(mappedBy: 'Products', cascade: ['persist', 'remove'])]
     private ?Equipements $equipements = null;
 
+    #[ORM\Column(length: 15, nullable: true)]
+    private ?string $genre = null;
+
+    #[ORM\Column(length: 60, nullable: true)]
+    private ?string $utilisation = null;
+
     public function __construct()
     {
         $this->updated_At = new \DateTimeImmutable(); 
@@ -330,6 +336,30 @@ class Produits
         }
 
         $this->equipements = $equipements;
+
+        return $this;
+    }
+
+    public function getGenre(): ?string
+    {
+        return $this->genre;
+    }
+
+    public function setGenre(?string $genre): self
+    {
+        $this->genre = $genre;
+
+        return $this;
+    }
+
+    public function getUtilisation(): ?string
+    {
+        return $this->utilisation;
+    }
+
+    public function setUtilisation(?string $utilisation): self
+    {
+        $this->utilisation = $utilisation;
 
         return $this;
     }
