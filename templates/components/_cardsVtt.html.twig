@@ -1,5 +1,7 @@
 <!-- Composent Card -->
 
+  
+
 <a href="{{path('product_details', {id: productd.id} ) }} "class="bg-white shadow-xl h-96 shadow-black rounded-2xl h- md:hover:shadow-2xl md:hover:shadow-black md:hover:transition md:ease-in-out md:hover:-translate-y-2 md:hover:scale-110">
   <div class="relative h-3/6 rounded-t-2x">
     <div class="w-24 absolute bottom-36 left-0">
@@ -15,7 +17,16 @@
     <img src="{{ asset('images/produits/vtt-cube-stereo-120.jpg') }}"class="rounded-t-2xl mt-6"alt="images VTT cube"/>
   </div>
   <div class="mx-4 p-2 w-auto h-2/6">
-   <h4 class="text-lg font-semibold text-blue-900  ">{{ productd.marques.Name}}</h4>
+    {% for brandName in productd.marques %}
+      {% if brandName %}
+        <h4 class="text-lg font-semibold text-blue-900  ">{{ brandName.name}}</h4>
+
+        {% else %}
+         <h4 class="text-lg font-semibold text-blue-900  "></h4>
+      {% endif %}
+       
+    {% endfor %}
+  
     <h4 class="text-sm font-semibold">{{ productd.name}}</h4>
       <p class="mt-1 text-xs text-gray-400">
         {{productd.description | u.truncate(60)}}
@@ -36,4 +47,4 @@
            {% endif %}
       </p>
   </div>
-</a>
+</a> 

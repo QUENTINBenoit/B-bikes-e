@@ -80,6 +80,11 @@ class Equipements
     {
         return $this->id;
     }
+    public function __toString()
+    {
+       return $this->cadre;
+
+    }
 
     public function getCadre(): ?string
     {

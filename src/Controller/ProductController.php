@@ -2,9 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Produits;
+use App\Form\CategoryType;
+use App\Form\FiterType;
+use App\Repository\CategoryRepository;
 use App\Repository\ProduitsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -19,13 +24,23 @@ class ProductController extends AbstractController
      * @return Response
      */
     #[Route('/list', name: 'list', methods:['GET'])]
-        public function showAllProduct( ProduitsRepository  $produitsRepository): Response
-        {
+        public function showAllProduct( ProduitsRepository  $produitsRepository, Request $request): Response
+        {  
            $produits = $produitsRepository->findAll();
-           dump($produits); 
-
+           \dump($produits);
+           $productsFrom = new Produits();
+           
+           $form = $this->createForm(FiterType::class, $productsFrom);
+       
+           $form->handleRequest($request);
+          
+           if($form->isSubmitted() && $form->isValid() ){
+            dump($form->getData());
+           }
+        
         return $this->render('product/listProduits.html.twig', [
             'product' => $produits,
+            'form' => $form->createView()
         ]);
         }
 
@@ -40,6 +55,17 @@ class ProductController extends AbstractController
                 'productId' => $detailsProduct,         
         ]);    
        
+        }
+
+
+        #[Route('/add', name: 'add', methods:['GET'])]
+        public function addProdutis(Request $request, ProduitsRepository $produitsRepository){
+            $produits = new Produits();
+            $form = $this->createForm(FiterType::class, $produits);
+            $form->handleRequest($request);
+            return $this->render('product/addProduits.html.twig', [
+                'form' => $form->createView()
+            ]);
         }
 
 

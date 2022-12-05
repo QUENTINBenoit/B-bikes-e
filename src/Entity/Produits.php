@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+
 #[ORM\Entity(repositoryClass: ProduitsRepository::class)]
 class Produits
 {
@@ -27,7 +28,7 @@ class Produits
     private ?string $Description = null;
 
     #[ORM\Column]
-    private ?bool $Nouveauté = null;
+    private ?bool $nouveaute = null;
 
     #[ORM\Column]
     private ?bool $Promotion = null;
@@ -62,17 +63,25 @@ class Produits
     #[ORM\OneToMany(mappedBy: 'Products', targetEntity: Images::class)]
     private Collection $images;
 
-    #[ORM\ManyToOne(inversedBy: 'Products')]
-    private ?Marques $marques = null;
 
     #[ORM\OneToOne(mappedBy: 'Products', cascade: ['persist', 'remove'])]
     private ?Equipements $equipements = null;
 
-    #[ORM\Column(length: 15, nullable: true)]
-    private ?string $genre = null;
-
     #[ORM\Column(length: 60, nullable: true)]
     private ?string $utilisation = null;
+
+    #[ORM\ManyToMany(targetEntity: Category::class, mappedBy: 'products')]
+    private Collection $categories;
+
+
+
+    #[ORM\ManyToMany(targetEntity: Marque::class, mappedBy: 'products')]
+    private Collection $marques;
+
+    #[ORM\ManyToMany(targetEntity: Genre::class, mappedBy: 'products')]
+    private Collection $genres;
+
+
 
     public function __construct()
     {
@@ -80,11 +89,14 @@ class Produits
         $this->created_At = new \DateTimeImmutable();
         $this->roues = new ArrayCollection();
         $this->images = new ArrayCollection();
-        $this->marques =new ArrayCollection(); 
+        $this->categories = new ArrayCollection();
+        $this->marques = new ArrayCollection();
+        $this->genres = new ArrayCollection();
     }
     public function __toString()
     {
        return $this->Name;
+       return $this->genre;
 
     }
 
@@ -129,14 +141,14 @@ class Produits
         return $this;
     }
 
-    public function isNouveauté(): ?bool
+    public function isNouveaute(): ?bool
     {
-        return $this->Nouveauté;
+        return $this->nouveaute;
     }
 
-    public function setNouveauté(bool $Nouveauté): self
+    public function setNouveaute(bool $nouveaute): self
     {
-        $this->Nouveauté = $Nouveauté;
+        $this->nouveaute = $nouveaute;
 
         return $this;
     }
@@ -306,18 +318,6 @@ class Produits
         return $this;
     }
 
-    public function getMarques(): ?Marques
-    {
-        return $this->marques;
-    }
-
-    public function setMarques(?Marques $marques): self
-    {
-        $this->marques = $marques;
-
-        return $this;
-    }
-
     public function getEquipements(): ?Equipements
     {
         return $this->equipements;
@@ -340,17 +340,6 @@ class Produits
         return $this;
     }
 
-    public function getGenre(): ?string
-    {
-        return $this->genre;
-    }
-
-    public function setGenre(?string $genre): self
-    {
-        $this->genre = $genre;
-
-        return $this;
-    }
 
     public function getUtilisation(): ?string
     {
@@ -363,4 +352,96 @@ class Produits
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Category>
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Category $category): self
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories->add($category);
+            $category->addProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): self
+    {
+        if ($this->categories->removeElement($category)) {
+            $category->removeProduct($this);
+        }
+
+        return $this;
+    }
+
+  
+
+    /**
+     * @return Collection<int, Marque>
+     */
+    public function getMarques(): Collection
+    {
+        return $this->marques;
+    }
+
+    public function addMarque(Marque $marque): self
+    {
+        if (!$this->marques->contains($marque)) {
+            $this->marques->add($marque);
+            $marque->addProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMarque(Marque $marque): self
+    {
+        if ($this->marques->removeElement($marque)) {
+            $marque->removeProduct($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Genre>
+     */
+    public function getGenres(): Collection
+    {
+        return $this->genres;
+    }
+
+    public function addGenre(Genre $genre): self
+    {
+        if (!$this->genres->contains($genre)) {
+            $this->genres->add($genre);
+            $genre->addProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGenre(Genre $genre): self
+    {
+        if ($this->genres->removeElement($genre)) {
+            $genre->removeProduct($this);
+        }
+
+        return $this;
+    }
+
+    
+
+
+    
+
+
+
+    
 }

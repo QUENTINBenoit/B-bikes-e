@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Category;
+use App\Entity\Marque;
 use App\Entity\Marques;
 use App\Entity\Motorisation;
 use App\Entity\Produits;
@@ -43,7 +44,7 @@ class MarquesFixtures extends Fixture
 
         foreach($motoristationsList as $motList){
             $motorisation = new Motorisation();
-            $motorisation->setNom($motList);
+            $motorisation->setName($motList);
             $motorisation->setMarqueMoteur($faker->name());
             $motorisation->setBatterie($faker->numberBetween(0,10));  
             $motorisation->setPuissanceBatterie($faker->numberBetween(0,10));  
@@ -64,8 +65,8 @@ class MarquesFixtures extends Fixture
             'GIANT',
         ];
         foreach($marquesList as $marquesNameList){ 
-            $marques = new Marques(); 
-            $marques->setName($marquesNameList);
+            $marques = new Marque(); 
+            $marques->setBrand($marquesNameList);
             $manager->persist($marques);   
             }
 
@@ -83,7 +84,7 @@ class MarquesFixtures extends Fixture
                 $prosuits->setName($produitNamesList); 
                 $prosuits->setDescription($faker->realText(1800)); 
                 $prosuits->setReference($faker->randomNumber(8)); 
-                $prosuits->setNouveauté($faker->numberBetween(0, 1)); 
+                $prosuits->setNouveaute($faker->numberBetween(0, 1)); 
                 $prosuits->setPromotion($faker->numberBetween(0, 1)); 
                 $prosuits->setStock($faker->numberBetween(0, 50)); 
                 $prosuits->setPrix($faker->numberBetween(900, 3500)); 

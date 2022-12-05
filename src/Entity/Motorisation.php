@@ -52,6 +52,11 @@ class Motorisation
         $this->created_At = new \DateTimeImmutable();
         $this->Products = new ArrayCollection();
     }
+    public function __toString()
+    {
+       return $this->name;
+
+    }
 
     public function getId(): ?int
     {

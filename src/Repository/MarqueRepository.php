@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Marque;
 use App\Entity\Marques;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -14,14 +15,14 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Marques[]    findAll()
  * @method Marques[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class MarquesRepository extends ServiceEntityRepository
+class MarqueRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Marques::class);
+        parent::__construct($registry, Marque::class);
     }
 
-    public function save(Marques $entity, bool $flush = false): void
+    public function save(Marque $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +31,7 @@ class MarquesRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Marques $entity, bool $flush = false): void
+    public function remove(Marque $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 

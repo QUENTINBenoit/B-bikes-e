@@ -30,6 +30,9 @@ class Category
 
     #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'subCategories')]
     private $category = null;
+
+    #[ORM\ManyToMany(targetEntity: Produits::class, inversedBy: 'categories')]
+    private Collection $products;
   
 
 
@@ -39,7 +42,8 @@ class Category
     {
         $this->updatedAt = new \DateTimeImmutable(); 
         $this->createdAt = new \DateTimeImmutable();
-        $this->subCategories = new ArrayCollection(); 
+        $this->subCategories = new ArrayCollection();
+        $this->products = new ArrayCollection(); 
     }
 
 
@@ -128,5 +132,29 @@ class Category
     public function __toString()
     {
        return $this->name;  
+    }
+
+    /**
+     * @return Collection<int, Produits>
+     */
+    public function getProducts(): Collection
+    {
+        return $this->products;
+    }
+
+    public function addProduct(Produits $product): self
+    {
+        if (!$this->products->contains($product)) {
+            $this->products->add($product);
+        }
+
+        return $this;
+    }
+
+    public function removeProduct(Produits $product): self
+    {
+        $this->products->removeElement($product);
+
+        return $this;
     }
 }
