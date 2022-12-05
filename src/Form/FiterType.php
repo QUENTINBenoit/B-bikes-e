@@ -6,6 +6,8 @@ use App\Entity\Category;
 use App\Entity\Genre;
 use App\Entity\Marque;
 use App\Entity\Produits;
+use App\Repository\MarqueRepository;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -30,6 +32,10 @@ class FiterType extends AbstractType
                 'label' => false,
                 'required' => false, 
                 'class' => Marque::class,
+                'query_builder' => function(MarqueRepository $er) {
+                    return $er->createQueryBuilder('m')
+                     ->orderBy('m.name', 'ASC');  
+                },
                 'expanded' => true,
                 'multiple' => true,
                 ] )       
@@ -37,7 +43,6 @@ class FiterType extends AbstractType
 
             ->add('genres', EntityType::class, [
                 'label' => false,
-                // 'attr' => [ 'class'=>' ml-6 flex flex-col'],
                 'required' => false, 
                 'class' => Genre::class,
                 'expanded' => true,
