@@ -18,12 +18,12 @@
   </div>
   <div class="mx-4 p-2 w-auto h-2/6">
     {% for brandName in productd.marques %}
-      {% if brandName %}
+      {# {% if brandName %} #}
         <h4 class="text-lg font-semibold text-blue-900  ">{{ brandName.name}}</h4>
 
-        {% else %}
-         <h4 class="text-lg font-semibold text-blue-900  "></h4>
-      {% endif %}
+        {# {% else %}
+         <h4 class="text-lg font-semibold text-blue-900  "> None</h4> #}
+      {# {% endif %} #}
        
     {% endfor %}
   

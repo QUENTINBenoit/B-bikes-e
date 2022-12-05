@@ -74,6 +74,9 @@ const acc = {
     document
       .querySelector("#dropdownCatergories")
       .classList.toggle("bg-white/25");
+    document
+      .querySelector("#colorsFiltersCategories")
+      .classList.toggle("text-pink-900");
   },
 
   // fonction drop filtre Marques
