@@ -18,17 +18,16 @@
             </h3>
         </div>
     </div>
+
+  
   
   <div class="mx-auto max-w-10xl flex justify-center z-20 mt-24 relative">
   
-          {% include "components/_dropdownFilter.html.twig" with {
-            options: allCategories, 
-            optionsMarques: allMarques
-          } %}
+          {% include "components/_dropdownFilter.html.twig"%}
 
 
         <!-- Affichage des produits -->
-        <div class=" grid grid-cols-1 m-2 lg:grid-cols-4 md:grid-cols-2 w-full md:h-full p-16 gap-12">
+        <div class=" grid grid-cols-1 m-2 lg:grid-cols-4 md:grid-cols-2 w-full md:h-auto p-16 gap-12">
        
           {% for   productd in product %}
            {% include "components/_cardsVtt.html.twig" %}

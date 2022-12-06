@@ -2,9 +2,12 @@
 
 namespace App\Repository;
 
+use App\Entity\Category;
+use App\Entity\Marque;
 use App\Entity\Produits;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+
 
 /**
  * @extends ServiceEntityRepository<Produits>
@@ -80,7 +83,32 @@ class ProduitsRepository extends ServiceEntityRepository
     return $query->getOneOrNullResult();   
    }
 
+  public function findByFilter($filter){
 
+    $qb = $this->createQueryBuilder('p');
+    
+    
+    if (isset($filter['marques'])){
+   
+        $qb->leftJoin('p.marques', "m");
+        $qb->orWhere($qb->expr()->in('m.id', $filter['marques']));
+        $qb->andWhere($qb->expr()->in('m.id', $filter['marques'])) ;
+     
+    if (isset($filter['categories'])) {
+        $qb->leftJoin('p.categories', "c");
+        $qb->orWhere($qb->expr()->in('c.id', $filter['categories']));
+        $qb->andWhere($qb->expr()->in('c.id', $filter['categories'])); 
+      }
+
+    }
+    if (isset($filter['genres'])){
+        $qb->leftJoin('p.genres', 'g'); 
+        $qb->orWhere($qb->expr()->in('g.id', $filter['genres'])); 
+    }
+    
+      $qb->distinct();
+      return $qb->getQuery()->getResult();
+  }
 
 
 }

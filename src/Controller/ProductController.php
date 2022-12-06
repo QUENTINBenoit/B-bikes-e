@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Category;
 use App\Entity\Produits;
 use App\Form\CategoryType;
 use App\Form\FiterType;
@@ -24,19 +23,29 @@ class ProductController extends AbstractController
      * @return Response
      */
     #[Route('/list', name: 'list', methods:['GET'])]
-        public function showAllProduct( ProduitsRepository  $produitsRepository, Request $request): Response
+        public function showAllProduct( ProduitsRepository  $produitsRepository,  Request $request): Response
         {  
            $produits = $produitsRepository->findAll();
-           \dump($produits);
+        //    \dump($produits);
            $productsFrom = new Produits();
            
+           $filter = $request->query->all(); 
+        //    
            $form = $this->createForm(FiterType::class, $productsFrom);
        
            $form->handleRequest($request);
-          
-           if($form->isSubmitted() && $form->isValid() ){
-            dump($form->getData());
-           }
+          if ( $form->isSubmitted() && $form->isValid() ){
+
+            if(isset($filter['fiter']) ){
+                dump($filter);
+                $produits = $produitsRepository->findByFilter($filter['fiter']);
+                dump($produits); 
+               }else{
+                $produits = $produitsRepository->findAll();
+                \dump('je suis dans la validation '); 
+               }
+          }
+        
         
         return $this->render('product/listProduits.html.twig', [
             'product' => $produits,
