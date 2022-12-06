@@ -46,14 +46,24 @@
             </div>  
         </div> 
     </section >
-     <section class=" w-full bg-slate-200 mt-2 p-2">
+     <section class=" w-full bg-slate-200 mt-2 p-2 container rounded-3xl">
         <div class=" container p-2 ">
             <h3 class="text-center text-lg font-medium">Description </h3>
             <h4 class="text-center text-slate-600 text-sm font-medium">{{ productId.name}}</h4> 
-            <p class="text-align-left whitespace-pre-wrap ">{{productId.Description}}</p>
+            <div  class="flex flex-col justify-center items-center m-6 md:flex-row  " >
+                <div class="flex flex-col ">
+                    <p class="text-align-left whitespace-pre-wrap p-2 m-2 ">{{productId.Description|u.truncate(130)}}</p>
+                    <p class="text-align-left whitespace-pre-wrap p-2 m-2">{{productId.Description| u.truncate(130)}}</p>
+                </div>
+                <div class="flex flex-col ">
+                    <p class="text-align-left whitespace-pre-wrap  p-2 m-2 ">{{productId.Description|u.truncate(130)}}</p>
+                    <p class="text-align-left whitespace-pre-wrap  p-2 m-2">{{productId.Description| u.truncate(130)}}</p>
+                </div>
+            </div>
+          
         </div>
      </section>
-     <section class=" w-full bg-stone-300 mt-2 p-2">
+     <section class=" w-full mt-2 p-2 container mb-2 bg-slate-200 rounded-3xl">
         <div class=" container p-2 ">
             <h3 class="text-center text-lg font-medium">Equipements </h3>
             <div class=" flex flex-col md:flex-row space-x-2   ">

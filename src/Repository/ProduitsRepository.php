@@ -42,73 +42,46 @@ class ProduitsRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Produits[] Returns an array of Produits objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('p.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
 
-//    public function findOneBySomeField($value): ?Produits
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
-
-
-   public function findWithDetailsProduct($id)
-   {
-    $qb = $this->createQueryBuilder('product');
-    $qb->where('product.id = :id'); 
-    $qb->setParameter(':id', $id); 
-    $qb->leftJoin('product.equipements', 'eqpmts');
-    $qb->leftJoin('product.marques', 'brand'); 
-    $qb->leftJoin('product.images', 'img'); 
-    $qb->leftJoin('product.roues', 'rs'); 
-    $qb->leftJoin('product.motorisation', 'motor'); 
-    $qb->addSelect('eqpmts', 'brand', 'rs', 'img', 'motor'); 
-    $query = $qb->getQuery(); 
-    return $query->getOneOrNullResult();   
-   }
-
-  public function findByFilter($filter){
-
-    $qb = $this->createQueryBuilder('p');
-    
-    
-    if (isset($filter['marques'])){
-   
-        $qb->leftJoin('p.marques', "m");
-        $qb->orWhere($qb->expr()->in('m.id', $filter['marques']));
-        $qb->andWhere($qb->expr()->in('m.id', $filter['marques'])) ;
-     
-    if (isset($filter['categories'])) {
-        $qb->leftJoin('p.categories', "c");
-        $qb->orWhere($qb->expr()->in('c.id', $filter['categories']));
-        $qb->andWhere($qb->expr()->in('c.id', $filter['categories'])); 
-      }
-
+    public function findWithDetailsProduct($id)
+    {
+        $qb = $this->createQueryBuilder('product');
+        $qb->where('product.id = :id'); 
+        $qb->setParameter(':id', $id); 
+        $qb->leftJoin('product.equipements', 'eqpmts');
+        $qb->leftJoin('product.marques', 'brand'); 
+        $qb->leftJoin('product.images', 'img'); 
+        $qb->leftJoin('product.roues', 'rs'); 
+        $qb->leftJoin('product.motorisation', 'motor'); 
+        $qb->addSelect('eqpmts', 'brand', 'rs', 'img', 'motor'); 
+        $query = $qb->getQuery(); 
+        return $query->getOneOrNullResult();   
     }
-    if (isset($filter['genres'])){
-        $qb->leftJoin('p.genres', 'g'); 
-        $qb->orWhere($qb->expr()->in('g.id', $filter['genres'])); 
+    /**
+     * méthode permettant de filtrer les produits 
+     *
+     * @param [type] $filter
+     * @return void
+     */
+    public function findByFilter($filter)
+    {
+
+        $qb = $this->createQueryBuilder('p');
+        if (isset($filter['marques'])){
+            $qb->leftJoin('p.marques', 'm');
+            $qb->andWhere( $qb->expr()->in('m.id', $filter['marques'])) ;
+        }
+        if (isset($filter['categories'])) {
+            $qb->leftJoin('p.categories', 'c');
+            $qb->andWhere($qb->expr()->in('c.id', $filter['categories'])); 
+        }
+        if (isset($filter['genres'])){
+            $qb->leftJoin('p.genres', 'g'); 
+            $qb->andWhere($qb->expr()->in('g.id', $filter['genres'])); 
+        }
+        $qb->distinct();
+        return $qb->getQuery()->getResult();
     }
-    
-      $qb->distinct();
-      return $qb->getQuery()->getResult();
-  }
 
 
 }
