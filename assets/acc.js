@@ -56,7 +56,7 @@ const acc = {
     }
   },
 
-  // fonction  du dropdown du filtre categories
+  // fonction drop filtre categories
   toggleDropCategories: function () {
     document
       .querySelector("#submenuFiltre")
@@ -119,6 +119,7 @@ const acc = {
 
   // fonction drop filtre Couleurs
   toggleDropCouleurs: function () {
+    console.log("benoit");
     document
       .querySelector("#submenuFiltreCouleurs")
       .classList.toggle("hidden");
@@ -152,6 +153,7 @@ const acc = {
     );
     const toggleFilterSelection =
       menuSelection.classList.toggle("-translate-y-full");
+
     if (toggleFilterSelection == true) {
       menuSelection.classList.add("-translate-y-full");
       menuSelection.classList.add("duration-700");

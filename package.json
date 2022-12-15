@@ -25,5 +25,9 @@
     "watch": "encore dev --watch",
     "build": "encore production --progress",
     "build-tailwind": "tailwindcss build -i assets/styles/app.css -o public/build/app.css --watch"
+  },
+  "dependencies": {
+    "flowbite": "^1.5.5",
+    "tw-elements": "^1.0.0-alpha13"
   }
 }

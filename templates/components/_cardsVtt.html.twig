@@ -6,7 +6,7 @@
   <div class="relative h-3/6 rounded-t-2x">
     <div class="w-24 absolute bottom-36 left-0">
       {% if productd.Promotion %}
-        <p class="h-auto pl-2 text-sm text-white w-auto bg-stone-900 rounded-r-2xl">
+        <p class="h-auto pl-2 text-sm text-white  w-auto bg-stone-900 rounded-r-2xl">
           Promotion
         </p>
         <p class="h-auto mt-2 pl-2 text-sm w-12 bg-red-600 rounded-r-2xl">
@@ -24,7 +24,7 @@
     <h4 class="text-sm font-semibold">{{ productd.name}}</h4>
     <p class=" text-sm  ">Cat:
       {% for catego in productd.categories %} 
-       <span class="text-green-600""> {{ catego.name}}</span>
+       <span class="text-green-600"> {{ catego.name}}</span>
        {% endfor %}
        </p>
        

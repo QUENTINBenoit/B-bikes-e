@@ -110,44 +110,24 @@
               />
             </svg>
           </button>
-          <ul
-            id="toggled-menu"
-            class="w-full duration-300 mx-auto absolute backdrop-blur-3xl bg-white/10 rounded-b-3xl top-full left-0 -translate-y-full -z-10 text-white flex flex-col items-center md:static md:z-10 md:w-min md:transform-none md:border-none md:flex-row md:text-white md:divide-none md:bg-stone-900"
-          >
-            <li
-              class="text-center py-3 md:py-0 md:mr-6 md:border-none"
-            >
-              <a
-                href="#cv"
-                class="text-sm upercase font-medium hover:text-stone-500 md:text-xl"
-              >
+          <ul id="toggled-menu"
+              class="w-full duration-300 mx-auto absolute backdrop-blur-3xl bg-white/10 rounded-b-3xl top-full left-0 -translate-y-full -z-10 text-white flex flex-col items-center md:static md:z-10 md:w-min md:transform-none md:border-none md:flex-row md:text-white md:divide-none md:bg-stone-900">
+            <li class="text-center py-3 md:py-0 md:mr-6 md:border-none">
+              <a href="{{path('home')}}"class="text-sm upercase font-medium hover:text-stone-500 md:text-xl">
+                Accueil
+              </a>
+            </li>
+            <li class="text-center py-3 md:py-0 md:mr-6">
+              <a href="{{path('product_list')}}"class="text-sm upercase font-medium w-full hover:text-stone-500 md:text-xl">
                 VTT
               </a>
             </li>
             <li class="text-center py-3 md:py-0 md:mr-6">
-              <a
-                href="#competences"
-                class="text-sm upercase font-medium w-full hover:text-stone-500 md:text-xl"
-              >
+                <a href="{{path('product_list')}}"class="text-sm upercase font-medium hover:text-stone-500 md:text-xl">
                 VAE
               </a>
             </li>
-            <li class="text-center py-3 md:py-0 md:mr-6">
-              <a
-                href="#projets"
-                class="text-sm upercase font-medium w-full hover:text-stone-500 md:text-xl"
-              >
-                Equipements
-              </a>
-            </li>
-            <li class="text-center py-3 md:py-0 md:mr-6">
-              <a
-                href="#contact"
-                class="text-sm upercase font-medium w-full hover:text-stone-500 md:text-xl"
-              >
-                Menu
-              </a>
-            </li>
+          
           </ul>
         </div>
       </nav>

@@ -9,5 +9,6 @@
 import "./styles/app.css";
 
 // start the Stimulus application
-import "./bootstrap";
+// import "./bootstrap";
 import "./acc.js";
+import "flowbite";
