@@ -3,9 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Produits;
-use App\Form\CategoryType;
 use App\Form\FiterType;
-use App\Repository\CategoryRepository;
 use App\Repository\ProduitsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,65 +15,60 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProductController extends AbstractController
 {
     /**
-     * Methode permettant d'affiche tout les produits
+     * Méthode permettant d'afficher tous les produits
      *
      * @param ProduitsRepository $produitsRepository
      * @return Response
      */
-    #[Route('/list', name: 'list', methods:['GET'])]
-        public function showAllProduct( ProduitsRepository  $produitsRepository,  Request $request): Response
-        {  
-           $produits = $produitsRepository->findAll();
-        //    \dump($produits);
-           $productsFrom = new Produits();
-           
-           $filter = $request->query->all(); 
-        //    
-           $form = $this->createForm(FiterType::class, $productsFrom);
-       
-           $form->handleRequest($request);
-          if ( $form->isSubmitted() && $form->isValid() ){
-
-            if(isset($filter['fiter']) ){
-                dump($filter);
+    #[Route('/list', name: 'list', methods: ['GET'])]
+    public function showAllProduct(ProduitsRepository  $produitsRepository,  Request $request): Response
+    {
+        $produits = $produitsRepository->findAll();
+        $productsFrom = new Produits();
+        $filter = $request->query->all();
+        $form = $this->createForm(FiterType::class, $productsFrom);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            if (isset($filter['fiter'])) {
                 $produits = $produitsRepository->findByFilter($filter['fiter']);
-                dump($produits); 
-               }else{
+            } else {
                 $produits = $produitsRepository->findAll();
-                \dump('je suis dans la validation '); 
-               }
-          }
-        
-        
+            }
+        }
+
         return $this->render('product/listProduits.html.twig', [
             'product' => $produits,
             'form' => $form->createView()
         ]);
-        }
+    }
 
-       
-    #[Route('/{id}', name:'details', methods:['GET'], requirements: ['id' => '\d+'])] 
-        public function detailsProduct(int $id, ProduitsRepository $produitsRepository): Response
-        {
-        \dump('route de details produits ');
-         $detailsProduct = $produitsRepository->findWithDetailsProduct($id) ; 
-         \dump($detailsProduct); 
+    /**
+     * Affiche le detail d'un produit 
+     *
+     * @param integer $id
+     * @param ProduitsRepository $produitsRepository
+     * @return Response
+     */
+    #[Route('/{id}', name: 'details', methods: ['GET'], requirements: ['id' => '\d+'])]
+    public function detailsProduct(int $id, ProduitsRepository $produitsRepository): Response
+    {
+
+        $detailsProduct = $produitsRepository->findWithDetailsProduct($id);
+
         return $this->render('product/detailsProduit.html.twig', [
-                'productId' => $detailsProduct,         
-        ]);    
-       
-        }
+            'productId' => $detailsProduct,
+        ]);
+    }
 
 
-        #[Route('/add', name: 'add', methods:['GET'])]
-        public function addProdutis(Request $request, ProduitsRepository $produitsRepository){
-            $produits = new Produits();
-            $form = $this->createForm(FiterType::class, $produits);
-            $form->handleRequest($request);
-            return $this->render('product/addProduits.html.twig', [
-                'form' => $form->createView()
-            ]);
-        }
-
-
+    #[Route('/add', name: 'add', methods: ['GET'])]
+    public function addProdutis(Request $request, ProduitsRepository $produitsRepository)
+    {
+        $produits = new Produits();
+        $form = $this->createForm(FiterType::class, $produits);
+        $form->handleRequest($request);
+        return $this->render('product/addProduits.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
 }
