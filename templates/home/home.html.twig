@@ -28,41 +28,37 @@
     <section class=" flex flex-col items-center justify-between w-full mt-16 ">
       <h2 class=" text-slate-900 text-4xl font-gluten m-4 "> Categories</h2>
       <div class=" flex flex-col md:flex-row  justify-between  w-full p-2 items-center ">
-        {% for categories in category %}    
-          <a href="#" class="w-72 h-16 relative  rounded-xl bg-gradient-to-br from-black-900 via-pink-900 to-blue-400 flex items-center m-2 shadow-2xl  ">
+        {% for catego in produits %}    
+          <a href="#" class="w-72 h-16 relative  rounded-xl bg-gradient-to-br from-black-900 via-pink-900 to-blue-400 flex items-center m-2 shadow-2xl">
             <div class="w-full h-full  backdrop-blur-3xl bg-white/10 rounded-xl"></div>
-            <h3  class=" absolute text-3xl text-center  font-gluten text-orange-600 font-semibold w-full  "> {{categories.name}}</h3>
+            <h3  class=" absolute text-3xl text-center  font-gluten text-orange-600 font-semibold w-full">{{catego.name}}</h3>
           </a>
         {% endfor %}
       </div>
     </section>       
     <section class=" flex flex-col items-center justify-between w-full rounded-2xl mt-16">
-                  <h2 class=" text-slate-900 text-4xl font-gluten m-4 "> Nos Meilleures Marques</h2>
-             <div class=" flex flex-col md:flex-row  justify-between   w-full p-2 items-center ">
-             
-             <a href="#" class="m-2" >
-                    <img src=" {{ asset('images/logo/marques/cube.png')}}" alt="" class="w-44 h-8 ">
-             </a>
-            <a href="#" class="m-2" >
-                    <img src=" {{ asset('images/logo/marques/cube.png')}}" alt="" class="w-44 h-8 ">
-             </a>
-                <a href="#" class="m-2" >
-                    <img src=" {{ asset('images/logo/marques/cube.png')}}" alt="" class="w-44 h-8 ">
-             </a>
-                <a href="#" class="m-2" >
-                    <img src=" {{ asset('images/logo/marques/cube.png')}}" alt="" class="w-44 h-8 ">
-             </a>
-              </a>
-                <a href="#" class="m-2" >
-                    <img src=" {{ asset('images/logo/marques/cube.png')}}" alt="" class="w-44 h-8 ">
-             </a>
-              </a>
-                <a href="#" class="m-2" >
-                    <img src=" {{ asset('images/logo/marques/cube.png')}}" alt="" class="w-44 h-8 ">
-             </a>
-             </div>     
-             
-            </section>
+      <h2 class=" text-slate-900 text-4xl font-gluten m-4 "> Nos Meilleures Marques</h2>
+      <div class=" flex flex-col md:flex-row  justify-between   w-full p-2 items-center ">       
+        <a href="#" class="m-2" >
+          <img src=" {{ asset('images/logo/marques/cube.png')}}" alt="" class="w-44 h-8 ">
+        </a>
+        <a href="#" class="m-2" >
+          <img src=" {{ asset('images/logo/marques/cube.png')}}" alt="" class="w-44 h-8 ">
+        </a>
+        <a href="#" class="m-2" >
+          <img src=" {{ asset('images/logo/marques/cube.png')}}" alt="" class="w-44 h-8 ">
+        </a>
+        <a href="#" class="m-2" >
+          <img src=" {{ asset('images/logo/marques/cube.png')}}" alt="" class="w-44 h-8 ">
+        </a>
+        <a href="#" class="m-2" >
+            <img src=" {{ asset('images/logo/marques/cube.png')}}" alt="" class="w-44 h-8 ">
+        </a>
+        <a href="#" class="m-2" >
+          <img src=" {{ asset('images/logo/marques/cube.png')}}" alt="" class="w-44 h-8 ">
+        </a>
+      </div>     
+    </section>
 
          <section class=" flex flex-col items-center justify-between w-full rounded-2xl mt-16">
                   <h2 class=" text-slate-900 text-4xl font-gluten m-4 "> Les Nouvautées</h2>
