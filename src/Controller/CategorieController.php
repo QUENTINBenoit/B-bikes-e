@@ -28,7 +28,6 @@ class CategorieController extends AbstractController
         \dump($detailsCategory);
         return $this->render('categorie/index.html.twig', [
             'listProdByCategoId' => $detailsCategory,
-
         ]);
     }
 }
