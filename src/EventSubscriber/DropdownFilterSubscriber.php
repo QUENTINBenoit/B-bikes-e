@@ -12,40 +12,37 @@ use Twig\Environment;
 
 class DropdownFilterSubscriber implements EventSubscriberInterface
 {
-     const ROUTES = ['product_list']; 
-     const MARQUES = ['product_list']; 
+  const ROUTES = ['product_list'];
+  const CATEGORIE = ['product_list'];
+  // const MARQUES = ['product_list'];
 
 
-    public function __construct(
-            private CategoryRepository $categoryRepository,
-            private MarqueRepository $marqueRepository,
-            private Environment $twig
-    )
-    {
-        
+  public function __construct(
+    private CategoryRepository $categoryRepository,
+    private MarqueRepository $marqueRepository,
+    private Environment $twig
+  ) {
+  }
+
+  public function onKernelRequest(RequestEvent $event): void
+  {
+    // ..
+    $route = $event->getRequest()->get('_route');
+    if (\in_array($route, DropdownFilterSubscriber::ROUTES)) {
+      $categories =  $this->categoryRepository->findAll();
+      $this->twig->addGlobal('allCategories', $categories);
     }
 
-    public function onKernelRequest(RequestEvent $event): void
-    {
-        // ..
-               $route = $event->getRequest()->get('_route'); 
-               if (\in_array($route, DropdownFilterSubscriber::ROUTES)){
-                 $categories =  $this->categoryRepository->findAll();
-                 $this->twig->addGlobal('allCategories', $categories); 
-               }        
-               
-               if (\in_array($route, DropdownFilterSubscriber::MARQUES)){
-                 $allMarques =  $this->marqueRepository->findAll();
-                 $this->twig->addGlobal('allMarques', $allMarques); 
-               }       
+    // if (\in_array($route, DropdownFilterSubscriber::MARQUES)) {
+    //   $allMarques =  $this->marqueRepository->findAll();
+    //   $this->twig->addGlobal('allMarques', $allMarques);
+    // }
+  }
 
-
-    }
-
-    public static function getSubscribedEvents(): array
-    {
-        return [
-            KernelEvents::REQUEST => 'onKernelRequest',
-        ];
-    }
+  public static function getSubscribedEvents(): array
+  {
+    return [
+      KernelEvents::REQUEST => 'onKernelRequest',
+    ];
+  }
 }
