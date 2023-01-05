@@ -42,10 +42,9 @@
             {% for marque in marques %}                   
               <a href="{{path('marques_listproduit', {id: marque.id} ) }}" class="m-2" >
               {{marque.name}}
-              <img src="{{ asset('images/logo/marques/' ~ marque.logo) }}" alt="" class="w-44 h-8 ">
+              <img src="{{ asset('images/logo/marques/' ~ marque.logo) }}" alt="" class="w-32 h-1 ">
               </a>
-            {% endfor %}
-            
+            {% endfor %}      
       </div>     
     </section>
 
@@ -85,9 +84,7 @@
                       <div class="px-2 pt-1">
                         <h4 class="text-sm">tire du velo</h4>
                       <p class="text-sm">prix: <span class="text-red-600"> 2500 €</span> </p>
-                      </div>
-                    
-                   
+                      </div>  
                    </div>
              </a>
              <a href="#" class="m-2" >

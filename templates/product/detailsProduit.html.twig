@@ -160,18 +160,26 @@
                 <div class=" md:w-1/2 divide-y-2 divide-slate-600 p-4  ">
                        <div class="mb-2">
                         <h6 class="text-slate-800">Moteur</h6>
+                        {% if productId.motorisation %}
                         <p class="text-slate-600"> Marque: {{productId.motorisation.name}} </p>
                         <p class="text-slate-600"> Model: {{productId.motorisation.marqueMoteur}} </p>
                         <p class="text-slate-600"> Performance: {{productId.motorisation.performance}} Watt </p>
+                        {% else %}
+                          <p class="text-slate-600 font-light">- - - - -  </p>
+                        {% endif %}
                      </div>                                    
-                  {% if productId.motorisation.name %}
+        
                        <div class="">
                         <h6 class="text-slate-800 mt-2">Batterie</h6>
+                        {% if productId.motorisation %}
                         <p class="text-slate-600">Type: {{productId.motorisation.batterie}}</p>
                         <p class="text-slate-600">Puissance: {{productId.motorisation.puissanceBatterie}}  Wh </p>
                         <p class="text-slate-600">Montage:  {{productId.motorisation.console}}  </p>
+                            {% else %}
+                          <p class="text-slate-600 font-light">- - - - -  </p>
+                             {% endif %}
                      </div>
-                     {% endif %}
+                  
                        <div class="">
                         <h6 class="text-slate-800 mt-2">Utilisation</h6>
                         <p class="text-slate-600">enduro </p>
