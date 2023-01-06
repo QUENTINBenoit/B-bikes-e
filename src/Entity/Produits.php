@@ -85,7 +85,7 @@ class Produits
 
     public function __construct()
     {
-        $this->updated_At = new \DateTimeImmutable(); 
+        $this->updated_At = new \DateTimeImmutable();
         $this->created_At = new \DateTimeImmutable();
         $this->roues = new ArrayCollection();
         $this->images = new ArrayCollection();
@@ -95,9 +95,8 @@ class Produits
     }
     public function __toString()
     {
-       return $this->Name;
-       return $this->genre;
-
+        return $this->Name;
+        return $this->genres;
     }
 
     public function getId(): ?int
@@ -380,7 +379,7 @@ class Produits
         return $this;
     }
 
-  
+
 
     /**
      * @return Collection<int, Marque>
@@ -435,13 +434,4 @@ class Produits
 
         return $this;
     }
-
-    
-
-
-    
-
-
-
-    
 }
