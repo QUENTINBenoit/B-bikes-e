@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Category;
 use App\Entity\Marque;
 use App\Entity\Produits;
+use App\Model\SearchData;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -46,17 +47,21 @@ class ProduitsRepository extends ServiceEntityRepository
     public function findWithDetailsProduct($id)
     {
         $qb = $this->createQueryBuilder('product');
-        $qb->where('product.id = :id'); 
-        $qb->setParameter(':id', $id); 
+        $qb->where('product.id = :id');
+        $qb->setParameter(':id', $id);
         $qb->leftJoin('product.equipements', 'eqpmts');
-        $qb->leftJoin('product.marques', 'brand'); 
-        $qb->leftJoin('product.images', 'img'); 
-        $qb->leftJoin('product.roues', 'rs'); 
-        $qb->leftJoin('product.motorisation', 'motor'); 
-        $qb->addSelect('eqpmts', 'brand', 'rs', 'img', 'motor'); 
-        $query = $qb->getQuery(); 
-        return $query->getOneOrNullResult();   
+        $qb->leftJoin('product.marques', 'brand');
+        $qb->leftJoin('product.images', 'img');
+        $qb->leftJoin('product.roues', 'rs');
+        $qb->leftJoin('product.motorisation', 'motor');
+        $qb->addSelect('eqpmts', 'brand', 'rs', 'img', 'motor');
+        $query = $qb->getQuery();
+        return $query->getOneOrNullResult();
     }
+
+
+
+
     /**
      * méthode permettant de filtrer les produits 
      *
@@ -67,21 +72,28 @@ class ProduitsRepository extends ServiceEntityRepository
     {
 
         $qb = $this->createQueryBuilder('p');
-        if (isset($filter['marques'])){
+        if (isset($filter['marques'])) {
             $qb->leftJoin('p.marques', 'm');
-            $qb->andWhere( $qb->expr()->in('m.id', $filter['marques'])) ;
+            $qb->andWhere($qb->expr()->in('m.id', $filter['marques']));
         }
         if (isset($filter['categories'])) {
             $qb->leftJoin('p.categories', 'c');
-            $qb->andWhere($qb->expr()->in('c.id', $filter['categories'])); 
+            $qb->andWhere($qb->expr()->in('c.id', $filter['categories']));
         }
-        if (isset($filter['genres'])){
-            $qb->leftJoin('p.genres', 'g'); 
-            $qb->andWhere($qb->expr()->in('g.id', $filter['genres'])); 
+        if (isset($filter['genres'])) {
+            $qb->leftJoin('p.genres', 'g');
+            $qb->andWhere($qb->expr()->in('g.id', $filter['genres']));
         }
         $qb->distinct();
         return $qb->getQuery()->getResult();
     }
 
-
+    public function findBySearchValue($Name)
+    {
+        $qb = $this->createQueryBuilder('vtt');
+        $qb->where('vtt.Name LIKE :Name');
+        $qb->setParameter(':Name', "%$Name%");
+        $query = $qb->getQuery();
+        return $query->getResult();
+    }
 }
