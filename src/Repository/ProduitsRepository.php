@@ -2,10 +2,8 @@
 
 namespace App\Repository;
 
-use App\Entity\Category;
-use App\Entity\Marque;
+
 use App\Entity\Produits;
-use App\Model\SearchData;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -43,7 +41,12 @@ class ProduitsRepository extends ServiceEntityRepository
         }
     }
 
-
+    /**
+     * Méthode permettant de récupérer toutes les donnes via l'entité produit
+     *
+     * @param [type] $id
+     * @return void
+     */
     public function findWithDetailsProduct($id)
     {
         $qb = $this->createQueryBuilder('product');
@@ -63,7 +66,7 @@ class ProduitsRepository extends ServiceEntityRepository
 
 
     /**
-     * méthode permettant de filtrer les produits 
+     * Méthode permettant de filtrer les produits 
      *
      * @param [type] $filter
      * @return void
@@ -88,11 +91,32 @@ class ProduitsRepository extends ServiceEntityRepository
         return $qb->getQuery()->getResult();
     }
 
+
+    /**
+     *Requête permettant de récupérer les donnes vie la barre de recherche
+     *
+     * @param [type] $Name
+     * @return void
+     */
     public function findBySearchValue($Name)
     {
-        $qb = $this->createQueryBuilder('vtt');
-        $qb->where('vtt.Name LIKE :Name');
+        $qb = $this->createQueryBuilder('p');
+        $qb->leftJoin('p.categories', 'c');
+        $qb->leftJoin('p.genres', 'g');
+        $qb->leftJoin('p.marques', 'm');
+        $qb->addSelect('c', 'g', 'm');
+        // Récupération des données dans la table produit 
+        $qb->andwhere('p.Name LIKE :Name');
         $qb->setParameter(':Name', "%$Name%");
+        // Récupération des données dans la table categories
+        $qb->orWhere('c.name LIKE :name');
+        $qb->setParameter(':name', "%$Name%");
+        // Récupération des données dans la table genre 
+        $qb->orWhere('g.name LIKE :name');
+        $qb->setParameter(':name', "%$Name%");
+        // Récupération des données dans la table marque 
+        $qb->orWhere('m.name LIKE :name');
+        $qb->setParameter(':name', "%$Name%");
         $query = $qb->getQuery();
         return $query->getResult();
     }

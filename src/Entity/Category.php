@@ -18,7 +18,7 @@ class Category
     #[ORM\Column(length: 30)]
     private ?string $name = null;
 
-    #[ORM\Column(nullable: true )]
+    #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $created_At = null;
 
     #[ORM\Column(nullable: true)]
@@ -33,17 +33,17 @@ class Category
 
     #[ORM\ManyToMany(targetEntity: Produits::class, inversedBy: 'categories')]
     private Collection $products;
-  
+
 
 
 
 
     public function __construct()
     {
-        $this->updatedAt = new \DateTimeImmutable(); 
-        $this->createdAt = new \DateTimeImmutable();
+        $this->updated_At = new \DateTimeImmutable();
+        $this->created_At = new \DateTimeImmutable();
         $this->subCategories = new ArrayCollection();
-        $this->products = new ArrayCollection(); 
+        $this->products = new ArrayCollection();
     }
 
 
@@ -99,7 +99,7 @@ class Category
 
         return $this;
     }
-      /**
+    /**
      * @return Collection|self[]
      */
     public function getSubcategories(): Collection
@@ -131,7 +131,7 @@ class Category
 
     public function __toString()
     {
-       return $this->name;  
+        return $this->name;
     }
 
     /**
