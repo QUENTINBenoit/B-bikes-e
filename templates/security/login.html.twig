@@ -3,10 +3,12 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-<main class="container mx-auto pt-36 h-[40rem]  ">
-<form method="post" class="container  px-12  w-[60rem]" >
+<main class="container mx-auto pt-36 h-[40rem] relative z-0" action="{{ path('app_login') }}">
+ <div class= "bg-blue-900 rounded-xl w-56 h-36 absolute bottom-[19rem] left-72 -z-10 shadow-xl "></div>
+  <div class= "bg-yellow-600 rounded-xl w-96 h-36 absolute bottom-56 left-[54rem] -z-10 shadow-xl "></div>
+<form method="post" class="container px-12 z-30  w-[60rem]  rounded-3xl backdrop-blur-3xl bg-white/10 shadow-xl" >
     {% if error %}
-        <div class="username-error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        <div class="username-error text-red-600">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
     {% if app.user %}
@@ -15,7 +17,7 @@
         </div>
     {% endif %}
    
-    <h1 class="text-3xl text-center text-stone-900 mb-16 ">Veulliez vous connecter </h1>
+    <h1 class="text-3xl text-center text-stone-900 mb-16 pt-4 ">Veulliez vous connecter </h1>
      <div>
        <div class="relative z-0 w-full mb-6 group ">
       <input type="email" 
@@ -144,5 +146,7 @@
     Submit
     </button>
 </form>
+  <p class=" text-stone-600">benquelm@gmail.com</p>
+  <p class=" text-stone-600">demo1234</p>
 </main>
 {% endblock %}

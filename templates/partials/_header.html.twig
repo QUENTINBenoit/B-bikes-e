@@ -20,18 +20,10 @@
             e
           </span>
         </a>
-
-
-
     {% include "components/_search.html.twig" %}
-     
-
-
         <div
           class="flex justify-center items-center md:flex-row-reverse gap-2"
         >
-          
-
           <a href="" class="hover:text-stone-500 -order-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +39,11 @@
             </svg>
           </a>
           <a
-            href=""
+            href= {% if app.user %} 
+                    "{{path('product_list')  }}"
+                  {% else %}
+                    "{{path('app_login')  }}"
+                  {% endif %}
             class="hover:text-stone-500 -order-3 md:order-none flex flex-col items-center mt-5"
           >
             <svg
@@ -62,11 +58,15 @@
                 clip-rule="evenodd"
               />
             </svg>
-            {% if app.user %}
-                <h6 class="text-white">{{app.user.firstname}}</h6>
-            {% endif %}
+           
+                <h6 class="text-white ">
+                {% if app.user %}
+                    {{app.user.firstname}}
+                {% else %}
+                  S'identifier 
+                  {% endif %}
+                </h6>   
           </a>
-
           <button
             aria-label="toggle button"
             aria-expanded="false"
