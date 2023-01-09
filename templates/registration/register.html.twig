@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+  <section class="container max-w-4xl mx-auto pt-36 h-[40rem] ">
+      <h1 class=" text-center text-white text-lg mb-6">Inscription</h1>
+ 
+        {{ form_start(registrationForm) }}
+         <div class="relative z-0 w-full mb-6 group ">
+        {# {{ form_label(registrationForm.firstname,null, {
+            'label': 'prenom',
+            'label_attr': {'class':
+                    'absolute text-stone-500 text-sm peer-focus:font-medium duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0]  peer-focus:left-0 eer-focus:text-pink-700 peer-placeholder-shown:scale-100  peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 '}
+        }    ) }} #}
+        {# {{ form_label(registrationForm.firstname, 'benoit', {'label_attr': {'class': 'absolute text-stone-500 text-sm peer-focus:font-medium duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0]  peer-focus:left-0 eer-focus:text-pink-700 peer-placeholder-shown:scale-100  peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'}} ) }} #}
+        {{ form_row(registrationForm.firstname ) }}
+        </div>
+          <div class="relative z-0 w-full mb-6 group ">
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+        {{ form_row(registrationForm.agreeTerms) }}
+
+           <button type="submit" 
+            class="
+            ml-6
+                text-white 
+                bg-stone-900 
+                hover:bg-pink-800 
+                focus:ring-2
+                focus:outline-none 
+                focus:ring-stone-900 
+                font-medium 
+                rounded-lg 
+                text-sm 
+                w-full 
+                sm:w-auto 
+                px-3 
+                py-2 
+                text-center"
+    >
+      Enregistrer
+    </button>
+    {{ form_end(registrationForm) }}
+  </section>
+
+
+
+{% endblock %}
