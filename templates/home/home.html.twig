@@ -3,7 +3,7 @@
 {% block title %}{{parent()}} Accueil {% endblock %}
 
 {% block body %}
-<main class=" w-full h-full bg-gradient-to-br from-slate-900 via-slate-700 to-slate-400    p-6">
+
   <div class=" container flex flex-col flex-wrap items-center h-auto ">
     <div class=" flex flex-col justify-center mt-24 w-auto  items-center p-3">
       <h1 class=" text-slate-900 text-4xl font-gluten text-center "> Bienvenue sur 
@@ -24,117 +24,61 @@
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos expedita quaerat autem dolorem
       </p>
     </div>
+
     {# liste des categories#}
     <section class=" flex flex-col items-center justify-between w-full mt-16 ">
       <h2 class=" text-slate-900 text-4xl font-gluten m-4 "> Categories</h2>
       <div class=" flex flex-col md:flex-row  justify-between  w-full p-2 items-center ">
-        {% for category in categories %}   
+        {% for category in categories %}
                 <a href="{{path('categorie_catego', {id: category.id} ) }}" class="w-72 h-16 relative  rounded-xl bg-gradient-to-br from-black-900 via-pink-900 to-blue-400 flex items-center m-2 shadow-2xl">
               <div class="w-full h-full  backdrop-blur-3xl bg-white/10 rounded-xl"></div>
               <h3  class=" absolute text-3xl text-center  font-gluten text-orange-600 font-semibold w-full">{{category.name}}</h3>
-            </a>         
+            </a> 
+             
         {% endfor %}
       </div>
-    </section>       
+    </section>
+    {# lite des marques  #}
     <section class=" flex flex-col items-center justify-between w-full rounded-2xl mt-16">
       <h2 class=" text-slate-900 text-4xl font-gluten m-4 "> Nos Meilleures Marques</h2>
       <div class=" flex flex-col md:flex-row md:flex-wrap justify-around   w-full p-2 items-center ">       
             {% for marque in marques %}                   
               <a href="{{path('marques_listproduit', {id: marque.id} ) }}" class="m-2" >
-              {{marque.name}}
-              <img src="{{ asset('images/logo/marques/' ~ marque.logo) }}" alt="" class="w-32 h-1 ">
+              {{marque.name}} 
+               <img src="{{ asset('images/logo/marques/' ~ marque.logo) }}" alt="" class="w-32 h-10 ">
               </a>
             {% endfor %}      
       </div>     
     </section>
+ {# lite des nouvautées   #}
+        <section class=" flex flex-col items-center justify-between w-full rounded-2xl mt-16">
+          <h2 class=" text-slate-900 text-4xl font-gluten m-4 "> Les Nouvautées</h2>
+          <div class="  grid grid-cols-2 md:flex md:flex-row  justify-center font-gluten   w-full p-2 items-center ">
+          {% for news in  product %}
+            {% if news.nouveaute == true  %}
 
-         <section class=" flex flex-col items-center justify-between w-full rounded-2xl mt-16">
-                  <h2 class=" text-slate-900 text-4xl font-gluten m-4 "> Les Nouvautées</h2>
-             <div class="  grid grid-cols-2 md:flex md:flex-row  justify-center font-gluten   w-full p-2 items-center ">
-             
-             <a href="#" class="m-2" >
+            <a href="{{path('product_details', {id: news.id} ) }}" class="m-2" >
                    <div class=" bg-white w-32 h-40 rounded-2xl ">
                      <div class=" bg-black text-white font-semibold rounded-t-2xl text-center p-y-[0.5rem]">
                       <span>News</span></div>
                      <img src="{{ asset("images/produits/vtt-cube-stereo-120.jpg")}}" alt="" class="rounded-2xl px-2 pt-1">
                       <div class="px-2 pt-1">
-                        <h4 class="text-sm">tire du velo</h4>
-                      <p class="text-sm">prix: <span class="text-red-600"> 2500 €</span> </p>
+                        <h4 class="text-sm">{{news.name}}</h4>
+                      <p class="text-sm">prix: <span class="text-red-600">  {{ news.prix}}</span> </p>
                       </div>
                    </div>
-             </a>
-            <a href="#" class="m-2" >
-                   <div class=" bg-white w-32 h-40 rounded-2xl ">
-                     <div class=" bg-black text-white font-semibold rounded-t-2xl text-center p-y-[0.5rem]">
-                      <span>News</span></div>
-                     <img src="{{ asset("images/produits/vtt-cube-stereo-120.jpg")}}" alt="" class="rounded-2xl px-2 pt-1">
-                      <div class="px-2 pt-1">
-                        <h4 class="text-sm">tire du velo</h4>
-                      <p class="text-sm">prix: <span class="text-red-600"> 2500 €</span> </p>
-                      </div>
-                    
-                   
-                   </div>
-             </a>
-             <a href="#" class="m-2" >
-                   <div class=" bg-white w-32 h-40 rounded-2xl ">
-                     <div class=" bg-black text-white font-semibold rounded-t-2xl text-center p-y-[0.5rem]">
-                      <span>News</span></div>
-                     <img src="{{ asset("images/produits/vtt-cube-stereo-120.jpg")}}" alt="" class="rounded-2xl px-2 pt-1">
-                      <div class="px-2 pt-1">
-                        <h4 class="text-sm">tire du velo</h4>
-                      <p class="text-sm">prix: <span class="text-red-600"> 2500 €</span> </p>
-                      </div>  
-                   </div>
-             </a>
-             <a href="#" class="m-2" >
-                   <div class=" bg-white w-32 h-40 rounded-2xl ">
-                     <div class=" bg-black text-white font-semibold rounded-t-2xl text-center p-y-[0.5rem]">
-                      <span>News</span></div>
-                     <img src="{{ asset("images/produits/vtt-cube-stereo-120.jpg")}}" alt="" class="rounded-2xl px-2 pt-1">
-                      <div class="px-2 pt-1">
-                        <h4 class="text-sm">tire du velo</h4>
-                      <p class="text-sm">prix: <span class="text-red-600"> 2500 €</span> </p>
-                      </div>
-                    
-                   
-                   </div>
-             </a>
-             <a href="#" class="m-2" >
-                   <div class=" bg-white w-32 h-40 rounded-2xl ">
-                     <div class=" bg-black text-white font-semibold rounded-t-2xl text-center p-y-[0.5rem]">
-                      <span>News</span></div>
-                     <img src="{{ asset("images/produits/vtt-cube-stereo-120.jpg")}}" alt="" class="rounded-2xl px-2 pt-1">
-                      <div class="px-2 pt-1">
-                        <h4 class="text-sm">tire du velo</h4>
-                      <p class="text-sm">prix: <span class="text-red-600"> 2500 €</span> </p>
-                      </div>
-                    
-                   
-                   </div>
-             </a>
-             <a href="#" class="m-2" >
-                   <div class=" bg-white w-32 h-40 rounded-2xl ">
-                     <div class=" bg-black text-white font-semibold rounded-t-2xl text-center p-y-[0.5rem]">
-                      <span>News</span></div>
-                     <img src="{{ asset("images/produits/vtt-cube-stereo-120.jpg")}}" alt="" class="rounded-2xl px-2 pt-1">
-                      <div class="px-2 pt-1">
-                        <h4 class="text-sm">tire du velo</h4>
-                      <p class="text-sm">prix: <span class="text-red-600"> 2500 €</span> </p>
-                      </div>
-                    
-                   
-                   </div>
-             </a>
+             </a>     
+            {% endif %}    
            
-             </div>     
+          {% endfor %}
+          </div>     
              
             </section>
          </div>
          
          
     
-      </main>
+  
   
 
 {% endblock %}

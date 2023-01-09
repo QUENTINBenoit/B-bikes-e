@@ -23,14 +23,17 @@ class HomeController extends AbstractController
      */
     #[Route('/', name: 'home', methods: ['GET'])]
     public function home(
+        ProduitsRepository $produitsRepository,
         CategoryRepository $categoryRepository,
         MarqueRepository $marqueRepository,
     ): Response {
+        $prod = $produitsRepository->findAll();
         $cat = $categoryRepository->findAll();
         $maq = $marqueRepository->findAll();
-        \dump($cat, $maq);
+        \dump($prod, $cat, $maq);
         return $this->render('home/home.html.twig', [
             'categories' => $cat,
+            'product' => $prod,
             'marques' => $maq,
         ]);
     }

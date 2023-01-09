@@ -1,0 +1,148 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+<main class="container mx-auto pt-36 h-[40rem]  ">
+<form method="post" class="container  px-12  w-[60rem]" >
+    {% if error %}
+        <div class="username-error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+   
+    <h1 class="text-3xl text-center text-stone-900 mb-16 ">Veulliez vous connecter </h1>
+     <div>
+       <div class="relative z-0 w-full mb-6 group ">
+      <input type="email" 
+                name="email" 
+                id="inputEmail" 
+                class="block 
+                        py-2.5 
+                        px-0 
+                        w-full 
+                        text-sm 
+                        text-white 
+                        bg-transparent 
+                        border-0 
+                        border-b-2 
+                        border-stone-900 
+                        appearance-none 
+                        focus:outline-none 
+                        focus:ring-0 
+                        focus:border-pink-700 
+                        peer"
+                autocomplete="email" 
+                autofocus
+                placeholder=" " 
+                required 
+        />
+      <label for="inputEmail" 
+            class=" peer-focus:font-medium 
+                    absolute text-sm 
+                    text-stone-500 
+                    dark:text-gray-400 
+                    duration-300 
+                    transform 
+                    -translate-y-6 
+                    scale-75 
+                    top-3 
+                    -z-10 
+                    origin-[0] 
+                    peer-focus:left-0 
+                    peer-focus:text-pink-700 
+                    peer-placeholder-shown:scale-100 
+                    peer-placeholder-shown:translate-y-0 
+                    peer-focus:scale-75 
+                    peer-focus:-translate-y-6"
+                    >                   
+                Email address
+        </label>
+  </div>
+     
+    <div class="relative z-0 w-full mb-6 group">
+        <input  type="password" 
+                name="password" 
+                id="inputPassword" 
+                class=" block 
+                        py-2.5 
+                        px-0 
+                        w-full 
+                        text-sm 
+                        text-white 
+                        bg-transparent 
+                        border-0 
+                        border-b-2 
+                        border-stone-900 
+                        appearance-none 
+                        focus:outline-none 
+                        focus:ring-0 
+                        focus:border-pink-700 
+                        peer" 
+             autocomplete="current-password"
+             placeholder=" " 
+             required 
+        />
+        <label for="inputPassword" 
+             class="peer-focus:font-medium 
+                    absolute text-sm 
+                    text-stone-500 
+                    dark:text-gray-400 
+                    duration-300 
+                    transform 
+                    -translate-y-6 
+                    scale-75 
+                    top-3 
+                    -z-10 
+                    origin-[0] 
+                    peer-focus:left-0 
+                    peer-focus:text-pink-700 
+                    peer-placeholder-shown:scale-100 
+                    peer-placeholder-shown:translate-y-0 
+                    peer-focus:scale-75 
+                    peer-focus:-translate-y-6"
+        >
+            Password
+        </label>
+  </div>
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    #}
+
+    <button type="submit" 
+            class="
+                text-white 
+                bg-stone-900 
+                hover:bg-pink-800 
+                focus:ring-2
+                focus:outline-none 
+                focus:ring-stone-900 
+                font-medium 
+                rounded-lg 
+                text-sm 
+                w-full 
+                sm:w-auto 
+                px-3 
+                py-2 
+                text-center"
+    >
+    Submit
+    </button>
+</form>
+</main>
+{% endblock %}

@@ -41,8 +41,25 @@ class ProduitsRepository extends ServiceEntityRepository
         }
     }
 
+    // public function findWinthBenoit()
+    // {
+    //     $qb = $this->createQueryBuilder('p');
+    //     // $qb->where('product.id = :id');
+    //     // $qb->setParameter(':id', $id);
+    //     $qb->leftJoin('p.equipements', 'e');
+    //     $qb->leftJoin('p.marques', 'm');
+    //     $qb->leftJoin('p.images', 'img');
+    //     $qb->leftJoin('p.roues', 'r');
+    //     $qb->leftJoin('p.motorisation', 'mot');
+    //     $qb->addSelect('e', 'm', 'r', 'img', 'mot');
+    //     $query = $qb->getQuery();
+    //     return $query->getResult();
+    // }
+
+
+
     /**
-     * Méthode permettant de récupérer toutes les donnes via l'entité produit
+     * Méthode permettant de récupérer toutes les données via l'entité produit
      *
      * @param [type] $id
      * @return void
