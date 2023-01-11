@@ -18,44 +18,41 @@ class FiterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-          
+
             ->add('categories', EntityType::class, [
-                'label' => false
-,            
-          
-                'required' => false, 
+                'label' => false,
+
+                'required' => false,
                 'class' => Category::class,
                 'expanded' => true,
                 'multiple' => true,
-            ] )
+            ])
             ->add('marques', EntityType::class, [
                 'label' => false,
-                'required' => false, 
+                'required' => false,
                 'class' => Marque::class,
-                'query_builder' => function(MarqueRepository $er) {
+                'query_builder' => function (MarqueRepository $er) {
                     return $er->createQueryBuilder('m')
-                     ->orderBy('m.name', 'ASC');  
+                        ->orderBy('m.name', 'ASC');
                 },
                 'expanded' => true,
                 'multiple' => true,
-                ] )       
-            
+            ])
+
 
             ->add('genres', EntityType::class, [
                 'label' => false,
-                'required' => false, 
+                'required' => false,
                 'class' => Genre::class,
                 'expanded' => true,
                 'multiple' => true,
-                ] )       
-       
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Produits::class,  
+            'data_class' => Produits::class,
             'method' => 'GET',
             'csrf_protection' => false,
         ]);
