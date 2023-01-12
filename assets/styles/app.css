@@ -14,7 +14,7 @@
   @apply flex whitespace-nowrap  justify-center items-center;
 }
 .title {
-  @apply ml-6 text-gray-500;
+  @apply ml-6 text-stone-900;
 }
 
 .card {

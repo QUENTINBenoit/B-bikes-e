@@ -16,10 +16,10 @@
     </head>
 
 <body>
-    <div class="h-auto flex items-center bg-slate-900 ">
+    <div class="h-screen flex flex-row items-center bg-slate-900 ">
         {% include "partials/_sideBar.html.twig" %}
    
-        <div class="flex flex-wrap h-screen w-full m-2 bg-gradient-to-br from-pink-900 via-stone-500 to-stone-200  rounded-[50px] z-30  overflow-auto relative ">
+        <div class="flex flex-col h-screen w-full m-2 bg-gradient-to-br from-pink-900 via-stone-500 to-stone-200  rounded-[50px] z-30  overflow-auto relative ">
             {% include "partials/_headerAdmin.html.twig" %}
           
                 {% block content %}
