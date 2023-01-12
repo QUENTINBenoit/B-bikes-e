@@ -1,0 +1,54 @@
+<header
+          class="w-1/1 h-16 shadow-xl rounded-t-3xl flex flex-wrap grow items-center justify-between backdrop-blur-3xl bg-white/10 sticky top-0 "
+        >
+          <h1
+            class="w-32 h-10 font-gluten border-r-2 border-pink-600 flex items-center rounded-lg justify-center"
+          >
+            Dashbord
+          </h1>
+
+   {% if app.user %}
+       <div
+            class="w-56 h-10 border-l-2 border-pink-600 rounded-lg flex flex-row  items-center p-1 mx-2"
+          >
+            <h4 class="font-gluten w-auto">
+              {{app.user.firstname}}
+            </h4>
+          
+               <img  id="avatarButton" 
+                          type="button" 
+                          data-dropdown-toggle="userDropdown" 
+                          data-dropdown-placement="bottom-start" 
+                          class="w-8 h-8  rounded-full cursor-pointer mx-2" 
+                          src="{{ asset('images/avatar/' ~  app.user.avatar )  }}"
+                          {# {{ asset('images/logo/marques/' ~ marque.logo) }} #}
+                          alt="User dropdown">
+                  <!-- Dropdown menu -->
+                  <div id="userDropdown" class="z-10 hidden backdrop-blur-3xl bg-blue-900/75 divide-y divide-pink-900 rounded-2xl shadow-xl w-44">
+                      <div class="px-4 py-3 text-sm text-stone-900 ">
+                        <div>{{ app.user.firstname}}</div>
+                        <div class="font-medium truncate">{{ app.user.email}}</div>
+                      </div>
+                      <ul class="py-1 text-sm text-stone-900" aria-labelledby="avatarButton">
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-stone-400">Dashboard</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-stone-400" >Settings</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-stone-400 ">Earnings</a>
+                        </li>
+                      </ul>
+                      <div class="rounded-b-xl">
+                        <a href="{{ path('home') }}" class=" block px-4 py-2  text-sm text-pink-900 hover:bg-stone-400 rounded-b-xl ">Retour site</a>
+                      </div>
+                  </div>
+          </div>
+   
+   
+   
+   
+   {% endif %}
+      
+        </header>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,19 +14,28 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body>
-        {% include "partials/_header.html.twig" %}
-        <main class="w-full h-full static font-gluten font-medium bg-gradient-to-br from-stone-800 via-stone-600 to-stone-800">
-        
-            {% block body %}
-        
-            {% endblock %}
-        </main>
-        {% include "partials/_paymentByCard.html.twig" %}
-        {% include "partials/_footer.html.twig" %}
-        <script src="/assets/app.js"></script>
 
-    {# <script src="/assets/carosl.js"></script>     #}
-    </body>
+<body>
+    <div class="h-auto flex items-center bg-slate-900 ">
+        {% include "partials/_sideBar.html.twig" %}
+   
+        <div class="flex flex-wrap h-screen w-full m-2 bg-gradient-to-br from-pink-900 via-stone-500 to-stone-200  rounded-[50px] z-30  overflow-auto relative ">
+            {% include "partials/_headerAdmin.html.twig" %}
+          
+                {% block content %}
+                {% endblock %}
+           
+        </div>
+    </div>
 
-</html>
+ <script src="/assets/app.js"></script>  
+</body>
+
+ 
+
+ 
+ 
+
+ 
+ 
+

@@ -11,4 +11,5 @@ import "./styles/app.css";
 // start the Stimulus application
 // import "./bootstrap";
 import "./acc.js";
+import "./bckoff.js";
 import "flowbite";
