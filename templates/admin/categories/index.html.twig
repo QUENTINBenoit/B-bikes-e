@@ -1,6 +1,95 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/layout.html.twig' %}
+{% block title %}Admin Categories{% endblock %}
 
-{% block title %}Hello CategorieController!{% endblock %}
+{% block content %}
+ <h1 class=" text-2xl font-gluten mx-auto mt-12 text-white "> Liste des Catégories </h1>
+     
+<div class="relative overflow-x-auto shadow-xl sm:rounded-lg mx-auto w-[44rem] my-6 ">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase dark:text-gray-400 sticky top-0">
+            <tr>
+                <th scope="col" class="px-6 py-3 bg-stone-200 dark:bg-gray-800">
+                     Nom
+                </th>
+                <th scope="col" class="px-6 py-3  bg-gray-200">
+                    Edition 
+                </th>
+                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                    suppresion 
+                </th>
+        </thead>
+        <tbody>
+        {% for categorie in categories %}
+            <tr class="border-b border-gray-200 dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium bg-stone-600 text-white whitespace-nowrap">
+                  {{categorie.name}}
+                </th>
+                <th scope="row" class="px-6 py-4 font-medium  bg-stone-400 text-green-700 whitespace-nowrap ml-12">
+                    <a href="{{ path('admin_categories_edit', {id:categorie.id} ) }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                        </svg>
+                    </a>
+                </th>
+                <th scope="row" class="px-6 py-4 font-medium  bg-stone-400 text-red-700 whitespace-nowrap ">
+                    <a href="{{ path('admin_categories_delete', {id:categorie.id} ) }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    </a>
+                </th>
+            </tr>
+        {% endfor %}
+        </tbody>          
+    </table>
+  
+</div>
+  <div class ="flex  flex-row justify-between  items-center p-2  w-[44rem] h-auto my-2 mx-auto"  >
+        <a  href="{{ path('admin_categories_add')   }}"
+            type="submit" 
+            class="
+                ml-6 
+                my-1
+                text-white 
+                bg-stone-900 
+                hover:bg-green-600 
+                focus:ring-2
+                focus:outline-none 
+                focus:ring-stone-900 
+                font-medium 
+                rounded-lg 
+                text-sm 
+                w-full 
+                sm:w-auto 
+                px-3 
+                py-2 
+                text-center"
+            >
+            Ajouter
+        </a>
+        <a  href="{{ path('admin_home')   }}"
+            type="submit" 
+            class="
+                mr-6 
+                my4-
+                text-white 
+                bg-stone-900 
+                hover:bg-black 
+                focus:ring-2
+                focus:outline-none 
+                focus:ring-stone-900 
+                font-medium 
+                rounded-lg 
+                text-sm 
+                w-full 
+                sm:w-auto 
+                px-3 
+                py-2 
+                text-center"
+        >
+            Home
+        </a>
+    </div>
 
-{% block body %}
+
 {% endblock %}

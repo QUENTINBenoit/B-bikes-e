@@ -1,0 +1,12 @@
+{% for label, messages in app.flashes(['flash-success']) %}
+	{% for message in messages %}
+		<div class="container mt-6">
+			<div class="p-4 mb-4 text-sm rounded-lg {{ label }}">
+				{{ message }}
+
+			</div>
+
+		</div>
+
+	{% endfor %}
+{% endfor %}
