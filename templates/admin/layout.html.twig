@@ -16,6 +16,7 @@
     </head>
 
 <body>
+ {% set currentPage = app.request.get('_route') %}
     <div class="h-screen flex flex-row items-center bg-slate-900 ">
         {% include "partials/_sideBar.html.twig" %}
         <div class="flex flex-col

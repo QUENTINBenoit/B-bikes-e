@@ -14,6 +14,7 @@
         {% endblock %}
     </head>
     <body>
+        {% set currentPage = app.request.get('_route') %}
         {% include "partials/_header.html.twig" %}
         <main class="w-full h-full static font-gluten font-medium bg-gradient-to-br from-stone-800 via-stone-600 to-stone-800">
         

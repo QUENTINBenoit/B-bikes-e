@@ -8,8 +8,12 @@
 
 /* Composants avec Tailwind CSS */
 .buttonNav {
-  @apply rounded-l-full text-sm  flex justify-start p-3  border-none hover:bg-white hover:text-blue-400 hover:shadow-lg hover:shadow-black;
+  @apply rounded-l-full text-sm  flex justify-start p-3  border-none hover:bg-white hover:text-pink-900 hover:shadow-lg hover:shadow-black;
 }
+ .activeButtonNav{
+  @apply rounded-l-full text-sm  flex justify-start p-3  border-none  bg-white text-pink-900 shadow-lg shadow-black;
+ }
+
 .buttonLien {
   @apply flex whitespace-nowrap  justify-center items-center;
 }
