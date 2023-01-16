@@ -6,7 +6,6 @@ use App\Entity\Category;
 use App\Form\CategoriesType;
 use App\Repository\CategoryRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Faker\Guesser\Name;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

@@ -2,14 +2,14 @@
 {% block title %}Admin-AjoutCategories{% endblock %}
 {% block content %}
 
-<div class="container mt-12 bg-stone-400 rounded-3xl p-4 shadow-xl shadow-black">
+<div class="container mt-12 w-auto backdrop-blur-3xl bg-white/20 shadow-2xl  rounded-3xl p-4  shadow-black">
 
 {{ form_start(formCategories, {'attr': {'
     novalidate': 'novalidate',
 }})}}
 <div class="grid gap-6 mb-6 md:grid-cols-2">
 {{ form_row(formCategories.name)}}
-{{ form_row(formCategories.category)}}
+{{ form_row(formCategories.parent)}}
 </div>
 <div class ="flex flex-row justify-between  items-center p-2" >
   <button type="submit" 

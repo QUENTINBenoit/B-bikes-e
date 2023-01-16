@@ -28,7 +28,7 @@ class HomeController extends AbstractController
         MarqueRepository $marqueRepository,
     ): Response {
         $prod = $produitsRepository->findAll();
-        $cat = $categoryRepository->findAll();
+        $cat = $categoryRepository->findBy([], ['categoryOrder' => 'asc']);
         $maq = $marqueRepository->findAll();
         \dump($prod, $cat, $maq);
         return $this->render('home/home.html.twig', [

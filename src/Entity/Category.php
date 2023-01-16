@@ -15,8 +15,12 @@ class Category
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 30)]
+    #[ORM\Column(type: 'string', length: 30)]
     private ?string $name = null;
+
+    #[ORM\Column(type: 'integer', length: 100)]
+    private ?string $categoryOrder = null;
+
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $created_At = null;
@@ -24,15 +28,18 @@ class Category
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updated_At = null;
 
-    #[ORM\OneToMany(targetEntity: self::class, mappedBy: 'category')]
-    private $subCategories = null;
 
 
-    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'subCategories')]
-    private $category = null;
+
 
     #[ORM\ManyToMany(targetEntity: Produits::class, inversedBy: 'categories')]
     private Collection $products;
+
+    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'categories')]
+    private ?self $parent = null;
+
+    #[ORM\OneToMany(mappedBy: 'parent', targetEntity: self::class)]
+    private Collection $categories;
 
 
 
@@ -42,8 +49,8 @@ class Category
     {
         $this->updated_At = new \DateTimeImmutable();
         $this->created_At = new \DateTimeImmutable();
-        $this->subCategories = new ArrayCollection();
         $this->products = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
 
@@ -60,6 +67,19 @@ class Category
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getCategoryOrder(): ?int
+    {
+        return $this->categoryOrder;
+    }
+
+
+    public function setCategoryOrder(int $categoryOrder): self
+    {
+        $this->categoryOrder = $categoryOrder;
 
         return $this;
     }
@@ -88,46 +108,6 @@ class Category
         return $this;
     }
 
-    public function getCategory(): ?self
-    {
-        return $this->category;
-    }
-
-    public function setCategory(?self $category): self
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-    /**
-     * @return Collection|self[]
-     */
-    public function getSubcategories(): Collection
-    {
-        return $this->subcategories;
-    }
-
-    public function addSubCategory(self $subCategory): self
-    {
-        if (!$this->subCategories->contains($subCategory)) {
-            $this->subCategories->add($subCategory);
-            $subCategory->setCategory($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSubCategory(self $subCategory): self
-    {
-        if ($this->subCategories->removeElement($subCategory)) {
-            // set the owning side to null (unless already changed)
-            if ($subCategory->getCategory() === $this) {
-                $subCategory->setCategory(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function __toString()
     {
@@ -154,6 +134,48 @@ class Category
     public function removeProduct(Produits $product): self
     {
         $this->products->removeElement($product);
+
+        return $this;
+    }
+
+    public function getParent(): ?self
+    {
+        return $this->parent;
+    }
+
+    public function setParent(?self $parent): self
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, self>
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(self $category): self
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories->add($category);
+            $category->setParent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(self $category): self
+    {
+        if ($this->categories->removeElement($category)) {
+            // set the owning side to null (unless already changed)
+            if ($category->getParent() === $this) {
+                $category->setParent(null);
+            }
+        }
 
         return $this;
     }
