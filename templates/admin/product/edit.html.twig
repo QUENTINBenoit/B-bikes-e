@@ -1,0 +1,94 @@
+{% extends 'admin/layout.html.twig' %}
+{% block title %}Admin-AjoutProduits{% endblock %}
+{% block content %}
+<div class="container mt-12 w-full backdrop-blur-3xl bg-white/20 shadow-2xl  rounded-3xl p-4 -z-10  shadow-black">
+
+  {{ form_start(formEditProduct, {'attr': {'
+      novalidate': 'novalidate',
+  }})}}
+  <div class="grid  md:grid-cols-3">
+    <div class="col-span-1">
+      {{ form_row(formEditProduct.Name)}}
+    </div>
+    <div class="col-span-1">
+      {{ form_row(formEditProduct.reference)}}
+    </div>
+    <div class= "flex justify-around items-center  mt-4 pt-6 col-span-1 ">
+      {{ form_row(formEditProduct.nouveaute)}}
+      {{ form_row(formEditProduct.Promotion)}}
+    </div>
+    <div class="col-span-2">
+      {{ form_row(formEditProduct.Description)}}
+    </div>
+    <div class="col-span-1">
+      {{ form_row(formEditProduct.stock)}}
+    </div>
+    <div class="col-span-1">
+      {{ form_row(formEditProduct.prix)}}
+    </div>
+    <div class="col-span-1">
+      {{ form_row(formEditProduct.PoucentagePromotion)}}
+      {{ form_row(formEditProduct.PrixPromotion)}}
+      {{ form_row(formEditProduct.Avis)}}
+    </div>
+      {{ form_row(formEditProduct.utilisation)}}
+      {{ form_row(formEditProduct.motorisation)}}
+      {{ form_row(formEditProduct.roues)}}
+      {{ form_row(formEditProduct.equipements)}}
+      {{ form_row(formEditProduct.categories)}}
+      {{ form_row(formEditProduct.marques)}}
+      {{ form_row(formEditProduct.genres)}}
+    </div>
+  </div>
+<div>
+<div class ="flex flex-row justify-between  items-center p-2 mx-32 mb-6" >
+  <button type="submit" 
+          class="
+                ml-6 
+                mt-12
+                text-white 
+                bg-stone-900 
+                hover:bg-pink-800 
+                focus:ring-2
+                focus:outline-none 
+                focus:ring-stone-900 
+                font-medium 
+                rounded-lg 
+                text-sm 
+                w-full 
+                sm:w-auto 
+                px-3 
+                py-2 
+                text-center"
+    >
+      Enregistrer
+    </button>
+ <a       href="{{ path('admin_product_list')   }}"
+          type="submit" 
+          class="
+                ml-6 
+                mt-12
+                text-white 
+                bg-stone-900 
+                hover:bg-pink-800 
+                focus:ring-2
+                focus:outline-none 
+                focus:ring-stone-900 
+                font-medium 
+                rounded-lg 
+                text-sm 
+                w-full 
+                sm:w-auto 
+                px-3 
+                py-2 
+                text-center"
+    >
+    back
+    </a>
+
+
+</div>
+
+
+
+ {{ form_end(formEditProduct)}}{% endblock %}

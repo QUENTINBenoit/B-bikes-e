@@ -16,7 +16,7 @@ class CategoriesController extends AbstractController
 {
 
     /**
-     * Methode Affichant la liste des catégories 
+     * Méthode affichant la liste des catégories 
      *
      * @param CategoryRepository $categoryRepository
      * @return Response
@@ -31,7 +31,7 @@ class CategoriesController extends AbstractController
     }
 
     /**
-     * Methode permettant d'ajouter une catégorie
+     * Méthode permettant d'ajouter une catégorie
      *
      * @param Request $request
      * @param ManagerRegistry $doctrine
@@ -49,7 +49,7 @@ class CategoriesController extends AbstractController
             $em = $doctrine->getManager();
             $em->persist($categories);
             $em->flush();
-            $this->addFlash('flash-success', 'la categorie ' . $categories->getName() . 'a bien ete ajouté');
+            $this->addFlash('flash-success', 'la catégorie ' . $categories->getName() . 'a bien été ajouté');
             return $this->redirectToRoute('admin_categories_list');
         }
 
@@ -61,7 +61,7 @@ class CategoriesController extends AbstractController
     }
 
     /**
-     * Methode permettant de supprimer une catégorie
+     * Méthode permettant de supprimer une catégorie
      *
      * @param Category $category
      * @param ManagerRegistry $doctrine
@@ -73,7 +73,7 @@ class CategoriesController extends AbstractController
         $em = $doctrine->getManager();
         $em->remove($category);
         $em->flush();
-        $this->addFlash('flash-success', 'la categorie ' . $category->getName() . ' a bien été supprimée');
+        $this->addFlash('flash-success', 'la catégorie ' . $category->getName() . ' a bien été supprimée');
         return $this->redirectToRoute('admin_categories_list');
     }
 
@@ -85,7 +85,7 @@ class CategoriesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $doctrine->getManager();
             $em->flush();
-            $this->addFlash('flash-success', 'la categorie ' . $category->getName() . ' a bien été mise jour');
+            $this->addFlash('flash-success', 'la catégorie ' . $category->getName() . ' a bien été mise jour');
             return $this->redirectToRoute('admin_categories_list');
         }
         return $this->render('admin/categories/edit.html.twig', [
