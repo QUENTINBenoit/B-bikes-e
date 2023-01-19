@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20221202112522 extends AbstractMigration
+final class Version20230118204127 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -23,6 +23,9 @@ final class Version20221202112522 extends AbstractMigration
         $this->addSql('CREATE TABLE category_produits (category_id INT NOT NULL, produits_id INT NOT NULL, INDEX IDX_9575BF712469DE2 (category_id), INDEX IDX_9575BF7CD11A2CF (produits_id), PRIMARY KEY(category_id, produits_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE category_produits ADD CONSTRAINT FK_9575BF712469DE2 FOREIGN KEY (category_id) REFERENCES category (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE category_produits ADD CONSTRAINT FK_9575BF7CD11A2CF FOREIGN KEY (produits_id) REFERENCES produits (id) ON DELETE CASCADE');
+        $this->addSql('ALTER TABLE produits DROP FOREIGN KEY FK_BE2DDF8CA21214B7');
+        $this->addSql('DROP INDEX IDX_BE2DDF8CA21214B7 ON produits');
+        $this->addSql('ALTER TABLE produits DROP categories_id');
     }
 
     public function down(Schema $schema): void
@@ -31,5 +34,8 @@ final class Version20221202112522 extends AbstractMigration
         $this->addSql('ALTER TABLE category_produits DROP FOREIGN KEY FK_9575BF712469DE2');
         $this->addSql('ALTER TABLE category_produits DROP FOREIGN KEY FK_9575BF7CD11A2CF');
         $this->addSql('DROP TABLE category_produits');
+        $this->addSql('ALTER TABLE produits ADD categories_id INT DEFAULT NULL');
+        $this->addSql('ALTER TABLE produits ADD CONSTRAINT FK_BE2DDF8CA21214B7 FOREIGN KEY (categories_id) REFERENCES category (id)');
+        $this->addSql('CREATE INDEX IDX_BE2DDF8CA21214B7 ON produits (categories_id)');
     }
 }
