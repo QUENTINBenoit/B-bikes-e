@@ -77,7 +77,17 @@ class CategoriesController extends AbstractController
         return $this->redirectToRoute('admin_categories_list');
     }
 
+
+    /**
+     * Méthode permettant de mettre a jour une catégorie
+     *
+     * @param Category $category
+     * @param Request $request
+     * @param ManagerRegistry $doctrine
+     * @return void
+     */
     #[Route('/edit/{id}',  name: 'edit')]
+
     public function editCategories(Category $category, Request $request, ManagerRegistry $doctrine)
     {
         $form = $this->createForm(CategoriesType::class, $category);

@@ -1,0 +1,71 @@
+{% extends 'admin/layout.html.twig' %}
+{% block title %}Admin-AjoutCategories{% endblock %}
+{% block content %}
+
+<div class="container mt-12 w-auto backdrop-blur-3xl bg-white/20 shadow-2xl rounded-3xl p-4  shadow-black">
+
+{{ form_start(formEditMarques, {'attr': {'
+    novalidate': 'novalidate',
+}})}}
+<div class="grid gap-6 mb-6 md:grid-cols-2">
+{{ form_row(formEditMarques.name,{
+  label_class:'text-pink-900',
+})}}
+{{ form_row(formEditMarques.logo, {
+  label_class:'text-pink-900',
+})}}
+
+</div>
+<div class ="flex flex-row justify-between  items-center p-2" >
+  <button type="submit" 
+          class="
+                ml-6 
+                mt-12
+                text-white 
+                bg-stone-900 
+                hover:bg-pink-800 
+                focus:ring-2
+                focus:outline-none 
+                focus:ring-stone-900 
+                font-medium 
+                rounded-lg 
+                text-sm 
+                w-full 
+                sm:w-auto 
+                px-3 
+                py-2 
+                text-center"
+    >
+      Enregistrer
+    </button>
+ <a       href="{{ path('admin_categories_list')   }}"
+          type="submit" 
+          class="
+                ml-6 
+                mt-12
+                text-white 
+                bg-stone-900 
+                hover:bg-pink-800 
+                focus:ring-2
+                focus:outline-none 
+                focus:ring-stone-900 
+                font-medium 
+                rounded-lg 
+                text-sm 
+                w-full 
+                sm:w-auto 
+                px-3 
+                py-2 
+                text-center"
+    >
+    back
+    </a>
+
+
+</div>
+
+
+
+ {{ form_end(formEditMarques)}}
+
+{% endblock %}
