@@ -54,7 +54,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
         }
 
         // For example:
-        // si l'authentification c'ees tbin passée je redirige les user vers vers la homepage
+        // si l'authentification c'est bien passée je redirige les user vers vers la homepage
         return new RedirectResponse($this->urlGenerator->generate('home'));
         // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
