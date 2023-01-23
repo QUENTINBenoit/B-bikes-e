@@ -98,4 +98,26 @@ class UserController extends AbstractController
             'userEditForm' => $form->createView(),
         ]);
     }
+
+    // route pour supprimer un utilisateur
+    /**
+     * @param User $user
+     * @param EntityManagerInterface $doctrine
+     * @return Response
+     */
+    #[Route('/{id}/delete', name: 'delete', methods: ['POST'])]
+    public function deleteUser(Request $request,  User $user, EntityManagerInterface $doctrine)
+    {
+
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
+
+            $doctrine->remove($user);
+            $doctrine->flush();
+            $this->addFlash(
+                'flash-success',
+                'l\'utilisateur ' . $user->getFirstname() . ' ' . $user->getLastname() . ' a bien été supprimer de la BDD'
+            );
+        }
+        return $this->redirectToRoute('admin_user_list', [], Response::HTTP_SEE_OTHER);
+    }
 }

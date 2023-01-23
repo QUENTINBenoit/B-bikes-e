@@ -32,16 +32,10 @@ class ProductType extends AbstractType
             ->add('Avis')
             ->add('utilisation')
             ->add('motorisation')
-            ->add('roues')
-            ->add('equipements', EntityType::class, [
-                'class' => Equipements::class,
+            // ->add('roues')
+            // ->add('equipements', EntityType::class, [
+            //     'class' => Equipements::class,
 
-            ])
-            // ->add('categories', EntityType::class, [
-            //     'multiple' => true,
-            //     'required' => true,
-            //     'class' => Category::class,
-            //     // 'data_class' => Category::class,
             // ])
             ->add('categories', EntityType::class, [
                 'class' => Category::class,
@@ -75,13 +69,34 @@ class ProductType extends AbstractType
                 'multiple' => true,
                 'required' => true,
                 'by_reference' => false,
-            ]);
+            ])
+
+            ->add('TailleRoueVTT')
+            ->add('pratiques')
+
+            ->add('freinds')
+            ->add('diametreDeRoue')
+            ->add('cadre')
+            ->add('amortisseur')
+            ->add('fourche')
+            // ->add('deraileurAR')
+            // ->add('deraileurAV')
+            ->add('manettes')
+            ->add('pneus')
+            ->add('cassette')
+            ->add('pedalier')
+            ->add('potence')
+            ->add('cintre')
+            ->add('tigeDeSelle')
+            ->add('Selle')
+            ->add('Poids');
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Produits::class,
+
         ]);
     }
 }

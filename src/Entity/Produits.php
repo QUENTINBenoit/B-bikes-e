@@ -48,6 +48,57 @@ class Produits
     #[ORM\Column(nullable: true)]
     private ?float $Avis = null;
 
+    #[ORM\Column(length: 25, nullable: true)]
+    private ?string $TailleRoueVTT = null;
+
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $freinds = null;
+
+    #[ORM\Column(length: 30, nullable: true)]
+    private ?string $pratiques = null;
+
+    #[ORM\Column(length: 30, nullable: true)]
+    private ?string $diametreDeRoue = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $cadre = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $amortisseur = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $fourche = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $derailleurAr = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $manettes = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $pneus = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $cassette = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $pedalier = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $potence = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $cintre = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $tigeDeSelle = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $Selle = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $Poids = null;
+
     #[ORM\Column]
     private ?\DateTimeImmutable $created_At = null;
 
@@ -57,15 +108,8 @@ class Produits
     #[ORM\ManyToOne(inversedBy: 'Products')]
     private ?Motorisation $motorisation = null;
 
-    #[ORM\ManyToMany(targetEntity: Roues::class, mappedBy: 'Products')]
-    private Collection $roues;
-
     #[ORM\OneToMany(mappedBy: 'Products', targetEntity: Images::class)]
     private Collection $images;
-
-
-    #[ORM\OneToOne(mappedBy: 'Products', cascade: ['persist', 'remove'])]
-    private ?Equipements $equipements = null;
 
     #[ORM\Column(length: 60, nullable: true)]
     private ?string $utilisation = null;
@@ -73,21 +117,16 @@ class Produits
     #[ORM\ManyToMany(targetEntity: Category::class, mappedBy: 'products')]
     private Collection $categories;
 
-
-
     #[ORM\ManyToMany(targetEntity: Marque::class, mappedBy: 'products')]
     private Collection $marques;
 
     #[ORM\ManyToMany(targetEntity: Genre::class, mappedBy: 'products')]
     private Collection $genres;
 
-
-
     public function __construct()
     {
         $this->updated_At = new \DateTimeImmutable();
         $this->created_At = new \DateTimeImmutable();
-        $this->roues = new ArrayCollection();
         $this->images = new ArrayCollection();
         $this->categories = new ArrayCollection();
         $this->marques = new ArrayCollection();
@@ -260,32 +299,7 @@ class Produits
         return $this;
     }
 
-    /**
-     * @return Collection<int, Roues>
-     */
-    public function getRoues(): Collection
-    {
-        return $this->roues;
-    }
 
-    public function addRoue(Roues $roue): self
-    {
-        if (!$this->roues->contains($roue)) {
-            $this->roues->add($roue);
-            $roue->addProduct($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRoue(Roues $roue): self
-    {
-        if ($this->roues->removeElement($roue)) {
-            $roue->removeProduct($this);
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Images>
@@ -317,27 +331,7 @@ class Produits
         return $this;
     }
 
-    public function getEquipements(): ?Equipements
-    {
-        return $this->equipements;
-    }
 
-    public function setEquipements(?Equipements $equipements): self
-    {
-        // unset the owning side of the relation if necessary
-        if ($equipements === null && $this->equipements !== null) {
-            $this->equipements->setProducts(null);
-        }
-
-        // set the owning side of the relation if necessary
-        if ($equipements !== null && $equipements->getProducts() !== $this) {
-            $equipements->setProducts($this);
-        }
-
-        $this->equipements = $equipements;
-
-        return $this;
-    }
 
 
     public function getUtilisation(): ?string
@@ -431,6 +425,210 @@ class Produits
         if ($this->genres->removeElement($genre)) {
             $genre->removeProduct($this);
         }
+
+        return $this;
+    }
+
+    public function getTailleRoueVTT(): ?string
+    {
+        return $this->TailleRoueVTT;
+    }
+
+    public function setTailleRoueVTT(?string $TailleRoueVTT): self
+    {
+        $this->TailleRoueVTT  = $TailleRoueVTT;
+
+        return $this;
+    }
+
+    public function getFreinds(): ?string
+    {
+        return $this->freinds;
+    }
+
+    public function setFreinds(?string $freinds): self
+    {
+        $this->freinds = $freinds;
+
+        return $this;
+    }
+
+    public function getPratiques(): ?string
+    {
+        return $this->pratiques;
+    }
+
+    public function setPratiques(?string $pratiques): self
+    {
+        $this->pratiques = $pratiques;
+
+        return $this;
+    }
+
+    public function getDiametreDeRoue(): ?string
+    {
+        return $this->diametreDeRoue;
+    }
+
+    public function setDiametreDeRoue(?string $diametreDeRoue): self
+    {
+        $this->diametreDeRoue = $diametreDeRoue;
+
+        return $this;
+    }
+
+    public function getCadre(): ?string
+    {
+        return $this->cadre;
+    }
+
+    public function setCadre(?string $cadre): self
+    {
+        $this->cadre = $cadre;
+
+        return $this;
+    }
+
+    public function getAmortisseur(): ?string
+    {
+        return $this->amortisseur;
+    }
+
+    public function setAmortisseur(?string $amortisseur): self
+    {
+        $this->amortisseur = $amortisseur;
+
+        return $this;
+    }
+
+    public function getFourche(): ?string
+    {
+        return $this->fourche;
+    }
+
+    public function setFourche(?string $fourche): self
+    {
+        $this->fourche = $fourche;
+
+        return $this;
+    }
+
+    public function getDerailleurAR(): ?string
+    {
+        return $this->derailleurAr;
+    }
+
+    public function setDerailleurAr(?string $derailleurAr): self
+    {
+        $this->derailleurAr = $derailleurAr;
+
+        return $this;
+    }
+
+    public function getManettes(): ?string
+    {
+        return $this->manettes;
+    }
+
+    public function setManettes(?string $manettes): self
+    {
+        $this->manettes = $manettes;
+
+        return $this;
+    }
+
+    public function getPneus(): ?string
+    {
+        return $this->pneus;
+    }
+
+    public function setPneus(?string $pneus): self
+    {
+        $this->pneus = $pneus;
+
+        return $this;
+    }
+
+    public function getCassette(): ?string
+    {
+        return $this->cassette;
+    }
+
+    public function setCassette(?string $cassette): self
+    {
+        $this->cassette = $cassette;
+
+        return $this;
+    }
+
+    public function getPedalier(): ?string
+    {
+        return $this->pedalier;
+    }
+
+    public function setPedalier(?string $pedalier): self
+    {
+        $this->pedalier = $pedalier;
+
+        return $this;
+    }
+
+    public function getPotence(): ?string
+    {
+        return $this->potence;
+    }
+
+    public function setPotence(?string $potence): self
+    {
+        $this->potence = $potence;
+
+        return $this;
+    }
+
+    public function getCintre(): ?string
+    {
+        return $this->cintre;
+    }
+
+    public function setCintre(?string $cintre): self
+    {
+        $this->cintre = $cintre;
+
+        return $this;
+    }
+
+    public function getTigeDeSelle(): ?string
+    {
+        return $this->tigeDeSelle;
+    }
+
+    public function setTigeDeSelle(?string $tigeDeSelle): self
+    {
+        $this->tigeDeSelle = $tigeDeSelle;
+
+        return $this;
+    }
+
+    public function getSelle(): ?string
+    {
+        return $this->Selle;
+    }
+
+    public function setSelle(?string $Selle): self
+    {
+        $this->Selle = $Selle;
+
+        return $this;
+    }
+
+    public function getPoids(): ?float
+    {
+        return $this->Poids;
+    }
+
+    public function setPoids(?float $Poids): self
+    {
+        $this->Poids = $Poids;
 
         return $this;
     }

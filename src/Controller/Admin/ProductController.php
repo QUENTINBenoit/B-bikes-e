@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-
+use App\Entity\Equipements;
 use App\Entity\Produits;
 use App\Form\ProductType;
 use App\Repository\ProduitsRepository;
@@ -47,7 +47,6 @@ class ProductController extends AbstractController
     {
         $product = new Produits;
         $form = $this->createForm(ProductType::class, $product);
-
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($product);
@@ -55,6 +54,8 @@ class ProductController extends AbstractController
             $this->addFlash('flash-success', 'le produit' . $product->getName() . ' a bien été ajouté');
             return $this->redirectToRoute('admin_product_list');
         }
+
+
         return $this->render('admin/product/add.html.twig', [
             'formProducts' => $form->createView(),
         ]);

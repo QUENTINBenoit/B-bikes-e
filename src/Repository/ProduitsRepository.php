@@ -69,12 +69,11 @@ class ProduitsRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('product');
         $qb->where('product.id = :id');
         $qb->setParameter(':id', $id);
-        $qb->leftJoin('product.equipements', 'eqpmts');
         $qb->leftJoin('product.marques', 'brand');
         $qb->leftJoin('product.images', 'img');
-        $qb->leftJoin('product.roues', 'rs');
+
         $qb->leftJoin('product.motorisation', 'motor');
-        $qb->addSelect('eqpmts', 'brand', 'rs', 'img', 'motor');
+        $qb->addSelect('brand', 'img', 'motor');
         $query = $qb->getQuery();
         return $query->getOneOrNullResult();
     }
