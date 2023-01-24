@@ -92,6 +92,7 @@ class ProductController extends AbstractController
     {
         $form = $this->createForm(ProductType::class, $produits);
         $form->handleRequest($request);
+        dump($produits);
         if ($form->isSubmitted() && $form->isSubmitted()) {
             $em = $doctrine->getManager();
             $em->flush();

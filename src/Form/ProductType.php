@@ -6,6 +6,7 @@ use App\Entity\Category;
 use App\Entity\Equipements;
 use App\Entity\Genre;
 use App\Entity\Marque;
+use App\Entity\Motorisation;
 use App\Entity\Produits;
 use App\Repository\CategoryRepository;
 use App\Repository\MarqueRepository;
@@ -31,7 +32,18 @@ class ProductType extends AbstractType
             ->add('PrixPromotion')
             ->add('Avis')
             ->add('utilisation')
-            ->add('motorisation')
+            // ->add('motorisation', EntityType::class, [
+            //     'class' => Motorisation::class,
+            //     'label' => 'Motorisation',
+            //     'multiple' => true,
+            //     'required' => true,
+            //     'by_reference' => false,
+            //     'query_builder' => function (EntityRepository $er) {
+            //         return $er->createQueryBuilder('m')
+            //             ->orderBy('m.marqueMoteur', 'ASC');
+            //     }
+            // ])
+
             // ->add('roues')
             // ->add('equipements', EntityType::class, [
             //     'class' => Equipements::class,
@@ -79,7 +91,7 @@ class ProductType extends AbstractType
             ->add('cadre')
             ->add('amortisseur')
             ->add('fourche')
-            // ->add('deraileurAR')
+            ->add('derailleurAr')
             // ->add('deraileurAV')
             ->add('manettes')
             ->add('pneus')

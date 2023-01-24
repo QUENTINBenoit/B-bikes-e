@@ -1,78 +1,81 @@
 {% extends 'admin/layout.html.twig' %}
-{% block title %}Admin-AjoutProduits{% endblock %}
+{% block title %}Admin-Edition-Poduits{% endblock %}
 {% block content %}
-<div class="container mt-12 w-full backdrop-blur-3xl bg-white/20 shadow-2xl rounded-3xl p-4 -z-20  shadow-black">
-
+<div class="container mt-12 w-full   rounded-3xl p-4 -z-10 " >
   {{ form_start(formProducts, {'attr': {'
       novalidate': 'novalidate',
   }})}}
-  <h6 class=" text-3xl font-gluten text-white mt-6 text-center">Produits</h6>
-  <div class="grid  md:grid-cols-3 mt-6 w-full backdrop-blur-3xl bg-sky-900/30 shadow-xl  rounded-3xl p-4 -z-10 ">
-    <div class="col-span-1">
+
+  
+     <h6 class=" text-3xl font-gluten text-white my-6 text-center ">Produits</h6>
+
+   
+
+
+  <div class="grid  md:grid-cols-4 gap-2">
+    <div class="col-span-2 shadow-lg shadow-black rounded-3xl p-2 backdrop-blur-3xl bg-white/20">
       {{ form_row(formProducts.Name)}}
-    </div>
-    <div class="col-span-1">
       {{ form_row(formProducts.reference)}}
+          <div class= "flex justify-around items-center  mt-4 pt-6 ">
+            {{ form_row(formProducts.nouveaute)}}
+            {{ form_row(formProducts.Promotion)}}
+          </div>
     </div>
-    <div class= "flex justify-around items-center  mt-4 pt-6 col-span-1 ">
-      {{ form_row(formProducts.nouveaute)}}
-      {{ form_row(formProducts.Promotion)}}
+    <div class="col-span-2 shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 p-2">
+       {{ form_row(formProducts.Description)}}
     </div>
-    <div class="col-span-2">
-      {{ form_row(formProducts.Description)}}
-    </div>
-    <div class="col-span-1">
-      {{ form_row(formProducts.stock)}}
-    </div>
-    <div class="col-span-1">
-      {{ form_row(formProducts.prix)}}
-    </div>
-    <div class="col-span-1">
-      {{ form_row(formProducts.PoucentagePromotion)}}
-      {{ form_row(formProducts.PrixPromotion)}}
+    <div class="col-span-1  shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 p-2">
+     {{ form_row(formProducts.stock)}}
+     {{ form_row(formProducts.utilisation)}}
       {{ form_row(formProducts.Avis)}}
     </div>
-      {{ form_row(formProducts.utilisation)}}
-      {{ form_row(formProducts.motorisation)}}
+    <div class="col-span-1 flex flex-col col-start-4 shadow-lg shadow-black backdrop-blur-3xl bg-white/20 rounded-3xl  ">
+        {{ form_row(formProducts.prix)}}
+        {{ form_row(formProducts.PoucentagePromotion)}}
+        {{ form_row(formProducts.PrixPromotion)}}
+    </div>
+    <div class="col-span-2 col-start-2 flex flex-col shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 w-full ">   
       {{ form_row(formProducts.categories)}}
       {{ form_row(formProducts.marques)}}
       {{ form_row(formProducts.genres)}}
-  </div>
-<h6 class=" text-3xl font-gluten text-white mt-6 text-center">Equipements</h6>
-
-  <div class="grid  md:grid-cols-3  mt-6 w-full backdrop-blur-3xl bg-sky-900/30 shadow-xl  rounded-3xl p-4 -z-10  ">
-      {# {{ form_row(formProducts.image)}} #}
-       {{ form_row(formProducts.TailleRoueVTT)}}
-      {{ form_row(formProducts.diametreDeRoue)}}
-      {{ form_row(formProducts.cadre)}}
-      {{ form_row(formProducts.freinds)}}
-      {{ form_row(formProducts.pedalier)}}
-      {{ form_row(formProducts.pneus)}}
-      {{ form_row(formProducts.cintre)}}
-      {# {{ form_row(formProducts.selle)}} #}
-      {{ form_row(formProducts.potence)}}
-      {{ form_row(formProducts.cassette)}}
-      {{ form_row(formProducts.pratiques)}}
-      {{ form_row(formProducts.amortisseur)}}
+    </div>
+  </div> 
+  <h6 class=" text-3xl font-gluten text-white m-6 text-center">Equipements</h6>
+  <div class="grid  md:grid-cols-4 gap-2">
+      <div class="col-span-2 flex flex-col shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 w-full ">   
+      {# {{ form_row(formEditProduct.motorisation)}} #}
+      {{form_row(formProducts.TailleRoueVTT)}}
+      {{form_row(formProducts.freinds)}}
+      {{form_row(formProducts.pratiques)}}
+      {{form_row(formProducts.diametreDeRoue)}}
+      {{form_row(formProducts.cadre)}}
+      {{form_row(formProducts.amortisseur)}}
+      {{form_row(formProducts.cintre)}}
+      {{form_row(formProducts.Poids)}}
+      </div> 
+      <div class="col-span-2 flex flex-col shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 w-full ">   
       {{ form_row(formProducts.fourche)}}
-      {{ form_row(formProducts.manettes)}}
-      {{ form_row(formProducts.tigeDeSelle)}}
-      {{ form_row(formProducts.Selle)}}
-      {{ form_row(formProducts.Poids)}}
-      {# {{ form_row(formProducts.derailleurAr)}} #}
-  </div>
+      {{form_row(formProducts.derailleurAr)}}
+      {{form_row(formProducts.manettes)}}
+      {{form_row(formProducts.pneus)}}
+      {{form_row(formProducts.cassette)}}
+      {{form_row(formProducts.pedalier)}}
+      {{form_row(formProducts.potence)}}
+      {{form_row(formProducts.Selle)}}
+      {{form_row(formProducts.tigeDeSelle)}}
+      </div>    
+   </div>
 
-
-
-
-    <div class ="flex flex-row justify-between  items-center p-2 mx-32 mb-6" >
-      <button type="submit" 
+  
+<div>
+<div class ="flex flex-row justify-between  items-center p-2 mx-32 mb-6" >
+  <button type="submit" 
           class="
                 ml-6 
                 mt-12
                 text-white 
                 bg-stone-900 
-                hover:bg-pink-800 
+                hover:bg-green-800 
                 focus:ring-2
                 focus:outline-none 
                 focus:ring-stone-900 
@@ -84,10 +87,10 @@
                 px-3 
                 py-2 
                 text-center"
-        >
-        Enregistrer
-      </button>
-      <a  href="{{ path('admin_product_list')   }}"
+    >
+      Enregistrer
+    </button>
+ <a       href="{{ path('admin_product_list')   }}"
           type="submit" 
           class="
                 ml-6 
@@ -106,13 +109,13 @@
                 px-3 
                 py-2 
                 text-center"
-        >
-      back
-      </a>
-    </div>
+    >
+    back
+    </a>
 
 
-
-    {{ form_end(formProducts)}}
 </div>
-{% endblock %}
+
+
+
+ {{ form_end(formProducts)}}{% endblock %}

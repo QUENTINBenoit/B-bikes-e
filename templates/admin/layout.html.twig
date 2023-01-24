@@ -14,21 +14,24 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-
-<body>
+              
+<body >
  {% set currentPage = app.request.get('_route') %}
     <div class="h-screen flex flex-row items-center bg-slate-900 ">
         {% include "partials/_sideBar.html.twig" %}
         <div class="flex flex-col
                 h-[56rem] 
-                bg-gradient-to-tl 
+            
+           bg-gradient-to-tl 
                 from-stone-500 
               via-stone-700 
-              bg-amber-900
+              bg-amber-900 
+              
               w-full m-2   
               rounded-[50px] z-30  
               overflow-auto 
-              relative ">
+              relative "
+     >
             {% include "partials/_headerAdmin.html.twig" %}
             {% include "partials/_flashmessage.html.twig" %}
           

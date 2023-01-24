@@ -1,11 +1,17 @@
 {% extends 'admin/layout.html.twig' %}
-{% block title %}Admin-AjoutProduits{% endblock %}
+{% block title %}Admin-Edition-Poduits{% endblock %}
 {% block content %}
-<div class="container mt-12 w-full   rounded-3xl p-4 -z-10 ">
-
+<div class="container mt-12 w-full   rounded-3xl p-4 -z-10 " >
   {{ form_start(formEditProduct, {'attr': {'
       novalidate': 'novalidate',
   }})}}
+
+  
+     <h6 class=" text-3xl font-gluten text-white my-6 text-center ">Produits</h6>
+
+   
+
+
   <div class="grid  md:grid-cols-4 gap-2">
     <div class="col-span-2 shadow-lg shadow-black rounded-3xl p-2 backdrop-blur-3xl bg-white/20">
       {{ form_row(formEditProduct.Name)}}
@@ -15,31 +21,52 @@
             {{ form_row(formEditProduct.Promotion)}}
           </div>
     </div>
-    <div class="col-span-2 shadow-lg shadow-black rounded-3xl p-2">
+    <div class="col-span-2 shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 p-2">
        {{ form_row(formEditProduct.Description)}}
     </div>
-    <div class="col-span-1 shadow-lg shadow-black rounded-3xl p-2">
+    <div class="col-span-1  shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 p-2">
      {{ form_row(formEditProduct.stock)}}
      {{ form_row(formEditProduct.utilisation)}}
+      {{ form_row(formEditProduct.Avis)}}
     </div>
-
-    <div class="col-span-1 flex flex-col shadow-lg shadow-black rounded-3xl ">
+    <div class="col-span-1 flex flex-col col-start-4 shadow-lg shadow-black backdrop-blur-3xl bg-white/20 rounded-3xl  ">
         {{ form_row(formEditProduct.prix)}}
         {{ form_row(formEditProduct.PoucentagePromotion)}}
         {{ form_row(formEditProduct.PrixPromotion)}}
     </div>
-    <div class="col-span-1">
-    
-      {# {{ form_row(formEditProduct.Avis)}} #}
-    </div>
-      
-      {{ form_row(formEditProduct.motorisation)}}
-      {{ form_row(formEditProduct.roues)}}
+    <div class="col-span-2 col-start-2 flex flex-col shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 w-full ">   
       {{ form_row(formEditProduct.categories)}}
       {{ form_row(formEditProduct.marques)}}
       {{ form_row(formEditProduct.genres)}}
     </div>
-  </div>
+  </div> 
+  <h6 class=" text-3xl font-gluten text-white m-6 text-center">Equipements</h6>
+  <div class="grid  md:grid-cols-4 gap-2">
+      <div class="col-span-2 flex flex-col shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 w-full ">   
+      {# {{ form_row(formEditProduct.motorisation)}} #}
+      {{form_row(formEditProduct.TailleRoueVTT)}}
+      {{form_row(formEditProduct.freinds)}}
+      {{form_row(formEditProduct.pratiques)}}
+      {{form_row(formEditProduct.diametreDeRoue)}}
+      {{form_row(formEditProduct.cadre)}}
+      {{form_row(formEditProduct.amortisseur)}}
+      {{form_row(formEditProduct.cintre)}}
+      {{form_row(formEditProduct.Poids)}}
+      </div> 
+      <div class="col-span-2 flex flex-col shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 w-full ">   
+      {{ form_row(formEditProduct.fourche)}}
+      {{form_row(formEditProduct.derailleurAr)}}
+      {{form_row(formEditProduct.manettes)}}
+      {{form_row(formEditProduct.pneus)}}
+      {{form_row(formEditProduct.cassette)}}
+      {{form_row(formEditProduct.pedalier)}}
+      {{form_row(formEditProduct.potence)}}
+      {{form_row(formEditProduct.Selle)}}
+      {{form_row(formEditProduct.tigeDeSelle)}}
+      </div>    
+   </div>
+
+  
 <div>
 <div class ="flex flex-row justify-between  items-center p-2 mx-32 mb-6" >
   <button type="submit" 
@@ -48,7 +75,7 @@
                 mt-12
                 text-white 
                 bg-stone-900 
-                hover:bg-pink-800 
+                hover:bg-green-800 
                 focus:ring-2
                 focus:outline-none 
                 focus:ring-stone-900 
