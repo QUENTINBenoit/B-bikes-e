@@ -76,6 +76,7 @@ class ProductController extends AbstractController
 
         return $this->render('admin/product/add.html.twig', [
             'formProducts' => $form->createView(),
+            'product' => $product
         ]);
     }
     /**
@@ -106,27 +107,35 @@ class ProductController extends AbstractController
      */
     #[Route('/edit/{id}', name: 'edit')]
 
-    public function editProduct(Produits $produits, Request $request, ManagerRegistry $doctrine, PictureService $pictureService)
+    public function editProduct(Produits $product, Request $request, ManagerRegistry $doctrine, PictureService $pictureService)
     {
-        $form = $this->createForm(ProductType::class, $produits);
+        $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
-        dump($produits);
+        dump($product);
         if ($form->isSubmitted() && $form->isSubmitted()) {
-            // Service permettant l'upload d'une image
-            // $newFileName = $pictureService->upload($form, 'image');
+            // Service permettant l'upload d'un image
+
+            $images = $form->get('image')->getData();
 
 
-            // // Mise a jour du chemin vers l'image en BDD
-            // $img = new Images;
-            // $img->setName($newFileName);
-            // $produits->addImage($img);
+            foreach ($images as $image) {
+                // On défini le dossier de destination de l'image
+                $folder = 'products';
+                // On appelle le service d'ajout d'image
+                $fichier = $pictureService->add($image, $folder, 300, 300);
+                // Mise a jour du chemin vers l'image en BDD
+                $img = new Images;
+                $img->setName($fichier);
+                $product->addImage($img);
+            }
             $em = $doctrine->getManager();
             $em->flush();
-            $this->addFlash('flash-success', 'le produit ' . $produits->getName() . ' a bien été mis à jour');
+            $this->addFlash('flash-success', 'le produit ' . $product->getName() . ' a bien été mis à jour');
             return $this->redirectToRoute('admin_product_list');
         }
         return $this->render('admin/product/edit.html.twig', [
-            'formEditProduct' => $form->createView(),
+            'formProducts' => $form->createView(),
+            'product' => $product
         ]);
     }
 }
