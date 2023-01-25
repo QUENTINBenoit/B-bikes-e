@@ -26,7 +26,10 @@
         </p>
       {% endif %}              
     </div>
-    <img src="{{ asset('images/produits/vtt-cube-stereo-120.jpg') }}"class="rounded-t-2xl mt-6"alt="images VTT cube"/>
+   {# ~ productd.images[0].name )  #}
+     
+    <img src="{{ asset('assets/uploads/products/mini/300x300-' ~ productd.images[0].name ) }}"class="rounded-t-2xl mt-6"alt="images VTT cube"/>
+    
     <div class="mx-4 p-2 w-auto h-auto">
       {% for brandName in productd.marques %} 
         <h4 class="text-lg font-semibold text-blue-900  ">{{ brandName.name}}</h4>

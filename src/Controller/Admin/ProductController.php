@@ -3,9 +3,11 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Equipements;
+use App\Entity\Images;
 use App\Entity\Produits;
 use App\Form\ProductType;
 use App\Repository\ProduitsRepository;
+use App\service\PictureService;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -43,12 +45,28 @@ class ProductController extends AbstractController
      * @return Response
      */
     #[Route('/add', name: 'add')]
-    public function addProducts(Request $request,  EntityManagerInterface $em): Response
+    public function addProducts(Request $request,  EntityManagerInterface $em, PictureService $pictureService): Response
     {
         $product = new Produits;
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            // Service permettant l'upload d'un image
+
+            $images = $form->get('image')->getData();
+
+
+            foreach ($images as $image) {
+                // On défini le dossier de destination de l'image
+                $folder = 'products';
+                // On appelle le service d'ajout d'image
+                $fichier = $pictureService->add($image, $folder, 300, 300);
+                // Mise a jour du chemin vers l'image en BDD
+                $img = new Images;
+                $img->setName($fichier);
+                $product->addImage($img);
+            }
+
             $em->persist($product);
             $em->flush();
             $this->addFlash('flash-success', 'le produit' . $product->getName() . ' a bien été ajouté');
@@ -88,12 +106,20 @@ class ProductController extends AbstractController
      */
     #[Route('/edit/{id}', name: 'edit')]
 
-    public function editProduct(Produits $produits, Request $request, ManagerRegistry $doctrine)
+    public function editProduct(Produits $produits, Request $request, ManagerRegistry $doctrine, PictureService $pictureService)
     {
         $form = $this->createForm(ProductType::class, $produits);
         $form->handleRequest($request);
         dump($produits);
         if ($form->isSubmitted() && $form->isSubmitted()) {
+            // Service permettant l'upload d'une image
+            // $newFileName = $pictureService->upload($form, 'image');
+
+
+            // // Mise a jour du chemin vers l'image en BDD
+            // $img = new Images;
+            // $img->setName($newFileName);
+            // $produits->addImage($img);
             $em = $doctrine->getManager();
             $em->flush();
             $this->addFlash('flash-success', 'le produit ' . $produits->getName() . ' a bien été mis à jour');

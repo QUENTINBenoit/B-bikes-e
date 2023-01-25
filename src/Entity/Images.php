@@ -23,6 +23,10 @@ class Images
     {
         return $this->id;
     }
+    public function __toString()
+    {
+        return $this->Name;
+    }
 
     public function getName(): ?string
     {

@@ -108,7 +108,7 @@ class Produits
     #[ORM\ManyToOne(inversedBy: 'Products')]
     private ?Motorisation $motorisation = null;
 
-    #[ORM\OneToMany(mappedBy: 'Products', targetEntity: Images::class)]
+    #[ORM\OneToMany(mappedBy: 'Products', targetEntity: Images::class, orphanRemoval: true,  cascade: ['persist', 'remove'])]
     private Collection $images;
 
     #[ORM\Column(length: 60, nullable: true)]
