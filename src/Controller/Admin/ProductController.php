@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Equipements;
+
 use App\Entity\Images;
 use App\Entity\Produits;
 use App\Form\ProductType;
@@ -11,6 +11,7 @@ use App\service\PictureService;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -137,5 +138,41 @@ class ProductController extends AbstractController
             'formProducts' => $form->createView(),
             'product' => $product
         ]);
+    }
+
+    /**
+     * Méthode de suppression d'une image (requette Ajax)
+     *
+     * @param Images $image
+     * @param ManagerRegistry $doctrine
+     * @param ProduitsRepository $product
+     * @param PictureService $pictureService
+     * @param Request $request
+     * @return JsonResponse
+     */
+    #[Route('/delete/Image/{id}', name: 'delete_image', methods: ['DELETE'])]
+    public function deleteImage(
+        Images $image,
+        ManagerRegistry $doctrine,
+        PictureService $pictureService,
+        Request $request
+    ): JsonResponse {
+        // On récupère le contenur de la requête
+        $data = json_decode($request->getContent(), true);
+        if ($this->isCsrfTokenValid('delete' . $image->getId(), $data['_token'])) {
+            // le token csrf est valide on récupère le nom de l'image
+            $nom = $image->getName();
+            if ($pictureService->delete($nom, 'products', 300, 300)) {
+                // On supprime l'image de la Base De Données
+                $em = $doctrine->getManager();
+                $em->remove($image);
+                $em->flush();
+                return new JsonResponse(['success' => true], 200);
+            }
+            // la supression de l'image a échoué
+            return new JsonResponse(['error' => 'Erreur de suppression'], 400);
+        }
+        // le token csrf n'est pas valide
+        return new JsonResponse(['error' => 'Token invalide'], 400);
     }
 }

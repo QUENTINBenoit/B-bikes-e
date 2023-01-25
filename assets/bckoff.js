@@ -1,6 +1,6 @@
 const bckoff = {
     init: function () {
-      console.log("initialistion jd  de benoit "
+      console.log("initialisation back off de benoit "
       );
       document
         .querySelector("#navigationId")

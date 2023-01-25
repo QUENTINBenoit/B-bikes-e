@@ -12,4 +12,5 @@ import "./styles/app.css";
 // import "./bootstrap";
 import "./acc.js";
 import "./bckoff.js";
+import "./images.js";
 import "flowbite";
