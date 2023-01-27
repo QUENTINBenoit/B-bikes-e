@@ -3,18 +3,17 @@
 namespace App\Form;
 
 use App\Entity\Category;
-use App\Entity\Equipements;
+
 use App\Entity\Genre;
 use App\Entity\Marque;
-use App\Entity\Motorisation;
 use App\Entity\Produits;
 use App\Repository\CategoryRepository;
 use App\Repository\MarqueRepository;
-use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\UX\Dropzone\Form\DropzoneType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ProductType extends AbstractType
@@ -33,6 +32,23 @@ class ProductType extends AbstractType
             ->add('PrixPromotion')
             ->add('Avis')
             ->add('utilisation')
+            // ->add('image', DropzoneType::class, [
+            //     'label' => false,
+            //     // 'multiple' => true,
+            //     // 'attr' => ['data-controller' => 'mydropzone'],
+            //     // 'attr' => [
+            //     //     'placeholder' => 'Glisser et déposer un fichier ou cliquer pour parcourir',
+            //     // ],
+            //     'attr' => [
+            //         'class' => 'w-full h-16 bg-gray-100 border-2 border-gray-300 border-dashed rounded-md',
+            //         'placeholder' => 'Glisser et déposer un fichier ou cliquer pour parcourir',
+            //     ],
+
+
+            //     // 'multiple' => true,
+            //     'mapped' => false,
+            //     // 'required' => false,
+            // ])
             ->add('image', FileType::class, [
                 'label' => 'Image',
                 'multiple' => true,

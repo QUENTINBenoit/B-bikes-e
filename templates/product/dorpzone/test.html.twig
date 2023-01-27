@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}dropzone{% endblock %}
+
+{% block body %}
+
+
+{# <main class="w-full h-full static font-gluten font-medium bg-gradient-to-br from-gray-900 via-gray-700 to-gray-900"> #}
+
+  
+{% include "components/_fileAriane.html.twig" %}
+   
+  <div class="mx-auto max-w-8xl flex justify-center z-20 mt-24 mb-4 h-full ">
+  
+       
+       {{ form(form)}}
+ 
+  </div>
+  {# </main> #}
+{% endblock %}

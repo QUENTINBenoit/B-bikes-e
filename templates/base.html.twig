@@ -13,10 +13,11 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body>
+    <body {{ stimulus_controller('symfony/ux-swup/swup') }}>
+    {# bg-gradient-to-br from-gray-300 via-gray-600 to-gray-800 #}
         {% set currentPage = app.request.get('_route') %}
         {% include "partials/_header.html.twig" %}
-        <main class="w-full h-full static font-gluten font-medium bg-gradient-to-br from-stone-800 via-stone-600 to-stone-800">
+        <main class=" w-full h-full static font-gluten font-medium bg-gradient-to-br from-stone-500 to-stone-900 "  id="swup">
         
             {% block body %}
         
@@ -24,9 +25,9 @@
         </main>
         {% include "partials/_paymentByCard.html.twig" %}
         {% include "partials/_footer.html.twig" %}
-        <script src="/assets/app.js"></script>
+       
 
-    {# <script src="/assets/carosl.js"></script>     #}
+ 
     </body>
 
 </html>

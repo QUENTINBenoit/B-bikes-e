@@ -11,7 +11,7 @@
 
   <div class="grid  md:grid-cols-4 gap-2">
     <div class="col-span-2 shadow-lg shadow-black rounded-3xl p-2 backdrop-blur-3xl bg-white/20">
-      {{ form_row(formProducts.Name)}}
+      {{ form_row(formProducts.Name, )}}
       {{ form_row(formProducts.reference)}}
           <div class= "flex justify-around items-center  mt-4 pt-6 ">
             {{ form_row(formProducts.nouveaute)}}
@@ -26,10 +26,17 @@
      {{ form_row(formProducts.utilisation)}}
       {{ form_row(formProducts.Avis)}}
     </div>
-    <div class="col-span-2 flex flex-col shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 p-2">
-      {{ form_row(formProducts.image)}}
+       {# widget_class:'block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50  focus:outline-none h-96 ', #}
+    <div class="col-span-2 flex flex-col shadow-lg shadow-black h-96 rounded-3xl  backdrop-blur-3xl bg-white/20 p-2">
+      
+      <div class ="h-[15rem] w-full ">
+        {{ form_row(formProducts.image, {
+     
+      })}}
+      </div>
+    
       <div>
-      {% if app.request.attributes.get('_route') == 'admin_product_edit'  %}
+        {% if app.request.attributes.get('_route') == 'admin_product_edit'  %}
         <h2 class="text-white text-center font-gluten ">Images</h2>
         <div class=" flex flex-wrap gap-2 justify-center">
           {% for image in product.images %}
@@ -43,7 +50,7 @@
             </div>
           {% endfor %}
         </div>
-      {% endif %}
+        {% endif %}
       </div>
     </div>
     <div class="col-span-1 flex flex-col col-start-4 shadow-lg shadow-black backdrop-blur-3xl bg-white/20 rounded-3xl  ">

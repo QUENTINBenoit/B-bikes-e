@@ -11,7 +11,7 @@
 {%- endblock widget_attributes -%}
 
 {%- block form_label -%}
-    {%- set label_attr = label_attr|merge({ class: label_attr.class|default(label_class|default('block mx-2 my-1  text-sm font-thin text-wihte dark:text-white')) }) -%}
+    {%- set label_attr = label_attr|merge({ class: label_attr.class|default(label_class|default('block mx-2 my-1  text-sm font-thin text-white ')) }) -%}
     {{- parent() -}}
 {%- endblock form_label -%}
 
@@ -31,7 +31,7 @@
 {%- endblock form_errors -%}
 
 {%- block choice_widget_expanded -%}
-    {%- set attr = attr|merge({ class: attr.class|default('mt-2 checked:bg-yellow-500') }) -%}
+    {%- set attr = attr|merge({ class: attr.class|default('mt-2 text-green-400') }) -%}
     <div {{ block('widget_container_attributes') }}>
         {%- for child in form %}
             <div class="flex items-center">
@@ -59,7 +59,7 @@
 {%- endblock checkbox_row -%}
 
 {%- block checkbox_widget -%}
-    {%- set widget_class = widget_class|default('w-4 h-4 cursor-pointer text-pink-700 bg-gray-100 rounded border-gray-300 focus:ring-pink-700 dark:focus:ring-purple-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600') -%}
+    {%- set widget_class = widget_class|default('w-4 h-4 ') -%}
     {{- parent() -}}
 {%- endblock checkbox_widget -%}
 

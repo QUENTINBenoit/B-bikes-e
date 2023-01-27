@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Produits;
 use App\Form\FiterType;
+use App\Form\ProductType;
 use App\Repository\ProduitsRepository;
+use Doctrine\Common\Proxy\Proxy;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -69,6 +71,18 @@ class ProductController extends AbstractController
         $form = $this->createForm(FiterType::class, $produits);
         $form->handleRequest($request);
         return $this->render('product/addProduits.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    #[Route('/dropzone', name: 'dropzone')]
+    public function dropzone(Request $request, ProduitsRepository $produitsRepository)
+    {
+        $produits = new Produits();
+        $form = $this->createForm(ProductType::class, $produits);
+        $form->handleRequest($request);
+        return $this->render('product/dorpzone/test.html.twig', [
+
             'form' => $form->createView()
         ]);
     }

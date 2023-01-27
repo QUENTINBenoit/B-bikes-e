@@ -18,14 +18,14 @@
     <div class="md:flex p-2 md:justify-around  h-auto w-auto">
             {# section image #} 
  
-            <div id="indicators-carousel" class="relative bg-slate-600 w-[32rem] h-auto rounded-lg" data-carousel="static">
+            <div id="indicators-carousel" class="relative  w-[42rem] h-[24rem] bg-blue-200 rounded-lg" data-carousel="static">
             <!-- Carousel wrapper -->
             <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
             <!-- Item 1 -->
             {% for img in productId.images %}
             
             <div class="hidden duration-700 ease-in-out " data-carousel-item="active">
-                <img src="{{ asset('assets/uploads/products/') ~ img.Name  }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 scale-100" alt="...">
+                <img src="{{ asset('assets/uploads/products/') ~ img.Name  }}" class="absolute block w-[42rem] h-[24rem] -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 scale-100" alt="...">
             </div>
            {% endfor %}
 

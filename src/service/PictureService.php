@@ -32,7 +32,7 @@ class PictureService
     // On récupère les infos de l'image 
     $pictureInfo = getimagesize($picture);
     if ($pictureInfo === false) {
-      throw new \Exception('Le forma de l\'image n\'est pas valide');
+      throw new \Exception('Le format de l\'image n\'est pas valide');
     }
     // On vérifie le format de l'image
     switch ($pictureInfo['mime']) {
@@ -46,7 +46,7 @@ class PictureService
         $pictueSource = imagecreatefromwebp($picture);
         break;
       default:
-        throw new \Exception('Le forma de l\'image n\'est pas valide');
+        throw new \Exception('Le format de l\'image n\'est pas valide');
     }
 
     // On recadre l'image
