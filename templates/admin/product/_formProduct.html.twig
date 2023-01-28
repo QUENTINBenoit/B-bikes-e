@@ -27,9 +27,9 @@
       {{ form_row(formProducts.Avis)}}
     </div>
        {# widget_class:'block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50  focus:outline-none h-96 ', #}
-    <div class="col-span-2 flex flex-col shadow-lg shadow-black h-96 rounded-3xl  backdrop-blur-3xl bg-white/20 p-2">
+    <div class="col-span-2 flex flex-col shadow-lg shadow-black h-auto rounded-3xl  backdrop-blur-3xl bg-white/20 p-2">
       
-      <div class ="h-[15rem] w-full ">
+      <div class ="h-auto w-full">
         {{ form_row(formProducts.image, {
      
       })}}
@@ -38,9 +38,9 @@
       <div>
         {% if app.request.attributes.get('_route') == 'admin_product_edit'  %}
         <h2 class="text-white text-center font-gluten ">Images</h2>
-        <div class=" flex flex-wrap gap-2 justify-center">
+        <div class=" flex flex-wrap gap-2 p-1 ">
           {% for image in product.images %}
-            <div class=" rounded-lg flex flex-col items-center">
+            <div class=" rounded-lg flex flex-col items-center w-16 h-auto">
               <img src="{{ asset('assets/uploads/products/mini/300x300-' ~ image.name ) }}" alt="Image" width="150" class="rounded-lg">
               <a href="{{ path('admin_product_delete_image', {id:image.id} ) }}" class="text-red-700 my-2" data-delete data-token="{{ csrf_token('delete' ~ image.id ) }}">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
