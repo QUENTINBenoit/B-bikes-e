@@ -8,7 +8,7 @@
   
   
   <div class="mx-auto max-w-10xl flex justify-center z-20 mt-24 mb-4 h-auto ">
-    {# {% include "components/_dropdownFilter.html.twig"%} #}
+    {% include "components/_dropdownFilter.html.twig"%}
         <!-- Affichage des produits -->   <!-- Afichage des produits des catégories enfant -->
         <div class=" grid grid-cols-1 m-2 lg:grid-cols-4 md:grid-cols-2 w-full md:h-auto p-16 gap-12">       
         {% for categorieChild in listProdByCategoId.categories %}

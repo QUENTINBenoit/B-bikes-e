@@ -24,15 +24,13 @@ class Marque
     #[ORM\ManyToMany(targetEntity: Produits::class, inversedBy: 'marques')]
     private Collection $products;
 
-    #[ORM\OneToMany(mappedBy: 'brands', targetEntity: Produits::class)]
-    private Collection $produits;
+
 
 
     public function __construct()
     {
 
         $this->products = new ArrayCollection();
-        $this->produits = new ArrayCollection();
     }
     public function __toString()
     {
@@ -88,36 +86,6 @@ class Marque
     public function removeProduct(Produits $product): self
     {
         $this->products->removeElement($product);
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Produits>
-     */
-    public function getProduits(): Collection
-    {
-        return $this->produits;
-    }
-
-    public function addProduit(Produits $produit): self
-    {
-        if (!$this->produits->contains($produit)) {
-            $this->produits->add($produit);
-            $produit->setBrands($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProduit(Produits $produit): self
-    {
-        if ($this->produits->removeElement($produit)) {
-            // set the owning side to null (unless already changed)
-            if ($produit->getBrands() === $this) {
-                $produit->setBrands(null);
-            }
-        }
 
         return $this;
     }
