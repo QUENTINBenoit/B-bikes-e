@@ -16,7 +16,7 @@
           md:hover:-translate-y-2 
           md:hover:scale-110">
   <div class="relative h-3/6 rounded-t-2x">
-    <div class="w-24 absolute bottom-[8rem] left-0">
+    <div class="w-24 absolute bottom-[6.5rem] left-0">
       {% if productd.Promotion %}
         <p class="h-auto pl-2 text-sm text-white  w-auto bg-stone-900 rounded-r-2xl">
           Promotion
@@ -27,8 +27,8 @@
       {% endif %}              
     </div>
    {# ~ productd.images[0].name )  #}
-     
-    <img src="{{ asset('assets/uploads/products/mini/300x300-' ~ productd.images[0].name ) }}"class="rounded-t-2xl mt-6"alt="images VTT cube"/>
+     {# {{ asset('assets/uploads/products/') ~ img.Name  }} #}
+    <img src="{{ asset('assets/uploads/products/' ~ productd.images[0].name ) }}"class="rounded-t-2xl  w-56 h-32"alt="images VTT cube"/>
     
     <div class="mx-4 p-2 w-auto h-auto">
       {% for brandName in productd.marques %} 

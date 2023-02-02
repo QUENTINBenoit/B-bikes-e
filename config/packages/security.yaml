@@ -42,8 +42,16 @@ security:
   # Easy way to control access for large sections of your site
   # Note: Only the *first* access control that matches will be used
   access_control:
-    # - { path: ^/admin, roles: ROLE_ADMIN }
+    - { path: ^/admin, roles: ROLE_TESTEUR}
     # - { path: ^/profile, roles: ROLE_USER }
+
+  role_hierarchy:
+    # Un admin peut faire tout ce peut faire un utilisateur connecté
+    ROLE_TESTEUR: ROLE_USER
+    ROLE_ADMIN: ROLE_TESTEUR
+    #Un Super admin pourra faire tous ce que peut faire un admin
+    ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
 
 when@test:
   security:

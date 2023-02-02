@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Marque;
 use App\Form\MarqueType;
 use App\Repository\MarqueRepository;
+use App\service\PictureService;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -38,7 +39,7 @@ class MarquesController extends AbstractController
      * @return void
      */
     #[Route('/add', name: 'add')]
-    public function addMarques(Request $request, MarqueRepository $marqueRepository, ManagerRegistry $doctrine)
+    public function addMarques(Request $request, MarqueRepository $marqueRepository, ManagerRegistry $doctrine, PictureService $pictureService)
     {
 
         $brands = new Marque;
@@ -46,6 +47,12 @@ class MarquesController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $logo = $form->get('logo')->getData();
+            $folder = 'logo';
+            $fichier = $pictureService->add($logo, $folder, 300, 300);
+            $brands->setlogo($fichier);
+
             $em = $doctrine->getManager();
             $em->persist($brands);
             $em->flush();
@@ -86,11 +93,15 @@ class MarquesController extends AbstractController
      */
     #[Route('/edit:{id}', name: 'edit')]
 
-    public function editMarques(Marque $marque, Request $request, ManagerRegistry $doctrine)
+    public function editMarques(Marque $marque, Request $request, ManagerRegistry $doctrine, PictureService $pictureService)
     {
         $form = $this->createForm(MarqueType::class, $marque);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $logo = $form->get('logo')->getData();
+            $folder = 'logo';
+            $fichier = $pictureService->add($logo, $folder, 300, 300);
+            $marque->setlogo($fichier);
             $em = $doctrine->getManager();
             $em->flush();
             $this->addFlash('flash-success', 'le nom de marque ' . $marque->getName() . ' a bien été mise jour');

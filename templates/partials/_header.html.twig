@@ -80,14 +80,13 @@
                         <div class="font-medium truncate">{{ app.user.email}}</div>
                       </div>
                       <ul class="py-1 text-sm text-stone-900" aria-labelledby="avatarButton">
+                     {% if is_granted('ROLE_ADMIN') %}   
                         <li>
                           <a href="{{ path('admin_home') }}" class="block px-4 py-2 hover:bg-stone-400">Dashboard</a>
                         </li>
+                     {% endif %}
                         <li>
-                          <a href="#" class="block px-4 py-2 hover:bg-stone-400" >Settings</a>
-                        </li>
-                        <li>
-                          <a href="#" class="block px-4 py-2 hover:bg-stone-400 ">Earnings</a>
+                          <a href="#" class="block px-4 py-2 hover:bg-stone-400" >Profil</a>
                         </li>
                       </ul>
                       <div class="rounded-b-xl">
