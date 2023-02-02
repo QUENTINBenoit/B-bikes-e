@@ -69,7 +69,7 @@ class UserController extends AbstractController
 
         return $this->render('admin/user/news.html.twig', [
             "newsUserForm" => $form,
-            // "user" => $user,
+
         ]);
     }
 
