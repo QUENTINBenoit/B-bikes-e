@@ -39,7 +39,7 @@
               />
             </svg>
         </a>
-          {% if app.user=='' %}
+          {% if app.user =='' %}
           <a
           href= "{{path('app_login')  }}"         
           class= "hover:text-stone-500 -order-3 md:order-none flex flex-col items-center mt-5"
@@ -80,7 +80,7 @@
                         <div class="font-medium truncate">{{ app.user.email}}</div>
                       </div>
                       <ul class="py-1 text-sm text-stone-900" aria-labelledby="avatarButton">
-                     {% if is_granted('ROLE_ADMIN') %}   
+                     {% if is_granted('ROLE_TESTEUR') %}   
                         <li>
                           <a href="{{ path('admin_home') }}" class="block px-4 py-2 hover:bg-stone-400">Dashboard</a>
                         </li>

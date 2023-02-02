@@ -75,13 +75,15 @@ class UserController extends AbstractController
 
 
     #[Route('/edit/{id}', name: 'edit')]
-    #[IsGranted('ROLE_SUPER_ADMIN')]
+    // #[IsGranted('ROLE_SUPER_ADMIN')]
     public function editUser(
         Request $request,
         User $user,
         EntityManagerInterface $doctrine,
         UserPasswordHasherInterface $userPasswordHasherInterface,
     ) {
+
+        $this->denyAccessUnlessGranted('USER_EDIT', $user, 'Vous n\'avez pas les droits pour modifier ce compte');
 
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);

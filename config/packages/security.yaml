@@ -50,7 +50,7 @@ security:
     ROLE_TESTEUR: ROLE_USER
     ROLE_ADMIN: ROLE_TESTEUR
     #Un Super admin pourra faire tous ce que peut faire un admin
-    ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+    ROLE_SUPER_ADMIN: [ROLE_ADMIN]
 
 
 when@test:

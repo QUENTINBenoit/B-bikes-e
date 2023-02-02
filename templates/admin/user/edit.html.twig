@@ -15,7 +15,9 @@
       <div class= " col-span-1 shadow-2xl shadow-black rounded-2xl">
       {{ form_row(userEditForm.password)}}
       {{ form_row(userEditForm.avatar)}}
+      {% if is_granted('ROLE_SUPER_ADMIN') %}
       {{ form_row(userEditForm.roles)}}
+      {% endif %}
       </div>
   </div>
   <div class ="flex flex-row justify-between  items-center p-2 mx-32 mb-6" >
