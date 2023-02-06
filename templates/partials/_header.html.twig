@@ -65,12 +65,13 @@
           
 
            {% else %} 
+       
                     <img  id="avatarButton" 
                           type="button" 
                           data-dropdown-toggle="userDropdown" 
                           data-dropdown-placement="bottom-start" 
                           class="w-8 h-8 mr-2 rounded-full cursor-pointer" 
-                          src="{{ asset('images/avatar/' ~  app.user.avatar )  }}"
+                          src="{{ asset('assets/uploads/avatars/' ~ app.user.avatar ) }}"
                           {# {{ asset('images/logo/marques/' ~ marque.logo) }} #}
                           alt="User dropdown">
                   <!-- Dropdown menu -->

@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use App\service\PictureService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,6 +13,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+
+
+
 
 #[Route('/admin/user', name: 'admin_user_', requirements: ['id' => '\d+'])]
 class UserController extends AbstractController
@@ -31,6 +35,8 @@ class UserController extends AbstractController
             'userList' => $userRepository->findAll(),
         ]);
     }
+
+
     /**
      * Methode d'ajout d'un nouvelle utilisateur 
      *
@@ -44,6 +50,7 @@ class UserController extends AbstractController
         Request $request,
         EntityManagerInterface $doctrine,
         UserPasswordHasherInterface $userPasswordHasherInterface,
+        PictureService $pictureService
     ) {
         $user = new User();
 
@@ -51,6 +58,15 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Service permettant l'upload d'un Avatar
+            $avatars = $form->get('avatar')->getData();
+            foreach ($avatars as $avatar) {
+                // je défini le dossier de destination de l'image
+                $folder = 'avatars';
+                // j'appel le service d'ajout de l'image
+                $fichier = $pictureService->add($avatar, $folder, 300, 300);
+                $user->setAvatar($fichier);
+            }
             // je récuper le mot de passe en clair 
             $password = $form->get('password')->getData();
             // je hash le mot de passe 
@@ -65,15 +81,21 @@ class UserController extends AbstractController
             );
             return $this->redirectToRoute('admin_user_list');
         }
-
-
         return $this->render('admin/user/news.html.twig', [
             "newsUserForm" => $form,
-
         ]);
     }
 
 
+    /**
+     * Méthode d'édition d'un utilisateur
+     *
+     * @param Request $request
+     * @param User $user
+     * @param EntityManagerInterface $doctrine
+     * @param UserPasswordHasherInterface $userPasswordHasherInterface
+     * @return Response
+     */
     #[Route('/edit/{id}', name: 'edit')]
     // #[IsGranted('ROLE_SUPER_ADMIN')]
     public function editUser(
@@ -81,6 +103,7 @@ class UserController extends AbstractController
         User $user,
         EntityManagerInterface $doctrine,
         UserPasswordHasherInterface $userPasswordHasherInterface,
+        PictureService $pictureService
     ) {
 
         $this->denyAccessUnlessGranted('USER_EDIT', $user, 'Vous n\'avez pas les droits pour modifier ce compte');
@@ -88,9 +111,25 @@ class UserController extends AbstractController
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $password = $form->get('password')->getData();
-            $hashPassword = $userPasswordHasherInterface->hashPassword($user, $password);
-            $user->setPassword($hashPassword);
+            // Service permettant l'upload d'un Avatar
+            $avatars = $form->get('avatar')->getData();
+            foreach ($avatars as $avatar) {
+                // je défini le dossier de destination de l'image
+                $folder = 'avatars';
+                // j'appel le service d'ajout de l'image
+                $fichier = $pictureService->add($avatar, $folder, 300, 300);
+                $user->setAvatar($fichier);
+            }
+
+            $plainPassword = $form->get('password')->getData();
+            // je modifie le mot de passe que si il est renseigné dans le formulaire 
+            if ($plainPassword) {
+                $hashPassword = $userPasswordHasherInterface->hashPassword(
+                    $user,
+                    $plainPassword
+                );
+                $user->setPassword($hashPassword);
+            }
             $doctrine->flush();
             $this->addFlash(
                 'flash-success',
@@ -103,8 +142,11 @@ class UserController extends AbstractController
         ]);
     }
 
-    // route pour supprimer un utilisateur
+
     /**
+     * Méthode de suppression d'un utilisateur
+     *
+     * @param Request $request
      * @param User $user
      * @param EntityManagerInterface $doctrine
      * @return Response

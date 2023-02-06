@@ -20,7 +20,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 180, unique: true)]
     #[Assert\Email(
-        message: 'l\'email {{ value }} n\'est pas un e-mail valid.',
+        message: 'l\'email {{ value }} n\'est pas un e-mail valide.',
     )]
     private ?string $email = null;
 
@@ -30,8 +30,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string The hashed password
      */
-    #[ORM\Column]
-    private ?string $password = null;
+    #[ORM\Column(type: 'string')]
+    private $password;
 
     #[ORM\Column(length: 255)]
     private ?string $firstname = null;

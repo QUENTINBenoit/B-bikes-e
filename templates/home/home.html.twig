@@ -29,22 +29,12 @@
     <section class=" container  flex flex-col items-center justify-between w-full mt-16 ">
       <h2 class=" text-slate-900 text-4xl font-gluten m-4 "> Categories</h2>
        
-      {# <div class=" m-1 grid grid-cols-4 gap-2 w-full">  #}
-      <div class="flex container  justify-around w-full ">
-       
+      <div class="flex  flex-wrap container  justify-around w-full ">
        {% for category in categories %} 
           {% if category.parent == null %}
-          <div>
-          
-          </div>
            <a href="{{path('categorie_catego', {id: category.id} ) }}" class=" w-36 h-36  rounded-full  shadow-xl shadow-black ml-2 p-2  backdrop-blur-3xl bg-white/20 flex flex-col items-center justify-center hover:bg-amber-600 focus:ring-2 focus:outline-none focus:ring-pink-900">
-            {# <div class=" w-36 h-36  rounded-full  shadow-xl shadow-black ml-2 p-2  backdrop-blur-3xl bg-white/20 flex flex-col items-center justify-center"> #}
-              <h5 class="mb-2 text-xl text-white font-bold ">{{ category.name}}</h5>
-          
-             
-      
-            {# </div>  #}
-             </a>         
+              <h5 class="mb-2 text-xl text-white font-bold ">{{ category.name}}</h5>       
+          </a>         
           {% endif %}
       {% endfor %} 
       </div> 
@@ -56,7 +46,6 @@
       <div class=" flex flex-col md:flex-row md:flex-wrap justify-around   w-full p-2 items-center ">       
             {% for marque in marques %}                   
               <a href="{{path('marques_listproduit', {id: marque.id} ) }}" class="m-2" >
-              {{marque.name}} 
                <img src="{{ asset('assets/uploads/logo/') ~ marque.logo  }}" alt="" class="w-32 h-10 ">
               </a>
             {% endfor %}      

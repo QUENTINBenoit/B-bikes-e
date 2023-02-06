@@ -114,7 +114,6 @@ class ProductController extends AbstractController
 
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
-        dump($product);
         if ($form->isSubmitted() && $form->isSubmitted()) {
             // Service permettant l'upload d'un image
 
@@ -159,7 +158,7 @@ class ProductController extends AbstractController
         PictureService $pictureService,
         Request $request
     ): JsonResponse {
-        // On récupère le contenur de la requête
+        // On récupère le contenu de la requête
         $data = json_decode($request->getContent(), true);
         if ($this->isCsrfTokenValid('delete' . $image->getId(), $data['_token'])) {
             // le token csrf est valide on récupère le nom de l'image
