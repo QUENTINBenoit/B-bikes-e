@@ -78,7 +78,7 @@
                         <p class=" text-lg mt-4">Prix: <span class="text-2xl text-blue-600 font-medium  "> {{productId.Prix}} € </span> </p>
                     {% endif %}
                 </div>
-                <a href="#" class=" bg-blue-600  rounded-b-2xl text-white text-center p-2 md:rounded-2xl  "> Panier</a>
+                <a href="{{ path("cart_add", {id: productId.id}) }}" class=" bg-blue-600  rounded-b-2xl text-white text-center p-2 md:rounded-2xl  "> Panier</a>
             </div>  
         </div> 
   
