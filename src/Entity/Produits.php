@@ -331,9 +331,6 @@ class Produits
         return $this;
     }
 
-
-
-
     public function getUtilisation(): ?string
     {
         return $this->utilisation;
@@ -363,6 +360,7 @@ class Produits
 
         return $this;
     }
+
 
     public function removeCategory(Category $category): self
     {

@@ -2,66 +2,48 @@
 
 namespace App\Controller;
 
-use App\Entity\Produits;
 use App\Repository\ProduitsRepository;
+use App\service\cart\CartService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/cart', name: 'cart_')]
 class CartController extends AbstractController
 {
     /**
-     * @Route("/", name="home")
+     * Afficher le panier
      */
     #[Route('/', name: 'home')]
-    public function index(SessionInterface $session, ProduitsRepository $produitsRepository): Response
+    public function index(CartService $cartService, ProduitsRepository $produitsRepository): Response
     {
-        // je récupère le panier actuel
-        $panier = $session->get("panier", []);
-        // je fabrique  les données
-        $dataPanier = [];
-        $total = 0;
-        $image = [];
-        // je récupère les produits du panier
-        foreach ($panier as $id => $quantity) {
-            $product = $produitsRepository->find($id);
-            $dataPanier[] = [
-                "produit" => $product,
-                "quantite" => $quantity,
-                // je récupère la première image du produit de mon tableau d'images
-                "imageRecup" => $product->getImages()->first()
-            ];
-            // je calcule le total
-            $total += $product->getPrix() * $quantity;
-        }
-        \dump($dataPanier, $total);
+
+        $data = $cartService->getfullCart($produitsRepository);
         return $this->render('cart/index.html.twig', [
-            'produitPanier' => $dataPanier,
-            'totalPanier' => $total
+            'produitPanier' => $data['dataPanier'],
+            'totalPanier' => $data['total']
         ]);
     }
 
 
     /**
-     * @Route("/add/{id}", name="add")
+     * Ajouter un produit au panier
+     * en faisant appel à la méthode add du service CartService
      */
     #[Route('/add/{id}', name: 'add')]
-    public function add(Produits $produits, SessionInterface $session): Response
+    public function add($id, CartService $cartService): Response
     {
-        // je récupère le panier actuel
-        $panier = $session->get("panier", []);
-        // je récupère l'id du produit
-        $id = $produits->getId();
-        // je vérifie si le produit est déjà dans le panier
-        if (!empty($panier[$id])) {
-            $panier[$id]++;
-        } else {
-            $panier[$id] = 1;
-        }
-        // Je sauvgaarde dans la session 
-        $session->set("panier", $panier);
+        $cartService->add($id);
+        return $this->redirectToRoute("cart_home");
+    }
+    /**
+     * Supprimer un produit du panier
+     * en faisant appel à la méthode remove du service CartService
+     */
+    #[Route('/remove/{id}', name: 'remove')]
+    public function remove($id, CartService $cartService): Response
+    {
+        $cartService->remove($id);
         return $this->redirectToRoute("cart_home");
     }
 }
