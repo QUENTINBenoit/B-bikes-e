@@ -46,4 +46,15 @@ class CartController extends AbstractController
         $cartService->remove($id);
         return $this->redirectToRoute("cart_home");
     }
+
+    /**
+     * Supprimer un produit du panier
+     * en faisant appel à la méthode delete du service CartService
+     */
+    #[Route('/delete/{id}', name: 'delete')]
+    public function delete($id, CartService $cartService): Response
+    {
+        $cartService->delete($id);
+        return $this->redirectToRoute("cart_home");
+    }
 }

@@ -2,7 +2,7 @@
 
 namespace App\service\cart;
 
-use App\Repository\ProduitsRepository;
+
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -101,6 +101,26 @@ class CartService
       } else {
         unset($panier[$id]);
       }
+    }
+    // Je sauvgarde dans la session 
+    $this->sessionBen()->set("panier", $panier);
+  }
+
+  /**
+   * Supprimer un produit du panier
+   *
+   * @param integer $id
+   * @return void
+   */
+  public function delete(int $id)
+  {
+    // je récupère le panier actuel
+    $panier = $this->sessionBen()->get("panier", []);
+
+    // je vérifie si le produit est déjà dans le panier
+    // alors je le supprime
+    if (!empty($panier[$id])) {
+      unset($panier[$id]);
     }
     // Je sauvgarde dans la session 
     $this->sessionBen()->set("panier", $panier);
