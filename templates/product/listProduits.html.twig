@@ -1,27 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des produits{% endblock %}
+{% block title %}Liste des produits
+{% endblock %}
 
 {% block body %}
 
 
-{# <main class="w-full h-full static font-gluten font-medium bg-gradient-to-br from-gray-900 via-gray-700 to-gray-900"> #}
+	{# <main class="w-full h-full static font-gluten font-medium bg-gradient-to-br from-gray-900 via-gray-700 to-gray-900"> #}
 
-  
-{% include "components/_fileAriane.html.twig" %}
-   
-  <div class="mx-auto max-w-8xl flex justify-center z-20 mt-24 mb-4 h-full ">
-  
-          {% include "components/_dropdownFilter.html.twig"%} 
-     
-        <!-- Affichage des produits -->
-        <div class=" grid grid-cols-2  lg:grid-cols-4 md:grid-cols-3 w-full md:h-full  p-6 gap-8">
-     
-          {% for   productd in product %}
-           {% include "components/_cardsVtt.html.twig" %}
-         {% endfor %}   
-        </div> 
- 
-  </div>
-  {# </main> #}
+
+	{% include "components/_fileAriane.html.twig" %}
+
+	<div class="mx-auto max-w-8xl flex justify-center z-20 mt-24 mb-4 h-full ">
+
+		{% include "components/_dropdownFilter.html.twig"%}
+
+		<!-- Affichage des produits -->
+		<div class=" grid grid-cols-2  lg:grid-cols-4 md:grid-cols-3 w-full md:h-full  p-6 gap-8">
+
+			{% for   productd in product %}
+				{% include "components/_cardsVtt.html.twig" %}
+			{% endfor %}
+		</div>
+
+	</div>
+	{# </main> #}
 {% endblock %}
