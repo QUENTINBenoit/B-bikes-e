@@ -12,10 +12,8 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bundle\SecurityBundle\Security;
-use Symfony\Component\Console\Helper\Dumper;
-use Symfony\Component\DependencyInjection\Dumper\Dumper as DumperDumper;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Yaml\Dumper as YamlDumper;
+
 
 class UserType extends AbstractType
 {
@@ -27,7 +25,6 @@ class UserType extends AbstractType
         $builder
             ->add('email')
             ->add('firstname')
-            ->add('avatar')
             ->add('lastname')
             ->addEventListener(
                 FormEvents::PRE_SET_DATA,

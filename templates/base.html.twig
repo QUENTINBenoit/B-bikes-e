@@ -17,11 +17,12 @@
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 	</head>
-	<body {{ stimulus_controller('symfony/ux-swup/swup')}}>
+	<body>
 		{% set currentPage = app.request.get('_route') %}
 		{% include "partials/_header.html.twig"%}
-		<main id="swup">
-			<section class=" w-full h-full static font-gluten font-medium bg-gradient-to-br from-zinc-950 via-zinc-700 to-zinc-400 " id="swup"> {% block body %}{% endblock %}
+		<main>
+			<section class=" w-full h-full static font-gluten font-medium bg-gradient-to-br from-zinc-950 via-zinc-700 to-zinc-400 "> {% block body %}{% endblock %}
+
 				</section>
 			</main>
 			{% include "partials/_paymentByCard.html.twig" %}

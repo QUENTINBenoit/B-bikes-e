@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Conmpte Clien
+{% endblock %}
+
+{% block body %}
+	<div class="mx-auto max-w-8xl flex justify-center mt-20 mb-4 h-full">
+
+
+		<div class="container my-36 w-full h-auto shadow-2xl  rounded-3xl p-4 z-10  shadow-black">
+			{{ form_start(userEditForm, {'attr': {'
+      novalidate': 'novalidate',
+  }})}}
+			<div class="grid grid-cols-2 gap-2">
+				<div class=" col-span-1 shadow-2xl shadow-black rounded-2xl ">
+					{{ form_row(userEditForm.firstname) }}
+					{{ form_row(userEditForm.lastname)}}
+					{{ form_row(userEditForm.email)}}
+				</div>
+				<div class=" col-span-1 shadow-2xl shadow-black rounded-2xl">
+					{{ form_row(userEditForm.password)}}
+					{{ form_row(userEditForm.avatar)}}
+
+				</div>
+			</div>
+			<div class="flex flex-row justify-between  items-center p-2 mx-32 mb-6">
+				<button type="submit" class="buttonformValid ">
+					Editer
+				</button>
+				<a href="{{ path('home') }}" class=" buttonformBack">
+					back
+				</a>
+			</div>
+			<div>
+				{{ form_end(userEditForm)}}
+			</div>
+			{% include "partials/_flashmessage.html.twig" %}
+
+		</div>
+	{% endblock %}
