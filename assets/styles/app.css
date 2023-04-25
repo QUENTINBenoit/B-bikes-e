@@ -31,7 +31,9 @@
 .flash-alert{
 @apply bg-red-100 text-red-900 font-gluten;
 }
-
+.flash-delete{
+  @apply bg-red-200 text-red-950 font-gluten;
+  }
 .flash-info{
 @apply bg-gray-100 text-gray-900 font-gluten;
 }

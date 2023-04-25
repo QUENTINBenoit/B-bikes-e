@@ -14,20 +14,7 @@ class AdresseType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('TypeAdresse', ChoiceType::class, [
-                'choices' => [
-                    'Adresse de facturation' => 'Adresse de facturation',
-                    'Adresse de livraison' => 'Adresse de livraison',
-                ],
-                'constraints' => [
-                    new Choice([
-                        'choices' => [
-                            'Adresse de facturation',
-                            'Adresse de livraison',
-                        ],
-                    ]),
-                ],
-            ])
+            ->add('nomAdresse')
             ->add('Rue')
             ->add('numeroRue')
             ->add('codePostal')

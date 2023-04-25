@@ -14,7 +14,7 @@ class Adresse
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $TypeAdresse = null;
+    private ?string $nomAdresse = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $Rue = null;
@@ -44,20 +44,25 @@ class Adresse
         $this->createdAt = new \DateTimeImmutable();
         $this->updatedAt = new \DateTimeImmutable();
     }
+    // fonction toString
+    public function __toString()
+    {
+        return $this->nomAdresse;
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getTypeAdresse(): ?string
+    public function getNomAdresse(): ?string
     {
-        return $this->TypeAdresse;
+        return $this->nomAdresse;
     }
 
-    public function setTypeAdresse(?string $TypeAdresse): self
+    public function setNomAdresse(?string $nomAdresse): self
     {
-        $this->TypeAdresse = $TypeAdresse;
+        $this->nomAdresse  = $nomAdresse;
 
         return $this;
     }
