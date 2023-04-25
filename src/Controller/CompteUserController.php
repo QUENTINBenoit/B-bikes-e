@@ -55,7 +55,7 @@ class CompteUserController extends AbstractController
             return $this->redirectToRoute('compte_user_update', ['id' => $id]);
         }
         return $this->render('compteUser/compteUser.html.twig', [
-            'userEditForm' => $form->createView(),
+            'userCompteForm' => $form->createView(),
             'user' => $user,
         ]);
     }

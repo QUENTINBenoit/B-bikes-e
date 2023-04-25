@@ -6,23 +6,70 @@
 {% block body %}
 	<div class="mx-auto max-w-8xl flex justify-center mt-20 mb-4 h-full">
 
-
-		<div class="container my-36 w-full h-auto shadow-2xl  rounded-3xl p-4 z-10  shadow-black">
-			{{ form_start(userEditForm, {'attr': {'
+		<div class="container my-36 w-full h-auto   rounded-3xl p-4 z-10 ">
+			{{ form_start(userCompteForm, {'attr': {'
       novalidate': 'novalidate',
   }})}}
+
 			<div class="grid grid-cols-2 gap-2">
 				<div class=" col-span-1 shadow-2xl shadow-black rounded-2xl ">
-					{{ form_row(userEditForm.firstname) }}
-					{{ form_row(userEditForm.lastname)}}
-					{{ form_row(userEditForm.email)}}
+					{{ form_row(userCompteForm.firstname) }}
+					{{ form_row(userCompteForm.lastname)}}
+					{{ form_row(userCompteForm.email)}}
 				</div>
 				<div class=" col-span-1 shadow-2xl shadow-black rounded-2xl">
-					{{ form_row(userEditForm.password)}}
-					{{ form_row(userEditForm.avatar)}}
-
+					{{ form_row(userCompteForm.password)}}
+					{{ form_row(userCompteForm.avatar)}}
 				</div>
+				{% if user.adresses  is empty %}
+					<div class=" col-span-2 shadow-2xl shadow-black rounded-2xl mt-2 ">
+						<h6 class=" text-cyan-500 text-center m-4  ">
+							voulez vous ajouter une adresse
+						</h6>
+					</div>
+
+				{% else %}
+					{% for adresseType in user.adresses %}
+						<div class=" col-span-1 shadow-2xl shadow-black rounded-2xl mt-2">
+							<h6 class=" text-cyan-500 text-center m-4  ">
+								{{adresseType.TypeAdresse}}
+							</h6>
+							<dl class="max-w-md text-white divide-y divide-pink-900 mx-auto ">
+								<div class="flex flex-col pb-3">
+									<dt class="mb-1 text-pink-900 md:text-sm ">Rue</dt>
+									<dd class="text-sm ">{{adresseType.numeroRue}}
+										{{adresseType.Rue}}
+									</dd>
+								</div>
+								<div class="flex flex-col pb-3">
+									<dt class="mb-1 text-pink-900 md:text-sm ">Code Postal</dt>
+									<dd class="text-sm ">{{adresseType.codePostal}}
+									</dd>
+								</div>
+								<div class="flex flex-col pb-3">
+									<dt class="mb-1 text-pink-900 md:text-sm ">Ville</dt>
+									<dd class="text-sm ">
+										{{adresseType.ville}}</dd>
+									<div class=" flex flex-row justify-between ">
+										<a href="{{ path('home') }}" class=" buttonformValid">
+											Modifier
+										</a>
+										<a href="{{ path('home') }}" class=" buttonformBack">
+											X
+										</a>
+									</div>
+								</div>
+							</dl>
+						</div>
+					{% endfor %}
+
+
+				{% endif %}
+
+
 			</div>
+
+
 			<div class="flex flex-row justify-between  items-center p-2 mx-32 mb-6">
 				<button type="submit" class="buttonformValid ">
 					Editer
@@ -32,7 +79,7 @@
 				</a>
 			</div>
 			<div>
-				{{ form_end(userEditForm)}}
+				{{ form_end(userCompteForm)}}
 			</div>
 			{% include "partials/_flashmessage.html.twig" %}
 
