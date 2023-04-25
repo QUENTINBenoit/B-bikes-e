@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Adresse;
+use App\Entity\User;
 use App\Form\AdresseType;
 use Doctrine\ORM\EntityManagerInterface;
 use phpDocumentor\Reflection\Types\This;
@@ -27,12 +28,23 @@ class AdresseController extends AbstractController
     public function edit(
         Adresse $adresse,
         Request $request,
+
         EntityManagerInterface $doctrine,
 
     ): Response {
-        \dump("binevenue la methode d'edition d'une Adresse", $this->getUser());
+        \dump("binevenue la methode d'edition d'une Adresse", $adresse);
         $form = $this->createForm(AdresseType::class,  $adresse);
         $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $doctrine->persist($adresse);
+            $doctrine->flush();
+
+            $this->addFlash(
+                'flash-success',
+                'Les modification de l\'adresse de ' . $adresse->getTypeAdresse() . ' ont bien été enregistrées'
+            );
+            return $this->redirectToRoute('compte_user_update', ['id' => $adresse->getUser()->getId()]);
+        }
 
 
 
