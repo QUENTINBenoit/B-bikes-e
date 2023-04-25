@@ -59,10 +59,17 @@
 
 								</div>
 							</dl>
+
 						</div>
 					{% endfor %}
 				{% endif %}
+				<div class=" col-span-2 shadow-lgl shadow-black rounded-2xl mt-2  backdrop-blur-2xl ">
+					<a href="{{ path('adresse_add', {id: app.user.id}) }}" class=" text-cyan-500 text-center m-4  ">
+						voulez vous ajouter une nouvelle adresse a votre compte
+					</a>
+				</div>
 			</div>
+
 			<div class="flex flex-row justify-between  items-center p-2 mx-32 mb-6">
 				<button type="submit" class="buttonformValid ">
 					Editer

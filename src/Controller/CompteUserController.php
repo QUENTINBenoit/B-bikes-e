@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/compte/user', name: 'compte_user_')]
 class CompteUserController extends AbstractController
 {
-    #[Route('/{id}', name: 'update', methods: ['GET', 'POST'])]
+    #[Route('/{id}', name: 'update', methods: ['GET', 'POST'], requirements: ['id' => '\d+'])]
     public function updapteUserCompte(
         $id,
         User $user,
