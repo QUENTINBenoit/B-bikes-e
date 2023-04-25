@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdresseController!
+{% endblock %}
+
+{% block body %}
+	<h3></h3>
+	<div class="mx-auto max-w-8xl flex justify-center mt-20 mb-4 h-full">
+		<div class="container my-36 w-full h-auto   rounded-3xl p-4 z-10 shadow-xl shadow-black ">
+			{{ form_start(adresseForm, {'attr': {'
+      novalidate': 'novalidate',
+  }})}}
+			{{ form_end(adresseForm)}}
+
+		</div>
+	</div>
+{% endblock %}

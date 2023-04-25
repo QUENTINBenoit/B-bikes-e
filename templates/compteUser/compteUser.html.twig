@@ -21,7 +21,7 @@
 					{{ form_row(userCompteForm.password)}}
 					{{ form_row(userCompteForm.avatar)}}
 				</div>
-				{% if user.adresses  is empty %}
+				{% if user.adresses is empty %}
 					<div class=" col-span-2 shadow-2xl shadow-black rounded-2xl mt-2 ">
 						<h6 class=" text-cyan-500 text-center m-4  ">
 							voulez vous ajouter une adresse
@@ -51,7 +51,7 @@
 									<dd class="text-sm ">
 										{{adresseType.ville}}</dd>
 									<div class=" flex flex-row justify-between ">
-										<a href="{{ path('home') }}" class=" buttonformValid">
+										<a href="{{ path('adresse_edit', {id: adresseType.id}) }}" class=" buttonformValid">
 											Modifier
 										</a>
 										<a href="{{ path('home') }}" class=" buttonformBack">
@@ -62,14 +62,8 @@
 							</dl>
 						</div>
 					{% endfor %}
-
-
 				{% endif %}
-
-
 			</div>
-
-
 			<div class="flex flex-row justify-between  items-center p-2 mx-32 mb-6">
 				<button type="submit" class="buttonformValid ">
 					Editer
