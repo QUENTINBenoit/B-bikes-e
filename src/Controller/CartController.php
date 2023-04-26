@@ -26,6 +26,9 @@ class CartController extends AbstractController
     }
 
 
+
+
+
     /**
      * Ajouter un produit au panier
      * en faisant appel à la méthode add du service CartService

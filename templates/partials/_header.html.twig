@@ -15,10 +15,15 @@
 		</a>
 		{% include "components/_search.html.twig" %}
 		<div class="flex justify-center items-center md:flex-row-reverse gap-2">
-			<a href="" class="hover:text-stone-500 -order-2">
+			<a href="{{path('cart_home') }}" class="hover:text-stone-500 -order-2 relative inline-flex items-center p-1 text-sm font-medium text-center  border-[0.1rem] border-stone-600 hover:border-pink-600 rounded-lg focus:ring-2 focus:ring-stone-500 focus:outline-none   ">
 				<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor" class="w-6 h-6">
 					<path fill-rule="evenodd" d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 004.25 22.5h15.5a1.875 1.875 0 001.865-2.071l-1.263-12a1.875 1.875 0 00-1.865-1.679H16.5V6a4.5 4.5 0 10-9 0zM12 3a3 3 0 00-3 3v.75h6V6a3 3 0 00-3-3zm-3 8.25a3 3 0 106 0v-.75a.75.75 0 011.5 0v.75a4.5 4.5 0 11-9 0v-.75a.75.75 0 011.5 0v.75z" clip-rule="evenodd"/>
 				</svg>
+				{% if  app.session.get('panier')|length > 0 %}
+					<div class="absolute p-2 inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-pink-700 border-[0.13rem] border-stone-900 rounded-full -top-3 -right-3 ">
+						{{ app.session.get('panier')|length  }}
+					</div>
+				{% endif %}
 			</a>
 			{% if app.user =='' %}
 				<a href="{{path('app_login') }}" class="hover:text-stone-500 -order-3 md:order-none flex flex-col items-center mt-5">
@@ -29,10 +34,7 @@
 						Connexion
 					</h6>
 				</a>
-
-
 			{% else %}
-
 				<img
 				id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-8 h-8 mr-2 rounded-full cursor-pointer" src="{{ asset('assets/uploads/avatars/' ~ app.user.avatar ) }}" {# {{ asset('images/logo/marques/' ~ marque.logo) }} #} alt="User dropdown">
 				<!-- Dropdown menu -->
@@ -52,14 +54,10 @@
 						</li>
 					</ul>
 					<div class="rounded-b-xl">
-
 						<a href="{{ path('app_logout',{id: app.user}) }}" class=" block px-4 py-2  text-sm text-pink-900 hover:bg-stone-400 rounded-b-xl ">Sign out</a>
 					</div>
 				</div>
-
-
 			{% endif %}
-
 			<button aria-label="toggle button" aria-expanded="false" id="menu-btn" class="cursor-pointer w-7 md:hidden">
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" id="burgerSvg">
 					<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
@@ -70,17 +68,17 @@
 			</button>
 			<ul id="toggled-menu" class="w-full duration-300 mx-auto absolute backdrop-blur-3xl bg-white/10 rounded-b-3xl top-full left-0 -translate-y-full -z-10 text-white flex flex-col items-center md:static md:z-10 md:w-min md:transform-none md:border-none md:flex-row md:text-white md:divide-none md:bg-stone-900">
 				<li class="text-center py-3 md:py-0 md:mr-6 md:border-none">
-					<a href="{{path('home')}}" class="text-sm upercase font-medium hover:text-stone-500 md:text-xl">
+					<a href="{{path('home')}}" class=" {{ currentPage =='home' ? 'text-sm upercase text-pink-500 font-medium md:text-xl' : 'text-sm upercase font-medium hover:text-stone-500 md:text-xl'  }}">
 						Accueil
 					</a>
 				</li>
 				<li class="text-center py-3 md:py-0 md:mr-6">
-					<a href="{{path('product_list')}}" class="text-sm upercase font-medium w-full hover:text-stone-500 md:text-xl">
+					<a href="{{path('product_list')}}" class="{{ currentPage =='product_list' ? 'text-sm upercase text-pink-500 font-medium md:text-xl' : 'text-sm upercase font-medium hover:text-stone-500 md:text-xl' }}">
 						VTT
 					</a>
 				</li>
 				<li class="text-center py-3 md:py-0 md:mr-6">
-					<a href="{{path('product_list')}}" class="text-sm upercase font-medium hover:text-stone-500 md:text-xl">
+					<a href="{{path('product_list')}}" class="{{ currentPage =='product_list' ? 'text-sm upercase text-pink-500 font-medium md:text-xl' : 'text-sm upercase font-medium hover:text-stone-500 md:text-xl' }}">
 						VAE
 					</a>
 				</li>
