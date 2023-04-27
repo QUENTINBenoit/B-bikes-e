@@ -1061,7 +1061,7 @@
   "resolved" "https://registry.npmjs.org/@swup/plugin/-/plugin-1.0.1.tgz"
   "version" "1.0.1"
 
-"@swup/slide-theme@^1.0":
+"@swup/slide-theme@^1.0", "@swup/slide-theme@^1.0.5":
   "integrity" "sha512-0xxqtURSMDScjLMRdNjtxzo8NGCPcmp6VXrQcxIQzQDSAvwNnP8Zw871C+FSL1EMe8OhAzWAP3E3x9vzH+iLHg=="
   "resolved" "https://registry.npmjs.org/@swup/slide-theme/-/slide-theme-1.0.5.tgz"
   "version" "1.0.5"

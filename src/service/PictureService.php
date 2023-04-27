@@ -30,6 +30,7 @@ class PictureService
     // On donne un nouveau nom a l'image 
     $fichier = md5(uniqid(rand(), true)) . '.webp';
     // On récupère les infos de l'image 
+
     $pictureInfo = getimagesize($picture);
     if ($pictureInfo === false) {
       throw new \Exception('Le format de l\'image n\'est pas valide');
@@ -60,8 +61,8 @@ class PictureService
     switch ($imageWidth <=> $imageHeight) {
       case -1: // portrait
         $squarSize = $imageHeight;
-        $src_X = 0;
-        $src_Y = ($imageHeight - $imageWidth) / 2;
+        $src_X = ($imageHeight - $imageWidth) / 2;
+        $src_Y = 0;
         break;
       case 0: // carré
         $squarSize = $imageHeight;
@@ -70,8 +71,8 @@ class PictureService
         break;
       case 1: // paysage
         $squarSize = $imageWidth;
-        $src_X = ($imageHeight - $imageWidth) / 2;
-        $src_Y = 0;
+        $src_X = 0;
+        $src_Y = ($imageHeight - $imageWidth) / 2;
         break;
     }
     // On crée une nouvelle image "vierge"

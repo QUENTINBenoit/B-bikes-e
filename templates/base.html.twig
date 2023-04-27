@@ -17,11 +17,11 @@
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 	</head>
-	<body>
+	<body {{ stimulus_controller('symfony/ux-swup/swup') }} theme:"slide ">
 		{% set currentPage = app.request.get('_route') %}
 		{% include "partials/_header.html.twig"%}
 		<main>
-			<section class=" w-full h-full static font-gluten font-medium bg-gradient-to-br from-zinc-900 from-20% via-cyan-900 via-50% to-orange-950 to-90% "> {% block body %}{% endblock %}
+			<section id="swup" class=" w-full h-full static font-gluten font-medium bg-gradient-to-br from-zinc-900 from-20% via-cyan-900 via-50% to-orange-950 to-90% "> {% block body %}{% endblock %}
 
 				</section>
 			</main>
