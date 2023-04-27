@@ -1,146 +1,159 @@
-<div class="container mt-12 w-full   rounded-3xl p-4 -z-10 " >
-  {{ form_start(formProducts, {'attr': {'
+<div class="container mt-12 w-full   rounded-3xl p-4 -z-10 ">
+	{{ form_start(formProducts, {'attr': {'
       novalidate': 'novalidate',
   }})}}
 
-  
-     <h6 class=" text-3xl font-gluten text-white my-6 text-center ">Produits</h6>
 
-   
+	<h6 class=" text-3xl font-gluten text-white my-6 text-center ">Produits</h6>
 
 
-  <div class="grid  md:grid-cols-4 gap-2">
-    <div class="col-span-2 shadow-lg shadow-black rounded-3xl p-2 backdrop-blur-3xl bg-white/20">
-      {{ form_row(formProducts.Name, )}}
-      {{ form_row(formProducts.reference)}}
-          <div class= "flex justify-around items-center  mt-4 pt-6 ">
-            {{ form_row(formProducts.nouveaute)}}
-            {{ form_row(formProducts.Promotion)}}
-          </div>
-    </div>
-    <div class="col-span-2 shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 p-2">
-       {{ form_row(formProducts.Description)}}
-    </div>
-    <div class="col-span-1  shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 p-2">
-     {{ form_row(formProducts.stock)}}
-     {{ form_row(formProducts.utilisation)}}
-      {{ form_row(formProducts.Avis)}}
-    </div>
-       {# widget_class:'block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50  focus:outline-none h-96 ', #}
-    <div class="col-span-2 flex flex-col shadow-lg shadow-black h-auto rounded-3xl  backdrop-blur-3xl bg-white/20 p-2">
-      
-      <div class ="h-auto w-full">
-        {{ form_row(formProducts.image, {
+	<div class="grid  md:grid-cols-4 gap-2">
+		<div class="col-span-2 shadow-lg shadow-black rounded-3xl p-2 backdrop-blur-3xl bg-white/20">
+			{{ form_row(formProducts.Name, )}}
+			{{ form_row(formProducts.reference)}}
+			<div class="flex justify-around items-center  mt-4 pt-6 ">
+				{{ form_row(formProducts.nouveaute)}}
+				{{ form_row(formProducts.Promotion)}}
+			</div>
+		</div>
+		<div class="col-span-2 shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 p-2">
+			{{ form_row(formProducts.Description)}}
+		</div>
+		<div class="col-span-1  shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 p-2">
+			{{ form_row(formProducts.stock)}}
+			{{ form_row(formProducts.utilisation)}}
+			{{ form_row(formProducts.Avis)}}
+		</div>
+		{# widget_class:'block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50  focus:outline-none h-96 ', #}
+		<div class="col-span-2 flex flex-col shadow-lg shadow-black h-auto rounded-3xl  backdrop-blur-3xl bg-white/20 p-2">
+
+			<div class="h-auto w-full">
+				{{ form_row(formProducts.image, {
      
       })}}
-      </div>
-    
-      <div>
-        {% if app.request.attributes.get('_route') == 'admin_product_edit'  %}
-        <h2 class="text-white text-center font-gluten ">Images</h2>
-        <div class=" flex flex-wrap gap-2 p-1 ">
-          {% for image in product.images %}
-            <div class=" rounded-lg flex flex-col items-center w-16 h-auto">
-              <img src="{{ asset('assets/uploads/products/mini/300x300-' ~ image.name ) }}" alt="Image" width="150" class="rounded-lg">
-              <a href="{{ path('admin_product_delete_image', {id:image.id} ) }}" class="text-red-700 my-2" data-delete data-token="{{ csrf_token('delete' ~ image.id ) }}">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </a>
-            </div>
-          {% endfor %}
-        </div>
-        {% endif %}
-      </div>
-    </div>
-    <div class="col-span-1 flex flex-col col-start-4 shadow-lg shadow-black backdrop-blur-3xl bg-white/20 rounded-3xl  ">
-        {{ form_row(formProducts.prix)}}
-        {{ form_row(formProducts.PoucentagePromotion)}}
-        {{ form_row(formProducts.PrixPromotion)}}
-    </div>
-    <div class="col-span-2 col-start-2 flex flex-col shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 w-full ">   
-      {{ form_row(formProducts.categories)}}
-      {{ form_row(formProducts.marques)}}
-      {{ form_row(formProducts.genres)}}
-    </div>
-  </div> 
-  <h6 class=" text-3xl font-gluten text-white m-6 text-center">Equipements</h6>
-  <div class="grid  md:grid-cols-4 gap-2">
-      <div class="col-span-2 flex flex-col shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 w-full ">   
-      {# {{ form_row(formEditProduct.motorisation)}} #}
-      {{form_row(formProducts.TailleRoueVTT)}}
-      {{form_row(formProducts.freinds)}}
-      {{form_row(formProducts.pratiques)}}
-      {{form_row(formProducts.diametreDeRoue)}}
-      {{form_row(formProducts.cadre)}}
-      {{form_row(formProducts.amortisseur)}}
-      {{form_row(formProducts.cintre)}}
-      {{form_row(formProducts.Poids)}}
-      </div> 
-      <div class="col-span-2 flex flex-col shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 w-full ">   
-      {{ form_row(formProducts.fourche)}}
-      {{form_row(formProducts.derailleurAr)}}
-      {{form_row(formProducts.manettes)}}
-      {{form_row(formProducts.pneus)}}
-      {{form_row(formProducts.cassette)}}
-      {{form_row(formProducts.pedalier)}}
-      {{form_row(formProducts.potence)}}
-      {{form_row(formProducts.Selle)}}
-      {{form_row(formProducts.tigeDeSelle)}}
-      </div>    
-   </div>
+			</div>
 
-  
-<div>
-<div class ="flex flex-row justify-between  items-center p-2 mx-32 mb-6" >
-  <button type="submit" 
-          class="
-                ml-6 
-                mt-12
-                text-white 
-                bg-stone-900 
-                hover:bg-green-800 
-                focus:ring-2
-                focus:outline-none 
-                focus:ring-stone-900 
-                font-medium 
-                rounded-lg 
-                text-sm 
-                w-full 
-                sm:w-auto 
-                px-3 
-                py-2 
-                text-center"
-    >
-      Enregistrer
-    </button>
- <a       href="{{ path('admin_product_list')   }}"
-          type="submit" 
-          class="
-                ml-6 
-                mt-12
-                text-white 
-                bg-stone-900 
-                hover:bg-pink-800 
-                focus:ring-2
-                focus:outline-none 
-                focus:ring-stone-900 
-                font-medium 
-                rounded-lg 
-                text-sm 
-                w-full 
-                sm:w-auto 
-                px-3 
-                py-2 
-                text-center"
-    >
-    back
-    </a>
+			<div>
+				{% if app.request.attributes.get('_route') == 'admin_product_edit'  %}
+					<h2 class="text-white text-center font-gluten ">Images</h2>
+					<div class=" flex flex-wrap gap-2 p-1 ">
+						{% for image in product.images %}
+							<div class=" rounded-lg flex flex-col items-center w-16 h-auto">
+								<img src="{{ asset('assets/uploads/products/mini/300x300-' ~ image.name ) }}" alt="Image" width="150" class="rounded-lg">
+								<a href="{{ path('admin_product_delete_image', {id:image.id} ) }}" class="text-red-700 my-2" data-delete data-token="{{ csrf_token('delete' ~ image.id ) }}">
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+									</svg>
+								</a>
+							</div>
+
+						{% endfor %}
+						<div class="grid grid-cols-3 gap-4 mb-4 sm:mb-5">
+							<div class="p-2 w-auto bg-gray-100 rounded-lg dark:bg-gray-700">
+								<img src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-side-image.png" alt="iMac Side Image">
+							</div>
+							<div class="p-2 w-auto bg-gray-100 rounded-lg dark:bg-gray-700">
+								<img src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-front-image.png" alt="iMac Front Image">
+							</div>
+							<div class="p-2 w-auto bg-gray-100 rounded-lg dark:bg-gray-700">
+								<img src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-back-image.png" alt="iMac Back Image">
+							</div>
+							<div class="p-2 w-auto bg-gray-100 rounded-lg dark:bg-gray-700">
+								<img src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-side-image.png" alt="iMac Back Image">
+							</div>
+							<div class="p-2 w-auto bg-gray-100 rounded-lg dark:bg-gray-700">
+								<img src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-back-image.png" alt="iMac Front Image">
+							</div>
+							<div class="p-2 w-auto bg-gray-100 rounded-lg dark:bg-gray-700">
+								<img src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-side-image.png" alt="iMac Side Image">
+							</div>
+						</div>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+		<div class="col-span-1 flex flex-col col-start-4 shadow-lg shadow-black backdrop-blur-3xl bg-white/20 rounded-3xl  ">
+			{{ form_row(formProducts.prix)}}
+			{{ form_row(formProducts.PoucentagePromotion)}}
+			{{ form_row(formProducts.PrixPromotion)}}
+		</div>
+		<div class="col-span-2 col-start-2 flex flex-col shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 w-full ">
+			{{ form_row(formProducts.categories)}}
+			{{ form_row(formProducts.marques)}}
+			{{ form_row(formProducts.genres)}}
+		</div>
+	</div>
+	<h6 class=" text-3xl font-gluten text-white m-6 text-center">Equipements</h6>
+	<div class="grid  md:grid-cols-4 gap-2">
+		<div
+			class="col-span-2 flex flex-col shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 w-full ">
+			{# {{ form_row(formEditProduct.motorisation)}} #}
+			{{form_row(formProducts.TailleRoueVTT)}}
+			{{form_row(formProducts.freinds)}}
+			{{form_row(formProducts.pratiques)}}
+			{{form_row(formProducts.diametreDeRoue)}}
+			{{form_row(formProducts.cadre)}}
+			{{form_row(formProducts.amortisseur)}}
+			{{form_row(formProducts.cintre)}}
+			{{form_row(formProducts.Poids)}}
+		</div>
+		<div class="col-span-2 flex flex-col shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 w-full ">
+			{{ form_row(formProducts.fourche)}}
+			{{form_row(formProducts.derailleurAr)}}
+			{{form_row(formProducts.manettes)}}
+			{{form_row(formProducts.pneus)}}
+			{{form_row(formProducts.cassette)}}
+			{{form_row(formProducts.pedalier)}}
+			{{form_row(formProducts.potence)}}
+			{{form_row(formProducts.Selle)}}
+			{{form_row(formProducts.tigeDeSelle)}}
+		</div>
+	</div>
 
 
-</div>
+	<div>
+		<div class="flex flex-row justify-between  items-center p-2 mx-32 mb-6">
+			<button type="submit" class="
+										                ml-6
+										                mt-12
+										                text-white
+										                bg-stone-900
+										                hover:bg-green-800
+										                focus:ring-2
+										                focus:outline-none
+										                focus:ring-stone-900
+										                font-medium
+										                rounded-lg
+										                text-sm
+										                w-full
+										                sm:w-auto
+										                px-3
+										                py-2
+										                text-center">
+				Enregistrer
+			</button>
+			<a href="{{ path('admin_product_list') }}" type="submit" class="
+										                ml-6
+										                mt-12
+										                text-white
+										                bg-stone-900
+										                hover:bg-pink-800
+										                focus:ring-2
+										                focus:outline-none
+										                focus:ring-stone-900
+										                font-medium
+										                rounded-lg
+										                text-sm
+										                w-full
+										                sm:w-auto
+										                px-3
+										                py-2
+										                text-center">
+				back
+			</a>
 
 
+		</div>
 
-  {{ form_end(formProducts)}}
- 
+
+		{{ form_end(formProducts)}}

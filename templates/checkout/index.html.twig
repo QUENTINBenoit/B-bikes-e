@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commande
+{% endblock %}
+
+{% block body %}
+	<div class=" mt-20 h-auto p-4">
+		<div class=" container w-[80rem] h-auto  rounded-3xl text-white  ">
+			<h1 class="text-4xl text-center p-4">Validation de ta commande</h1>
+			<section class=" grid grid-cols-6 gap-2 h-auto m-2">
+				<div class="col-span-3 h-auto backdrop-blur-3xl bg-black/50 border-cyan-600  border-2  rounded-xl  p-3">
+					<h5 class=" text-center  w-auto mx-auto text-lg">A Domicile</h5>
+					<p class=" text-red-700 mx-auto text-center w-auto">A partir de 5€</p>
+					<div class="  h-56 w-full flex flex-row justify-between items-center">
+						<div class="flex flex-col w-1/2 p-2">
+							<h6 class=" mb-2">Ton adresse de livarison</h6>
+							<p class=" ">M. QUENTIN Benoît</p>
+							<p class=" text-sm ">2 rue de la paix</p>
+							<p class=" text-sm ">75000 Paris</p>
+							<p class=" text-sm ">75000 Paris</p>
+							<p class=" text-sm ">Tel : 0654064583</p>
+						</div>
+						<div class="flex flex-col justify-center items-end w-1/2 p-4 ">
+							<a href="#" class=" w-auto bg-black rounded-xl p-1 m-1">
+								button</a>
+							<a href="#" class="  w-auto bg-black rounded-xl p-1 m-1">
+								button</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-span-3  h-auto backdrop-blur-3xl bg-black/50  border-cyan-600  border-2  rounded-xl  p-3">
+					<h5 class=" text-center  w-auto mx-auto text-lg">
+						Mode de livraison
+					</h5>
+					<div class="  h-56 w-full flex flex-row items-center ">
+						<div class="flex flex-col w-5/6   p-2">
+							<div class=" flex flex-row justify-between mb-2 ">
+								<p class=" text-sm">Livraison à donmicile</p>
+								<p class="text-sm text-red-600">5€</p>
+							</div>
+							<div class=" flex flex-row justify-between mb-2 ">
+								<p class=" text-sm">
+									Livraison Chronopost Expesse(avant 13h)</p>
+								<p class="text-sm text-red-600">5€</p>
+							</div>
+							<div class=" flex flex-row justify-between mb-2 ">
+								<p class=" text-sm">Livrasionson Chonopost Classique</p>
+								<p class="text-sm text-red-600">5€</p>
+							</div>
+
+
+						</div>
+
+					</div>
+				</div>
+				<div class="col-span-6  flex flex-col  h-auto items-center backdrop-blur-3xl bg-black/50  border-cyan-600  border-2  rounded-xl  p-3">
+					<h5 class=" text-center  w-auto mx-auto text-lg">
+						Paiement
+					</h5>
+					<div class="text-center p-1">
+						<h6 class="">Ton adresse de livarison</h6>
+						<p class="font-normal">M. QUENTIN Benoit 82 la pelterie 35270 meillac</p>
+					</div>
+					<a href="#" class="  w-auto bg-black rounded-xl p-1 m-1">
+						button</a>
+				</div>
+				<div class="col-span-6  flex flex-col  h-auto items-center backdrop-blur-3xl bg-black/50  border-cyan-600  border-2  rounded-xl  p-3">
+					<h5 class=" text-center  w-auto mx-auto text-lg">
+						Ton Panier
+					</h5>
+					<table class="w-full text-sm  text-left text-gray-500  ">
+						<thead class="text-xs text-gray-700 uppercase "></thead>
+						<tbody>
+							<tr class=" border-b  bg-slate-400  ">
+								<td class="w-32 p-4">
+									image
+								</td>
+								<td class="px-6 py-4 font-semibold text-gray-900">
+									image
+								</td>
+								<td class="w-32 p-4">
+									image
+								</td>
+								<td class="w-32 p-4">
+									image
+								</td>
+								<td class="w-32 p-4">
+									image
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-span-2 bg-slate-400 h-16 rounded-xl"></div>
+				<div class="col-span-2 bg-slate-400 h-16 rounded-xl"></div>
+				<div class="col-span-2 bg-slate-400 h-16 rounded-xl"></div>
+			</section>
+		</div>
+	</div>
+{% endblock %}
