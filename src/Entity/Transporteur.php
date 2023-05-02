@@ -25,6 +25,12 @@ class Transporteur
     {
         $this->commande = new ArrayCollection();
     }
+    public function __toString(): string
+    {
+        return $this->type;
+    }
+
+
 
     public function getId(): ?int
     {
@@ -50,6 +56,9 @@ class Transporteur
     {
         return $this->commande;
     }
+
+
+
 
     public function addCommande(Commande $commande): self
     {

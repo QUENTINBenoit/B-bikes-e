@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<div class="col-span-2 shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 p-2">
-			{{ form_row(formProducts.Description)}}
+			{{ form_row(formProducts.Description, {'attr': {'class': 'w-full h-96'}})}}
 		</div>
 		<div class="col-span-1  shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 p-2">
 			{{ form_row(formProducts.stock)}}
@@ -55,12 +55,12 @@
 				{% endif %}
 			</div>
 		</div>
-		<div class="col-span-1 flex flex-col col-start-4 shadow-lg shadow-black backdrop-blur-3xl bg-white/20 rounded-3xl  ">
+		<div class="col-span-1 p-2 flex flex-col col-start-4 shadow-lg shadow-black backdrop-blur-3xl bg-white/20 rounded-3xl  ">
 			{{ form_row(formProducts.prix)}}
 			{{ form_row(formProducts.PoucentagePromotion)}}
 			{{ form_row(formProducts.PrixPromotion)}}
 		</div>
-		<div class="col-span-2 col-start-2 flex flex-col shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 w-full ">
+		<div class="col-span-2 p-2 col-start-2 flex flex-col shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 w-full ">
 			{{ form_row(formProducts.categories)}}
 			{{ form_row(formProducts.marques)}}
 			{{ form_row(formProducts.genres)}}
@@ -69,7 +69,7 @@
 	<h6 class=" text-3xl font-gluten text-white m-6 text-center">Equipements</h6>
 	<div class="grid  md:grid-cols-4 gap-2">
 		<div
-			class="col-span-2 flex flex-col shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 w-full ">
+			class="col-span-2 p-2 flex flex-col shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 w-full ">
 			{# {{ form_row(formEditProduct.motorisation)}} #}
 			{{form_row(formProducts.TailleRoueVTT)}}
 			{{form_row(formProducts.freinds)}}
@@ -80,7 +80,7 @@
 			{{form_row(formProducts.cintre)}}
 			{{form_row(formProducts.Poids)}}
 		</div>
-		<div class="col-span-2 flex flex-col shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 w-full ">
+		<div class="col-span-2 p-2 flex flex-col shadow-lg shadow-black rounded-3xl backdrop-blur-3xl bg-white/20 w-full ">
 			{{ form_row(formProducts.fourche)}}
 			{{form_row(formProducts.derailleurAr)}}
 			{{form_row(formProducts.manettes)}}

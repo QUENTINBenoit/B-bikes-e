@@ -38,7 +38,6 @@ class Adresse
     private ?User $user = null;
 
 
-
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
@@ -47,7 +46,12 @@ class Adresse
     // fonction toString
     public function __toString()
     {
-        return $this->nomAdresse;
+        return $this->nomAdresse . '[-br]' .
+
+            $this->numeroRue . ' '  .
+            $this->Rue  . '[-br]' .
+            $this->codePostal . '[-br] ' .
+            $this->ville . '[-br]';
     }
 
     public function getId(): ?int
