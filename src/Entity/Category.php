@@ -41,6 +41,9 @@ class Category
     #[ORM\OneToMany(mappedBy: 'parent', targetEntity: self::class)]
     private Collection $categories;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $imageCatego = null;
+
 
 
 
@@ -176,6 +179,18 @@ class Category
                 $category->setParent(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImageCatego(): ?string
+    {
+        return $this->imageCatego;
+    }
+
+    public function setImageCatego(?string $imageCatego): self
+    {
+        $this->imageCatego = $imageCatego;
 
         return $this;
     }

@@ -1061,7 +1061,7 @@
   "resolved" "https://registry.npmjs.org/@swup/plugin/-/plugin-1.0.1.tgz"
   "version" "1.0.1"
 
-"@swup/slide-theme@^1.0", "@swup/slide-theme@^1.0.5":
+"@swup/slide-theme@^1.0":
   "integrity" "sha512-0xxqtURSMDScjLMRdNjtxzo8NGCPcmp6VXrQcxIQzQDSAvwNnP8Zw871C+FSL1EMe8OhAzWAP3E3x9vzH+iLHg=="
   "resolved" "https://registry.npmjs.org/@swup/slide-theme/-/slide-theme-1.0.5.tgz"
   "version" "1.0.5"
@@ -1121,6 +1121,11 @@
     "tmp" "^0.2.1"
     "webpack-dev-server" "^4.8.0"
     "yargs-parser" "^21.0.0"
+
+"@tailwindcss/aspect-ratio@^0.4.2":
+  "integrity" "sha512-8QPrypskfBa7QIMuKHg2TA7BqES6vhBrDLOv8Unb6FcFyd3TjKbc6lcmb9UPQHxfl24sXoJ41ux/H7qQQvfaSQ=="
+  "resolved" "https://registry.npmjs.org/@tailwindcss/aspect-ratio/-/aspect-ratio-0.4.2.tgz"
+  "version" "0.4.2"
 
 "@tailwindcss/forms@^0.5.3":
   "integrity" "sha512-y5mb86JUoiUgBjY/o6FJSFZSEttfb3Q5gllE4xoKjAAD+vBrnIhE4dViwUuow3va8mpH4s9jyUbUbrRGoRdc2Q=="
@@ -4487,7 +4492,7 @@
   dependencies:
     "get-port" "^3.1.0"
 
-"tailwindcss@^3.3.1", "tailwindcss@>=3.0.0 || >= 3.0.0-alpha.1":
+"tailwindcss@^3.3.1", "tailwindcss@>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1", "tailwindcss@>=3.0.0 || >= 3.0.0-alpha.1":
   "integrity" "sha512-Vkiouc41d4CEq0ujXl6oiGFQ7bA3WEhUZdTgXAhtKxSy49OmKs8rEfQmupsfF0IGW8fv2iQkp1EVUuapCFrZ9g=="
   "resolved" "https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.3.1.tgz"
   "version" "3.3.1"

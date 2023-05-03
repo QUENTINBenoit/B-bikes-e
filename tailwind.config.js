@@ -18,6 +18,13 @@ module.exports = {
       fontFamily: {
         gluten: ["Gluten"],
       },
+      backgroundImage: {  
+        'hero-pattern': "url('/assets/uploads/imagehome/homeimg.jpg')",
+        
+        },
+        corePlugins: {
+          aspectRatio: false,
+        },
     },
     container: {
       center: true,
@@ -26,5 +33,6 @@ module.exports = {
   plugins: [
     require("@tailwindcss/forms"),
     require("flowbite/plugin"),
+    require('@tailwindcss/aspect-ratio'),
   ],
 };

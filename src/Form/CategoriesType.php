@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,7 +15,12 @@ class CategoriesType extends AbstractType
         $builder
             ->add('name')
             ->add('parent')
-            ->add('categoryOrder');
+            ->add('categoryOrder')
+            ->add('imageCatego', FileType::class, [
+                'label' => 'Image',
+                'mapped' => false,
+                'required' => false,
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

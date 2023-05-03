@@ -6,63 +6,54 @@
 {% endblock %}
 
 {% block body %}
+	<section class="text-white  bg-gradient-to-b from-stone-950 from-10% via-stone-900 via-50%   dark:bg-gray-900 pt-24 ">
 
-	<div class=" container flex flex-col flex-wrap items-center h-auto ">
-		<div class=" flex flex-col justify-center mt-24 w-auto  items-center p-3">
-			<h1 class=" text-slate-900 text-4xl font-gluten text-center ">
-				Bienvenue sur
-				<span class=" font-bold ">
-					B
-					<strong>
-						<span class="text-pink-600 ">'</span>
-					</strong>
-					bikes
-					<strong>
-						<span class="text-pink-600">.</span>
-					</strong>
-					e
-				</span>
-			</h1>
-			<p class=" text-left w-96">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos expedita quaerat autem dolorem
-																								        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos expedita quaerat autem dolorem
-			</p>
-		</div>
-		<section class="bg-white dark:bg-gray-900">
-			<div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
-				<div class="mr-auto place-self-center lg:col-span-7">
-					<h1 class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">Payments tool for software companies</h1>
-					<p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">From checkout to global sales tax compliance, companies around the world use Flowbite to simplify their payment stack.</p>
-					<a href="#" class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
-						Get started
-						<svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-							<path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-						</svg>
-					</a>
-					<a href="#" class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-						Speak to Sales
-					</a>
-				</div>
-				<div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
-					<img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png" alt="mockup">
-				</div>
+		<div class="grid max-w-screen-xl  px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+			<div class="hidden lg:mt-0   lg:col-span-5 lg:flex">
+				<img src="{{ asset('assets/uploads/imagehome/benVtt.png' ) }}" alt="mockup" class="">
 			</div>
-		</section>
+			<div class="mr-auto place-self-center lg:col-span-7 lg:mt-24">
+				<h1 class="max-w-2xl mb-4 font-extrabold tracking-tight leading-none md:text-5xl xl:text-4xl  font-gluten text-center">
+					Bienvenue sur
+					<span class=" font-bold ">
+						B
+						<strong>
+							<span class="text-pink-600 ">'</span>
+						</strong>
+						bikes
+						<strong>
+							<span class="text-pink-600">.</span>
+						</strong>
+						e
+					</span>
+				</h1>
+				<p class="max-w-2xl mb-6 font-light text-gray-100 lg:mb-8 md:text-lg lg:text-xl">
+					<span class="text-red-600">
+						Attenttion
+					</span>
+					Ce site est entierement fictif il a pour but de montrer mes competences en developpement web
+				</p>
+			</div>
+		</div>
+	</section>
+	<div
+		class=" container flex flex-col flex-wrap items-center h-auto ">
 		{# liste des categories#}
 		<section class=" container  flex flex-col items-center justify-between w-full mt-16 ">
 			<h2 class=" text-slate-900 text-4xl font-gluten m-4 ">
 				Categories</h2>
-
 			<div class="flex  flex-wrap container  justify-around w-full ">
 				{% for category in categories %}
 					{% if category.parent == null %}
-						<a href="{{path('categorie_catego', {id: category.id} ) }}" class=" w-36 h-36  rounded-full  shadow-xl shadow-black ml-2 p-2  backdrop-blur-3xl bg-white/20 flex flex-col items-center justify-center hover:bg-amber-600 focus:ring-2 focus:outline-none focus:ring-pink-900">
-							<h5 class="mb-2 text-xl text-white font-bold ">{{ category.name}}</h5>
+						<a href="{{path('categorie_catego', {id: category.id} ) }}" class=" relative w-56 h-full mb-4   rounded-3xl hover:scale-105 hover:sepia ml-2 hover:transition hover:duration-150 hover:ease-in-out   flex flex-col items-center justify-end    ">
+							<img src="{{ asset('assets/uploads/imageCatego/') ~ category.imageCatego }}" class='rounded-3xl ' alt="">
+							<h5 class=" absolute text-xl text-black  font-bold  flex justify-center items-center  rounded-b-3xl backdrop-blur-sm  bg-black/10 h-1/5  w-full ">
+								<span>{{ category.name}}</span>
+							</h5>
 						</a>
 					{% endif %}
 				{% endfor %}
 			</div>
-
 		</section>
 		{# liste des marques  #}
 		<section class=" flex flex-col items-center justify-between w-full rounded-2xl mt-16">
@@ -83,7 +74,6 @@
 			<div class="  grid grid-cols-2 md:flex md:flex-row  justify-center font-gluten   w-full p-2 items-center ">
 				{% for news in  product %}
 					{% if news.nouveaute == true  %}
-
 						<a href="{{path('product_details', {id: news.id} ) }}" class="m-2">
 							<div class=" bg-white w-32 h-40 rounded-2xl ">
 								<div class=" bg-black text-white font-semibold rounded-t-2xl text-center p-y-[0.5rem]">
@@ -103,9 +93,6 @@
 
 				{% endfor %}
 			</div>
-
 		</section>
 	</div>
-
-
 {% endblock %}

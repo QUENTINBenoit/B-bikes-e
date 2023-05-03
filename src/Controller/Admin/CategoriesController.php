@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Category;
 use App\Form\CategoriesType;
 use App\Repository\CategoryRepository;
+use App\service\PictureService;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -88,11 +89,15 @@ class CategoriesController extends AbstractController
      */
     #[Route('/edit/{id}',  name: 'edit')]
 
-    public function editCategories(Category $category, Request $request, ManagerRegistry $doctrine)
+    public function editCategories(Category $category, Request $request, ManagerRegistry $doctrine, PictureService $pictureService)
     {
         $form = $this->createForm(CategoriesType::class, $category);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $imageCategory = $form->get('imageCatego')->getData();
+            $folder = 'imageCatego';
+            $fichier = $pictureService->add($imageCategory, $folder);
+            $category->setImageCatego($fichier);
             $em = $doctrine->getManager();
             $em->flush();
             $this->addFlash('flash-success', 'la catégorie ' . $category->getName() . ' a bien été mise jour');
