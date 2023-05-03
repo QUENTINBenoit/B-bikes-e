@@ -6,88 +6,106 @@
 {% block body %}
 	<div class=" mt-20 h-auto p-4">
 		<div class=" container w-[80rem] h-auto  rounded-3xl text-white  ">
-
-
 			<h1 class="text-4xl text-center p-4">Validation de ta commande</h1>
 			{{ form_start(formCheckout, {'attr': {'novalidate': 'novalidate'}}) }}
 			<section class=" grid grid-cols-6 gap-2 h-auto m-2">
-
-
 				<div class="col-span-3 h-auto backdrop-blur-3xl bg-black/50 border-cyan-600  border-2  rounded-xl  p-3">
-					<h6 class=" mb-2 text-center">Ton adresse de livraison</h6>		
-						{#
-							 {{ form_widget(formCheckout)|replace({'[-br]': '</br>'})|raw }}#}
-						{#	{{ form_row(formCheckout.addreses)|replace({'[-br]': '</br>'})|raw}}#}
-						  <div class ='flex bg-green-400 w-full h-full justify-around  items-center p-2'>
+					<h6 class=" mb-2 text-center">Ton adresse de livraison</h6>
+					<div class='flex w-full  justify-around  items-center p-2'>
 						{% for item in formCheckout.addreses %}
-							      	{{ form_row(item)|replace({'[-br]': '</br>'})|raw
-											}}			
+							{{ form_row(item)|replace({'[-br]': '</br>'})|raw}}
 						{% endfor %}
-							 </div>
-	      		   		
-							{#	{{ form_row(formCheckout.addreses)}}#}
+					</div>
 				</div>
-			
-
 				<div class="col-span-3  h-auto backdrop-blur-3xl bg-black/50  border-cyan-600  border-2  rounded-xl  p-3">
 					<h5 class=" text-center  w-auto mx-auto text-lg">
 						Mode de livraison
 					</h5>
-					<div class="  h-56 w-full flex flex-row items-center ">
+					<div class="  h-56 w-full flex flex-row items-center justify-center ">
 						<div class="flex flex-col w-5/6   p-2">
 							<div class=" flex flex-row justify-between mb-2 ">
-								<p class=" text-sm">
-							         {{ form_row(formCheckout.transporteur) }}       </p>
-								<p class="text-sm text-red-600">5€</p>
-							</div>
+								{{ form_row(formCheckout.transporteur, { 'attr': {'class': 'flex items-center justify-center'}})|replace({'[-br]':'</br>'})|raw}}
 						</div>
-
 					</div>
 				</div>
-				<div class="col-span-6  flex flex-col  h-auto items-center backdrop-blur-3xl bg-black/50  border-cyan-600  border-2  rounded-xl  p-3">
-					<h5 class=" text-center  w-auto mx-auto text-lg">
-						Paiement
-					</h5>
-					<div class="text-center p-1">
-						<h6 class="">Ton adresse de livarison</h6>
-						<p class="font-normal">M. QUENTIN Benoit 82 la pelterie 35270 meillac</p>
-					</div>
-					<a href="#" class="  w-auto bg-black rounded-xl p-1 m-1">
-						button</a>
+			</div>
+			<div class="col-span-6  flex flex-col  h-auto items-center backdrop-blur-3xl bg-black/50  border-cyan-600  border-2  rounded-xl  p-3">
+				<h5 class=" text-center  w-auto mx-auto text-lg">
+					Adresse de facturation
+				</h5>
+				<div class="text-center p-1">
+					{% for adresse in user.adresses %}
+						{% if adresse.addresseFav %}
+							<p class="font-normal">{{user.firstname }}
+								{{user.lastname }}
+							</p>
+							<p class="font-normal">{{adresse.numeroRue }}
+								{{adresse.Rue }}
+							</p>
+							<p class="font-normal">{{adresse.codePostal }}
+								{{adresse.ville}}
+							</p>
+						{% endif %}
+					{% endfor %}
 				</div>
-				<div class="col-span-6  flex flex-col  h-auto items-center backdrop-blur-3xl bg-black/50  border-cyan-600  border-2  rounded-xl  p-3">
-					<h5 class=" text-center  w-auto mx-auto text-lg">
-						Ton Panier
-					</h5>
-					<table class="w-full text-sm  text-left text-gray-500  ">
-						<thead class="text-xs text-gray-700 uppercase "></thead>
+			</div>
+			<div class="col-span-6  flex flex-col  h-auto items-center backdrop-blur-3xl bg-black/10  border-cyan-600  border-2  rounded-xl  p-3">
+				<h5 class=" text-center  w-auto mx-auto text-lg">
+					Ton Panier
+				</h5>
+				<div class="relative overflow-x-auto shadow-xl sm:rounded-lg w-full">
+					<table class="w-full text-sm text-left text-white backdrop-blur-3xl bg-black/10 ">
+						<thead class="text-xs text-white uppercase backdrop-blur-3xl bg-black/30 ">
+							<th scope="col" class="px-6 py-3">
+								<span class="sr-only">Image</span>
+							</th>
+							<th scope="col" class="px-6 py-3">
+								Produit
+							</th>
+							<th scope="col" class="px-6 py-3">
+								Qty
+							</th>
+							<th scope="col" class="px-6 py-3">
+								Prix
+							</th>
+						</thead>
 						<tbody>
-							<tr class=" border-b  bg-slate-400  ">
-								<td class="w-32 p-4">
-									image
+							{% for productList in infosSession %}
+								<tr class=" border-b  ">
+									<td class="w-32 p-4">
+										<img src="{{ asset('assets/uploads/products/' ~ productList.imageRecup ) }}" alt="" class="w-24 h-24 object-cover rounded-xl">
+									</td>
+									<td class="px-6 py-4 font-semibold ">
+										{{productList.produit.Name}}
+									</td>
+
+									<td class="w-32 p-4">
+										{{ productList.quantite }}
+									</td>
+									<td class="w-32 p-4">
+										{{productList.produit.prix * productList.quantite}}€
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+						<tfoot class="backdrop-blur-3xl bg-black/30">
+							<tr>
+								<td colspan="3" class="px-6 py-4 text-sm font-semibold ">
+									Total
 								</td>
-								<td class="px-6 py-4 font-semibold text-gray-900">
-									image
-								</td>
-								<td class="w-32 p-4">
-									image
-								</td>
-								<td class="w-32 p-4">
-									image
-								</td>
-								<td class="w-32 p-4">
-									image
+								<td class="px-6 py-4  font-semibold bg-gray-100 text-gray-700 ">
+									{{totalSession}}€
 								</td>
 							</tr>
-						</tbody>
+						</tfoot>
 					</table>
 				</div>
-				<div class="col-span-2 bg-slate-400 h-16 rounded-xl"></div>
-				<div class="col-span-2 bg-slate-400 h-16 rounded-xl"></div>
-				<div class="col-span-2 bg-slate-400 h-16 rounded-xl"></div>
-			</section>
-						{{ form_end(formCheckout) }}
-		</div>
+			</div>
 
+			<a href="" class="col-span-2 col-start-3 flex justify-center items-center text-white backdrop-blur-3xl bg-black/30 h-16 rounded-xl hover:bg-green-400">
+				Valider ma commande
+			</a>
+		</section>
+		{{ form_end(formCheckout) }}
 	</div>
-{% endblock %}
+</div>{% endblock %}

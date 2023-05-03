@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\TransporteurRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: TransporteurRepository::class)]
@@ -21,13 +22,19 @@ class Transporteur
     #[ORM\OneToMany(mappedBy: 'transporteurs', targetEntity: Commande::class)]
     private Collection $commande;
 
+    #[ORM\Column(nullable: true)]
+    private ?float $price = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $content = null;
+
     public function __construct()
     {
         $this->commande = new ArrayCollection();
     }
     public function __toString(): string
     {
-        return $this->type;
+        return $this->type . ' ' . $this->price . ' ' .  $this->content;
     }
 
 
@@ -78,6 +85,30 @@ class Transporteur
                 $commande->setTransporteurs(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPrice(): ?float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(?float $price): self
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
+    public function setContent(?string $content): self
+    {
+        $this->content = $content;
 
         return $this;
     }

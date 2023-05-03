@@ -18,7 +18,22 @@ class AdresseType extends AbstractType
             ->add('Rue')
             ->add('numeroRue')
             ->add('codePostal')
-            ->add('ville');
+            ->add('ville')
+            ->add(
+                'addresseFav',
+                ChoiceType::class,
+                [
+                    'choices' => [
+                        'Oui' => true,
+                        'Non' => false,
+                    ],
+                    'expanded' => true,
+                    'multiple' => false,
+                    'label' => 'Adresse favorite',
+                    'required' => true,
+
+                ]
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver): void

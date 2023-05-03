@@ -10,6 +10,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Validator\Constraints\Choice;
 
 class CheckoutType extends AbstractType
 {
@@ -39,10 +40,18 @@ class CheckoutType extends AbstractType
 
             ->add('transporteur', EntityType::class, [
                 'class' => Transporteur::class,
-                'label' => false,
+                'label' => \false,
                 'multiple' => false,
                 'expanded' => true,
                 'required' => true,
+
+                'choice_label' => function (Transporteur $transporteur) {
+                    return
+                        $transporteur->getType() . ' [-br] ' .
+                        $transporteur->getContent() . ' [-br] ' .
+                        $transporteur->getPrice() . ' '  . '€';
+                },
+
 
             ]);
     }

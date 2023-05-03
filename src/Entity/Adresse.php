@@ -37,6 +37,9 @@ class Adresse
     #[ORM\ManyToOne(inversedBy: 'adresses')]
     private ?User $user = null;
 
+    #[ORM\Column]
+    private ?bool $addresseFav = null;
+
 
     public function __construct()
     {
@@ -151,6 +154,18 @@ class Adresse
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function isAddresseFav(): ?bool
+    {
+        return $this->addresseFav;
+    }
+
+    public function setAddresseFav(bool $addresseFav): self
+    {
+        $this->addresseFav = $addresseFav;
 
         return $this;
     }

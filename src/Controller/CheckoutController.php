@@ -16,7 +16,7 @@ class CheckoutController extends AbstractController
     #[Route('/checkout', name: 'app_checkout', methods: ['GET', 'POST'])]
     public function index(CartService $cartService,   ProduitsRepository $produitsRepository, Request $request): Response
     {
-        // $user = $this->getUser();
+        $user = $this->getUser();
         if (!$this->getUser()) {
             return $this->redirectToRoute('app_login');
         };
@@ -34,8 +34,9 @@ class CheckoutController extends AbstractController
 
         return $this->render('checkout/checkout.html.twig', [
 
-            // 'user' => $user,
-            'infosSession' => $session,
+            'user' => $user,
+            'infosSession' => $session['dataPanier'],
+            'totalSession' => $session['total'],
             'formCheckout' => $form->createView()
 
         ]);
