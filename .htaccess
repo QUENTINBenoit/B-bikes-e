@@ -3,9 +3,9 @@
    RewriteOptions inherit
 
    # SSL and let's encrypt
-   RewriteCond %{REQUEST_URI} !^/\.well-known/acne-challenge/.+$
-   RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32\.txt(?:\ Comodo\ DCV)$
-   RewriteRule ^.well-known/acne-challenge - [l]
+    # RewriteCond %{REQUEST_URI} !^/\.well-known/acne-challenge/.+$
+     #RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32\.txt(?:\ Comodo\ DCV)$
+    # RewriteRule ^.well-known/acne-challenge - [l]  #
 
    # redirect t no-www
    RewriteBase
