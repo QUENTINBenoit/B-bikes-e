@@ -6,3 +6,6 @@ when@dev:
     web_profiler_profiler:
         resource: '@WebProfilerBundle/Resources/config/routing/profiler.xml'
         prefix: /_profiler
+    errors:
+        resource: '@FrameworkBundle/Resources/config/routing/errors.xml'
+        prefix:   /_error
