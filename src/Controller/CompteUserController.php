@@ -24,7 +24,6 @@ class CompteUserController extends AbstractController
         Request $request,
         PictureService $pictureService
     ): Response {
-        dump($user);
         // mise a jour du compte utilisateur
         $form = $this->createForm(CompteUserType::class, $user);
 

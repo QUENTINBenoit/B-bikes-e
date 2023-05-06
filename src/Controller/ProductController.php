@@ -56,7 +56,7 @@ class ProductController extends AbstractController
     {
 
         $detailsProduct = $produitsRepository->findWithDetailsProduct($id);
-        \dump($detailsProduct);
+
 
         return $this->render('product/detailsProduit.html.twig', [
             'productId' => $detailsProduct,
