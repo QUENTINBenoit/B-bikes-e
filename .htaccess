@@ -1,0 +1,23 @@
+<ifModule mod_rewrite.c>
+   RewriteEngine on
+   RewriteOptions inherit
+
+   # SSL and let's encrypt
+   RewriteCond %{REQUEST_URI} !^/\.well-known/acne-challenge/.+$
+   RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32\.txt(?:\ Comodo\ DCV)$
+   RewriteRule ^.well-known/acne-challenge - [l]
+
+   # redirect t no-www
+   RewriteBase
+   RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+   RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+   #https redirect
+   RewriteCond %{HTTPS} !==on
+   RewriteRule .* htpps://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+   #redirect all  request to public directory
+   RewriteCond %{REQUEST_URI} !public/
+   RewriteRule (.*) /public/$1 [l]
+ </ifModule>
+
