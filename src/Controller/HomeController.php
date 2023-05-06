@@ -30,7 +30,6 @@ class HomeController extends AbstractController
         $prod = $produitsRepository->findAll();
         $cat = $categoryRepository->findBy([], ['categoryOrder' => 'asc']);
         $maq = $marqueRepository->findAll();
-        \dump($prod, $cat, $maq);
         return $this->render('home/home.html.twig', [
             'categories' => $cat,
             'product' => $prod,
@@ -44,9 +43,9 @@ class HomeController extends AbstractController
     {
         // recuperation des information saisie dans le formulaire
         $searchVaule = $request->get('q');
-        \dump($searchVaule);
+
         $product = $produitsRepository->findBySearchValue($searchVaule);
-        \dump($product);
+
         return $this->render('home/search.html.twig', [
             'product' => $product,
             'searchValue' => $searchVaule,

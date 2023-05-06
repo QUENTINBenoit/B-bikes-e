@@ -64,7 +64,6 @@ class AdresseController extends AbstractController
         Request $request,
         EntityManagerInterface $doctrine,
     ): Response {
-        \dump($adresse);
         $form = $this->createForm(AdresseType::class,  $adresse);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
