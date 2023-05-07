@@ -1,202 +1,66 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Log in!
+{% endblock %}
 
 {% block body %}
-<main class="container mx-auto pt-36 h-[40rem] relative z-0" action="{{ path('app_login') }}">
- <div class= "bg-blue-900 rounded-xl w-56 h-36 absolute bottom-[19rem] left-72 -z-10 shadow-xl "></div>
-  <div class= "bg-yellow-600 rounded-xl w-96 h-36 absolute bottom-56 left-[54rem] -z-10 shadow-xl "></div>
-<form method="post" class="container flex flex-col flex-wrap px-12 z-30  w-[60rem]  rounded-3xl backdrop-blur-3xl bg-white/10 shadow-xl" >
+	{% include "partials/_flashmessage.html.twig" %}
+	<section class=" mx-auto pt-36 h-[40rem] z-0 text-white" action="{{ path('app_login') }}">
+		<form method="post" class=" mx-12  flex flex-col flex-wrap px-12 z-30  w-auto  rounded-3xl backdrop-blur-lg bg-white/5 shadow-2xl shadow-black">
+			{% if error %}
+				<div class="username-error text-red-600">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			{% endif %}
 
-    {% if error %}
-        <div class="username-error text-red-600">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+			{% if app.user %}
+				<div class="mb-3">
+					You are logged in as
+					{{ app.user.userIdentifier }},
+					<a href="{{ path('app_logout') }}">Logout</a>
+				</div>
+			{% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
-   
-    <h1 class="text-3xl text-center text-stone-900 mb-16 pt-4 ">Veulliez vous connecter </h1>
-    <div>
-    <div class="relative z-0 w-full mb-6 group ">
-      <input type="email" 
-                name="email" 
-                id="inputEmail" 
-                class="block 
-                        py-2.5 
-                        px-0 
-                        w-full 
-                        text-sm 
-                        text-white 
-                        bg-transparent 
-                        border-0 
-                        border-b-2 
-                        border-stone-900 
-                        appearance-none 
-                        focus:outline-none 
-                        focus:ring-0 
-                        focus:border-pink-700 
-                        peer"
-                autocomplete="email" 
-                autofocus
-                placeholder=" " 
-                required 
-        />
-      <label for="inputEmail" 
-            class=" peer-focus:font-medium 
-                    absolute text-sm 
-                    text-stone-500 
-                    dark:text-gray-400 
-                    duration-300 
-                    transform 
-                    -translate-y-6 
-                    scale-75 
-                    top-3 
-                    -z-10 
-                    origin-[0] 
-                    peer-focus:left-0 
-                    peer-focus:text-pink-700 
-                    peer-placeholder-shown:scale-100 
-                    peer-placeholder-shown:translate-y-0 
-                    peer-focus:scale-75 
-                    peer-focus:-translate-y-6"
-                    >                   
-                Email address
-        </label>
-  </div>
-     
-    <div class="relative z-0 w-full mb-6 group">
-        <input  type="password" 
-                name="password" 
-                id="inputPassword" 
-                class=" block 
-                        py-2.5 
-                        px-0 
-                        w-full 
-                        text-sm 
-                        text-white 
-                        bg-transparent 
-                        border-0 
-                        border-b-2 
-                        border-stone-900 
-                        appearance-none 
-                        focus:outline-none 
-                        focus:ring-0 
-                        focus:border-pink-700 
-                        peer" 
-             autocomplete="current-password"
-             placeholder=" " 
-             required 
-        />
-        <label for="inputPassword" 
-             class="peer-focus:font-medium 
-                    absolute text-sm 
-                    text-stone-500 
-                    dark:text-gray-400 
-                    duration-300 
-                    transform 
-                    -translate-y-6 
-                    scale-75 
-                    top-3 
-                    -z-10 
-                    origin-[0] 
-                    peer-focus:left-0 
-                    peer-focus:text-pink-700 
-                    peer-placeholder-shown:scale-100 
-                    peer-placeholder-shown:translate-y-0 
-                    peer-focus:scale-75 
-                    peer-focus:-translate-y-6"
-        >
-            Password
-        </label>
-  </div>
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+			<h1 class="text-3xl text-center  mb-16 pt-4 ">Veulliez vous connecter
+			</h1>
+			<div>
+				<div class="relative z-0 w-full mb-6 group ">
+					<input type="email" name="email" id="inputEmail" class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-stone-900 appearance-none focus:outline-none focus:ring-0 focus:border-pink-700 peer" autocomplete="email" autofocus placeholder=" " required/>
+					<label for="inputEmail" class=" peer-focus:font-medium absolute text-sm text-stone-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-pink-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+						Adresse email
+					</label>
+				</div>
 
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
+				<div class="relative z-0 w-full mb-6 group">
+					<input type="password" name="password" id="inputPassword" class=" block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-stone-900 appearance-none focus:outline-none focus:ring-0 focus:border-pink-700 peer" autocomplete="current-password" placeholder=" " required/>
+					<label for="inputPassword" class="peer-focus:font-medium absolute text-sm text-stone-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-pink-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+						Password
+					</label>
+				</div>
+				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
 
-    {# <label>
-        <input type="checkbox" name="remember_me" checked/>
-        Keep me logged in
-    </label> #}
-    <div class="flex justify-between items-center mb-6">
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input appearance-none h-4 w-4 border border-stone-400 rounded-sm bg-white checked:bg-pink-900 checked:border-stone-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" 
-                    id="_remember_me"
-                    name="_remember_me" 
-                    checked/>
-            <label  class="form-check-label inline-block text-stone-900" 
-                    for="_remember_me">
-                        Se rappeler de moi
-            </label>
-        </div>
-        <a href="#!" class="text-stone-900 hover:text-stone-400 focus:text-stone-700 active:text-stone-800 duration-200 transition ease-in-out">Mot de passe oublié ?</a>
-    </div>
+				<div class="flex flex-wrap justify-between items-center mb-6">
+					<div class="form-group form-check">
+						<input type="checkbox" class="form-check-input appearance-none h-4 w-4 border border-stone-400 rounded-sm bg-white checked:bg-pink-900 checked:border-stone-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" id="_remember_me" name="_remember_me" checked/>
+						<label class="form-check-label inline-block text-stone-900" for="_remember_me">
+							Se rappeler de moi
+						</label>
+					</div>
+					<a href="#!" class="text-stone-900 hover:text-stone-400 focus:text-stone-700 active:text-stone-800 duration-200 transition ease-in-out">Mot de passe oublié ?</a>
+				</div>
 
-    {# <div class="flex items-center mr-4">
-        <input checked  type="checkbox" id="_remember_me" value="" name="_remember_me" class="w-4 h-4 text-pink-900 bg-gray-100 border-gray-300 rounded focus:ring-purple-500">
-        <label class="ml-2 text-sm font-medium text-stone-900">Se rappeler de moi </label>       
-    </div> #}
-    {# <label class="relative inline-flex items-center mr-6 cursor-pointer" >
-        <input type="checkbox" value="" name="_remember_me"  class="sr-only peer" >
-        <div class="w-6 h-3 bg-gray-200 rounded-full peer peer-focus:ring-2 peer-focus:ring-pink-600  peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.3 after:left-[1px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-pink-900"></div>
-        <span for="_remember_me" class="ml-3 text-sm font-medium text-stone-900">Se rappeler de moi </span>
-    </label> #}
-    <div class=" flex items-center justify-between">
-            <button type="submit" 
-                    class="
-                        text-white 
-                        bg-stone-900 
-                        hover:bg-pink-800 
-                        focus:ring-2
-                        focus:outline-none 
-                        focus:ring-stone-900 
-                        font-medium 
-                        rounded-lg 
-                        text-sm 
-                        w-full 
-                        sm:w-auto 
-                        px-3 
-                        py-2 
-                        text-center
-                        mt-5"
-            >
-            Submit
-            </button>
-            <div class="flex flex-col items-center">
-            <p class='text-sm'>Creer un compte clien </p> 
-           <a href=" {{ path('app_register')}}" class=" text-white 
-                        bg-stone-900 
-                        hover:bg-pink-800 
-                        focus:ring-2
-                        focus:outline-none 
-                        focus:ring-stone-900 
-                        font-medium 
-                        rounded-lg 
-                        text-sm 
-                        w-full 
-                        sm:w-auto 
-                        px-3 
-                        py-2 
-                        text-center">
-                  S'Enregistrer        
-                </a></div>
-           
-    </div>
-</form>
-  <p class=" text-stone-600">benquelm@gmail.com</p>
-  <p class=" text-stone-600">demo1234</p>
-</main>
+				<div class="  flex flex-wrap items-center justify-between">
+					<button type="submit" class="text-white bg-stone-900 hover:bg-pink-800 focus:ring-2 focus:outline-none focus:ring-stone-900 font-medium rounded-lg text-sm w-full sm:w-auto px-3 py-2 text-center mx-1 my-4">
+						Submit
+					</button>
+
+					<a href=" {{ path('app_register')}}" class=" text-white bg-stone-900 hover:bg-pink-800 focus:ring-2 focus:outline-none focus:ring-stone-900 font-medium rounded-lg text-sm w-full sm:w-auto px-3 py-2 text-center mx-1 my-4 ">
+						S'Enregistrer
+					</a>
+				</div>
+
+			</div>
+		</form>
+		<p class=" text-stone-600">benquelm@gmail.com</p>
+		<p class=" text-stone-600">demo1234</p>
+	</section>
 {% endblock %}
