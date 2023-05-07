@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -69,7 +70,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->commandes = new ArrayCollection();
         $this->createdAt = new \DateTimeImmutable('now');
         $this->isVerified = false;
-        $this->tokenRegistrationLifeTime = new \DateTimeImmutable('+1 hour');
+        $this->tokenRegistrationLifeTime = (new DateTime('now'))->add(new \DateInterval('P1D'));
     }
     // toString
     public function __toString(): string

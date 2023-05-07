@@ -1475,6 +1475,16 @@ input:checked + .toggle-bg{
   margin-right: 3rem;
 }
 
+.my-24{
+  margin-top: 6rem;
+  margin-bottom: 6rem;
+}
+
+.my-12{
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
 .mb-1{
   margin-bottom: 0.25rem;
 }
@@ -1581,6 +1591,10 @@ input:checked + .toggle-bg{
 
 .mt-8{
   margin-top: 2rem;
+}
+
+.mb-12{
+  margin-bottom: 3rem;
 }
 
 .block{

@@ -18,12 +18,14 @@ security:
       lazy: true
       provider: app_user_provider
       custom_authenticator: App\Security\LoginFormAuthenticator
+      user_checker: App\Security\UserChecker
       logout:
         path: app_logout
       # form_login:
       #   # "app_login" is the name of the route created previously
       #   login_path: app_login
       #   check_path: app_login
+    
       remember_me:
         secret: '%kernel.secret'
         lifetime: 604800 # 1 week in seconds
@@ -32,7 +34,7 @@ security:
         # always_remember_me: true
         # where to redirect after logout
         # target: app_any_route
-
+    
     # activate different ways to authenticate
     # https://symfony.com/doc/current/security.html#the-firewall
 

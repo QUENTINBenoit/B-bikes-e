@@ -64,7 +64,7 @@ class RegistrationController extends AbstractController
                 [
                     'user' => $user,
                     'token' => $tokenRegistration,
-                    'lifeTimeToken' => $user->getTokenRegistrationLifeTime()->format('d/m/Y à H:i:s')
+                    'lifeTimeToken' => $user->getTokenRegistrationLifeTime()->format('d-m-Y-H-i-s')
                 ]
             );
             $this->addFlash(
