@@ -1,21 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Register
+{% endblock %}
 
 {% block body %}
-<section class="container mx-auto pt-36 h-[50rem] relative z-0">
-  <div class="  flex flex-wrap justify-between items-center absolute h-[24rem] w-[60rem] left-[9rem] bottom-[12rem] md:left-[18rem]  ">
-    <div class= "bg-blue-900 rounded-xl w-96 h-36 -z-10 shadow-xl "></div>
-    <div class= "bg-yellow-600 rounded-xl w-96 h-36 -z-10 shadow-xl 2xl:block hidden"></div>
-  </div>
- {{ form_start(registrationForm, {
+	<section class="container mx-auto pt-36 h-[50rem] relative z-0">
+		<div class="  flex flex-wrap justify-between items-center absolute h-[24rem] w-[60rem] left-[9rem] bottom-[12rem] md:left-[18rem]  ">
+			<div class="bg-blue-900 rounded-xl w-96 h-36 -z-10 shadow-xl "></div>
+			<div class="bg-yellow-600 rounded-xl w-96 h-36 -z-10 shadow-xl 2xl:block hidden"></div>
+		</div>
+		{{ form_start(registrationForm, {
     'attr': {
       'novalidate': 'novalidate', 
       'class': 'container p-12 z-30 w-[60rem] h-auto rounded-3xl backdrop-blur-3xl bg-white/10 shadow-xl'
       }
   }) }}
-  <h1 class=" text-center text-white text-lg mb-6">Inscription</h1>    
-    {{ form_row(registrationForm.firstname, 
+		<h1 class=" text-center text-white text-lg mb-6">Inscription</h1>
+		{{ form_row(registrationForm.firstname, 
       {
         row_class: 'relative z-0 w-full mb-6 group ',
         label:'Prenom',
@@ -26,7 +27,7 @@
         widget_errors_class: 'block pt-1 px-0 w-full text-sm text-white rounded-2xl  border-0 border-b-2 border-red-900 appearance-none focus:outline-none focus:ring-0 focus:border-pink-700 peer',
       } 
     ) }}
-    {{ form_row(registrationForm.email,{
+		{{ form_row(registrationForm.email,{
         row_class: 'relative z-0 w-full mb-6 group ',
         label:'email',
         label_class: 'absolute text-stone-900 text-2xl peer-focus:font-medium duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0]  peer-focus:left-0 eer-focus:text-pink-700 peer-placeholder-shown:scale-100  peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6',
@@ -35,7 +36,7 @@
         widget_disabled_class: 'border-dashed text-green-600',
         widget_errors_class: 'block pt-3 pb-0 px-2 w-full text-sm text-white bg-transparent border-0 border-b-2 border-stone-900 appearance-none focus:outline-none focus:ring-0 focus:border-pink-900 ',
     }) }}
-  {{ form_row(registrationForm.plainPassword, {    
+		{{ form_row(registrationForm.plainPassword, {    
         row_class: 'relative z-0 w-full mb-6 group ',
         label: 'Password',
         label_class: 'absolute text-stone-900 text-2xl peer-focus:font-medium duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0]  peer-focus:left-0 eer-focus:text-pink-900 peer-placeholder-shown:scale-100  peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6',
@@ -43,35 +44,32 @@
         widget_class: 'block pt-3 pb-0 px-2 w-full text-sm text-white bg-transparent border-0 border-b-2 border-stone-900 appearance-none focus:outline-none focus:ring-0 focus:border-pink-900 ',
         widget_disabled_class: 'border-dashed text-green-600',
         widget_errors_class: 'block pt-3 pb-0 px-2 w-full text-sm text-white bg-transparent border-0 border-b-2 border-stone-900 appearance-none focus:outline-none focus:ring-0 focus:border-pink-900 ',
-      }) }}      
-  {{ form_row(registrationForm.agreeTerms, {
+      }) }}
+		{{ form_row(registrationForm.agreeTerms, {
    label_class: 'ml-3 text-stone-900',
     error_item_class: ' text-pink-900  pt-2 pb-0 ',
-  }) }} 
-  <button type="submit" 
-          class="
-                ml-6 
-                mt-12
-                text-white 
-                bg-stone-900 
-                hover:bg-pink-800 
-                focus:ring-2
-                focus:outline-none 
-                focus:ring-stone-900 
-                font-medium 
-                rounded-lg 
-                text-sm 
-                w-full 
-                sm:w-auto 
-                px-3 
-                py-2 
-                text-center"
-    >
-      Enregistrer
-    </button>
-    {{ form_end(registrationForm) }}
-  </section>
-
+  }) }}
+		<button type="submit" class="
+								                ml-6
+								                mt-12
+								                text-white
+								                bg-stone-900
+								                hover:bg-pink-800
+								                focus:ring-2
+								                focus:outline-none
+								                focus:ring-stone-900
+								                font-medium
+								                rounded-lg
+								                text-sm
+								                w-full
+								                sm:w-auto
+								                px-3
+								                py-2
+								                text-center">
+			Enregistrer
+		</button>
+		{{ form_end(registrationForm) }}
+	</section>
 
 
 {% endblock %}
