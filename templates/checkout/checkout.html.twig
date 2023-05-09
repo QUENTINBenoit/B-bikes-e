@@ -7,7 +7,10 @@
 	<div class=" mt-20 h-auto p-4">
 		<div class=" container w-[80rem] h-auto  rounded-3xl text-white  ">
 			<h1 class="text-4xl text-center p-4">Validation de ta commande</h1>
-			{{ form_start(formCheckout, {'attr': {'novalidate': 'novalidate'}}) }}
+			{{ form_start(formCheckout, 
+			{action:path('checkout_prepare')},
+			{'attr': {'novalidate': 'novalidate'}}
+			)}}
 			<section class=" grid grid-cols-6 gap-2 h-auto m-2">
 				<div class="col-span-3 h-auto backdrop-blur-3xl bg-black/50 border-cyan-600  border-2  rounded-xl  p-3">
 					<h6 class=" mb-2 text-center">Ton adresse de livraison</h6>
@@ -101,10 +104,12 @@
 					</table>
 				</div>
 			</div>
+			<div class='col-span-2 col-start-3 flex justify-center items-center'>
 
-			<a href="" class="col-span-2 col-start-3 flex justify-center items-center text-white backdrop-blur-3xl bg-black/30 h-16 rounded-xl hover:bg-green-400">
-				Valider ma commande
-			</a>
+				{{ form_row(formCheckout.submit)}}
+
+			</div>
+
 		</section>
 		{{ form_end(formCheckout) }}
 	</div>

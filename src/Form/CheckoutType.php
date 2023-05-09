@@ -7,9 +7,11 @@ use App\Entity\Transporteur;
 use PhpParser\Node\Expr\AssignOp\Mul;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Button;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Validator\Constraints\Choice;
 
 class CheckoutType extends AbstractType
@@ -53,6 +55,12 @@ class CheckoutType extends AbstractType
                 },
 
 
+            ])
+            ->add('submit', SubmitType::class, [
+                'label' => 'Valider ma commande',
+                'attr' => [
+                    'class' => 'p-2 text-white backdrop-blur-3xl bg-black/30 h-16 rounded-xl hover:bg-green-400'
+                ]
             ]);
     }
 
