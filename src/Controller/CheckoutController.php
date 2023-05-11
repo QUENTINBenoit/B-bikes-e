@@ -10,10 +10,12 @@ use App\Repository\ProduitsRepository;
 use App\service\cart\CartService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Console\Helper\Dumper;
+use Symfony\Component\DependencyInjection\Dumper\Dumper as DumperDumper;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Symfony\Component\Yaml\Dumper as YamlDumper;
 
 #[Route('/checkout', name: 'checkout_', methods: ['GET', 'POST'])]
 class CheckoutController extends AbstractController
@@ -91,22 +93,21 @@ class CheckoutController extends AbstractController
 
 
             $recupCart = $cartService->getfullCart($produitsRepository);
-            dump($recupCart['dataPanier']);
+            // dump($recupCart['dataPanier']);
             $recapOrder = new RecapDetails();
             foreach ($recupCart['dataPanier'] as $productCart) {
 
                 $recapOrder->setOrderRecap($order);
+
                 $recapOrder->setProductOrder($productCart['produit']->getName());
                 $recapOrder->setPrice($productCart['produit']->getPrix());
                 $recapOrder->setQuantity($productCart['quantite']);
-                //$this->em->persist($recapOrder);
             }
             $recapOrder->setTotalRecap($recupCart['total']);
-            $this->em->persist($order);
-
             $this->em->persist($recapOrder);
 
             $this->em->flush();
+            \dump($order->getMethodPay(), $recapOrder, $transporter, $deliveryForOrder, $reference);
             return $this->render('checkout/recapOrder.html.twig', [
                 'methodPay' => $order->getMethodPay(),
                 'recapOrder' => $recapOrder,
@@ -116,5 +117,13 @@ class CheckoutController extends AbstractController
 
             ]);
         }
+    }
+
+
+    #[Route('/page', name: 'page', methods: ['GET'])]
+
+    public function page(): Response
+    {
+        return  $this->render('checkout/pagetest.html.twig', []);
     }
 }

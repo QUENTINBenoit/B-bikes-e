@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\RecapDetailsRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: RecapDetailsRepository::class)]
@@ -20,14 +21,26 @@ class RecapDetails
     #[ORM\Column]
     private ?int $quantity = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $productOrder = null;
+
 
     #[ORM\Column]
     private ?float $price = null;
 
     #[ORM\Column]
     private ?float $totalRecap = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $productOrder = null;
+
+
+
+
+
+    public function __toString(): string
+    {
+        return $this->quantity . $this->totalRecap;
+    }
+
 
     public function getId(): ?int
     {
@@ -58,17 +71,6 @@ class RecapDetails
         return $this;
     }
 
-    public function getProductOrder(): ?string
-    {
-        return $this->productOrder;
-    }
-
-    public function setProductOrder(string $productOrder): self
-    {
-        $this->productOrder = $productOrder;
-
-        return $this;
-    }
 
     public function getPrice(): ?float
     {
@@ -90,6 +92,18 @@ class RecapDetails
     public function setTotalRecap(float $totalRecap): self
     {
         $this->totalRecap = $totalRecap;
+
+        return $this;
+    }
+
+    public function getProductOrder(): ?string
+    {
+        return $this->productOrder;
+    }
+
+    public function setProductOrder(?string $productOrder): self
+    {
+        $this->productOrder = $productOrder;
 
         return $this;
     }
