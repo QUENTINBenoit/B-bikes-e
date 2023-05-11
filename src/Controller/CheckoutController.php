@@ -21,6 +21,7 @@ use Symfony\Component\Yaml\Dumper as YamlDumper;
 class CheckoutController extends AbstractController
 {
     private EntityManagerInterface $em;
+
     public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
@@ -35,7 +36,6 @@ class CheckoutController extends AbstractController
      * @return Response
      */
     #[Route('/', name: 'create', methods: ['GET', 'POST'])]
-
     public function index(CartService $cartService, ProduitsRepository $produitsRepository, Request $request): Response
     {
 
@@ -58,7 +58,6 @@ class CheckoutController extends AbstractController
     }
 
 
-
     /**
      * Méthode de validation de la commande
      *
@@ -66,7 +65,6 @@ class CheckoutController extends AbstractController
      * @return Response
      */
     #[Route('/verify', name: 'prepare', methods: ['POST'])]
-
     public function prepareOrder(CartService $cartService, Request $request, ProduitsRepository $produitsRepository): Response
     {
         $form = $this->createForm(CheckoutType::class, null, [
@@ -89,7 +87,6 @@ class CheckoutController extends AbstractController
             $order->setIsPaid(0);
             $order->setMethodPay('stripe');
             $this->em->persist($order);
-
 
 
             $recupCart = $cartService->getfullCart($produitsRepository);
@@ -117,13 +114,7 @@ class CheckoutController extends AbstractController
 
             ]);
         }
+        return $this->redirectToRoute('checkout_create');
     }
 
-
-    #[Route('/page', name: 'page', methods: ['GET'])]
-
-    public function page(): Response
-    {
-        return  $this->render('checkout/pagetest.html.twig', []);
-    }
 }
