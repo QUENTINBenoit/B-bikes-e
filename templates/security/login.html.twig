@@ -4,9 +4,8 @@
 {% endblock %}
 
 {% block body %}
-	{% include "partials/_flashmessage.html.twig" %}
 	<section class=" mx-auto pt-36 h-auto z-0 text-white" action="{{ path('app_login') }}">
-		{% include "partials/_flashmessage.html.twig" %}
+
 		<form method="post" class="container   mx-12 mb-12  flex flex-col flex-wrap px-12 z-30  w-auto  rounded-3xl backdrop-blur-lg bg-white/5 shadow-2xl shadow-black">
 			{% if error %}
 				<div class="username-error text-red-600">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -19,9 +18,9 @@
 					<a href="{{ path('app_logout') }}">Logout</a>
 				</div>
 			{% endif %}
-
 			<h1 class="text-3xl text-center  mb-16 pt-4 ">Veulliez vous connecter
 			</h1>
+			{% include "partials/_flashmessage.html.twig" %}
 			<div>
 				<div class="relative z-0 w-full mb-6 group  ">
 					<input type="email" name="email" id="inputEmail" class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-stone-900 appearance-none focus:outline-none focus:ring-0 focus:border-pink-700 peer" autocomplete="email" autofocus placeholder=" " required/>

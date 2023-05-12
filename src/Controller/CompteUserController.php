@@ -6,7 +6,10 @@ use App\Entity\User;
 use App\Form\CompteUserType;
 use App\service\PictureService;
 use Doctrine\ORM\EntityManagerInterface;
+use phpDocumentor\Reflection\Types\This;
+use PHPStan\PhpDocParser\Ast\Type\ThisTypeNode;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -56,6 +59,16 @@ class CompteUserController extends AbstractController
         return $this->render('compteUser/compteUser.html.twig', [
             'userCompteForm' => $form->createView(),
             'user' => $user,
+        ]);
+    }
+
+    #[Route('/test', name: 'test')]
+    public function  testmail()
+    {
+
+        return $this->render('mails/registration_confirmation.html.twig', [
+            'user' => $this->getUser(),
+
         ]);
     }
 }

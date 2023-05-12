@@ -2,6 +2,7 @@
 
 namespace  App\Controller;
 
+
 use App\Entity\Order;
 use App\Entity\Produits;
 use App\service\cart\CartService;
@@ -12,6 +13,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Stripe\Stripe;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 
@@ -19,11 +21,11 @@ class  PaymentController extends AbstractController
 {
 
     private UrlGeneratorInterface $generator;
+    private EntityManagerInterface $em;
     public function __construct(EntityManagerInterface $em,  UrlGeneratorInterface $generator)
     {
         $this->em = $em;
         $this->generator = $generator;
-
     }
 
     /**
@@ -35,10 +37,13 @@ class  PaymentController extends AbstractController
     public function stripeCheckout($reference): RedirectResponse
     {
         $productStripe = [];
-        Stripe::setApiKey('sk_test_51N6afuFnuUrtvRPR1JOQ7tjKTExFlcgs4rVwZSHNSPPUIaM2Kj6o5EIdSRfvZYcuD466R3aF56pU4rEZpn53iWGj00no2miCWk');
+        Stripe::setApiKey($this->getParameter('stripe_sk'));
+        Stripe::setApiVersion('2022-11-15');
         // header('Content-Type: application/json');
 
         // $YOUR_DOMAIN = 'http://localhost:4242';
+
+
         $order =  $this->em->getRepository(Order::class)->findOneBy(['referenceOrder' => $reference]);
         dump($order);
         if (!$order) {
@@ -46,11 +51,11 @@ class  PaymentController extends AbstractController
         }
         foreach ($order->getRecapDetails()->getValues() as $product) {
             dump($product);
-            $productData = $this->em->getRepository(Produits::class)->findOneBy(['Name'=>$product->getProductOrder()]); // recuperation des datas de mon produits via le nom du produit
+            $productData = $this->em->getRepository(Produits::class)->findOneBy(['Name' => $product->getProductOrder()]); // recuperation des datas de mon produits via le nom du produit
             $productStripe[] = [
                 'price_data' => [
                     'currency' => 'eur',
-                    'unit_amount' => round($product->getPrice()*100),
+                    'unit_amount' => round($product->getPrice() * 100),
                     'product_data' => [
                         'name' => $product->getProductOrder(),
                     ]
@@ -61,7 +66,7 @@ class  PaymentController extends AbstractController
         $productStripe[] = [
             'price_data' => [
                 'currency' => 'eur',
-                'unit_amount' => round($order->getTransporterPrice()*100),
+                'unit_amount' => round($order->getTransporterPrice() * 100),
                 'product_data' => [
                     'name' => $order->getTransporterName(),
                 ]
@@ -71,17 +76,24 @@ class  PaymentController extends AbstractController
 
         $checkout_session = Session::create([
             'customer_email' => $this->getUser()->getEmail(),
-            'payment_method_types' => ['card'],
+            "payment_method_types" => [
+                "card"
+            ],
             'line_items' => [[
                 $productStripe
                 # Provide the exact Price ID (e.g. pr_1234) of the product you want to sell
-               // 'price' => '{{PRICE_ID}}',
-               // 'quantity' => 1,
+                // 'price' => '{{PRICE_ID}}',
+                // 'quantity' => 1,
             ]],
             'mode' => 'payment',
             'success_url' => $this->generator->generate(
-                'payment_success', [
+                'payment_success',
+
+                [
+
                     'reference' =>  $order->getReferenceOrder(),
+
+
                 ],
                 UrlGeneratorInterface::ABSOLUTE_URL
             ),
@@ -96,7 +108,6 @@ class  PaymentController extends AbstractController
         $order->setStripeSessionId($checkout_session->id);
         $this->em->flush();
         return  new  RedirectResponse($checkout_session->url);
-
     }
 
     /**
@@ -105,11 +116,18 @@ class  PaymentController extends AbstractController
      * @param CartService $service
      * @return Response
      */
-    #[Route('/order/success/{reference}', name: 'payment_success')]
-    public function StripeSuccess($reference, CartService $service): Response
+    #[Route('/order/success/{reference}', name: 'payment_success', requirements: ['id' => '\d+'])]
+    public function StripeSuccess($reference, RequestStack $requestStack): Response
     {
-        return $this->render('checkout/success.html.twig');
 
+        $orderRef =  $this->em->getRepository(Order::class)->findOneBy(['referenceOrder' => $reference]);
+        if ($orderRef == $reference) {
+            $requestStack->getSession()->remove('panier');
+        }
+
+
+
+        return $this->render('checkout/success.html.twig');
     }
 
     /**
@@ -122,7 +140,5 @@ class  PaymentController extends AbstractController
     public function StripeError($reference, CartService $service): Response
     {
         return $this->render('checkout/error.html.twig');
-
-
     }
 }
