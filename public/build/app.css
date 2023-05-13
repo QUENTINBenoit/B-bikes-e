@@ -1798,10 +1798,6 @@ input:checked + .toggle-bg{
   width: 24rem;
 }
 
-.w-\[32rem\]{
-  width: 32rem;
-}
-
 .w-\[42rem\]{
   width: 42rem;
 }
@@ -2089,6 +2085,30 @@ input:checked + .toggle-bg{
   --tw-divide-y-reverse: 0;
   border-top-width: calc(2px * calc(1 - var(--tw-divide-y-reverse)));
   border-bottom-width: calc(2px * var(--tw-divide-y-reverse));
+}
+
+.divide-y-0 > :not([hidden]) ~ :not([hidden]){
+  --tw-divide-y-reverse: 0;
+  border-top-width: calc(0px * calc(1 - var(--tw-divide-y-reverse)));
+  border-bottom-width: calc(0px * var(--tw-divide-y-reverse));
+}
+
+.divide-y-\[1rem\] > :not([hidden]) ~ :not([hidden]){
+  --tw-divide-y-reverse: 0;
+  border-top-width: calc(1rem * calc(1 - var(--tw-divide-y-reverse)));
+  border-bottom-width: calc(1rem * var(--tw-divide-y-reverse));
+}
+
+.divide-y-\[0\.3rem\] > :not([hidden]) ~ :not([hidden]){
+  --tw-divide-y-reverse: 0;
+  border-top-width: calc(0.3rem * calc(1 - var(--tw-divide-y-reverse)));
+  border-bottom-width: calc(0.3rem * var(--tw-divide-y-reverse));
+}
+
+.divide-y-\[0\.1rem\] > :not([hidden]) ~ :not([hidden]){
+  --tw-divide-y-reverse: 0;
+  border-top-width: calc(0.1rem * calc(1 - var(--tw-divide-y-reverse)));
+  border-bottom-width: calc(0.1rem * var(--tw-divide-y-reverse));
 }
 
 .divide-gray-100 > :not([hidden]) ~ :not([hidden]){
@@ -2468,6 +2488,11 @@ input:checked + .toggle-bg{
   background-color: rgb(117 26 61 / var(--tw-bg-opacity));
 }
 
+.bg-red-400{
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 128 128 / var(--tw-bg-opacity));
+}
+
 .bg-red-50{
   --tw-bg-opacity: 1;
   background-color: rgb(253 242 242 / var(--tw-bg-opacity));
@@ -2544,6 +2569,26 @@ input:checked + .toggle-bg{
 .bg-zinc-300{
   --tw-bg-opacity: 1;
   background-color: rgb(212 212 216 / var(--tw-bg-opacity));
+}
+
+.bg-slate-600{
+  --tw-bg-opacity: 1;
+  background-color: rgb(71 85 105 / var(--tw-bg-opacity));
+}
+
+.bg-blue-800{
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 66 159 / var(--tw-bg-opacity));
+}
+
+.bg-slate-300{
+  --tw-bg-opacity: 1;
+  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
+}
+
+.bg-slate-400{
+  --tw-bg-opacity: 1;
+  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-50{
@@ -3565,6 +3610,10 @@ input:checked + .toggle-bg{
   }
 }
 
+.first-line\:w-full::first-line{
+  width: 100%;
+}
+
 .after\:absolute::after{
   content: var(--tw-content);
   position: absolute;
@@ -4264,6 +4313,10 @@ input:checked + .toggle-bg{
 
   .sm\:w-auto{
     width: auto;
+  }
+
+  .sm\:grid-cols-2{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .sm\:grid-cols-6{
