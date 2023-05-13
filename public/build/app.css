@@ -4291,8 +4291,16 @@ input:checked + .toggle-bg{
     margin-top: 0px;
   }
 
+  .sm\:block{
+    display: block;
+  }
+
   .sm\:grid{
     display: grid;
+  }
+
+  .sm\:hidden{
+    display: none;
   }
 
   .sm\:h-10{
@@ -4321,6 +4329,14 @@ input:checked + .toggle-bg{
 
   .sm\:grid-cols-6{
     grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .sm\:items-center{
+    align-items: center;
+  }
+
+  .sm\:justify-between{
+    justify-content: space-between;
   }
 
   .sm\:gap-12{
@@ -4377,6 +4393,10 @@ input:checked + .toggle-bg{
 
   .md\:mt-12{
     margin-top: 3rem;
+  }
+
+  .md\:block{
+    display: block;
   }
 
   .md\:flex{

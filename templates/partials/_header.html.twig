@@ -1,6 +1,6 @@
 <header class="bg-stone-900 top-0 w-full fixed h-20 z-50">
-	<nav class="max-w-8xl mx-auto h-20 bg-stone-900 text-white font-gluten flex justify-between items-center" id="#nav">
-		<a href="#Accueil" aria-label="Page d'Accueil du site b'bikes.e">
+	<nav class="max-w-8xl mx-auto h-20 bg-stone-900 text-white font-gluten  flex  justify-between items-center" id="#nav">
+		<a href="#Accueil" class="mx-4" aria-label="Page d'Accueil du site b'bikes.e">
 			<span class="text-xl md:text-2xl">
 				B
 				<strong>
@@ -8,13 +8,17 @@
 				</strong>
 				bikes
 				<strong>
-					<span class="text-pink-600">.</span>
+					<span class="text-pink-600 ">.</span>
 				</strong>
 				e
 			</span>
 		</a>
-		{% include "components/_search.html.twig" %}
-		<div class="flex justify-center items-center md:flex-row-reverse gap-2">
+		<div class="hidden md:block">
+			{% include "components/_search.html.twig" %}
+
+		</div>
+
+		<div class="flex justify-center items-center md:flex-row-reverse gap-2 mx-4 span-col-2">
 			<a href="{{path('cart_home') }}" class="hover:text-stone-500 -order-2 relative inline-flex items-center p-1 text-sm font-medium text-center  border-[0.1rem] border-stone-600 hover:border-pink-600 rounded-lg focus:ring-2 focus:ring-stone-500 focus:outline-none   ">
 				<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor" class="w-6 h-6">
 					<path fill-rule="evenodd" d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 004.25 22.5h15.5a1.875 1.875 0 001.865-2.071l-1.263-12a1.875 1.875 0 00-1.865-1.679H16.5V6a4.5 4.5 0 10-9 0zM12 3a3 3 0 00-3 3v.75h6V6a3 3 0 00-3-3zm-3 8.25a3 3 0 106 0v-.75a.75.75 0 011.5 0v.75a4.5 4.5 0 11-9 0v-.75a.75.75 0 011.5 0v.75z" clip-rule="evenodd"/>
@@ -84,6 +88,9 @@
 					<a href="{{path('product_list')}}" class="{{ currentPage =='product_list' ? 'text-sm upercase text-pink-500 font-medium md:text-xl' : 'text-sm upercase font-medium hover:text-stone-500 md:text-xl' }}">
 						VAE
 					</a>
+				</li>
+				<li class="text-center py-3 md:py-0 md:mr-6 sm:hidden">
+					{% include "components/_search.html.twig" %}
 				</li>
 
 			</ul>
