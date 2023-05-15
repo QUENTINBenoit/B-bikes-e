@@ -104,7 +104,6 @@ class CheckoutController extends AbstractController
             $this->em->persist($recapOrder);
 
             $this->em->flush();
-            \dump($order->getMethodPay(), $recapOrder, $transporter, $deliveryForOrder, $reference);
             return $this->render('checkout/recapOrder.html.twig', [
                 'methodPay' => $order->getMethodPay(),
                 'recapOrder' => $recapOrder,
@@ -116,5 +115,4 @@ class CheckoutController extends AbstractController
         }
         return $this->redirectToRoute('checkout_create');
     }
-
 }

@@ -45,12 +45,12 @@ class  PaymentController extends AbstractController
 
 
         $order =  $this->em->getRepository(Order::class)->findOneBy(['referenceOrder' => $reference]);
-        dump($order);
+
         if (!$order) {
             return $this->redirectToRoute('cart_home');
         }
         foreach ($order->getRecapDetails()->getValues() as $product) {
-            dump($product);
+
             $productData = $this->em->getRepository(Produits::class)->findOneBy(['Name' => $product->getProductOrder()]); // recuperation des datas de mon produits via le nom du produit
             $productStripe[] = [
                 'price_data' => [
