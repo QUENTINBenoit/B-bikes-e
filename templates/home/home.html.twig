@@ -41,10 +41,10 @@
 		<section class=" container  flex flex-col items-center justify-between w-full mt-16 ">
 			<h2 class=" text-slate-950 text-4xl font-gluten m-4 ">
 				Categories</h2>
-			<div class="flex  flex-wrap container  justify-around w-full ">
+			<div class="grid  grid-cols-2 md:grid-cols-3 gap-4  lg:grid-cols-4 xl:grid-cols-6   w-full ">
 				{% for category in categories %}
 					{% if category.parent == null %}
-						<a href="{{path('categorie_catego', {id: category.id} ) }}" class=" relative w-56 h-full mb-4   rounded-3xl hover:scale-105 hover:sepia ml-2 hover:transition hover:duration-150 hover:ease-in-out   flex flex-col items-center justify-end    ">
+						<a href="{{path('categorie_catego', {id: category.id} ) }}" class="relative ml-6 w-[10rem] sm:w-56 h-full rounded-3xl hover:scale-105 hover:sepia  hover:transition hover:duration-150 hover:ease-in-out   flex flex-col items-center justify-end    ">
 							<img src="{{ asset('assets/uploads/imageCatego/') ~ category.imageCatego }}" class='rounded-3xl ' alt="">
 							<h5 class=" absolute text-xl text-black  font-bold  flex justify-center items-center  rounded-b-3xl backdrop-blur-sm  bg-black/10 h-1/5  w-full ">
 								<span>{{ category.name}}</span>

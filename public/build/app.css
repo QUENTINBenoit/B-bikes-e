@@ -1651,10 +1651,6 @@ input:checked + .toggle-bg{
   height: 1rem;
 }
 
-.h-40{
-  height: 10rem;
-}
-
 .h-5{
   height: 1.25rem;
 }
@@ -1699,6 +1695,10 @@ input:checked + .toggle-bg{
   height: 56rem;
 }
 
+.h-\[7rem\]{
+  height: 7rem;
+}
+
 .h-auto{
   height: auto;
 }
@@ -1709,30 +1709,6 @@ input:checked + .toggle-bg{
 
 .h-screen{
   height: 100vh;
-}
-
-.h-\[16rem\]{
-  height: 16rem;
-}
-
-.h-\[5rem\]{
-  height: 5rem;
-}
-
-.h-\[8rem\]{
-  height: 8rem;
-}
-
-.h-\[7rem\]{
-  height: 7rem;
-}
-
-.h-\[12rem\]{
-  height: 12rem;
-}
-
-.h-\[13rem\]{
-  height: 13rem;
 }
 
 .max-h-56{
@@ -1823,6 +1799,10 @@ input:checked + .toggle-bg{
   width: 24rem;
 }
 
+.w-\[10rem\]{
+  width: 10rem;
+}
+
 .w-\[44rem\]{
   width: 44rem;
 }
@@ -1839,36 +1819,16 @@ input:checked + .toggle-bg{
   width: 80rem;
 }
 
+.w-\[9rem\]{
+  width: 9rem;
+}
+
 .w-auto{
   width: auto;
 }
 
 .w-full{
   width: 100%;
-}
-
-.w-\[24rem\]{
-  width: 24rem;
-}
-
-.w-\[16rem\]{
-  width: 16rem;
-}
-
-.w-\[10rem\]{
-  width: 10rem;
-}
-
-.w-\[5rem\]{
-  width: 5rem;
-}
-
-.w-\[8rem\]{
-  width: 8rem;
-}
-
-.w-\[9rem\]{
-  width: 9rem;
 }
 
 .max-w-10xl{
@@ -4287,6 +4247,10 @@ input:checked + .toggle-bg{
     width: 2.5rem;
   }
 
+  .sm\:w-56{
+    width: 14rem;
+  }
+
   .sm\:w-6{
     width: 1.5rem;
   }
@@ -4605,6 +4569,10 @@ input:checked + .toggle-bg{
 }
 
 @media (min-width: 1280px){
+  .xl\:grid-cols-6{
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
   .xl\:gap-0{
     gap: 0px;
   }
