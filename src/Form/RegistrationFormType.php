@@ -21,11 +21,13 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('firstname', TextType::class, [])
             ->add('email', EmailType::class, [
+
                 'constraints' => new NotBlank([
                     'message' => 'Veuillez entrer un e-mail',
                 ])
-
             ])
+
+
             ->add('agreeTerms', CheckboxType::class, [
                 'label' => 'Accepter les CGU',
                 'mapped' => false,

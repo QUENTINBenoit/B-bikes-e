@@ -1,271 +1,302 @@
 {% extends 'base.html.twig' %}
 
-    
 
-{% block title %}{{ parent()}}
- {% for prod in productId.marques %}
-  {{prod.name }}
-   {% endfor %}
-  
-  {% endblock %}
+{% block title %}
+	{{ parent()}}
+	{% for prod in productId.marques %}
+		{{prod.name }}
+	{% endfor %}
+
+{% endblock %}
 
 
 {% block body %}
-{% include "components/_fileAriane.html.twig" %}
+	{% include "components/_fileAriane.html.twig" %}
 
-  <div class = "container w-full mt-28 top-20 h-auto font-gluten my-2">
-<section class=" ">
-    <div class="md:flex p-2 md:justify-around  h-auto w-auto">
-            {# section image #} 
- 
-            <div id="indicators-carousel" class="relative  w-[42rem] h-[24rem] bg-blue-200 rounded-lg" data-carousel="static">
-            <!-- Carousel wrapper -->
-            <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-            <!-- Item 1 -->
-            {% for img in productId.images %}
-            
-            <div class="hidden duration-700 ease-in-out " data-carousel-item="active">
-                <img src="{{ asset('assets/uploads/products/') ~ img.Name  }}" class="absolute block w-[42rem] h-[24rem] -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 scale-100" alt="...">
-            </div>
-           {% endfor %}
+	<div class="container w-full mt-28 top-20 h-auto font-gluten ">
+		<section class=" ">
+			<div
+				class=" md:flex   p-2 md:justify-around  h-auto w-auto">
+				{# section image #}
 
-     
-            <!-- Slider indicators -->
-            {# <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
-                <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
-            </div> #}
-            <!-- Slider controls -->
-        <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                <span class="sr-only">Previous</span>
-            </span>
-        </button>
-        <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                <span class="sr-only">Next</span>
-            </span>
-        </button>
-    </div>
-                
-         
-                
-        </div>
-            {# section info velo #}
-            <div  class="flex flex-col md:justify-between md:w-1/6 md:p-4 rounded-3xl md:shadow-xl md:shadow-black ">
-                <div>
-                      {% for prod in productId.marques %}
-                    <h1 class=" font-semiblod mt-2 text-3xl  "> {{prod.name }}</h1>
-                      {% endfor %}
-                    <h2 class=" text-lg mt-2 text-slate-600  ">{{productId.Name}}</h2>
-                    <p class=" text-sm mt-2  text-slate-600"  > id:{{productId.reference}} </p>
-                    {% if productId.Promotion %}
-                
-                        <p class=" text-lg mt-4">Prix:
-                            <span class="line-through font-medium  text-gray-400 mr-3">
-                                {{productId.prix}}€
-                            </span>
-                            <span class=" text-2xl text-red-600 font-medium ">
-                                {{ productId.PrixPromotion}}€
-                            </span>
-                        </p>
-                     {% else %}                  
-                        <p class=" text-lg mt-4">Prix: <span class="text-2xl text-blue-600 font-medium  "> {{productId.Prix}} € </span> </p>
-                    {% endif %}
-                </div>
-                <a href="{{ path("cart_add", {id: productId.id}) }}" class=" bg-blue-600  rounded-b-2xl text-white text-center p-2 md:rounded-2xl  "> Panier</a>
-            </div>  
-        </div> 
-  
-</section >
-     <section class=" w-full bg-slate-200 mt-2 p-2 container rounded-3xl">
-        <div class=" p-2 ">
-            <h3 class="text-center text-lg font-medium">Description </h3>
-            <h4 class="text-center text-slate-600 text-sm font-medium">{{ productId.name}}</h4> 
-            <div  class="flex flex-col justify-center items-center m-6 md:flex-row  " >
-                <div class="flex flex-col ">
-                    <p class="text-align-left whitespace-pre-wrap p-2 m-2 ">{{productId.Description|u.truncate(130)}}</p>
-                    <p class="text-align-left whitespace-pre-wrap p-2 m-2">{{productId.Description| u.truncate(130)}}</p>
-                </div>
-                <div class="flex flex-col ">
-                    <p class="text-align-left whitespace-pre-wrap  p-2 m-2 ">{{productId.Description|u.truncate(130)}}</p>
-                    <p class="text-align-left whitespace-pre-wrap  p-2 m-2">{{productId.Description| u.truncate(130)}}</p>
-                </div>
-            </div>
-          
-        </div>
-</section>
-     <section class=" w-full mt-2 p-2  mb-2 bg-slate-200 rounded-3xl">
-        <div class=" container p-2 ">
-            <h3 class="text-center text-lg font-medium">Equipements </h3>
-            <div class=" flex flex-col md:flex-row space-x-2   ">
-                <div class=" md:w-1/2 divide-y-2 divide-slate-600 p-4 flex flex-col h-auto ">
-                    <div class="mb-2">
-                        <h6 class="text-slate-800">Utilisation</h6>
-                        <p class="text-slate-600 font-light">{{productId.Utilisation}} </p>
-                    </div>
-                    <div class="">
-                        <h6 class="text-slate-800 mt-2">Genre</h6>
-                         {% for genre in productId.genres %}
-                            <p class="text-slate-600 font-light">{{genre.name}} </p>
-                         {% endfor %}
-                        
-                    </div>
-            
-                    <div class="">
-                        <h6 class="text-slate-800 mt-2">Cadre</h6>
-                        {% if productId.cadre %}
-                        <p class="text-slate-600 font-light">{{productId.cadre}} </p>
-                           {% else %}
-                          <p class="text-slate-600 font-light">- - - - -  </p>
-                        {% endif %}
-                    </div>
-                    <div class="">
-                        <h6 class="text-slate-800 mt-2">Fourche</h6>
-                           {% if productId.fourche %}
-                        <p class="text-slate-600 font-light">{{productId.fourche}} </p>
-                           {% else %}
-                          <p class="text-slate-600 font-light">- - - - -  </p>
-                        {% endif %}
-                    </div>
-                    <div class="">
-                        <h6 class="text-slate-800 mt-2">Taille de Roues </h6>
-                           {% if productId.TailleRoueVTT %}
-                        <p class="text-slate-600 font-light">{{productId.TailleRoueVTT}} </p>
-                        {% else %}
-                          <p class="text-slate-600 font-light">- - - - -  </p>
-                        {% endif %}
-                          
-                    </div>
-                
-                    <div class="">
-                        <h6 class="text-slate-800 mt-2">Dérailleur arrière</h6>
-                           {% if productId.derailleurAr %}
-                        <p class="text-slate-600 font-light">{{productId.derailleurAr}} </p>
-                           {% else %}
-                          <p class="text-slate-600 font-light">- - - - -  </p>
-                        {% endif %}
-                    </div> 
-                   
-                      <div class="">
-                        <h6 class="text-slate-800 mt-2">Pneus</h6>
-                           {% if productId.pneus %}
-                        <p class="text-slate-600 font-light">{{productId.pneus}} </p>
-                           {% else %}
-                          <p class="text-slate-600 font-light">- - - - -  </p>
-                        {% endif %}
-                    </div> 
-                  
-                    <div class="">
-                        <h6 class="text-slate-800 mt-2">Commande de vitesse</h6>
-                           {% if productId.manettes %}
-                        <p class="text-slate-600 font-light">{{productId.manettes }} </p>
-                           {% else %}
-                          <p class="text-slate-600 font-light">- - - - -  </p>
-                        {% endif %}
-                    </div>  
-                    <div class="">
-                        <h6 class="text-slate-800 mt-2">Pédalier</h6>
-                           {% if productId.pedalier %}
-                        <p class="text-slate-600 font-light">{{productId.pedalier}} </p>
-                           {% else %}
-                          <p class="text-slate-600 font-light">- - - - -  </p>
-                        {% endif %}
-                    </div>  
-                    <div class="">
-                        <h6 class="text-slate-800 mt-2">cassette</h6>
-                           {% if productId.cassette %}
-                        <p class="text-slate-600 font-light">Modèl: {{productId.cassette}} </p>
-                           {% else %}
-                          <p class="text-slate-600 font-light">- - - - -  </p>
-                        {% endif %}
-                    </div>                      
-                </div>
-                     
-                <div class=" md:w-1/2 divide-y-2 divide-slate-600 p-4">
-                       <div class="mb-2">
-                        <h6 class="text-slate-800">Moteur</h6>
-                        {% if productId.motorisation %}
-                        <p class="text-slate-600"> Marque: {{productId.motorisation.name}} </p>
-                        <p class="text-slate-600"> Model: {{productId.motorisation.marqueMoteur}} </p>
-                        <p class="text-slate-600"> Performance: {{productId.motorisation.performance}} Watt </p>
-                        {% else %}
-                          <p class="text-slate-600 font-light">- - - - -  </p>
-                        {% endif %}
-                     </div>                                    
-        
-                       <div class="">
-                        <h6 class="text-slate-800 mt-2">Batterie</h6>
-                        {% if productId.motorisation %}
-                        <p class="text-slate-600">Type: {{productId.motorisation.batterie}}</p>
-                        <p class="text-slate-600">Puissance: {{productId.motorisation.puissanceBatterie}}  Wh </p>
-                        <p class="text-slate-600">Montage:  {{productId.motorisation.console}}  </p>
-                            {% else %}
-                          <p class="text-slate-600 font-light">- - - - -  </p>
-                             {% endif %}
-                    </div>
-                  
-                           <div class="">
-                        <h6 class="text-slate-800 mt-2">potence</h6>
-                           {% if productId.potence %}
-                        <p class="text-slate-600 font-light">{{productId.potence}} </p>
-                           {% else %}
-                          <p class="text-slate-600 font-light">- - - - -  </p>
-                        {% endif %}
-                              <div class="">
-                        <h6 class="text-slate-800 mt-2">cintre</h6>
-                           {% if productId.cintre %}
-                        <p class="text-slate-600 font-light">{{productId.cintre}} </p>
-                           {% else %}
-                          <p class="text-slate-600 font-light">- - - - -  </p>
-                        {% endif %}
-                            <h6 class="text-slate-800 mt-2">Selle</h6>
-                           {% if productId.Selle %}
-                        <p class="text-slate-600 font-light">{{productId.Selle}} </p>
-                           {% else %}
-                          <p class="text-slate-600 font-light">- - - - -  </p>
-                        {% endif %}
-                               <h6 class="text-slate-800 mt-2">Poids</h6>
-                           {% if productId.Poids %}
-                        <p class="text-slate-600 font-light">{{productId.Poids}} </p>
-                           {% else %}
-                          <p class="text-slate-600 font-light">- - - - -  </p>
-                        {% endif %}
-                            <h6 class="text-slate-800 mt-2">tigeDeSelle</h6>
-                           {% if productId.tigeDeSelle %}
-                        <p class="text-slate-600 font-light">Modèl: {{productId.tigeDeSelle}} </p>
-                           {% else %}
-                          <p class="text-slate-600 font-light">- - - - -  </p>
-                        {% endif %}
+				<div
+					id="indicators-carousel" class=" relative mx-6  " data-carousel="static">
+					<!-- Carousel wrapper -->
+					<div
+						class="relative h-[14rem] w-full md:h-[22rem] bg-none md:w-[34rem] overflow-hidden rounded-lg  ">
+						<!-- Item 1 -->
+						{% for img in productId.images %}
 
-                    </div>         
-                    </div>     
-                </div>
+							<div class="hidden duration-700 ease-in-out " data-carousel-item="active">
+								<img src="{{ asset('assets/uploads/products/') ~ img.Name }}" class="absolute rounded-lg object-none object-center block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 " alt="...">
+							</div>
+						{% endfor %}
+						<!-- Slider controls -->
+						<button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+							<span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-black/10  group-hover:bg-black/50  group-focus:ring-2 group-focus:ring-pink-700  group-focus:outline-none">
+								<svg aria-hidden="true" class="w-5 h-5 text-pink-700 sm:w-6 sm:h-6 " fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+								</svg>
+								<span class="sr-only">Previous</span>
+							</span>
+						</button>
+						<button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+							<span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-black/10 group-hover:bg-black/50   group-focus:ring-2 group-focus:ring-pink-700 group-focus:outline-none">
+								<svg aria-hidden="true" class="w-5 h-5 text-pink-700 sm:w-6 sm:h-6 " fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+								</svg>
+								<span class="sr-only">Next</span>
+							</span>
+						</button>
+					</div>
+				</div>
+				{# section info velo #}
+				<div class="flex flex-col m-4 p-4 mx-auto mx md:justify-between md:w-auto  rounded-3xl  ">
 
-            </div>
-     
-            
-        </div>
-     </section>  
+					{% for prod in productId.marques %}
+						<h1 class=" font-semiblod mt-2 text-3xl  ">
+							{{prod.name }}</h1>
+					{% endfor %}
+					<h2 class=" text-lg mt-2 text-slate-100  ">{{productId.Name}}</h2>
+					<p class=" text-sm mt-2  text-slate-100">
+						id:{{productId.reference}}
+					</p>
+					{% if productId.Promotion %}
 
+						<p class=" text-lg mt-4">Prix:
+							<span class="line-through font-medium  text-gray-400 mr-3">
+								{{productId.prix}}€
+							</span>
+							<span class=" text-2xl text-red-600 font-medium ">
+								{{ productId.PrixPromotion}}€
+							</span>
+						</p>
+					{% else %}
+						<p class=" text-lg my-4">Prix:
+							<span class="text-2xl text-blue-600 font-medium  ">
+								{{productId.Prix}}
+								€
+							</span>
+						</p>
+					{% endif %}
 
+					<a href="{{ path("cart_add", {id: productId.id}) }}" class=" bg-black/20  shadow-xl shadow-black hover:bg-black/60  hover:text-green-400 rounded-b-2xl text-white text-center p-2 md:rounded-2xl  ">
+						Panier</a>
+				</div>
+			</div>
+		</section>
+		<section class=" flex flex-col w-auto border-b  mx-6">
+			<h3 class="text-center text-lg font-medium">Description</h3>
+			<h4 class="text-center text-slate-100 text-sm font-medium">{{ productId.name}}</h4>
+			<div class="flex flex-col justify-center items-center m-6 md:flex-row  ">
+				<div class="flex flex-col ">
+					<p class="text-align-left whitespace-pre-wrap p-2 m-2 ">{{productId.Description}}</p>
+				</div>
+			</div>
+		</section>
+		<section class=" w-auto  p-2  mx-6  rounded-3xl">
+			<div class=" container p-2 ">
+				<h3 class="text-center text-lg font-medium">Equipements
+				</h3>
+				<div class=" flex flex-col md:flex-row space-x-2   ">
+					<div class=" md:w-1/2 divide-y divide-sky-300 p-4 flex flex-col h-auto ">
+						<div class="mb-2 py-1">
+							<h6 class="text-slate-950">Utilisation</h6>
+							<p class="text-slate-200 font-light">{{productId.Utilisation}}
+							</p>
+						</div>
+						<div class="">
+							<h6 class="text-slate-950 mt-2">Genre</h6>
+							{% for genre in productId.genres %}
+								<p class="text-slate-100 font-light">{{genre.name}}
+								</p>
+							{% endfor %}
 
-{# 
-         {% for  product in productId.roues %}
-            <h4 class"h-auto w-auto ">type de roues : {{ product.Jantes}}</h4>
-         {% endfor %} #}
+						</div>
 
-            
-        </div>
-     </section>  
-   </div>
-     
+						<div class="">
+							<h6 class="text-slate-950 mt-2">Cadre</h6>
+							{% if productId.cadre %}
+								<p class="text-slate-100 font-light">{{productId.cadre}}
+								</p>
+							{% else %}
+								<p class="text-slate-100 font-light">- - - - -
+								</p>
+							{% endif %}
+						</div>
+						<div class="">
+							<h6 class="text-slate-950 mt-2">Fourche</h6>
+							{% if productId.fourche %}
+								<p class="text-slate-100 font-light">{{productId.fourche}}
+								</p>
+							{% else %}
+								<p class="text-slate-100 font-light">- - - - -
+								</p>
+							{% endif %}
+						</div>
+						<div class="">
+							<h6 class="text-slate-950 mt-2">Taille de Roues
+							</h6>
+							{% if productId.TailleRoueVTT %}
+								<p class="text-slate-100 font-light">{{productId.TailleRoueVTT}}
+								</p>
+							{% else %}
+								<p class="text-slate-100 font-light">- - - - -
+								</p>
+							{% endif %}
 
+						</div>
 
+						<div class="">
+							<h6 class="text-slate-950 mt-2">Dérailleur arrière</h6>
+							{% if productId.derailleurAr %}
+								<p class="text-slate-100 font-light">{{productId.derailleurAr}}
+								</p>
+							{% else %}
+								<p class="text-slate-100 font-light">- - - - -
+								</p>
+							{% endif %}
+						</div>
 
-{% endblock %}
+						<div class="">
+							<h6 class="text-slate-950 mt-2">Pneus</h6>
+							{% if productId.pneus %}
+								<p class="text-slate-100 font-light">{{productId.pneus}}
+								</p>
+							{% else %}
+								<p class="text-slate-100 font-light">- - - - -
+								</p>
+							{% endif %}
+						</div>
+
+						<div class="">
+							<h6 class="text-slate-950 mt-2">Commande de vitesse</h6>
+							{% if productId.manettes %}
+								<p class="text-slate-100 font-light">{{productId.manettes }}
+								</p>
+							{% else %}
+								<p class="text-slate-100 font-light">- - - - -
+								</p>
+							{% endif %}
+						</div>
+						<div class="">
+							<h6 class="text-slate-950 mt-2">Pédalier</h6>
+							{% if productId.pedalier %}
+								<p class="text-slate-100 font-light">{{productId.pedalier}}
+								</p>
+							{% else %}
+								<p class="text-slate-100 font-light">- - - - -
+								</p>
+							{% endif %}
+						</div>
+						<div class="">
+							<h6 class="text-slate-950 mt-2">cassette</h6>
+							{% if productId.cassette %}
+								<p class="text-slate-100 font-light">Modèl:
+									{{productId.cassette}}
+								</p>
+							{% else %}
+								<p class="text-slate-100 font-light">- - - - -
+								</p>
+							{% endif %}
+						</div>
+					</div>
+
+					<div class=" md:w-1/2 divide-y divide-sky-300 p-4">
+						<div class="mb-2">
+							<h6 class="text-slate-950">Moteur</h6>
+							{% if productId.motorisation %}
+								<p class="text-slate-100">
+									Marque:
+									{{productId.motorisation.name}}
+								</p>
+								<p class="text-slate-100">
+									Model:
+									{{productId.motorisation.marqueMoteur}}
+								</p>
+								<p class="text-slate-100">
+									Performance:
+									{{productId.motorisation.performance}}
+									Watt
+								</p>
+							{% else %}
+								<p class="text-slate-100 font-light">- - - - -
+								</p>
+							{% endif %}
+						</div>
+
+						<div class="">
+							<h6 class="text-slate-950 mt-2">Batterie</h6>
+							{% if productId.motorisation %}
+								<p class="text-slate-100">Type:
+									{{productId.motorisation.batterie}}</p>
+								<p class="text-slate-100">Puissance:
+									{{productId.motorisation.puissanceBatterie}}
+									Wh
+								</p>
+								<p class="text-slate-100">Montage:
+									{{productId.motorisation.console}}
+								</p>
+							{% else %}
+								<p class="text-slate-100 font-light">- - - - -
+								</p>
+							{% endif %}
+						</div>
+
+						<div class="">
+							<h6 class="text-slate-950 mt-2">potence</h6>
+							{% if productId.potence %}
+								<p class="text-slate-100 font-light">{{productId.potence}}
+								</p>
+							{% else %}
+								<p class="text-slate-100 font-light">- - - - -
+								</p>
+							{% endif %}
+						</div>
+						<div class="">
+							<h6 class="text-slate-950 mt-2">cintre</h6>
+							{% if productId.cintre %}
+								<p class="text-slate-100 font-light">{{productId.cintre}}
+								</p>
+							{% else %}
+								<p class="text-slate-100 font-light">- - - - -
+								</p>
+							{% endif %}
+						</div>
+						<div>
+							<h6 class="text-slate-950 mt-2">Selle</h6>
+							{% if productId.Selle %}
+								<p class="text-slate-100 font-light">{{productId.Selle}}
+								</p>
+							{% else %}
+								<p class="text-slate-100 font-light">- - - - -
+								</p>
+							{% endif %}
+						</div>
+						<div>
+							<h6 class="text-slate-950 mt-2">Poids</h6>
+							{% if productId.Poids %}
+								<p class="text-slate-100 font-light">{{productId.Poids}}
+								</p>
+							{% else %}
+								<p class="text-slate-100 font-light">- - - - -
+								</p>
+							{% endif %}
+						</div>
+						<div>
+							<h6 class="text-slate-950 mt-2">tigeDeSelle</h6>
+							{% if productId.tigeDeSelle %}
+								<p class="text-slate-100 font-light">Modèl:
+									{{productId.tigeDeSelle}}
+								</p>
+							{% else %}
+								<p class="text-slate-100 font-light">- - - - -
+								</p>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section></div>{% endblock %}
