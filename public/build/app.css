@@ -1711,6 +1711,30 @@ input:checked + .toggle-bg{
   height: 100vh;
 }
 
+.h-\[16rem\]{
+  height: 16rem;
+}
+
+.h-\[5rem\]{
+  height: 5rem;
+}
+
+.h-\[8rem\]{
+  height: 8rem;
+}
+
+.h-\[7rem\]{
+  height: 7rem;
+}
+
+.h-\[12rem\]{
+  height: 12rem;
+}
+
+.h-\[13rem\]{
+  height: 13rem;
+}
+
 .max-h-56{
   max-height: 14rem;
 }
@@ -1821,6 +1845,30 @@ input:checked + .toggle-bg{
 
 .w-full{
   width: 100%;
+}
+
+.w-\[24rem\]{
+  width: 24rem;
+}
+
+.w-\[16rem\]{
+  width: 16rem;
+}
+
+.w-\[10rem\]{
+  width: 10rem;
+}
+
+.w-\[5rem\]{
+  width: 5rem;
+}
+
+.w-\[8rem\]{
+  width: 8rem;
+}
+
+.w-\[9rem\]{
+  width: 9rem;
 }
 
 .max-w-10xl{
@@ -2072,12 +2120,6 @@ input:checked + .toggle-bg{
   border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
 }
 
-.divide-y-2 > :not([hidden]) ~ :not([hidden]){
-  --tw-divide-y-reverse: 0;
-  border-top-width: calc(2px * calc(1 - var(--tw-divide-y-reverse)));
-  border-bottom-width: calc(2px * var(--tw-divide-y-reverse));
-}
-
 .divide-gray-100 > :not([hidden]) ~ :not([hidden]){
   --tw-divide-opacity: 1;
   border-color: rgb(243 244 246 / var(--tw-divide-opacity));
@@ -2091,11 +2133,6 @@ input:checked + .toggle-bg{
 .divide-sky-300 > :not([hidden]) ~ :not([hidden]){
   --tw-divide-opacity: 1;
   border-color: rgb(125 211 252 / var(--tw-divide-opacity));
-}
-
-.divide-slate-600 > :not([hidden]) ~ :not([hidden]){
-  --tw-divide-opacity: 1;
-  border-color: rgb(71 85 105 / var(--tw-divide-opacity));
 }
 
 .place-self-center{
