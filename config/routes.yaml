@@ -1,3 +1,12 @@
+#controllers:
+ #   resource: ../src/Controller/
+  #  type: attribute
 controllers:
-    resource: ../src/Controller/
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+kernel:
+    resource: App\Kernel
     type: attribute

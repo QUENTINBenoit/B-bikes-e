@@ -88,7 +88,7 @@ class RegistrationController extends AbstractController
      * @param EntityManagerInterface $em
      * @return Response
      */
-    #[Route('/verify/{token}/{id}', name: 'account_verify', methods: ['GET'],  requirements: ['id' => '\d+'])]
+    #[Route('/verify/{token}/{id}', name: 'account_verify', methods: ['GET'])]
     public function verify(string $token, User $user, EntityManagerInterface $em): Response
     {
         if ($user->getTokenRegistration() !== $token) {
