@@ -24,6 +24,11 @@ class FiterType extends AbstractType
 
                 'required' => false,
                 'class' => Category::class,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('c')
+                        ->where('c.parent IS NOT NULL')
+                        ->orderBy('c.name', 'ASC');
+                },
                 'expanded' => true,
                 'multiple' => true,
             ])

@@ -1,68 +1,65 @@
 {% extends 'admin/layout.html.twig' %}
-{% block title %}Admin-Mise jours user {% endblock %}
+{% block title %}Admin-Mise jours user
+{% endblock %}
 {% block content %}
-<div class="container mt-12 w-full backdrop-blur-3xl bg-white/20 shadow-2xl  rounded-3xl p-4 -z-10  shadow-black">
-  {{ form_start(userEditForm, {'attr': {'
+	<div class="container mt-12 w-full backdrop-blur-3xl bg-white/20 shadow-2xl  rounded-3xl p-4 z-0  shadow-black">
+		{{ form_start(userEditForm, {'attr': {'
       novalidate': 'novalidate',
   }})}}
-  <div class="grid grid-cols-2 gap-2">
-      <div class= " col-span-1 shadow-2xl shadow-black rounded-2xl ">
-      {{ form_row(userEditForm.firstname) }}
-      {{ form_row(userEditForm.lastname)}}
-      {{ form_row(userEditForm.email)}}
-      </div>
-      <div class= " col-span-1 shadow-2xl shadow-black rounded-2xl">
-      {{ form_row(userEditForm.password)}}
-      {{ form_row(userEditForm.avatar)}}
-      {{ form_row(userEditForm.roles) }}
-      </div>
-  </div>
-  <div class ="flex flex-row justify-between  items-center p-2 mx-32 mb-6" >
-    <button type="submit" 
-          class="
-                ml-6 
-                mt-12
-                text-white 
-                bg-stone-900 
-                hover:bg-green-800 
-                focus:ring-2
-                focus:outline-none 
-                focus:ring-stone-900 
-                font-medium 
-                rounded-lg 
-                text-sm 
-                w-full 
-                sm:w-auto 
-                px-3 
-                py-2 
-                text-center"
-    >
-     Editer
-    </button>
-    <a   href="{{ path('admin_user_list')   }}"
-          class="
-                ml-6 
-                mt-12
-                text-white 
-                bg-stone-900 
-                hover:bg-pink-800 
-                focus:ring-2
-                focus:outline-none 
-                focus:ring-stone-900 
-                font-medium 
-                rounded-lg 
-                text-sm 
-                w-full 
-                sm:w-auto 
-                px-3 
-                py-2 
-                text-center"
-            >
-            back
-          </a>
-  </div>
-  <div>
- {{ form_end(userEditForm)}}
-</div>
-     
-{% endblock %}
+		<div class="grid grid-cols-2 gap-2">
+			<div class=" col-span-1 shadow-2xl shadow-black rounded-2xl ">
+				{{ form_row(userEditForm.firstname) }}
+				{{ form_row(userEditForm.lastname)}}
+				{{ form_row(userEditForm.email)}}
+			</div>
+			<div class=" col-span-1 shadow-2xl shadow-black rounded-2xl">
+				{{ form_row(userEditForm.password)}}
+				{{ form_row(userEditForm.avatar)}}
+				{{ form_row(userEditForm.roles) }}
+			</div>
+		</div>
+		<div class="flex flex-row justify-between  items-center p-2 mx-32 mb-6">
+			<button type="submit" class="
+										                ml-6
+										                mt-12
+										                text-white
+										                bg-stone-900
+										                hover:bg-green-800
+										                focus:ring-2
+										                focus:outline-none
+										                focus:ring-stone-900
+										                font-medium
+										                rounded-lg
+										                text-sm
+										                w-full
+										                sm:w-auto
+										                px-3
+										                py-2
+										                text-center">
+				Editer
+			</button>
+			<a href="{{ path('admin_user_list') }}" class="
+										                ml-6
+										                mt-12
+										                text-white
+										                bg-stone-900
+										                hover:bg-pink-800
+										                focus:ring-2
+										                focus:outline-none
+										                focus:ring-stone-900
+										                font-medium
+										                rounded-lg
+										                text-sm
+										                w-full
+										                sm:w-auto
+										                px-3
+										                py-2
+										                text-center">
+				back
+			</a>
+		</div>
+		<div>
+			{{ form_end(userEditForm)}}
+		</div>
+
+	{% endblock %}

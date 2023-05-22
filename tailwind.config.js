@@ -21,6 +21,7 @@ module.exports = {
       },
       backgroundImage: {  
         'hero-pattern': "url('/assets/uploads/imagehome/homeimg.jpg')",
+        'hero-admin': "url('/assets/uploads/imagehome/vttadmin.png')",
         
         },
         corePlugins: {
