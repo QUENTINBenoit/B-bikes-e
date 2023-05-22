@@ -105,8 +105,8 @@ class UserController extends AbstractController
         UserPasswordHasherInterface $userPasswordHasherInterface,
         PictureService $pictureService
     ) {
+        $this->denyAccessUnlessGranted('USER_EDIT', $user,);
 
-        $this->denyAccessUnlessGranted('USER_EDIT', $user, 'Vous n\'avez pas les droits pour modifier ce compte');
 
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);

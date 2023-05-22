@@ -205,20 +205,27 @@
 					<div class=" md:w-1/2 divide-y divide-sky-300 p-4">
 						<div class="mb-2">
 							<h6 class="text-slate-950">Moteur</h6>
-							{% if productId.motorisation %}
-								<p class="text-slate-100">
-									Marque:
-									{{productId.motorisation.name}}
+							{% if productId.engine %}
+								<p class="text-slate-100 font-light">
+									{{productId.engine}}
 								</p>
-								<p class="text-slate-100">
-									Model:
-									{{productId.motorisation.marqueMoteur}}
-								</p>
-								<p class="text-slate-100">
-									Performance:
-									{{productId.motorisation.performance}}
-									Watt
-								</p>
+								{#
+																<p class="text-slate-100">
+																	Marque:
+																	{{productId.motorisation.name}}
+																</p>
+																<p class="text-slate-100">
+																	Model:
+																	{{productId.motorisation.marqueMoteur}}
+																</p>
+								
+															</p>
+															<p class="text-slate-100">
+																Performance:
+																{{productId.motorisation.performance}}
+																Watt
+															</p>
+								#}
 							{% else %}
 								<p class="text-slate-100 font-light">- - - - -
 								</p>
@@ -227,15 +234,9 @@
 
 						<div class="">
 							<h6 class="text-slate-950 mt-2">Batterie</h6>
-							{% if productId.motorisation %}
-								<p class="text-slate-100">Type:
-									{{productId.motorisation.batterie}}</p>
-								<p class="text-slate-100">Puissance:
-									{{productId.motorisation.puissanceBatterie}}
-									Wh
-								</p>
-								<p class="text-slate-100">Montage:
-									{{productId.motorisation.console}}
+							{% if productId.battery %}
+								<p class="text-slate-100 font-light">
+									{{productId.battery}}
 								</p>
 							{% else %}
 								<p class="text-slate-100 font-light">- - - - -

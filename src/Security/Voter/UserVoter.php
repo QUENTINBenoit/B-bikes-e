@@ -43,7 +43,7 @@ class UserVoter extends Voter
         }
 
         $userRoles = $user->getRoles();
-        \dump($userRoles);
+        //  \dump($userRoles);
         // ... (check conditions and return true to grant permission) ...
         switch ($attribute) {
             case self::EDIT:
@@ -58,6 +58,7 @@ class UserVoter extends Voter
                 }
                 break;
             case self::VIEW:
+
                 // logic to determine if the user can VIEW
                 // return true or false
                 break;

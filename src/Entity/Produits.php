@@ -123,6 +123,12 @@ class Produits
     #[ORM\ManyToMany(targetEntity: Genre::class, mappedBy: 'products')]
     private Collection $genres;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $engine = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $battery = null;
+
     public function __construct()
     {
         $this->updated_At = new \DateTimeImmutable();
@@ -627,6 +633,30 @@ class Produits
     public function setPoids(?float $Poids): self
     {
         $this->Poids = $Poids;
+
+        return $this;
+    }
+
+    public function getEngine(): ?string
+    {
+        return $this->engine;
+    }
+
+    public function setEngine(?string $engine): self
+    {
+        $this->engine = $engine;
+
+        return $this;
+    }
+
+    public function getBattery(): ?string
+    {
+        return $this->battery;
+    }
+
+    public function setBattery(?string $battery): self
+    {
+        $this->battery = $battery;
 
         return $this;
     }

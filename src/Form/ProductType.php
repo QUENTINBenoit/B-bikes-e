@@ -32,7 +32,6 @@ class ProductType extends AbstractType
             ->add('Avis')
             ->add('utilisation')
             ->add('image', FileType::class, [
-                'label' => 'Image',
                 'multiple' => true,
                 'mapped' => false,
                 'required' => false,
@@ -86,7 +85,9 @@ class ProductType extends AbstractType
             ->add('cintre')
             ->add('tigeDeSelle')
             ->add('Selle')
-            ->add('Poids');
+            ->add('Poids')
+            ->add('engine')
+            ->add('battery');
     }
 
     public function configureOptions(OptionsResolver $resolver): void
