@@ -71,7 +71,7 @@ class ProductType extends AbstractType
             ])
             ->add('TailleRoueVTT')
             ->add('pratiques')
-            ->add('freinds')
+            ->add('frein')
             ->add('diametreDeRoue')
             ->add('cadre')
             ->add('amortisseur')

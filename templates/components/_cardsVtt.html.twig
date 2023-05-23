@@ -2,8 +2,8 @@
 
 
 <a href="{{path('product_details', {id: productd.id} ) }} " class="bg-white shadow-xl h-auto w-52 shadow-black rounded-r-3xl rounded-b-3xl md:hover:shadow-2xl md:hover:shadow-black md:hover:transition md:ease-in-out md:hover:-translate-y-2 md:hover:scale-110">
-	<div class="relative h-3/6 rounded-r-3xl rounded-b-3xl">
-		<div class="w-24 absolute bottom-[5.3rem] left-0">
+	<div class="relative h-3/6 rounded-r-3xl rounded-b-3xl p-2">
+		<div class="w-24 absolute bottom-[5.3rem] left-0 bg-slate-400">
 			{% if productd.Promotion %}
 				<p class="h-auto pl-2 text-sm text-white  w-auto bg-stone-900 ">
 					Promotion
@@ -14,13 +14,13 @@
 				</p>
 			{% endif %}
 		</div>
-		<img src="{{ asset('assets/uploads/products/' ~ productd.images[0].name ) }}" class="rounded-tr-2xl  w-56 h-32" alt="images VTT cube"/>
-		<div class=" p-2 w-auto  h-auto">
+		<img src="{{ asset('assets/uploads/products/' ~ productd.images[0].name ) }}" class="rounded-tr-2xl w-48 h-40 object-cover  " alt="images VTT cube"/>
+		<div class="  w-auto  h-auto">
 			{% for brandName in productd.marques %}
 				<h4 class="text-sm font-semibold text-blue-900 border-b border-blue-950  ">{{ brandName.name}}</h4>
 			{% endfor %}
-			<h3 class="text-xs  mt-2 font-medium">{{ productd.name}}</h3>
-			<p class=" text-xs  ">Cat:
+			<h3 class="text-xs   font-medium">{{ productd.name}}</h3>
+			<p class=" text-xs mt-1  ">Cat:
 				{% for catego in productd.categories %}
 					<span class="text-green-600">
 						{{ catego.name}}</span>

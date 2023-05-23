@@ -52,7 +52,7 @@ class Produits
     private ?string $TailleRoueVTT = null;
 
     #[ORM\Column(length: 50, nullable: true)]
-    private ?string $freinds = null;
+    private ?string $frein = null;
 
     #[ORM\Column(length: 30, nullable: true)]
     private ?string $pratiques = null;
@@ -445,14 +445,14 @@ class Produits
         return $this;
     }
 
-    public function getFreinds(): ?string
+    public function getFrein(): ?string
     {
-        return $this->freinds;
+        return $this->frein;
     }
 
-    public function setFreinds(?string $freinds): self
+    public function setFrein(?string $frein): self
     {
-        $this->freinds = $freinds;
+        $this->frein = $frein;
 
         return $this;
     }

@@ -73,17 +73,19 @@
 			<div class=" flex flex-wrap justify-center items-center">
 				{% for news in  product %}
 					{% if news.nouveaute == true  %}
-						<a href="{{path('product_details', {id: news.id} ) }}" class="m-2 flex flex-col items-center justify-center">
+						<a href="{{path('product_details', {id: news.id} ) }}" class="m-2 flex flex-col items-center justify-center font-medium">
 							<div class="bg-white w-[10rem] h-[14rem]  rounded-2xl ">
-								<div class=" bg-black text-white font-semibold rounded-t-2xl text-center p-y-[0.5rem]">
+								<div class=" bg-black text-white font-semibold rounded-t-2xl text-center text-sm  p-y-[0.5rem]">
 									<span>News</span>
 								</div>
-								<img src="{{ asset('assets/uploads/products/' ~ news.images[0].name ) }}" alt="" class=" w-[9rem] h-[7rem]  rounded-2xl px-2 pt-1">
+								<img src="{{ asset('assets/uploads/products/' ~ news.images[0].name ) }}" alt="" class=" w-[9rem] h-[6rem] object-cover rounded-2xl px-2 pt-1">
 								<div class="px-2 pt-1 flex flex-col ">
-									<h4 class="text-sm">{{news.name}}</h4>
+									<h6 class="text-sm font-medium  my-1">{{news.name |u.truncate( 15, '...') }}
+									</h6>
 									<p class="text-sm">prix:
 										<span class="text-red-600">
-											{{ news.prix}}</span>
+											{{ news.prix}}
+											€</span>
 									</p>
 								</div>
 							</div>

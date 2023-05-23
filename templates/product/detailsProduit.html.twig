@@ -105,16 +105,23 @@
 							<p class="text-slate-200 font-light">{{productId.Utilisation}}
 							</p>
 						</div>
-						<div class="">
+						<div class="mb-2 py-1">
 							<h6 class="text-slate-950 mt-2">Genre</h6>
-							{% for genre in productId.genres %}
-								<p class="text-slate-100 font-light">{{genre.name}}
-								</p>
-							{% endfor %}
+							{% if productId.genres %}
+								{% for genre in productId.genres %}
+
+									<p class="text-slate-100 font-light">{{genre.name}}
+									</p>
+								{% else %}
+									<p class="text-slate-100 font-light">- - - - -
+									</p>
+
+								{% endfor %}
+							{% endif %}
 
 						</div>
 
-						<div class="">
+						<div class="mb-2 py-1">
 							<h6 class="text-slate-950 mt-2">Cadre</h6>
 							{% if productId.cadre %}
 								<p class="text-slate-100 font-light">{{productId.cadre}}
@@ -124,7 +131,7 @@
 								</p>
 							{% endif %}
 						</div>
-						<div class="">
+						<div class="mb-2 py-1">
 							<h6 class="text-slate-950 mt-2">Fourche</h6>
 							{% if productId.fourche %}
 								<p class="text-slate-100 font-light">{{productId.fourche}}
@@ -134,7 +141,7 @@
 								</p>
 							{% endif %}
 						</div>
-						<div class="">
+						<div class="mb-2 py-1">
 							<h6 class="text-slate-950 mt-2">Taille de Roues
 							</h6>
 							{% if productId.TailleRoueVTT %}
@@ -147,7 +154,7 @@
 
 						</div>
 
-						<div class="">
+						<div class="mb-2 py-1">
 							<h6 class="text-slate-950 mt-2">Dérailleur arrière</h6>
 							{% if productId.derailleurAr %}
 								<p class="text-slate-100 font-light">{{productId.derailleurAr}}
@@ -158,7 +165,7 @@
 							{% endif %}
 						</div>
 
-						<div class="">
+						<div class="mb-2 py-1">
 							<h6 class="text-slate-950 mt-2">Pneus</h6>
 							{% if productId.pneus %}
 								<p class="text-slate-100 font-light">{{productId.pneus}}
@@ -169,7 +176,7 @@
 							{% endif %}
 						</div>
 
-						<div class="">
+						<div class="mb-2 py-1">
 							<h6 class="text-slate-950 mt-2">Commande de vitesse</h6>
 							{% if productId.manettes %}
 								<p class="text-slate-100 font-light">{{productId.manettes }}
@@ -179,7 +186,7 @@
 								</p>
 							{% endif %}
 						</div>
-						<div class="">
+						<div class="mb-2 py-1">
 							<h6 class="text-slate-950 mt-2">Pédalier</h6>
 							{% if productId.pedalier %}
 								<p class="text-slate-100 font-light">{{productId.pedalier}}
@@ -189,7 +196,7 @@
 								</p>
 							{% endif %}
 						</div>
-						<div class="">
+						<div class="mb-2 py-1">
 							<h6 class="text-slate-950 mt-2">cassette</h6>
 							{% if productId.cassette %}
 								<p class="text-slate-100 font-light">Modèl:
@@ -203,36 +210,36 @@
 					</div>
 
 					<div class=" md:w-1/2 divide-y divide-sky-300 p-4">
-						<div class="mb-2">
+						<div class="mb-2 py-1">
 							<h6 class="text-slate-950">Moteur</h6>
 							{% if productId.engine %}
 								<p class="text-slate-100 font-light">
 									{{productId.engine}}
 								</p>
 								{#
-																<p class="text-slate-100">
-																	Marque:
-																	{{productId.motorisation.name}}
-																</p>
-																<p class="text-slate-100">
-																	Model:
-																	{{productId.motorisation.marqueMoteur}}
-																</p>
-								
-															</p>
-															<p class="text-slate-100">
-																Performance:
-																{{productId.motorisation.performance}}
-																Watt
-															</p>
-								#}
+																																																																																																<p class="text-slate-100">
+																																																																																																	Marque:
+																																																																																																	{{productId.motorisation.name}}
+																																																																																																</p>
+																																																																																																<p class="text-slate-100">
+																																																																																																	Model:
+																																																																																																	{{productId.motorisation.marqueMoteur}}
+																																																																																																</p>
+																																																																																								
+																																																																																															</p>
+																																																																																															<p class="text-slate-100">
+																																																																																																Performance:
+																																																																																																{{productId.motorisation.performance}}
+																																																																																																Watt
+																																																																																															</p>
+																																																																																								#}
 							{% else %}
 								<p class="text-slate-100 font-light">- - - - -
 								</p>
 							{% endif %}
 						</div>
 
-						<div class="">
+						<div class="mb-2 py-1">
 							<h6 class="text-slate-950 mt-2">Batterie</h6>
 							{% if productId.battery %}
 								<p class="text-slate-100 font-light">
@@ -244,7 +251,7 @@
 							{% endif %}
 						</div>
 
-						<div class="">
+						<div class="mb-2 py-1">
 							<h6 class="text-slate-950 mt-2">potence</h6>
 							{% if productId.potence %}
 								<p class="text-slate-100 font-light">{{productId.potence}}
@@ -254,7 +261,7 @@
 								</p>
 							{% endif %}
 						</div>
-						<div class="">
+						<div class="mb-2 py-1">
 							<h6 class="text-slate-950 mt-2">cintre</h6>
 							{% if productId.cintre %}
 								<p class="text-slate-100 font-light">{{productId.cintre}}
@@ -264,7 +271,7 @@
 								</p>
 							{% endif %}
 						</div>
-						<div>
+						<div class="mb-2 py-1">
 							<h6 class="text-slate-950 mt-2">Selle</h6>
 							{% if productId.Selle %}
 								<p class="text-slate-100 font-light">{{productId.Selle}}
@@ -274,7 +281,7 @@
 								</p>
 							{% endif %}
 						</div>
-						<div>
+						<div class="mb-2 py-1">
 							<h6 class="text-slate-950 mt-2">Poids</h6>
 							{% if productId.Poids %}
 								<p class="text-slate-100 font-light">{{productId.Poids}}
@@ -284,11 +291,23 @@
 								</p>
 							{% endif %}
 						</div>
-						<div>
+						<div class="mb-2 py-1">
 							<h6 class="text-slate-950 mt-2">tigeDeSelle</h6>
 							{% if productId.tigeDeSelle %}
 								<p class="text-slate-100 font-light">Modèl:
 									{{productId.tigeDeSelle}}
+								</p>
+							{% else %}
+								<p class="text-slate-100 font-light">- - - - -
+								</p>
+							{% endif %}
+
+						</div>
+						<div class="mb-2 py-1">
+							<h6 class="text-slate-950 mt-2">frein</h6>
+							{% if productId.frein %}
+								<p class="text-slate-100 font-light">
+									{{productId.frein}}
 								</p>
 							{% else %}
 								<p class="text-slate-100 font-light">- - - - -
@@ -299,5 +318,5 @@
 				</div>
 			</div>
 		</div>
-	</div>
-</section></div>{% endblock %}
+	</section>
+</div>{% endblock %}
