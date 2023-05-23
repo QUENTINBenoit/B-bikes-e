@@ -24,7 +24,6 @@ class MarquesController extends AbstractController
     {
 
         $listMarquesByProduits = $marqueRepository->findProduitsByMarquesId($id);
-        \dump($listMarquesByProduits);
         return $this->render('marques/index.html.twig', [
             'listProdByMarqueId' =>  $listMarquesByProduits,
         ]);

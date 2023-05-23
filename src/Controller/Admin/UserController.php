@@ -30,7 +30,7 @@ class UserController extends AbstractController
     #[Route('/list', name: 'list')]
     public function userList(UserRepository $userRepository): Response
     {
-        dump($userRepository->findAll());
+
         return $this->render('admin/user/list.html.twig', [
             'userList' => $userRepository->findAll(),
         ]);
