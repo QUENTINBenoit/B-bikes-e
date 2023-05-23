@@ -96,7 +96,7 @@ class CategoriesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $imageCategory = $form->get('imageCatego')->getData();
             $folder = 'imageCatego';
-            $fichier = $pictureService->add($imageCategory, $folder);
+            $fichier = $pictureService->add($imageCategory, $folder, 300, 300);
             $category->setImageCatego($fichier);
             $em = $doctrine->getManager();
             $em->flush();
