@@ -4,62 +4,66 @@
 {% endblock %}
 
 {% block body %}
-	<div class="mx-auto max-w-8xl flex justify-center mt-20 mb-4 h-full">
-		<div class="container my-16 w-full h-auto   rounded-3xl p-4 z-10 backdrop-blur-3xl bg-black/30  ">
-			<img class="rounded-2xl w-36 h-36 mx-auto my-6 bg-black shadow-2xl shadow-black" src="{{ asset('assets/uploads/avatars/' ~ app.user.avatar ) }}" alt="large avatar">
+	<div class="mx-auto max-w-8xl flex justify-center mt-20 p-4  h-full">
+		<div class=" mx-auto my-8 w-full h-auto   rounded-3xl p-4    ">
+			<img class="rounded-full w-36 h-36 aspect-cover mx-auto my-6 bg-black shadow-2xl shadow-black" src="{{ asset('assets/uploads/avatars/' ~ app.user.avatar ) }}" alt="large avatar">
 			{% include "partials/_flashmessage.html.twig" %}
 			{{ form_start(userCompteForm, {'attr': {'
       novalidate': 'novalidate',
   }})}}
 			<div class="grid grid-cols-4 gap-y-6 gap-x-4 px-4 ">
-				<div class=" col-span-2 shadow-lg shadow-black rounded-2xl backdrop-blur-3xl ">
+				<div class=" col-span-4 shadow-lg md:col-span-2 shadow-black rounded-3xl backdrop-blur-xl bg-black/20 ">
 					{{ form_row(userCompteForm.firstname) }}
 					{{ form_row(userCompteForm.lastname)}}
 					{{ form_row(userCompteForm.email)}}
 				</div>
-				<div class=" col-span-2  shadow-lg shadow-black rounded-2xl backdrop-blur-3xl ">
+				<div class=" col-span-4 md:col-span-2  shadow-lg shadow-black rounded-3xl backdrop-blur-xl bg-black/20  ">
 					{{ form_row(userCompteForm.password)}}
 					{{ form_row(userCompteForm.avatar)}}
 				</div>
 				{% if user.adresses is empty %}
-					<div class="col-start-1 col-end-5  m-auto p-2 shadow-lg shadow-black rounded-2xl  backdrop-blur-3xl hover:shadow-pink-700">
+					<div class="col-start-1 col-end-5  m-auto p-2 shadow-lg rounded-3xl backdrop-blur-xl bg-black/20  hover:shadow-pink-700">
 						<a href="{{ path('adresse_add', {id: app.user.id}) }}" class=" text-cyan-500 text-center  shadow-lgl shadow-black rounded-2xl  backdrop-blur-3xl ">
 							voulez-vous ajouter une adresse
 						</a>
 					</div>
 				{% else %}
 					{% for adresseType in user.adresses %}
-						<div class=" col-span-2 shadow-lg shadow-black rounded-2xl mt-2 backdrop-blur-2xl ">
+						<div class=" col-span-4 md:col-span-2 shadow-lg rounded-3xl backdrop-blur-xl bg-black/20  mt-2  ">
 							<h6 class=" text-cyan-500 text-center m-4  ">
 								{{adresseType.nomAdresse }}
 							</h6>
-							<dl class="max-w-md text-white divide-y divide-pink-900 mx-auto ">
+							<dl class="max-w-md text-white divide-y divide-pink-700 mx-auto p-4 ">
 								<div class="flex flex-col pb-3">
-									<dt class="mb-1 text-pink-900 md:text-sm ">Rue</dt>
+									<dt class="mb-1 text-pink-700 md:text-sm ">Rue</dt>
 									<dd class="text-sm ">{{adresseType.numeroRue}}
 										{{adresseType.Rue}}
 									</dd>
 								</div>
-								<div class="flex flex-col pb-3">
-									<dt class="mb-1 text-pink-900 md:text-sm ">Code Postal</dt>
-									<dd class="text-sm ">{{adresseType.codePostal}}
+								<div class="flex flex-col py-2">
+									<dt class="mb-1 text-pink-700 md:text-sm ">Code Postal</dt>
+									<dd class="text-sm ">
+										{{adresseType.codePostal}}
 									</dd>
 								</div>
-								<div class="flex flex-col pb-3">
-									<dt class="mb-1 text-pink-900 md:text-sm ">Ville</dt>
+								<div class="flex flex-col py-2">
+									<dt class="mb-1 text-pink-700 md:text-sm ">Ville</dt>
 									<dd class="text-sm ">
-										{{adresseType.ville}}</dd>
-									<a href="{{ path('adresse_edit', {id: adresseType.id}) }}" class=" buttonformValid">
+										{{adresseType.ville}}
+									</dd>
+								</div>
+								<div class="flex flex-col">
+									<a href="{{ path('adresse_edit', {id: adresseType.id}) }}" class=" border-[0.1rem] border-blue-500 border-spacing-4 text-xs mx-auto my-2 rounded-full p-3 hover:bg-green-600">
 										Modifier
 									</a>
-									<div class="flex items-center justify-around p-4 ">
+									<div class="flex flex-col-reverse md:flex-row  items-center justify-around p-4 ">
 										<a href="{{ path('adresse_delete', {id: adresseType.id}) }}" class="  text-red-600 ">
-											<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
-												<path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+											<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-8 h-8 mx-auto">
+												<path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"/>
 											</svg>
 										</a>
 										{% if adresseType.addresseFav  %}
-											<div class="flex items-center">
+											<div class="flex items-center my-2">
 												<p class=" mx-auto ">Adresse Favorite
 												</p>
 												<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6 ml-3 mb-2 text-green-500">
@@ -67,27 +71,49 @@
 												</svg>
 											</div>
 										{% endif %}
-
-
 									</div>
-
 								</div>
 							</dl>
 						</div>
 					{% endfor %}
 					<div class=" col-start-1 col-end-5 m-auto p-2 shadow-lg shadow-black rounded-2xl  backdrop-blur-3xl hover:shadow-pink-700 ">
 						<a href="{{ path('adresse_add', {id: app.user.id}) }}" class="  text-cyan-500 text-center  shadow-lgl shadow-black rounded-2xl backdrop-blur-3xl">
-							voulez-vous ajouter une nouvelle adresse à votre compte
+							<span class="hidden md:block">
+								voulez-vous ajouter une nouvelle adresse à votre compte
+							</span>
+							<div class="block md:hidden">
+
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-10 h-10">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+								</svg>
+
+							</div>
 						</a>
 					</div>
 				</div>
 			{% endif %}
 			<div class="flex flex-row justify-around  items-center p-2 col-span-4 ">
-				<button type="submit" class="buttonformValid ">
-					Éditer
+				<button type="submit" class="  text-white mx-auto  my-2 ">
+					<span class="hidden md:block  bg-stone-950 text-xs rounded-full p-3 hover:bg-green-600">
+						Editer
+					</span>
+					<div class="block shadow-lg shadow-black rounded-2xl w-auto text-center text-green-400 backdrop-blur-3xl hover:shadow-green-600 md:hidden">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="0.5" stroke="currentColor" class="w-16 h-16 mx-auto ">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+						</svg>
+
+					</div>
 				</button>
-				<a href="{{ path('home') }}" class=" buttonformBack">
-					back
+				<a href="{{ path('home') }}" class="md:bg-stone-950 text-xs text-white mx-auto my-2 rounded-full p-3 md:hover:bg-blue-900">
+					<span class="hidden md:block">
+						Retour
+					</span>
+					<div class="block shadow-lg shadow-black rounded-2xl w-auto text-center text-blue-900 backdrop-blur-3xl hover:shadow-blue-600 md:hidden">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-16 h-16">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"/>
+						</svg>
+
+					</div>
 				</a>
 			</div>
 			<div>
