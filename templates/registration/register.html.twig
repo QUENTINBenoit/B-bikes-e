@@ -4,23 +4,48 @@
 {% endblock %}
 
 {% block body %}
-	<div class=" ">
-		<section class="container p-4 pt-24 z-30  h-screen  ">
+	<div class="h-auto  ">
+		<section class="container px-12 py-24  ">
 
 			{{ form_start(registrationForm, {
       'attr': {
         'novalidate': 'novalidate', 
-        'class': ' mx-auto p-12  w-full h-auto rounded-3xl backdrop-blur-xl bg-black/20 shadow-xl'
+        'class': ' mx-auto p-12  w-full h-auto rounded-3xl backdrop-blur-xl bg-black/20 shadow-2xl shadow-black'
         }
     }) }}
 			<h1 class=" text-center text-white text-lg mb-6">Inscription</h1>
-			{{ form_row(registrationForm.lastname) }}
-			{{ form_row(registrationForm.firstname ) }}
-			{{ form_row(registrationForm.email)}}
-			{{ form_row(registrationForm.password) }}
-			{{ form_row(registrationForm.agreeTerms) }}
-			<button type="submit" class=" ml-6 mt-12 text-white bg-stone-900 hover:bg-pink-800 focus:ring-2 focus:outline-none focus:ring-stone-900 font-medium rounded-lg text-sm w-full sm:w-auto px-3 py-2 text-center">
-				Enregistrer
+			<div class="grid grid-cols-4">
+				<div class="col-span-4 md:col-span-2   ">
+					{{ form_row(registrationForm.lastname) }}
+
+				</div>
+				<div class="col-span-4 md:col-span-2   ">
+					{{ form_row(registrationForm.firstname ) }}
+				</div>
+				<div class=" col-span-3 md:col-span-2  ">
+					{{ form_row(registrationForm.email)}}
+				</div>
+				<div class=" col-span-3 md:col-span-2 border border-pink-950 rounded-3xl p-2">
+
+					{{ form_row(registrationForm.password) }}
+				</div>
+				<div class=" col-span-2  ">
+					{{ form_row(registrationForm.agreeTerms) }}
+				</div>
+
+
+			</div>
+
+			<button type="submit" class="  text-white mx-4 my-4">
+				<span class="hidden md:block bg-stone-950  text-xs rounded-full p-3 hover:bg-green-600">
+					Enregistrer
+				</span>
+				<div class="block shadow-lg shadow-black rounded-2xl w-auto text-center text-green-400 backdrop-blur-3xl hover:shadow-green-600 md:hidden">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="0.5" stroke="currentColor" class="w-16 h-16 mx-auto ">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+					</svg>
+
+				</div>
 			</button>
 			{{ form_end(registrationForm) }}
 		</section>
