@@ -1,14 +1,14 @@
 <!-- Composent Card -->
 
 
-<a href="{{path('product_details', {id: productd.id} ) }} " class="bg-white shadow-xl h-auto w-52 shadow-black rounded-r-3xl rounded-b-3xl md:hover:shadow-2xl md:hover:shadow-black md:hover:transition md:ease-in-out md:hover:-translate-y-2 md:hover:scale-110">
+<a href="{{path('product_details', {id: productd.id} ) }} " class="bg-white mx-auto shadow-xl w-52  h-auto shadow-black rounded-r-3xl rounded-b-3xl md:hover:shadow-2xl md:hover:shadow-black md:hover:transition md:ease-in-out md:hover:-translate-y-2 md:hover:scale-110">
 	<div class="relative h-3/6 rounded-r-3xl rounded-b-3xl p-2">
-		<div class="w-24 absolute bottom-[5.3rem] left-0 bg-slate-400">
+		<div class="w-24 absolute lg:bottom-[6.9rem] left-0 md:bottom-[6.4rem] sm:bottom-[6.9rem] bottom-[5.3rem] ">
 			{% if productd.Promotion %}
-				<p class="h-auto pl-2 text-sm text-white  w-auto bg-stone-900 ">
+				<p class="h-auto pl-2 text-sm text-white  w-auto bg-stone-950  rounded-e-3xl ">
 					Promotion
 				</p>
-				<p class="h-auto mt-2 pl-2 text-sm w-12 bg-red-600 rounded-r-2xl">
+				<p class="h-auto mt-1 pl-2 text-sm w-12 bg-red-600 rounded-e-3xl">
 					{{ productd.PoucentagePromotion}}
 					%
 				</p>
@@ -26,7 +26,7 @@
 						{{ catego.name}}</span>
 				{% endfor %}
 			</p>
-			<p class="mt-1 text-xs font-thin text-gray-900">
+			<p class="hidden sm:block mt-1 text-xs font-thin text-gray-900">
 				{{productd.description | u.truncate(60)}}
 			</p>
 			<p class="mt-2 text-xs">
