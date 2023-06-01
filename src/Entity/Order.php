@@ -48,7 +48,7 @@ class Order
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $paypalOrderId = null;
 
-    #[ORM\OneToMany(mappedBy: 'orderRecap', targetEntity: RecapDetails::class)]
+    #[ORM\OneToMany(mappedBy: 'orderRecap', targetEntity: RecapDetails::class, cascade: ['persist', 'remove'])]
     private Collection $recapDetails;
 
     public function __construct()
