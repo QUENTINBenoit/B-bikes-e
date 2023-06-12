@@ -17,7 +17,8 @@
               self-start
               sticky
               top-24
-              divide-y divide-pink-900"
+              divide-y divide-pink-900
+              py-4"
         id="navSidebar"
       >
         <div
@@ -141,7 +142,8 @@
                       'activeButtonNav' 
                       {% else %}
                       'buttonNav'          
-                      {% endif %}>
+                      {% endif %}
+                      >
             <a href="{{ path('admin_marques_list')}}" class="buttonLien">
               <span class="incon">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -152,8 +154,17 @@
             </a>
           </li>
 
-          <li class="buttonNav {{currentPage =='admin_users' ? 'activeButtonNav'  }} ">
-            <a href="#" class="buttonLien">
+          <li class={% if currentPage == "admin_user_list" %}
+                        'activeButtonNav'
+                      {% elseif currentPage == "admin_user_new" %}
+                        'activeButtonNav'
+                      {% elseif currentPage == "admin_user_edit" %}
+                        'activeButtonNav'
+                      {% else %}
+                        'buttonNav'
+                      {% endif %}
+                      >
+            <a href="{{path('admin_user_list')}}" class="buttonLien">
               <span class="incon">
                 <svg  xmlns="http://www.w3.org/2000/svg" 
                     fill="none" 
