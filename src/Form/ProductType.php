@@ -87,7 +87,10 @@ class ProductType extends AbstractType
             ->add('Selle')
             ->add('Poids')
             ->add('engine')
-            ->add('battery');
+            ->add('battery')
+            ->add('isVae', null, [
+                'label' => 'VAE (Vélo électrique)',
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

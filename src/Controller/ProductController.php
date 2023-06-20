@@ -4,9 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Produits;
 use App\Form\FiterType;
-use App\Form\ProductType;
 use App\Repository\ProduitsRepository;
-use Doctrine\Common\Proxy\Proxy;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -34,7 +32,31 @@ class ProductController extends AbstractController
             if (isset($filter['fiter'])) {
                 $produits = $produitsRepository->findByFilter($filter['fiter']);
             } else {
-                $produits = $produitsRepository->findAll();
+                $produits;
+            }
+        }
+
+        return $this->render('product/listProduits.html.twig', [
+            'product' => $produits,
+            'form' => $form->createView()
+        ]);
+    }
+
+    // methodes pour afficher les produits de type vae 
+    #[Route('/list/vae', name: 'list_vae', methods: ['GET'])]
+    public function showAllProductVae(ProduitsRepository  $produitsRepository,  Request $request): Response
+    {
+        $produits = $produitsRepository->findByeVae();
+
+        $productsFrom = new Produits();
+        $filter = $request->query->all();
+        $form = $this->createForm(FiterType::class, $productsFrom);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            if (isset($filter['fiter'])) {
+                $produits = $produitsRepository->findByFilterVae($filter['fiter']);
+            } else {
+                $produits;
             }
         }
 
@@ -60,30 +82,6 @@ class ProductController extends AbstractController
 
         return $this->render('product/detailsProduit.html.twig', [
             'productId' => $detailsProduct,
-        ]);
-    }
-
-
-    #[Route('/add', name: 'add', methods: ['GET'])]
-    public function addProdutis(Request $request, ProduitsRepository $produitsRepository)
-    {
-        $produits = new Produits();
-        $form = $this->createForm(FiterType::class, $produits);
-        $form->handleRequest($request);
-        return $this->render('product/addProduits.html.twig', [
-            'form' => $form->createView()
-        ]);
-    }
-
-    #[Route('/dropzone', name: 'dropzone')]
-    public function dropzone(Request $request, ProduitsRepository $produitsRepository)
-    {
-        $produits = new Produits();
-        $form = $this->createForm(ProductType::class, $produits);
-        $form->handleRequest($request);
-        return $this->render('product/dorpzone/test.html.twig', [
-
-            'form' => $form->createView()
         ]);
     }
 }

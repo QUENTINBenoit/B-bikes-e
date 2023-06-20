@@ -6,7 +6,7 @@
 {% block body %}
 	<div class="mx-auto max-w-8xl flex justify-center mt-20 p-4  h-full">
 		<div class=" mx-auto my-8 w-full h-auto   rounded-3xl p-4    ">
-			<img class="rounded-full w-36 h-36 aspect-cover mx-auto my-6 bg-black shadow-2xl shadow-black" src="{{ asset('assets/uploads/avatars/' ~ app.user.avatar ) }}" alt="large avatar">
+			<img class="rounded-full w-36 h-36 aspect-cover mx-auto my-6 bg-none  " src="{{ asset('assets/uploads/avatars/' ~ app.user.avatar ) }}" alt="large avatar">
 			{% include "partials/_flashmessage.html.twig" %}
 			{{ form_start(userCompteForm, {'attr': {'
       novalidate': 'novalidate',
@@ -22,9 +22,18 @@
 					{{ form_row(userCompteForm.avatar)}}
 				</div>
 				{% if user.adresses is empty %}
-					<div class="col-start-1 col-end-5  m-auto p-2 shadow-lg rounded-3xl backdrop-blur-xl bg-black/20  hover:shadow-pink-700">
-						<a href="{{ path('adresse_add', {id: app.user.id}) }}" class=" text-cyan-500 text-center  shadow-lgl shadow-black rounded-2xl  backdrop-blur-3xl ">
-							voulez-vous ajouter une adresse
+					<div class=" col-start-1 col-end-5 flex flex-row  items-center justify-around  p-2 ">
+						<a href="{{ path('adresse_add', {id: app.user.id}) }}" class="mx-auto ">
+							<div class="group buttonAdd ">
+								<span class="hidden md:block spanAdd my-2">
+									voulez-vous ajouter une adresse
+								</span>
+							</div>
+							<div class="block md:hidden  w-auto text-center text-stone-400 backdrop-blur-3xl hover:shadow-cyan-600 ">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-16 h-16 mx-auto">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+								</svg>
+							</div>
 						</a>
 					</div>
 				{% else %}
@@ -83,22 +92,25 @@
 							</dl>
 						</div>
 					{% endfor %}
-					<div class=" col-start-1 col-end-5 m-auto p-2 shadow-lg shadow-black rounded-2xl  backdrop-blur-3xl hover:shadow-pink-700 ">
-						<a href="{{ path('adresse_add', {id: app.user.id}) }}" class="  text-cyan-500 text-center  shadow-lgl shadow-black rounded-2xl backdrop-blur-3xl">
-							<span class="hidden md:block">
-								voulez-vous ajouter une nouvelle adresse à votre compte
-							</span>
-							<div class="block md:hidden">
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-10 h-10">
+
+					<div class=" col-start-1 col-end-5 flex flex-row  items-center justify-around  p-2 ">
+						<a href="{{ path('adresse_add', {id: app.user.id}) }}" class="mx-auto ">
+							<div class="group buttonAdd ">
+								<span class="hidden md:block spanAdd my-2">
+									Ajouter une nouvelle adresse à votre compte
+								</span>
+							</div>
+							<div class="block md:hidden  w-auto text-center text-stone-400 backdrop-blur-3xl hover:shadow-cyan-600 ">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-16 h-16 mx-auto">
 									<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
 								</svg>
-
 							</div>
 						</a>
 					</div>
-				</div>
-			{% endif %}
-			<div class="flex flex-row  items-center justify-around  p-2  ">
+				{% endif %}
+			</div>
+
+			<div class="flex flex-row  items-center justify-around  p-2 w-full">
 				<button type="submit" class="  my-2   ">
 					<div class="group buttonValid  ">
 						<span class="hidden  md:block spanValid my-2">
@@ -106,7 +118,7 @@
 						</span>
 					</div>
 					<div class="block  shadow-lg shadow-black rounded-2xl w-auto text-center text-green-400 backdrop-blur-3xl hover:shadow-green-600 md:hidden">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="0.5" stroke="currentColor" class="w-16 h-16 mx-auto ">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-16 h-16 mx-auto ">
 							<path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
 						</svg>
 					</div>

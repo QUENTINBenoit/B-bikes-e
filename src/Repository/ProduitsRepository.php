@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-
+use __TwigTemplate_dd85f86ae4ceaeb27bfff5ae9ccf061d;
 use App\Entity\Produits;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -78,6 +78,18 @@ class ProduitsRepository extends ServiceEntityRepository
         return $query->getOneOrNullResult();
     }
 
+    // Méthode permettant de récupérer les produits de type vae
+    public function findbyeVae()
+    {
+        $qb = $this->createQueryBuilder('product');
+        $qb->where('product.isVae = :isVae');
+        $qb->setParameter(':isVae', '1');
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
+    }
+
 
 
 
@@ -103,10 +115,38 @@ class ProduitsRepository extends ServiceEntityRepository
             $qb->leftJoin('p.genres', 'g');
             $qb->andWhere($qb->expr()->in('g.id', $filter['genres']));
         }
+
         $qb->distinct();
         return $qb->getQuery()->getResult();
     }
 
+
+    // Méthode permettant de filtrer les produits Vae
+
+    public function findByFilterVae($filter)
+    {
+        $qb = $this->createQueryBuilder('p');
+        $qb->where('p.isVae IS NOT NULL');
+
+        if (isset($filter['marques'])) {
+
+            $qb->leftJoin('p.marques', 'm');
+            $qb->andWhere($qb->expr()->in('m.id', $filter['marques']));
+            $qb->andWhere('p.isVae = 1');
+        }
+        if (isset($filter['categories'])) {
+            $qb->leftJoin('p.categories', 'c');
+            $qb->andWhere($qb->expr()->in('c.id', $filter['categories']));
+            $qb->andWhere('p.isVae = 1');
+        }
+        if (isset($filter['genres'])) {
+            $qb->leftJoin('p.genres', 'g');
+            $qb->andWhere($qb->expr()->in('g.id', $filter['genres']));
+            $qb->andWhere('p.isVae = 1');
+        }
+        $qb->distinct();
+        return $qb->getQuery()->getResult();
+    }
 
     /**
      *Requête permettant de récupérer les donnes vie la barre de recherche

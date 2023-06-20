@@ -114,6 +114,36 @@
 /* - ***************** - */
 
 
+/* Bouton Ajout */ 
+
+.buttonAdd {
+  @apply  relative 
+          md:h-10 
+          px-10 
+          bg-gradient-to-br from-cyan-950 to-cyan-200   
+          rounded-xl 
+          overflow-hidden 
+          before:absolute 
+          before:inset-0 
+          before:origin-right 
+          before:transition 
+          before:duration-300 
+          before:bg-gradient-to-br 
+          before:from-cyan-500 
+          before:to-cyan-950  
+          before:scale-x-0 
+          hover:before:scale-x-100 
+          hover:before:origin-left;
+ }
+ .spanAdd {
+  @apply  relative 
+        text-white  
+          font-medium 
+          group-hover:text-stone-950 
+          transition duration-200;
+ }
+
+/* - ***************** - */
 
 
 .title {

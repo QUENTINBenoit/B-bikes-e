@@ -129,6 +129,9 @@ class Produits
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $battery = null;
 
+    #[ORM\Column]
+    private ?bool $isVae = null;
+
     public function __construct()
     {
         $this->updated_At = new \DateTimeImmutable();
@@ -657,6 +660,18 @@ class Produits
     public function setBattery(?string $battery): self
     {
         $this->battery = $battery;
+
+        return $this;
+    }
+
+    public function isIsVae(): ?bool
+    {
+        return $this->isVae;
+    }
+
+    public function setIsVae(bool $isVae): self
+    {
+        $this->isVae = $isVae;
 
         return $this;
     }
