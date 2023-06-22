@@ -4,7 +4,7 @@ const Encore = require("@symfony/webpack-encore");
 // It's useful when you use tools that rely on webpack.config.js file.
 if (!Encore.isRuntimeEnvironmentConfigured()) {
   Encore.configureRuntimeEnvironment(
-    process.env.NODE_ENV || "dev"
+    process.env.NODE_ENV || "prod"
   );
 }
 
@@ -59,10 +59,10 @@ Encore
   })
 
   // enables Sass/SCSS support
-  .enableSassLoader();
-  
+  .enableSassLoader()
 
-  //.enablePostCssLoader(); 
+
+  .enablePostCssLoader(); 
   
 
 // uncomment if you use TypeScript
