@@ -2179,11 +2179,6 @@ input:checked + .toggle-bg{
   border-radius: 0.75rem;
 }
 
-.rounded-b-2xl{
-  border-bottom-right-radius: 1rem;
-  border-bottom-left-radius: 1rem;
-}
-
 .rounded-b-3xl{
   border-bottom-right-radius: 1.5rem;
   border-bottom-left-radius: 1.5rem;
@@ -2456,11 +2451,6 @@ input:checked + .toggle-bg{
   background-color: rgb(1 71 55 / var(--tw-bg-opacity));
 }
 
-.bg-pink-900{
-  --tw-bg-opacity: 1;
-  background-color: rgb(117 26 61 / var(--tw-bg-opacity));
-}
-
 .bg-red-400{
   --tw-bg-opacity: 1;
   background-color: rgb(249 128 128 / var(--tw-bg-opacity));
@@ -2592,6 +2582,14 @@ input:checked + .toggle-bg{
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
+.from-stone-900{
+  --tw-gradient-from: #1c1917 var(--tw-gradient-from-position);
+  --tw-gradient-from-position:  ;
+  --tw-gradient-to: rgb(28 25 23 / 0)  var(--tw-gradient-from-position);
+  --tw-gradient-to-position:  ;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
 .from-stone-950{
   --tw-gradient-from: #0c0a09 var(--tw-gradient-from-position);
   --tw-gradient-from-position:  ;
@@ -2616,14 +2614,6 @@ input:checked + .toggle-bg{
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
-.from-zinc-800{
-  --tw-gradient-from: #27272a var(--tw-gradient-from-position);
-  --tw-gradient-from-position:  ;
-  --tw-gradient-to: rgb(39 39 42 / 0)  var(--tw-gradient-from-position);
-  --tw-gradient-to-position:  ;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-
 .from-10\%{
   --tw-gradient-from-position: 10%;
 }
@@ -2635,11 +2625,11 @@ input:checked + .toggle-bg{
   --tw-gradient-stops: var(--tw-gradient-from), #3F83F8 var(--tw-gradient-via-position), var(--tw-gradient-to);
 }
 
-.via-cyan-800{
+.via-cyan-600{
   --tw-gradient-via-position:  ;
-  --tw-gradient-to: rgb(21 94 117 / 0)  var(--tw-gradient-to-position);
+  --tw-gradient-to: rgb(8 145 178 / 0)  var(--tw-gradient-to-position);
   --tw-gradient-to-position:  ;
-  --tw-gradient-stops: var(--tw-gradient-from), #155e75 var(--tw-gradient-via-position), var(--tw-gradient-to);
+  --tw-gradient-stops: var(--tw-gradient-from), #0891b2 var(--tw-gradient-via-position), var(--tw-gradient-to);
 }
 
 .via-gray-700{
@@ -2724,13 +2714,13 @@ input:checked + .toggle-bg{
   --tw-gradient-to-position:  ;
 }
 
-.to-orange-800{
-  --tw-gradient-to: #8A2C0D var(--tw-gradient-to-position);
+.to-red-900{
+  --tw-gradient-to: #771D1D var(--tw-gradient-to-position);
   --tw-gradient-to-position:  ;
 }
 
-.to-red-900{
-  --tw-gradient-to: #771D1D var(--tw-gradient-to-position);
+.to-stone-900{
+  --tw-gradient-to: #1c1917 var(--tw-gradient-to-position);
   --tw-gradient-to-position:  ;
 }
 
@@ -3439,8 +3429,10 @@ input:checked + .toggle-bg{
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
   --tw-gradient-to: #78716c var(--tw-gradient-to-position);
   --tw-gradient-to-position:  ;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .buttonValid::before{
@@ -3708,6 +3700,76 @@ input:checked + .toggle-bg{
 
 /* - ***************** - */
 
+/* Bouton Validation filtre */
+
+.buttonFilter{
+  position: relative;
+  overflow: hidden;
+  border-radius: 9999px;
+  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+  --tw-gradient-from: #1e1b4b var(--tw-gradient-from-position);
+  --tw-gradient-from-position:  ;
+  --tw-gradient-to: rgb(30 27 75 / 0)  var(--tw-gradient-from-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  --tw-gradient-to: #6875F5 var(--tw-gradient-to-position);
+  --tw-gradient-to-position:  ;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.buttonFilter::before{
+  position: absolute;
+  inset: 0px;
+  transform-origin: right;
+  --tw-scale-x: 0;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+  --tw-gradient-from: #5850EC var(--tw-gradient-from-position);
+  --tw-gradient-from-position:  ;
+  --tw-gradient-to: rgb(88 80 236 / 0)  var(--tw-gradient-from-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  --tw-gradient-to: #1e1b4b var(--tw-gradient-to-position);
+  --tw-gradient-to-position:  ;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  content: var(--tw-content);
+  transition-duration: 300ms;
+}
+
+.buttonFilter:hover::before{
+  transform-origin: left;
+  content: var(--tw-content);
+  --tw-scale-x: 1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+@media (min-width: 768px){
+  .buttonFilter{
+    height: 2.5rem;
+  }
+}
+
+.spanFilter{
+  position: relative;
+  font-weight: 500;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+.group:hover .spanFilter{
+  --tw-text-opacity: 1;
+  color: rgb(213 245 246 / var(--tw-text-opacity));
+}
+
 .title{
   margin-left: 1.5rem;
   --tw-text-opacity: 1;
@@ -3951,10 +4013,6 @@ input:checked + .toggle-bg{
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-black\/60:hover{
-  background-color: rgb(0 0 0 / 0.6);
-}
-
 .hover\:bg-blue-800:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(30 66 159 / var(--tw-bg-opacity));
@@ -4010,11 +4068,6 @@ input:checked + .toggle-bg{
   background-color: rgb(87 83 78 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-violet-300:hover{
-  --tw-bg-opacity: 1;
-  background-color: rgb(196 181 253 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-white:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -4043,11 +4096,6 @@ input:checked + .toggle-bg{
 .hover\:text-gray-900:hover{
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
-}
-
-.hover\:text-green-400:hover{
-  --tw-text-opacity: 1;
-  color: rgb(49 196 141 / var(--tw-text-opacity));
 }
 
 .hover\:text-slate-950:hover{
@@ -4601,6 +4649,10 @@ input:checked + .toggle-bg{
     grid-column: span 2 / span 2;
   }
 
+  .md\:mb-6{
+    margin-bottom: 1.5rem;
+  }
+
   .md\:ml-2{
     margin-left: 0.5rem;
   }
@@ -4704,10 +4756,6 @@ input:checked + .toggle-bg{
 
   .md\:divide-none > :not([hidden]) ~ :not([hidden]){
     border-style: none;
-  }
-
-  .md\:rounded-2xl{
-    border-radius: 1rem;
   }
 
   .md\:rounded-3xl{

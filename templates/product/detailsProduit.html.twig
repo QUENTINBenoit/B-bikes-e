@@ -80,8 +80,15 @@
 						</p>
 					{% endif %}
 
-					<a href="{{ path("cart_add", {id: productId.id}) }}" class=" bg-black/20  shadow-xl shadow-black hover:bg-black/60  hover:text-green-400 rounded-b-2xl text-white text-center p-2 md:rounded-2xl  ">
-						Panier</a>
+					<a href="{{ path("cart_add", {id: productId.id}) }}" class=" mx-auto  ">
+						<div class="group buttonValid text-center ">
+							<span class="spanValid my-2 ">
+								Panier
+							</span>
+						</div>
+
+
+					</a>
 				</div>
 			</div>
 		</section>
@@ -217,22 +224,22 @@
 									{{productId.engine}}
 								</p>
 								{#
-																																																																																																<p class="text-slate-100">
-																																																																																																	Marque:
-																																																																																																	{{productId.motorisation.name}}
-																																																																																																</p>
-																																																																																																<p class="text-slate-100">
-																																																																																																	Model:
-																																																																																																	{{productId.motorisation.marqueMoteur}}
-																																																																																																</p>
-																																																																																								
-																																																																																															</p>
-																																																																																															<p class="text-slate-100">
-																																																																																																Performance:
-																																																																																																{{productId.motorisation.performance}}
-																																																																																																Watt
-																																																																																															</p>
-																																																																																								#}
+																																																																																																																																																<p class="text-slate-100">
+																																																																																																																																																	Marque:
+																																																																																																																																																	{{productId.motorisation.name}}
+																																																																																																																																																</p>
+																																																																																																																																																<p class="text-slate-100">
+																																																																																																																																																	Model:
+																																																																																																																																																	{{productId.motorisation.marqueMoteur}}
+																																																																																																																																																</p>
+																																																																																																																																								
+																																																																																																																																															</p>
+																																																																																																																																															<p class="text-slate-100">
+																																																																																																																																																Performance:
+																																																																																																																																																{{productId.motorisation.performance}}
+																																																																																																																																																Watt
+																																																																																																																																															</p>
+																																																																																																																																								#}
 							{% else %}
 								<p class="text-slate-100 font-light">- - - - -
 								</p>
