@@ -61,7 +61,9 @@ class CheckoutController extends AbstractController
     /**
      * Méthode de validation de la commande
      *
+     * @param CartService $cartService
      * @param Request $request
+     * @param ProduitsRepository $produitsRepository
      * @return Response
      */
     #[Route('/verify', name: 'prepare', methods: ['POST'])]
