@@ -153,7 +153,7 @@
           px-6 
           py-2
       
-          bg-gradient-to-br from-indigo-950 to-indigo-500  
+          bg-gradient-to-br from-pink-950 to-pink-500  
           rounded-full 
           overflow-hidden 
           before:absolute 
@@ -162,8 +162,8 @@
           before:transition 
           before:duration-300 
           before:bg-gradient-to-br 
-          before:from-indigo-600  
-          before:to-indigo-950   
+          before:from-pink-200  
+          before:to-pink-600   
           before:scale-x-0 
           hover:before:scale-x-100 
      
@@ -174,7 +174,7 @@
         text-white  
    
           font-medium 
-          group-hover:text-teal-100 
+          group-hover:text-stone-900 
           transition duration-200;
  }
 

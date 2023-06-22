@@ -12,6 +12,7 @@ use App\Repository\MarqueRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -26,7 +27,7 @@ class ProductType extends AbstractType
             ->add('nouveaute')
             ->add('Promotion')
             ->add('stock')
-            ->add('prix')
+            ->add('prix', MoneyType::class, [])
             ->add('PoucentagePromotion')
             ->add('PrixPromotion')
             ->add('Avis')

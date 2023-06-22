@@ -1,19 +1,18 @@
 <!-- Composent Card -->
 
-
-<a href="{{path('product_details', {id: productd.id} ) }} " class="bg-white mx-auto shadow-xl w-52  h-auto shadow-black rounded-r-3xl rounded-b-3xl md:hover:shadow-2xl md:hover:shadow-black md:hover:transition md:ease-in-out md:hover:-translate-y-2 md:hover:scale-110">
-	<div class="relative h-3/6 rounded-r-3xl rounded-b-3xl p-2">
-		<div class="w-24 absolute lg:bottom-[6.9rem] left-0 md:bottom-[6.4rem] sm:bottom-[6.9rem] bottom-[5.3rem] ">
-			{% if productd.Promotion %}
-				<p class="h-auto pl-2 text-sm text-white  w-auto bg-stone-950  rounded-e-3xl ">
-					Promotion
-				</p>
-				<p class="h-auto mt-1 pl-2 text-sm w-12 bg-red-600 rounded-e-3xl">
-					{{ productd.PoucentagePromotion}}
-					%
-				</p>
-			{% endif %}
-		</div>
+<a href="{{path('product_details', {id: productd.id} ) }} " class="relative bg-white mx-auto shadow-xl w-52  h-auto shadow-black rounded-r-3xl rounded-b-3xl md:hover:shadow-2xl md:hover:shadow-black md:hover:transition md:ease-in-out md:hover:-translate-y-2 md:hover:scale-110">
+	<div class="w-24 absolute bottom-133">
+		{% if productd.Promotion %}
+			<p class="h-auto pl-2 text-sm text-white   w-auto bg-stone-950  rounded-e-3xl ">
+				Promotion
+			</p>
+			<p class="h-auto mt-1 pl-2 text-sm w-12 bg-red-600 rounded-e-3xl">
+				{{ productd.PoucentagePromotion}}
+				%
+			</p>
+		{% endif %}
+	</div>
+	<div class=" h-auto rounded-r-3xl rounded-b-3xl p-2">
 		<img src="{{ asset('assets/uploads/products/' ~ productd.images[0].name ) }}" class="rounded-tr-2xl w-48 h-40 object-cover  " alt="images VTT cube"/>
 		<div class="  w-auto  h-auto">
 			{% for brandName in productd.marques %}
@@ -46,5 +45,4 @@
 			</p>
 		</div>
 	</div>
-
 </a>

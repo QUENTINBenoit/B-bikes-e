@@ -1233,8 +1233,8 @@ input:checked + .toggle-bg{
   bottom: 0px;
 }
 
-.bottom-\[5\.3rem\]{
-  bottom: 5.3rem;
+.bottom-\[13\.3rem\]{
+  bottom: 13.3rem;
 }
 
 .bottom-\[60px\]{
@@ -1279,6 +1279,10 @@ input:checked + .toggle-bg{
 
 .top-full{
   top: 100%;
+}
+
+.bottom-96{
+  bottom: 24rem;
 }
 
 .-z-10{
@@ -1622,10 +1626,6 @@ input:checked + .toggle-bg{
 
 .h-3{
   height: 0.75rem;
-}
-
-.h-3\/6{
-  height: 50%;
 }
 
 .h-36{
@@ -2441,9 +2441,9 @@ input:checked + .toggle-bg{
   background-color: rgb(17 24 39 / var(--tw-bg-opacity));
 }
 
-.bg-green-600{
+.bg-green-300{
   --tw-bg-opacity: 1;
-  background-color: rgb(5 122 85 / var(--tw-bg-opacity));
+  background-color: rgb(132 225 188 / var(--tw-bg-opacity));
 }
 
 .bg-green-900{
@@ -3707,11 +3707,11 @@ input:checked + .toggle-bg{
   overflow: hidden;
   border-radius: 9999px;
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
-  --tw-gradient-from: #1e1b4b var(--tw-gradient-from-position);
+  --tw-gradient-from: #500724 var(--tw-gradient-from-position);
   --tw-gradient-from-position:  ;
-  --tw-gradient-to: rgb(30 27 75 / 0)  var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(80 7 36 / 0)  var(--tw-gradient-from-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-  --tw-gradient-to: #6875F5 var(--tw-gradient-to-position);
+  --tw-gradient-to: #E74694 var(--tw-gradient-to-position);
   --tw-gradient-to-position:  ;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
@@ -3726,11 +3726,11 @@ input:checked + .toggle-bg{
   --tw-scale-x: 0;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
-  --tw-gradient-from: #5850EC var(--tw-gradient-from-position);
+  --tw-gradient-from: #FAD1E8 var(--tw-gradient-from-position);
   --tw-gradient-from-position:  ;
-  --tw-gradient-to: rgb(88 80 236 / 0)  var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(250 209 232 / 0)  var(--tw-gradient-from-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-  --tw-gradient-to: #1e1b4b var(--tw-gradient-to-position);
+  --tw-gradient-to: #D61F69 var(--tw-gradient-to-position);
   --tw-gradient-to-position:  ;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
@@ -3767,7 +3767,7 @@ input:checked + .toggle-bg{
 
 .group:hover .spanFilter{
   --tw-text-opacity: 1;
-  color: rgb(213 245 246 / var(--tw-text-opacity));
+  color: rgb(28 25 23 / var(--tw-text-opacity));
 }
 
 .title{
@@ -4031,11 +4031,6 @@ input:checked + .toggle-bg{
 .hover\:bg-green-400:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(49 196 141 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-green-500:hover{
-  --tw-bg-opacity: 1;
-  background-color: rgb(14 159 110 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-green-600:hover{
@@ -4532,8 +4527,8 @@ input:checked + .toggle-bg{
 }
 
 @media (min-width: 640px){
-  .sm\:bottom-\[6\.9rem\]{
-    bottom: 6.9rem;
+  .sm\:bottom-\[15\.6rem\]{
+    bottom: 15.6rem;
   }
 
   .sm\:col-span-2{
@@ -4631,10 +4626,6 @@ input:checked + .toggle-bg{
 
   .md\:sticky{
     position: sticky;
-  }
-
-  .md\:bottom-\[6\.4rem\]{
-    bottom: 6.4rem;
   }
 
   .md\:z-10{
@@ -4851,10 +4842,6 @@ input:checked + .toggle-bg{
 }
 
 @media (min-width: 1024px){
-  .lg\:bottom-\[6\.9rem\]{
-    bottom: 6.9rem;
-  }
-
   .lg\:col-span-5{
     grid-column: span 5 / span 5;
   }
