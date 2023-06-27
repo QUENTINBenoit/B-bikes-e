@@ -1089,6 +1089,10 @@
     loader-utils "^2.0.0"
     schema-utils "^3.0.0"
 
+"@symfony/stimulus-bundle@file:vendor/symfony/stimulus-bundle/assets":
+  version "1.0.0"
+  resolved "file:vendor/symfony/stimulus-bundle/assets"
+
 "@symfony/ux-dropzone@file:vendor/symfony/ux-dropzone/assets":
   version "1.1.0"
   resolved "file:vendor/symfony/ux-dropzone/assets"

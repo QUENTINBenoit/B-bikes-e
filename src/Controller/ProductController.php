@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Produits;
 use App\Form\FiterType;
 use App\Repository\ProduitsRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,16 +22,29 @@ class ProductController extends AbstractController
      * @return Response
      */
     #[Route('/list', name: 'list', methods: ['GET'])]
-    public function showAllProduct(ProduitsRepository  $produitsRepository,  Request $request): Response
-    {
-        $produits = $produitsRepository->findAll();
+    public function showAllProduct(
+        ProduitsRepository $produitsRepository,
+        PaginatorInterface $paginator,
+        Request $request
+    ): Response {
+        $data = $produitsRepository->findAll();
+        $produits = $paginator->paginate(
+            $data,
+            $request->query->getInt('page', 1),
+            4
+        );
         $productsFrom = new Produits();
         $filter = $request->query->all();
         $form = $this->createForm(FiterType::class, $productsFrom);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             if (isset($filter['fiter'])) {
-                $produits = $produitsRepository->findByFilter($filter['fiter']);
+                $data = $produitsRepository->findByFilter($filter['fiter']);
+                $produits = $paginator->paginate(
+                    $data,
+                    $request->query->getInt('page', 1),
+                    4
+                );
             } else {
                 $produits;
             }
@@ -44,17 +58,29 @@ class ProductController extends AbstractController
 
     // methodes pour afficher les produits de type vae 
     #[Route('/list/vae', name: 'list_vae', methods: ['GET'])]
-    public function showAllProductVae(ProduitsRepository  $produitsRepository,  Request $request): Response
-    {
-        $produits = $produitsRepository->findByeVae();
-
+    public function showAllProductVae(
+        ProduitsRepository $produitsRepository,
+        PaginatorInterface $paginator,
+        Request $request
+    ): Response {
+        $data = $produitsRepository->findByeVae();
+        $produits = $paginator->paginate(
+            $data,
+            $request->query->getInt('page', 1),
+            4
+        );
         $productsFrom = new Produits();
         $filter = $request->query->all();
         $form = $this->createForm(FiterType::class, $productsFrom);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             if (isset($filter['fiter'])) {
-                $produits = $produitsRepository->findByFilterVae($filter['fiter']);
+                $data = $produitsRepository->findByFilterVae($filter['fiter']);
+                $produits = $paginator->paginate(
+                    $data,
+                    $request->query->getInt('page', 1),
+                    4
+                );
             } else {
                 $produits;
             }
