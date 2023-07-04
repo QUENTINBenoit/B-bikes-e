@@ -1375,10 +1375,6 @@ input:checked + .toggle-bg{
   margin: auto;
 }
 
-.m-1{
-  margin: 0.25rem;
-}
-
 .mx-1{
   margin-left: 0.25rem;
   margin-right: 0.25rem;
@@ -1647,10 +1643,6 @@ input:checked + .toggle-bg{
 
 .h-40{
   height: 10rem;
-}
-
-.h-48{
-  height: 12rem;
 }
 
 .h-5{
