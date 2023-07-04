@@ -43,7 +43,7 @@ class ProductController extends AbstractController
                 $produits = $paginator->paginate(
                     $data,
                     $request->query->getInt('page', 1),
-                    10
+                    4
                 );
             } else {
                 $produits;
@@ -67,7 +67,7 @@ class ProductController extends AbstractController
         $produits = $paginator->paginate(
             $data,
             $request->query->getInt('page', 1),
-            10
+            4
         );
         $productsFrom = new Produits();
         $filter = $request->query->all();

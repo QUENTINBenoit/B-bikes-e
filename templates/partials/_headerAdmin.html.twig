@@ -1,10 +1,10 @@
-<header class="text-white w-full h-16 shadow-xl rounded-t-3xl flex  flex-row items-center justify-between backdrop-blur-lg bg-black/10 sticky top-0 z-10 ">
+<header class="text-white w-full h-16 shadow-xl rounded-t-3xl flex  flex-row items-center justify-around backdrop-blur-lg bg-black/10 sticky top-0 z-10 ">
 	<h1 class="w-32 h-10 font-gluten border-r-2 border-pink-600 flex items-center rounded-lg justify-center">
 		Dashbord
 	</h1>
 
 	{% if app.user %}
-		<div class="w-56 h-10 border-l-2 border-pink-600 rounded-lg flex flex-row   items-center p-1 mx-2">
+		<div class="w-56 h-10  rounded-lg shadow-lg shadow-pink-400 flex flex-row justify-around  items-center p-1 mx-2 backdrop-blur-lg bg-stone-400/40 ">
 			<h4 class="font-gluten w-auto">
 				{{app.user.firstname}}
 			</h4>
@@ -13,9 +13,9 @@
 			id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-8 h-8  rounded-full cursor-pointer mx-2" src="{{ asset('assets/uploads/avatars/' ~ app.user.avatar ) }}" {# {{ asset('images/logo/marques/' ~ marque.logo) }} #} alt="User dropdown">
 			<!-- Dropdown menu -->
 			<div id="userDropdown" class="z-10 hidden bg-gradient-to-tl
-																									              from-white
-																									              via-stone-400
-																									              bg-stone-900  divide-y divide-pink-900 rounded-2xl shadow-xl w-44">
+																																																																																																																																		              from-white
+																																																																																																																																		              via-stone-400
+																																																																																																																																		              bg-stone-900  divide-y divide-pink-900 rounded-2xl shadow-xl w-44">
 				<div class="px-4 py-3 text-sm text-white ">
 					<div>{{ app.user.firstname}}</div>
 					<div class="font-medium truncate">{{ app.user.email}}</div>

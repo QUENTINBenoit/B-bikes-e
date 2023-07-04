@@ -1,31 +1,16 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<title>
-			{% block title %}B'bikes'e | Dashborad
-			{% endblock %}
-		</title>
-
-		<link
-		href="/assets/styles/app.css" rel="stylesheet"/>
-		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-		{% block stylesheets %}
-			{{ encore_entry_link_tags('app') }}
-		{% endblock %}
-		{% block javascripts %}
-			{{ encore_entry_script_tags('app') }}
-		{% endblock %}
-	</head>
+	{# Head html#}
+	{% include "partials/_headHtml.html.twig" %}
 
 	<body>
 		{% set currentPage = app.request.get('_route') %}
-		<div class="h-auto  flex justify-center  items-center  bg-gradient-to-r from-slate-800 to-blue-500">
+
+		<div class="h-screen flex justify-center  items-center  bg-gradient-to-r from-slate-950 to-blue-500">
 
 			{% include "partials/_sideBar.html.twig" %}
-			<div class=" flex my-[4.74rem] mx-2 flex-col h-[46rem]  w-full  rounded-[50px] z-00 overflow-auto relative backdrop-blur-lg bg-black/30 ">
+
+			<div class=" flex my-2 mx-2 flex-col h-[50rem]  w-full  rounded-[50px] z-0 overflow-auto relative bg-no-repeat bg-cover bg-hero-admin ">
 				{% include "partials/_headerAdmin.html.twig" %}
 				{% include "partials/_flashmessage.html.twig" %}
 

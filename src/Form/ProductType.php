@@ -26,6 +26,9 @@ class ProductType extends AbstractType
             ->add('Description')
             ->add('nouveaute')
             ->add('Promotion')
+            ->add('isVae', null, [
+                'label' => 'VAE (Vélo électrique)',
+            ])
             ->add('stock')
             ->add('prix', MoneyType::class, [])
             ->add('PoucentagePromotion')
@@ -88,10 +91,7 @@ class ProductType extends AbstractType
             ->add('Selle')
             ->add('Poids')
             ->add('engine')
-            ->add('battery')
-            ->add('isVae', null, [
-                'label' => 'VAE (Vélo électrique)',
-            ]);
+            ->add('battery');
     }
 
     public function configureOptions(OptionsResolver $resolver): void
