@@ -27,12 +27,11 @@
 							{{ app.user.roles[0] == "ROLE_USER"  ? "Tu n\'a rien a faire ici !!": "" }}
 						</p>
 					</li>
-				</p>
-			</li>
-		</p>
-	</li>
-
-</ul>
-<div class="rounded-b-xl">
-	<a href="{{ path('home') }}" class=" block px-4 py-2  text-sm text-pink-800 hover:bg-stone-400 rounded-b-xl ">Retour site</a>
-</div></div></div>{% endif %}</header>
+				</ul>
+				<div class="rounded-b-xl">
+					<a href="{{ path('home') }}" class=" block px-4 py-2  text-sm text-pink-800 hover:bg-stone-400 rounded-b-xl ">Retour site</a>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+</header>
