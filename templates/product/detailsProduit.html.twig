@@ -51,20 +51,20 @@
 					</div>
 				</div>
 				{# section info velo #}
-				<div class="flex flex-col m-4 p-4 mx-auto mx md:justify-between md:w-auto  rounded-3xl  ">
+				<div class="flex flex-col mt-4 p-4 mx-auto md:justify-between md:w-auto  rounded-3xl  ">
 
 					{% for prod in productId.marques %}
-						<h1 class=" font-semiblod mt-2 text-3xl  ">
+						<h1 class=" font-semiblod ml-4 text-3xl text-stone-950  ">
 							{{prod.name }}</h1>
 					{% endfor %}
-					<h2 class=" text-lg mt-2 text-slate-100  ">{{productId.Name}}</h2>
-					<p class=" text-sm mt-2  text-slate-100">
+					<h2 class=" text-lg ml-4 text-slate-100  ">{{productId.Name}}</h2>
+					<p class=" text-sm  ml-4 text-slate-100">
 						id:{{productId.reference}}
 					</p>
 					{% if productId.Promotion %}
 
-						<p class=" text-lg mt-4">Prix:
-							<span class="line-through font-medium  text-gray-400 mr-3">
+						<p class=" text-lg ml-4 ">Prix:
+							<span class="line-through font-medium  text-white mr-3">
 								{{productId.prix}}€
 							</span>
 							<span class=" text-2xl text-red-600 font-medium ">
@@ -72,8 +72,8 @@
 							</span>
 						</p>
 					{% else %}
-						<p class=" text-lg my-4">Prix:
-							<span class="text-2xl text-blue-600 font-medium  ">
+						<p class=" text-lg ml-4 my-4">Prix:
+							<span class="text-2xl text-white font-medium  ">
 								{{productId.Prix}}
 								€
 							</span>
@@ -224,22 +224,22 @@
 									{{productId.engine}}
 								</p>
 								{#
-																																																																																																																																																<p class="text-slate-100">
-																																																																																																																																																	Marque:
-																																																																																																																																																	{{productId.motorisation.name}}
-																																																																																																																																																</p>
-																																																																																																																																																<p class="text-slate-100">
-																																																																																																																																																	Model:
-																																																																																																																																																	{{productId.motorisation.marqueMoteur}}
-																																																																																																																																																</p>
-																																																																																																																																								
-																																																																																																																																															</p>
-																																																																																																																																															<p class="text-slate-100">
-																																																																																																																																																Performance:
-																																																																																																																																																{{productId.motorisation.performance}}
-																																																																																																																																																Watt
-																																																																																																																																															</p>
-																																																																																																																																								#}
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																<p class="text-slate-100">
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																	Marque:
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																	{{productId.motorisation.name}}
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																</p>
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																<p class="text-slate-100">
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																	Model:
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																	{{productId.motorisation.marqueMoteur}}
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																</p>
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																															</p>
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																															<p class="text-slate-100">
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																Performance:
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																{{productId.motorisation.performance}}
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																Watt
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																															</p>
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								#}
 							{% else %}
 								<p class="text-slate-100 font-light">- - - - -
 								</p>

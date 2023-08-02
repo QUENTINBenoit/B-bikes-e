@@ -29,9 +29,6 @@ class CategorieController extends AbstractController
     #[Route('/list', name: 'list')]
     public function categorieList(CategoryRepository $categoryRepository): Response
     {
-        // dump($categoryRepository->findAll());
-
-
         return $this->render('categorie/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
         ]);
