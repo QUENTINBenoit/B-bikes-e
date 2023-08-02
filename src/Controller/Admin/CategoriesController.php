@@ -47,6 +47,13 @@ class CategoriesController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $imageCategory = $form->get('imageCatego')->getData();
+            if ($imageCategory) {
+                $folder = 'imageCatego';
+                $pictureService = new PictureService($imageCategory, $folder, 300, 300);
+                $fichier = $pictureService->add($imageCategory, $folder, 300, 300);
+                $categories->setImageCatego($fichier);
+            }
             $em = $doctrine->getManager();
             $em->persist($categories);
             $em->flush();
@@ -95,9 +102,12 @@ class CategoriesController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $imageCategory = $form->get('imageCatego')->getData();
-            $folder = 'imageCatego';
-            $fichier = $pictureService->add($imageCategory, $folder, 300, 300);
-            $category->setImageCatego($fichier);
+
+            if ($imageCategory) {
+                $folder = 'imageCatego';
+                $fichier = $pictureService->add($imageCategory, $folder, 300, 300);
+                $category->setImageCatego($fichier);
+            }
             $em = $doctrine->getManager();
             $em->flush();
             $this->addFlash('flash-success', 'la catégorie ' . $category->getName() . ' a bien été mise jour');

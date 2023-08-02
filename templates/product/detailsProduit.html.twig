@@ -8,17 +8,13 @@
 	{% endfor %}
 
 {% endblock %}
-
-
 {% block body %}
 	{% include "components/_fileAriane.html.twig" %}
-
 	<div class="container w-full mt-28 top-20 h-auto font-gluten ">
 		<section class=" ">
 			<div
 				class=" md:flex   p-2 md:justify-around  h-auto w-auto">
 				{# section image #}
-
 				<div
 					id="indicators-carousel" class=" relative mx-6  " data-carousel="static">
 					<!-- Carousel wrapper -->
@@ -62,7 +58,6 @@
 						id:{{productId.reference}}
 					</p>
 					{% if productId.Promotion %}
-
 						<p class=" text-lg ml-4 ">Prix:
 							<span class="line-through font-medium  text-white mr-3">
 								{{productId.prix}}€
@@ -79,15 +74,12 @@
 							</span>
 						</p>
 					{% endif %}
-
 					<a href="{{ path("cart_add", {id: productId.id}) }}" class=" mx-auto  ">
 						<div class="group buttonValid text-center ">
 							<span class="spanValid my-2 ">
 								Panier
 							</span>
 						</div>
-
-
 					</a>
 				</div>
 			</div>
@@ -116,18 +108,14 @@
 							<h6 class="text-slate-950 mt-2">Genre</h6>
 							{% if productId.genres %}
 								{% for genre in productId.genres %}
-
 									<p class="text-slate-100 font-light">{{genre.name}}
 									</p>
 								{% else %}
 									<p class="text-slate-100 font-light">- - - - -
 									</p>
-
 								{% endfor %}
 							{% endif %}
-
 						</div>
-
 						<div class="mb-2 py-1">
 							<h6 class="text-slate-950 mt-2">Cadre</h6>
 							{% if productId.cadre %}
@@ -158,9 +146,7 @@
 								<p class="text-slate-100 font-light">- - - - -
 								</p>
 							{% endif %}
-
 						</div>
-
 						<div class="mb-2 py-1">
 							<h6 class="text-slate-950 mt-2">Dérailleur arrière</h6>
 							{% if productId.derailleurAr %}
@@ -171,7 +157,6 @@
 								</p>
 							{% endif %}
 						</div>
-
 						<div class="mb-2 py-1">
 							<h6 class="text-slate-950 mt-2">Pneus</h6>
 							{% if productId.pneus %}
@@ -182,7 +167,6 @@
 								</p>
 							{% endif %}
 						</div>
-
 						<div class="mb-2 py-1">
 							<h6 class="text-slate-950 mt-2">Commande de vitesse</h6>
 							{% if productId.manettes %}
@@ -215,7 +199,6 @@
 							{% endif %}
 						</div>
 					</div>
-
 					<div class=" md:w-1/2 divide-y divide-sky-300 p-4">
 						<div class="mb-2 py-1">
 							<h6 class="text-slate-950">Moteur</h6>
@@ -223,29 +206,11 @@
 								<p class="text-slate-100 font-light">
 									{{productId.engine}}
 								</p>
-								{#
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																<p class="text-slate-100">
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																	Marque:
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																	{{productId.motorisation.name}}
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																</p>
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																<p class="text-slate-100">
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																	Model:
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																	{{productId.motorisation.marqueMoteur}}
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																</p>
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																															</p>
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																															<p class="text-slate-100">
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																Performance:
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																{{productId.motorisation.performance}}
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																Watt
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																															</p>
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								#}
 							{% else %}
 								<p class="text-slate-100 font-light">- - - - -
 								</p>
 							{% endif %}
 						</div>
-
 						<div class="mb-2 py-1">
 							<h6 class="text-slate-950 mt-2">Batterie</h6>
 							{% if productId.battery %}
@@ -257,7 +222,6 @@
 								</p>
 							{% endif %}
 						</div>
-
 						<div class="mb-2 py-1">
 							<h6 class="text-slate-950 mt-2">potence</h6>
 							{% if productId.potence %}
@@ -324,6 +288,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
-	</section>
-</div>{% endblock %}
+		</section>
+	</div>
+{% endblock %}
