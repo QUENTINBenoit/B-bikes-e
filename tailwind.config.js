@@ -2,8 +2,8 @@
 module.exports = {
   content: [
     "./assets/**/*.js",
-    "./templates/**/*.html.twig",
-    ".src/Form/**/*.php",
+    "./templates/**/*.twig",
+    "./src/Form/**/*.php",
    "./vendor/tales-from-a-dev/flowbite-bundle/templates/**/*.html.twig",
     "./node_modules/flowbite/**/*.js",
   ],

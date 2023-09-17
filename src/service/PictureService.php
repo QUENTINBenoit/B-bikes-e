@@ -57,7 +57,6 @@ class PictureService
 
 
     // On vérifie les dimensions de l'image
-
     switch ($imageWidth <=> $imageHeight) {
       case -1: // portrait
         $squarSize = $imageHeight;
@@ -84,7 +83,7 @@ class PictureService
     if (!file_exists($path . '/mini/')) {
       mkdir($path . '/mini/', 0755,  true);
     }
-    // On stocke l'image recadrée
+    // On stock l'image recadrée
     \imagewebp($resizedPicture, $path . '/mini/' . $width . 'x' . $height . '-' . $fichier);
     $picture->move($path . '/', $fichier);
     return $fichier;
@@ -108,7 +107,6 @@ class PictureService
         unlink($min);
         $seccess = true;
       }
-
       $original = $path . '/' . $fichier;
       if (file_exists($original)) {
         unlink($original);
