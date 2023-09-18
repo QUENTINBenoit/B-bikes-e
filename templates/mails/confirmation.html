@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{ user.firstname }}
+					{{ user.lastname }}
+	</title>
+</head>
+<body>
+	<div class="mt-24 w-96  mx-auto rounded-3xl flex gap-4 justify-between items-center  flex-col ">
+		<p class="text-center text-gray-700 text-3xl font-bold mx-4 benoit  ">
+			B
+			<span class="text-pink-800">
+				'</span>
+			bikese
+			<span class="text-pink-800">'</span>
+			s
+		</p>
+		<p class="text-3xl h-auto text-blue-800 mx-4  ">E-mail Confirmation</p>
+		<div class=" w-96 py-8 border-y mx-4 text-center rounded-3xl shadow-xl">
+			<p>
+				Bonjour
+				{{ user.firstname }}
+				{{ user.lastname }}
+			</p>
+			<p class="my-4 p-4">On dirait que vous venez de vous inscrire à l'application, c'est génial !<br>
+				Pouvons-nous vous demander une confirmation par courriel ? Cliquez simplement sur le bouton ci-dessous.
+			</p>
+			<p class="my-8">
+				Ce lien est valable  jusqu'au
+				<strong class="text-red-600">{{ lifeTimeToken }}
+					{{ lifeTimeToken }}
+				</strong>.
+			</p>
+			<a href="{{ url('account_verify', {token: token, id: user.id}) }}" class="bg-red-400 rounded-3xl p-2 text-sm text-white w-96 h-24">Vérifié mon compte</a>
+			<p class="text-sm my-4">
+				Keep Rockin'!<br>
+				Your The App team
+			</p>
+		</div>
+		<div class=" mt-8 text-grey-darker mx-4 ">
+			<p class="text-base sm:text-lg mb-4">Thanks for using The App!</p>
+		</div>
+	</div>
+</body>
+</html>
+
+

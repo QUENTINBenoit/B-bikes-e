@@ -36,7 +36,7 @@ class MailerService
       ->from(new Address('noreply@bbikeses.fr', 'Bbikeses'))
       ->to($to)
       ->subject($subject)
-      ->htmlTemplate("mails/$templateTwig")
+      ->htmlTemplate("emails/$templateTwig")
       ->context($context);
     try {
       $this->mailer->send($email);

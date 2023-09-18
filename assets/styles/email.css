@@ -1,8 +1,0 @@
-/*tailwindCSS*/
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-.benoit {
-@apply text-blue-700 font-gluten bg-slate-300 border-4 border-green-600
-}

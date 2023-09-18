@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v="urn:schemas-microsoft-com:vml" style="margin-top: 48px; margin-bottom: 48px; background-color: #e2e8f0; font-family: Gluten">
+<head>
+  <meta charset="utf-8">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no, url=no">
+  <meta name="color-scheme" content="light dark">
+  <meta name="supported-color-schemes" content="light dark">
+  <!--[if mso]>
+  <noscript>
+    <xml>
+      <o:OfficeDocumentSettings xmlns:o="urn:schemas-microsoft-com:office:office">
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+  </noscript>
+  <style>
+    td,th,div,p,a,h1,h2,h3,h4,h5,h6 {font-family: "Segoe UI", sans-serif; mso-line-height-rule: exactly;}
+  </style>
+  <![endif]-->
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Gluten:wght@100;200;300;400;500;600;700;800;900&display=swap");
+    @media (max-width: 600px) {
+      .sm-my-8 {
+        margin-top: 32px !important;
+        margin-bottom: 32px !important
+      }
+      .sm-text-lg {
+        font-size: 18px !important
+      }
+    }
+  </style>
+</head>
+<body style="margin: 0; width: 100%; padding: 0; -webkit-font-smoothing: antialiased; word-break: break-word">
+  <div role="article" aria-roledescription="email" aria-label lang="en">
+    <div style="margin: auto; display: flex; width: 25%; flex-direction: column; align-items: center; justify-content: space-between; gap: 8px; border-radius: 24px; background-color: #f8fafc; padding: 24px">
+      <h1 style="margin-left: 16px; margin-right: 16px; text-align: center; font-family: Gluten; font-size: 24px; font-weight: 600; color: #1f2937">
+        B
+        <span style="color: #9d174d">
+				'</span>
+        bikese
+        <span style="color: #9d174d;">'</span>
+        s
+      </h1>
+      <h2 style="margin-left: 16px; margin-right: 16px; font-size: 20px; font-weight: 600; color: #1d4ed8">E-mail de Confirmation</h2>
+      <div style="margin-left: auto; margin-right: auto; border-radius: 24px; background-color: #a8a29e; padding-top: 16px; padding-bottom: 16px; text-align: center; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)">
+        <p style="font-size: 18px">
+          Bonjour
+          {{ user.firstname }} {{ user.lastname }}
+        </p>
+        <div class="sm-my-8" style="margin-left: auto; margin-right: auto; text-align: center">
+          <img src="images/validationMails.jpg" alt="validationMail" style="max-width: 100%; vertical-align: middle; line-height: 1; border: 0; height: 33.333333%; width: 50%; border-radius: 24px">
+        </div>
+        <p style="margin-top: 16px; margin-bottom: 16px; padding: 16px; font-size: 16px">
+          On dirait que vous venez de vous inscrire sur l'application B'bibikese's, c'est génial !<br>
+          Pouvons-nous vous demander une confirmation par courriel ? <br>
+          Cliquez simplement sur le bouton ci-dessous.
+        </p>
+        <p style="margin-top: 32px; margin-bottom: 32px">
+          Ce lien est valable jusqu'au
+          <strong style="color: #166534">
+          {{ lifeTimeToken }}
+          </strong>.
+        </p>
+        <div> <a href="{{url('account_verify', {token: token, id: user.id}) }}" style="display: inline-block; border-radius: 16px; background-color: #1e3a8a; padding: 16px 24px; font-size: 16px; font-weight: 600; line-height: 1; color: #f8fafc; text-decoration: none"> Vérifié mon compte
+          </a> <!--[if mso]>
+      <i style="mso-font-width: -100%; letter-spacing: 32px; mso-text-raise: 30px" hidden>&nbsp;</i>
+    <![endif]-->
+          <span style="mso-text-raise: 16px">
+      </span>
+          <!--[if mso]>
+      <i style="mso-font-width: -100%; letter-spacing: 32px;" hidden>&nbsp;</i>
+    <![endif]-->
+        </div>
+        <p style="margin-top: 16px; margin-bottom: 16px; font-size: 14px">
+          Keep Rockin'!<br>
+          Your The B'bebilese's team
+        </p>
+      </div>
+      <div style="margin-left: 16px; margin-right: 16px; margin-top: 32px; color: #374151">
+        <p class="sm-text-lg" style="margin-bottom: 16px; font-size: 16px">Thanks for using The App!</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

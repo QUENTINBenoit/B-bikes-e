@@ -1565,10 +1565,6 @@ input:checked + .toggle-bg{
   margin-top: 1.5rem;
 }
 
-.mt-8{
-  margin-top: 2rem;
-}
-
 .block{
   display: block;
 }
@@ -2285,11 +2281,6 @@ input:checked + .toggle-bg{
   border-right-width: 0px;
 }
 
-.border-y{
-  border-top-width: 1px;
-  border-bottom-width: 1px;
-}
-
 .border-b{
   border-bottom-width: 1px;
 }
@@ -2471,11 +2462,6 @@ input:checked + .toggle-bg{
 .bg-pink-900{
   --tw-bg-opacity: 1;
   background-color: rgb(117 26 61 / var(--tw-bg-opacity));
-}
-
-.bg-red-400{
-  --tw-bg-opacity: 1;
-  background-color: rgb(249 128 128 / var(--tw-bg-opacity));
 }
 
 .bg-red-50{
@@ -3033,11 +3019,6 @@ input:checked + .toggle-bg{
 .text-blue-600{
   --tw-text-opacity: 1;
   color: rgb(28 100 242 / var(--tw-text-opacity));
-}
-
-.text-blue-800{
-  --tw-text-opacity: 1;
-  color: rgb(30 66 159 / var(--tw-text-opacity));
 }
 
 .text-blue-900{
@@ -4618,11 +4599,6 @@ input:checked + .toggle-bg{
   .sm\:text-4xl{
     font-size: 2.25rem;
     line-height: 2.5rem;
-  }
-
-  .sm\:text-lg{
-    font-size: 1.125rem;
-    line-height: 1.75rem;
   }
 }
 

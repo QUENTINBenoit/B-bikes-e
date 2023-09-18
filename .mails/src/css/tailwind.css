@@ -1,0 +1,20 @@
+/* Your custom CSS resets for email */
+@import "resets";
+
+/* fonts */
+@import url("https://fonts.googleapis.com/css2?family=Gluten:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+/* Tailwind CSS components */
+@import "tailwindcss/components";
+
+/**
+ * @import here any custom CSS components - that is, CSS that
+ * you'd want loaded before the Tailwind utilities, so the
+ * utilities can still override them.
+*/
+
+/* Tailwind CSS utility classes */
+@import "tailwindcss/utilities";
+
+/* Your custom utility classes */
+@import "utilities";

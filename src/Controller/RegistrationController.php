@@ -57,7 +57,7 @@ class RegistrationController extends AbstractController
             $mailerService->send(
                 $user->getEmail(),
                 'Confirmation de votre inscription sur bbikeses.fr',
-                'confirmation.html.twig',
+                'mail.html',
                 [
                     'user' => $user,
                     'token' => $tokenRegistration,

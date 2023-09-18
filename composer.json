@@ -88,13 +88,18 @@
     "symfony/polyfill-php81": "*"
   },
   "scripts": {
+    "mail:install": "cd .mails && npm install",
+    "mail:build": "cd .mails && npm run build",
+    "mail:dev": "cd .mails && npm run dev",
     "auto-scripts": {
       "cache:clear": "symfony-cmd",
       "assets:install %PUBLIC_DIR%": "symfony-cmd",
       "requirements-checker": "script"
     },
     "post-install-cmd": [
-      "@auto-scripts"
+      "@auto-scripts",
+      "@mail:install",
+      "@mail:build"
     ],
     "post-update-cmd": [
       "@auto-scripts"
