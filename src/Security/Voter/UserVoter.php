@@ -52,15 +52,17 @@ class UserVoter extends Voter
                 if ($user === $subject || $this->security->isGranted('ROLE_SUPER_ADMIN',)) {
                     return true;
                 }
+
                 // Si l'utilisateur connecté  est admin peut modifier un autre utilisateur
                 if (count($userRoles) === 1 && ($userRoles[0] == 'ROLE_ADMIN' || $userRoles[0] == 'ROLE_TESTEUR')) {
                     return true;
-                }
+                } else throw new \Exception("Vous n'avez pas le droit de modifier cet utilisateur");
                 break;
             case self::VIEW:
 
                 // logic to determine if the user can VIEW
                 // return true or false
+
                 break;
         }
 
