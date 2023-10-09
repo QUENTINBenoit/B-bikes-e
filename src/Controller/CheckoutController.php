@@ -10,12 +10,9 @@ use App\Repository\ProduitsRepository;
 use App\service\cart\CartService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Console\Helper\Dumper;
-use Symfony\Component\DependencyInjection\Dumper\Dumper as DumperDumper;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Yaml\Dumper as YamlDumper;
 
 #[Route('/checkout', name: 'checkout_', methods: ['GET', 'POST'])]
 class CheckoutController extends AbstractController

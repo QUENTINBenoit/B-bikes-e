@@ -106,6 +106,7 @@ class CartService
     $this->sessionBen()->set("panier", $panier);
   }
 
+  
   /**
    * Supprimer un produit du panier
    *

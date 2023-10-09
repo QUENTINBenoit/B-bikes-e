@@ -75,7 +75,7 @@ class  PaymentController extends AbstractController
         ];
 
         $checkout_session = Session::create([
-            'customer_email' => $this->getUser()->getEmail(),
+            'customer_email' => $this->getUser()->getEmail(), // recuperation de l'email de l'utilisateur pour stripe
             "payment_method_types" => [
                 "card"
             ],
@@ -88,12 +88,8 @@ class  PaymentController extends AbstractController
             'mode' => 'payment',
             'success_url' => $this->generator->generate(
                 'payment_success',
-
                 [
-
                     'reference' =>  $order->getReferenceOrder(),
-
-
                 ],
                 UrlGeneratorInterface::ABSOLUTE_URL
             ),
@@ -110,6 +106,7 @@ class  PaymentController extends AbstractController
         return  new  RedirectResponse($checkout_session->url);
     }
 
+
     /**
      * Methode  de retour en cas des success  en cas de payment
      * @param $reference
@@ -119,17 +116,14 @@ class  PaymentController extends AbstractController
     #[Route('/order/success/{reference}', name: 'payment_success', requirements: ['id' => '\d+'])]
     public function StripeSuccess($reference, RequestStack $requestStack): Response
     {
-
         $orderRef =  $this->em->getRepository(Order::class)->findOneBy(['referenceOrder' => $reference]);
         if ($orderRef == $reference) {
             $requestStack->getSession()->remove('panier');
         }
-
-
-
         return $this->render('checkout/success.html.twig');
     }
 
+    
     /**
      * Methode de retour en cas d'echec de payment
      * @param $reference
