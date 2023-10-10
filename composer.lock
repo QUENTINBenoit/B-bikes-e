@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c3984cfb1f9956e7c721451703ffa99a",
+    "content-hash": "bb575bbf9d82834e5832ae4371929fbc",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -6612,16 +6612,16 @@
         },
         {
             "name": "symfony/stimulus-bundle",
-            "version": "v2.10.0",
+            "version": "v2.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/stimulus-bundle.git",
-                "reference": "257ef052bebe491d7c29e9a4a8009edb82269e15"
+                "reference": "e0e19de8df4d5b2bed57328ae69ef7904df660c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/stimulus-bundle/zipball/257ef052bebe491d7c29e9a4a8009edb82269e15",
-                "reference": "257ef052bebe491d7c29e9a4a8009edb82269e15",
+                "url": "https://api.github.com/repos/symfony/stimulus-bundle/zipball/e0e19de8df4d5b2bed57328ae69ef7904df660c7",
+                "reference": "e0e19de8df4d5b2bed57328ae69ef7904df660c7",
                 "shasum": ""
             },
             "require": {
@@ -6633,7 +6633,7 @@
                 "twig/twig": "^2.15.3|^3.4.3"
             },
             "require-dev": {
-                "symfony/asset-mapper": "6.3.x-dev",
+                "symfony/asset-mapper": "^6.3",
                 "symfony/framework-bundle": "^5.4|^6.0",
                 "symfony/phpunit-bridge": "^5.4|^6.0",
                 "symfony/twig-bundle": "^5.4|^6.0",
@@ -6660,7 +6660,7 @@
                 "symfony-ux"
             ],
             "support": {
-                "source": "https://github.com/symfony/stimulus-bundle/tree/v2.10.0"
+                "source": "https://github.com/symfony/stimulus-bundle/tree/v2.12.0"
             },
             "funding": [
                 {
@@ -6676,7 +6676,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-29T19:46:37+00:00"
+            "time": "2023-08-28T18:00:50+00:00"
         },
         {
             "name": "symfony/stopwatch",
@@ -7291,17 +7291,97 @@
             "time": "2023-06-19T13:59:38+00:00"
         },
         {
-            "name": "symfony/ux-swup",
-            "version": "v2.10.0",
+            "name": "symfony/ux-svelte",
+            "version": "v2.12.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/ux-swup.git",
-                "reference": "28eed50a87ced39c503cf9165b1099a76c8a0c19"
+                "url": "https://github.com/symfony/ux-svelte.git",
+                "reference": "44649661fdc5d11fe538d39af49e71d5bd8bbb88"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-swup/zipball/28eed50a87ced39c503cf9165b1099a76c8a0c19",
-                "reference": "28eed50a87ced39c503cf9165b1099a76c8a0c19",
+                "url": "https://api.github.com/repos/symfony/ux-svelte/zipball/44649661fdc5d11fe538d39af49e71d5bd8bbb88",
+                "reference": "44649661fdc5d11fe538d39af49e71d5bd8bbb88",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "symfony/stimulus-bundle": "^2.9.1"
+            },
+            "require-dev": {
+                "symfony/asset-mapper": "6.3.x-dev",
+                "symfony/finder": "^5.4|^6.2",
+                "symfony/framework-bundle": "^5.4|^6.2",
+                "symfony/phpunit-bridge": "^5.4|^6.2",
+                "symfony/twig-bundle": "^5.4|^6.2",
+                "symfony/var-dumper": "^5.4|^6.2"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "thanks": {
+                    "name": "symfony/ux",
+                    "url": "https://github.com/symfony/ux"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\UX\\Svelte\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Titouan Galopin",
+                    "email": "galopintitouan@gmail.com"
+                },
+                {
+                    "name": "Thomas Choquet",
+                    "email": "thomas.choquet.pro@gmail.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Integration of Svelte in Symfony",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "symfony-ux"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/ux-svelte/tree/v2.12.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-07-24T06:49:00+00:00"
+        },
+        {
+            "name": "symfony/ux-swup",
+            "version": "v2.12.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/ux-swup.git",
+                "reference": "2f69f17493ee979e6f5919e7c1b5ec3b04ab9b7c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/ux-swup/zipball/2f69f17493ee979e6f5919e7c1b5ec3b04ab9b7c",
+                "reference": "2f69f17493ee979e6f5919e7c1b5ec3b04ab9b7c",
                 "shasum": ""
             },
             "conflict": {
@@ -7339,7 +7419,7 @@
                 "symfony-ux"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-swup/tree/v2.10.0"
+                "source": "https://github.com/symfony/ux-swup/tree/v2.12.0"
             },
             "funding": [
                 {
@@ -7355,7 +7435,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-26T17:45:00+00:00"
+            "time": "2023-08-08T08:52:49+00:00"
         },
         {
             "name": "symfony/ux-turbo",
@@ -10911,5 +10991,5 @@
         "ext-iconv": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.6.0"
 }

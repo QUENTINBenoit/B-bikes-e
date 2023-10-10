@@ -3,16 +3,16 @@
 	{# Head html #}
 	{% include "partials/_headHtml.html.twig" %}
 
-	<body>
+	<body
+		{{ stimulus_controller('symfony/ux-swup/swup' )}}>
+		{# {{ stimulus_controller('symfony/ux-swup/swup',{ containers: ['#swup'], animateHistoryBrowsing: true, animationSelector: '[class*="transition-"]', cache: true, theme: 'slide', debug: true, } ) }}>#}
 		{% set currentPage = app.request.get('_route') %}
-		{% include "partials/_header.html.twig"%}
-		<main id="swup">
-			<section class=" w-full h-full  font-gluten font-medium bg-gradient-to-br from-stone-900 from-10% via-cyan-600 via-30% to-stone-900 to-90% "> {% block body %}{% endblock %}
 
-				</section>
+		{% include "partials/_header.html.twig"%}
+
+		<main id="swup" class=" w-full h-full  font-gluten font-medium bg-gradient-to-br from-stone-900 from-10% via-cyan-600 via-30% to-stone-900 to-90% "> {% block body %}{% endblock %}
 			</main>
 			{% include "partials/_paymentByCard.html.twig" %}
 			{% include "partials/_footer.html.twig" %}
-			   
 		</body>
 	</html>

@@ -284,6 +284,15 @@
     "symfony/ux-dropzone": {
         "version": "v2.7.1"
     },
+    "symfony/ux-svelte": {
+        "version": "2.12",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "2.8",
+            "ref": "a02524c137fb9900bd0b16d1033654371ad5c14f"
+        }
+    },
     "symfony/ux-swup": {
         "version": "v2.9.1"
     },

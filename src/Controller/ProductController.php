@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 
+
 #[Route('/produit', name: 'product_',)]
 class ProductController extends AbstractController
 {
@@ -23,16 +24,30 @@ class ProductController extends AbstractController
      */
     #[Route('/list', name: 'list', methods: ['GET'])]
     public function showAllProduct(
+     
         ProduitsRepository $produitsRepository,
         PaginatorInterface $paginator,
-        Request $request
+        Request $request,
+       
     ): Response {
+/*
+        $package = $produitsRepository->findby('swup');
+
+        $pagerfanta = Pagerfanta::createForCurrentPageWithMaxPerPage(
+            new ArrayAdapter($produitsRepository->findAll()),
+            $page,
+            4
+        );
+*/
+      
         $data = $produitsRepository->findAll();
         $produits = $paginator->paginate(
             $data,
             $request->query->getInt('page', 1),
-            15
+            6
         );
+
+
         $productsFrom = new Produits();
         $filter = $request->query->all();
         $form = $this->createForm(FiterType::class, $productsFrom);
@@ -43,7 +58,7 @@ class ProductController extends AbstractController
                 $produits = $paginator->paginate(
                     $data,
                     $request->query->getInt('page', 1),
-                    15
+                    6
                 );
             } else {
                 $produits;
@@ -67,7 +82,7 @@ class ProductController extends AbstractController
         $produits = $paginator->paginate(
             $data,
             $request->query->getInt('page', 1),
-            15
+            6
         );
         $productsFrom = new Produits();
         $filter = $request->query->all();
@@ -79,7 +94,7 @@ class ProductController extends AbstractController
                 $produits = $paginator->paginate(
                     $data,
                     $request->query->getInt('page', 1),
-                    15
+                    6
                 );
             } else {
                 $produits;

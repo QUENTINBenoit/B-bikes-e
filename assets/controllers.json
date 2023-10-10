@@ -9,6 +9,12 @@
                 }
             }
         },
+        "@symfony/ux-svelte": {
+            "svelte": {
+                "enabled": true,
+                "fetch": "eager"
+            }
+        },
         "@symfony/ux-swup": {
             "swup": {
                 "enabled": true,
