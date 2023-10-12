@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\User;
-use PhpParser\Node\Stmt\Label;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -57,14 +56,22 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('password', RepeatedType::class, [
+                
                 'type' => PasswordType::class,
+            
+             
                 'first_options'  => [
+             
+                  
                     'label' => 'Mot de passe',
                     'label_attr' => ['class' => 'text-white'],
-                    'help' => 'Votre mot de passe doit contenir au moins 6 caractères',
+                    //'help' => 'Votre mot de passe doit contenir au moins 6 caractères',
 
                     'mapped' => false,
-                    'attr' => ['autocomplete' => 'new-password'],
+                    'attr' => [
+                        'autocomplete' => 'new-password',
+                        'placeholder' => 'Votre mot de passe doit contenir au moins 6 caractères',
+                    ],
                     'constraints' => [
                         new NotBlank([
                             'message' => 'Please enter a password',
@@ -76,11 +83,13 @@ class RegistrationFormType extends AbstractType
                             'max' => 4096,
                         ]),
                     ],
+                    
                 ],
                 'second_options' => [
                     'label' => 'Confirmer le mot de passe',
                     'label_attr' => ['class' => 'text-white'],
                     'mapped' => false,
+                 
                     'attr' => ['autocomplete' => 'new-password'],
                     'constraints' => [
                         new NotBlank([
@@ -93,6 +102,7 @@ class RegistrationFormType extends AbstractType
                             'max' => 4096,
                         ]),
                     ],
+              
                 ],
                 'invalid_message' => 'les mots de passe ne correspondent pas.',
 

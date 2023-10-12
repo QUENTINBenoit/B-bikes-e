@@ -30,21 +30,14 @@ class ProductController extends AbstractController
         Request $request,
        
     ): Response {
-/*
-        $package = $produitsRepository->findby('swup');
 
-        $pagerfanta = Pagerfanta::createForCurrentPageWithMaxPerPage(
-            new ArrayAdapter($produitsRepository->findAll()),
-            $page,
-            4
-        );
-*/
       
         $data = $produitsRepository->findAll();
+        
         $produits = $paginator->paginate(
             $data,
             $request->query->getInt('page', 1),
-            6
+            4
         );
 
 
@@ -58,7 +51,7 @@ class ProductController extends AbstractController
                 $produits = $paginator->paginate(
                     $data,
                     $request->query->getInt('page', 1),
-                    6
+                    4
                 );
             } else {
                 $produits;
@@ -82,7 +75,7 @@ class ProductController extends AbstractController
         $produits = $paginator->paginate(
             $data,
             $request->query->getInt('page', 1),
-            6
+            4
         );
         $productsFrom = new Produits();
         $filter = $request->query->all();

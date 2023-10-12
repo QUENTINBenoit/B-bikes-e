@@ -9,6 +9,15 @@
                 }
             }
         },
+        "@symfony/ux-live-component": {
+            "live": {
+                "enabled": true,
+                "fetch": "eager",
+                "autoimport": {
+                    "@symfony/ux-live-component/dist/live.min.css": true
+                }
+            }
+        },
         "@symfony/ux-svelte": {
             "svelte": {
                 "enabled": true,
@@ -19,6 +28,15 @@
             "swup": {
                 "enabled": true,
                 "fetch": "eager"
+            }
+        },
+        "@symfony/ux-toggle-password": {
+            "toggle-password": {
+                "enabled": true,
+                "fetch": "eager",
+                "autoimport": {
+                    "@symfony/ux-toggle-password/dist/style.min.css": true
+                }
             }
         },
         "@symfony/ux-turbo": {
