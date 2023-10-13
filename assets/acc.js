@@ -3,6 +3,8 @@ import "./styles/app.css";
 const acc = {
   init: function () {
     console.log("initialisation page accueil");
+    console.log("initialisation back off de benoit "
+    );
 
     document
       .querySelector("#menu-btn")
@@ -27,12 +29,14 @@ const acc = {
       .querySelector("#filtreMobile")
       .addEventListener("click", acc.toggleFiltreMobile);
 
-    document
+  /*  document
       .querySelector("#filterSelection")
       .addEventListener(
         "click",
         acc.toggleFrilterSelection
-      );
+      );*/
+
+    
   },
 
   toggleNav: function () {
@@ -147,6 +151,7 @@ const acc = {
       .querySelector("#filtre")
       .classList.toggle("hidden");
   },
+  /*
   toggleFrilterSelection: function () {
     const menuSelection = document.querySelector(
       "#submenuFilterSelection"
@@ -160,11 +165,15 @@ const acc = {
     } else {
       menuSelection.classList.remove("-translate-y-full");
     }
-
+ 
     document
       .querySelector("#arrowFilterSelection")
       .classList.toggle("rotate-180");
   },
+  */
+
+
+
 };
 
 document.addEventListener("DOMContentLoaded", acc.init);

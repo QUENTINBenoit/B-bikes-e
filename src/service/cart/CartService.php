@@ -79,7 +79,7 @@ class CartService
     } else {
       $panier[$id] = 1;
     }
-    // Je sauvgaarde dans la session 
+    // Je sauvgarde dans la session 
     $this->sessionBen()->set("panier", $panier);
   }
 
