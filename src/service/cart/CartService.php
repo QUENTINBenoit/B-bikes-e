@@ -41,6 +41,7 @@ class CartService
     // je récupère les produits du panier
     foreach ($panier as $id => $quantity) {
       $product = $produitsRepository->find($id);
+ 
       $dataPanier[] = [
         "produit" => $product,
         "quantite" => $quantity,
@@ -51,6 +52,7 @@ class CartService
       $total += $product->getPrix() * $quantity;
     }
     // je retourne les données
+   
     return [
       "dataPanier" => $dataPanier,
       "total" => $total

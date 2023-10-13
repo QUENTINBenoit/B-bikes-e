@@ -1440,11 +1440,6 @@ input:checked + .toggle-bg{
   margin-bottom: 15rem;
 }
 
-.my-auto{
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
 .-mt-16{
   margin-top: -4rem;
 }
@@ -1715,6 +1710,10 @@ input:checked + .toggle-bg{
 
 .min-h-\[31\.9rem\]{
   min-height: 31.9rem;
+}
+
+.min-h-\[38rem\]{
+  min-height: 38rem;
 }
 
 .w-1\/2{
@@ -2457,11 +2456,6 @@ input:checked + .toggle-bg{
 .bg-gray-200{
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
-}
-
-.bg-gray-400{
-  --tw-bg-opacity: 1;
-  background-color: rgb(156 163 175 / var(--tw-bg-opacity));
 }
 
 .bg-gray-50{
@@ -3990,11 +3984,6 @@ input:checked + .toggle-bg{
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-gray-50:hover{
-  --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-green-600:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(5 122 85 / var(--tw-bg-opacity));
@@ -4723,10 +4712,6 @@ input:checked + .toggle-bg{
 
   .md\:flex-col{
     flex-direction: column;
-  }
-
-  .md\:flex-wrap{
-    flex-wrap: wrap;
   }
 
   .md\:items-center{

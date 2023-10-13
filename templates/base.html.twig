@@ -4,14 +4,14 @@
 	{% include "partials/_headHtml.html.twig" %}
 
 	<body
-		class="flex flex-col justify-between  " {{ stimulus_controller('symfony/ux-swup/swup', {containers: ['#swup', '#nav'],animateHistoryBrowsing: true, cache: true, theme: 'slide', debug: true, } ) }}>
+		class="flex flex-col justify-between  " {{ stimulus_controller('symfony/ux-swup/swup', {containers: ['#swup'],animateHistoryBrowsing: false, cache: true, theme: 'slide', debug: true, linkToSelf: 'navigate' } ) }} data-turbo="false">
 		{#  #}
 
 		{% set currentPage = app.request.get('_route') %}
 
 		{% include "partials/_header.html.twig"%}
 
-		<main class=" w-full h-auto font-gluten font-medium bg-gradient-to-br from-stone-400 from-10% via-stone-600 via-40% to-blue-950 to-90%  "> {% block body %}{% endblock %}
+		<main class=" w-full h-auto font-gluten font-medium bg-gradient-to-br from-stone-400 from-10% via-stone-600 via-40% to-blue-950 to-90%  " {{ stimulus_controller('symfony/ux-swup/swup', {containers: ['#swup'],animateHistoryBrowsing: false, cache: true, theme: 'slide', debug: true, linkToSelf: 'navigate' } ) }} data-turbo="false"> {% block body %}{% endblock %}
 			</main>
 
 			{% include "partials/_paymentByCard.html.twig" %}
