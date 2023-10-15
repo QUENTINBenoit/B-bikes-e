@@ -4,8 +4,8 @@
 {% endblock %}
 
 {% block body %}
-	<div class="mx-auto max-w-8xl flex justify-center mt-20 p-4  h-full bg-blue-400">
-		<div class=" mx-auto my-8 w-full h-auto   rounded-3xl p-4 bg-green-400   ">
+	<div class="mx-auto max-w-8xl flex justify-center mt-20 p-4  h-full ">
+		<div class=" mx-auto my-8 w-full h-auto   rounded-3xl p-4 ">
 			<img class="rounded-full w-36 h-36 aspect-cover mx-auto my-6 bg-none  " src="{{ asset('assets/uploads/avatars/' ~ app.user.avatar ) }}" alt="large avatar">
 			{% include "partials/_flashmessage.html.twig" %}
 			{{ form_start(userCompteForm, {'attr': {'

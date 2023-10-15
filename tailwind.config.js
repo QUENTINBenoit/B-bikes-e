@@ -22,6 +22,7 @@ module.exports = {
       backgroundImage: {  
         'hero-pattern': "url('/assets/uploads/imagehome/homeimg.jpg')",
         'hero-admin': "url('/assets/uploads/imagehome/vttadmin.png')",
+        'hero-home': "url('/assets/uploads/imagehome/section_home.jpg')",
         
         },
         corePlugins: {
@@ -52,6 +53,9 @@ module.exports = {
     container: {
       center: true,
     },
+    animation: {
+      'ping-slow': 'ping 3s linear infinite',
+    }
   },
   corePlugins: {
     aspectRatio: false,

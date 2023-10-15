@@ -37,7 +37,7 @@ class ProductController extends AbstractController
         $produits = $paginator->paginate(
             $data,
             $request->query->getInt('page', 1),
-            4
+            8
         );
 
 
@@ -51,7 +51,7 @@ class ProductController extends AbstractController
                 $produits = $paginator->paginate(
                     $data,
                     $request->query->getInt('page', 1),
-                    4
+                    8
                 );
             } else {
                 $produits;
@@ -75,7 +75,7 @@ class ProductController extends AbstractController
         $produits = $paginator->paginate(
             $data,
             $request->query->getInt('page', 1),
-            4
+            8
         );
         $productsFrom = new Produits();
         $filter = $request->query->all();
@@ -87,7 +87,7 @@ class ProductController extends AbstractController
                 $produits = $paginator->paginate(
                     $data,
                     $request->query->getInt('page', 1),
-                    6
+                    8
                 );
             } else {
                 $produits;
