@@ -72,6 +72,7 @@ class CheckoutController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+          
             $datetime = new \DateTimeImmutable('now');            // recupere la date et l'heure
             $transporter = $form->get('transporteur')->getData(); // recupere le transporteur
             $deliveryForOrder = $form->get('addreses')->getData();        // recupere l'adresse de livraison
@@ -89,7 +90,7 @@ class CheckoutController extends AbstractController
 
 
             $recupCart = $cartService->getfullCart($produitsRepository);
-            // dump($recupCart['dataPanier']);
+            
             $recapOrder = new RecapDetails();
             foreach ($recupCart['dataPanier'] as $productCart) {
 
@@ -103,7 +104,9 @@ class CheckoutController extends AbstractController
             $this->em->persist($recapOrder);
 
             $this->em->flush();
-            return $this->render('checkout/recapOrder.html.twig', [
+          
+            return $this->render('checkout/recapOrder.html.twig',
+            [
                 'methodPay' => $order->getMethodPay(),
                 'recapOrder' => $recapOrder,
                 'transporter' => $transporter,

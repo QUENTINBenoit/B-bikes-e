@@ -49,6 +49,7 @@ class CheckoutType extends AbstractType
                         $transporteur->getContent() . ' [-br] ' .
                         $transporteur->getPrice() . ' '  . '€';
                 },
+            
             ]);
     }
 

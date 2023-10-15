@@ -29,12 +29,12 @@ const acc = {
       .querySelector("#filtreMobile")
       .addEventListener("click", acc.toggleFiltreMobile);
 
-  /*  document
+   document
       .querySelector("#filterSelection")
       .addEventListener(
         "click",
         acc.toggleFrilterSelection
-      );*/
+      );
 
     
   },
