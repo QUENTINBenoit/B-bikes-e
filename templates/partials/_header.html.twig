@@ -1,4 +1,4 @@
-<header class="bg-stone-900 top-0 w-full fixed h-20 z-50">
+<header class="bg-stone-900 top-0 w-full fixed h-20 z-50 ">
 	<nav class="max-w-8xl mx-auto h-20 bg-stone-900 text-white font-gluten  flex  justify-between items-center">
 		<a href="#Accueil" class="mx-4" aria-label="Page d'Accueil du site b'bikes.e">
 			<span class="text-xl md:text-2xl">
@@ -40,7 +40,7 @@
 				</a>
 			{% else %}
 				<img
-				id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-8 h-8 mr-2 rounded-full cursor-pointer" src="{{ asset('assets/uploads/avatars/' ~ app.user.avatar ) }}" {# {{ asset('images/logo/marques/' ~ marque.logo) }} #} alt="User dropdown">
+				id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-8 h-8 mr-2 rounded-full cursor-pointer" src="{{ asset('assets/uploads/avatars/' ~ app.user.avatar ) }}" alt="User dropdown">
 				<!-- Dropdown menu -->
 				<div id="userDropdown" class="z-10 hidden text-white backdrop-blur-lg bg-white/10 divide-y divide-pink-900 rounded-2xl shadow-xl w-44">
 					<div class="px-4 py-3 text-sm  ">
