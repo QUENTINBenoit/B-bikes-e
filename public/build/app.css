@@ -2536,11 +2536,11 @@ input:checked + .toggle-bg{
 }
 
 .bg-hero-admin{
-  background-image: url('/assets/uploads/imagehome/vttadmin.png');
+  background-image: url('/assets/imagehome/vttadmin.png');
 }
 
 .bg-hero-home{
-  background-image: url('/assets/uploads/imagehome/section_home.jpg');
+  background-image: url('/assets/imagehome/section_home.jpg');
 }
 
 .bg-none{
