@@ -305,9 +305,6 @@
             "ref": "a02524c137fb9900bd0b16d1033654371ad5c14f"
         }
     },
-    "symfony/ux-swup": {
-        "version": "v2.9.1"
-    },
     "symfony/ux-toggle-password": {
         "version": "v2.12.0"
     },
