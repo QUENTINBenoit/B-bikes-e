@@ -16,7 +16,7 @@
 		<img src="{{ asset('assets/uploads/products/' ~ productd.images[0].name ) }}" class="rounded-tr-2xl w-32 h-28 md:w-48 md:h-40  object-cover  " alt="images VTT cube"/>
 		<div class="  w-auto  h-auto  flex flex-col justify-start ml-4">
 			{% for brandName in productd.marques %}
-				<h4 class="text-sm font-semibold text-blue-900 border-b border-2 border-blue-950  ">{{ brandName.name }}</h4>
+				<h4 class="text-sm font-semibold text-blue-900  ">{{ brandName.name }}</h4>
 			{% endfor %}
 			<h3 class="text-xs   font-medium">{{ productd.name | u.truncate(40,'....')}}</h3>
 			<p class=" text-xs mt-1  ">Cat:

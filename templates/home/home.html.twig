@@ -44,7 +44,6 @@
 					{% if category.parent == null %}
 						<a href="{{path('categorie_catego', {id: category.id} ) }}" class="relative w-[12rem]    md:w-auto h-auto rounded-3xl hover:scale-105 mx-auto  hover:sepia  hover:transition hover:duration-150 hover:ease-in-out   flex flex-col items-center justify-end    ">
 							<img src="{{ asset('assets/uploads/imageCatego/') ~ category.imageCatego }}" class='rounded-3xl  ' alt="">
-
 							<h5 class=" absolute text-xl text-black  font-bold  flex justify-center items-center  rounded-b-3xl backdrop-blur-sm  bg-black/10 h-1/5  w-full ">
 								<span>{{ category.name}}</span>
 							</h5>
@@ -59,10 +58,9 @@
 				Nos Meilleures Marques</h2>
 			<div class=" flex  flex-wrap container  justify-around w-full ">
 				{% for marque in marques %}
-					<a
-						href="{{path('marques_listproduit', {id: marque.id} ) }}" class="m-4">
-						{#<img src="{{ asset('assets/uploads/logo/') ~ marque.logo }}" alt="" class="w-32 h-10 ">#}
-						<img src="{{marque.logo }}" alt="" class="w-32 h-10 ">
+					<a href="{{path('marques_listproduit', {id: marque.id} ) }}" class="m-4">
+						<img src="{{ asset('assets/uploads/logo/') ~ marque.logo }}" alt="" class="w-32 h-10 ">
+
 					</a>
 				{% endfor %}
 			</div>

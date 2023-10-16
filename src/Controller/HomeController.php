@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
-
+use App\Entity\Produits;
+use App\Form\FiterType;
 use App\Repository\CategoryRepository;
 use App\Repository\MarqueRepository;
 use App\Repository\ProduitsRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,16 +41,45 @@ class HomeController extends AbstractController
 
 
     #[Route('/search', name: 'search')]
-    public function search(Request $request, ProduitsRepository $produitsRepository)
+    public function search(
+        Request $request, 
+        ProduitsRepository $produitsRepository, 
+        PaginatorInterface $paginator)
     {
         // recuperation des information saisie dans le formulaire
         $searchVaule = $request->get('q');
 
-        $product = $produitsRepository->findBySearchValue($searchVaule);
+        $data = $produitsRepository->findBySearchValue($searchVaule);
+        $product = $paginator->paginate(
+            $data,
+            $request->query->getInt('page', 1),
+            8
+        ); 
+
+
+        $productForm = new Produits();
+        $filter = $request->query->all();
+        $form = $this->createForm(FiterType::class, $productForm);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            if (isset($filter['fiter'])) {
+                $data = $produitsRepository->findByFilter($filter['fiter']);
+                $product = $paginator->paginate(
+                    $data,
+                    $request->query->getInt('page', 1),
+                    8
+                );
+            } else {
+                $product;
+            }
+        }
+
+
 
         return $this->render('home/search.html.twig', [
             'product' => $product,
             'searchValue' => $searchVaule,
+            'form' => $form->createView()   
         ]);
     }
 }
