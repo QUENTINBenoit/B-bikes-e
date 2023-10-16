@@ -7,7 +7,7 @@
 
 {% block body %}
 
-	<section class="text-gray-200 h-[12rem] sm:h-[30rem]  shadow-xl bg-hero-home bg-center bg-cover mt-20 flex justify-center items-center">
+	<section class="text-gray-200 h-[12rem] md:h-[30rem]  shadow-xl bg-hero-home bg-center bg-cover mt-20 flex justify-center items-center">
 
 		<div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 text-black h-auto flex flex-col">
 			<h1 class="max-w-2xl mb-4 font-extrabold tracking-tight leading-none text-2xl md:text-3xl xl:text-4xl  font-gluten text-center">
@@ -36,13 +36,13 @@
 	<div
 		class=" container flex flex-col flex-wrap items-center h-auto ">
 		{# liste des categories#}
-		<section class=" container space-y-4  flex flex-col items-center justify-between w-full mt-4 ">
+		<section class="  space-y-4 flex flex-col items-center justify-between   mt-4  ">
 			<h2 class=" text-slate-950 text-2xl sm:text-4xl font-gluten m-2 ">
 				Categories</h2>
-			<div class="  grid gap-4  grid-cols-2   md:grid-cols-3 lg:grid-cols-6  w-full  ">
+			<div class="  grid gap-4  grid-cols-2  md:grid-cols-3 lg:grid-cols-6  justify-center ">
 				{% for category in categories %}
 					{% if category.parent == null %}
-						<a href="{{path('categorie_catego', {id: category.id} ) }}" class="relative w-[12rem]    md:w-auto h-auto rounded-3xl hover:scale-105 mx-auto  hover:sepia  hover:transition hover:duration-150 hover:ease-in-out   flex flex-col items-center justify-end    ">
+						<a href="{{path('categorie_catego', {id: category.id} ) }}" class="relative w-[11rem]     md:w-auto h-auto rounded-3xl hover:scale-105 mx-auto  hover:sepia  hover:transition hover:duration-150 hover:ease-in-out   flex flex-col items-center justify-end    ">
 							<img src="{{ asset('assets/uploads/imageCatego/') ~ category.imageCatego }}" class='rounded-3xl  ' alt="">
 							<h5 class=" absolute text-xl text-black  font-bold  flex justify-center items-center  rounded-b-3xl backdrop-blur-sm  bg-black/10 h-1/5  w-full ">
 								<span>{{ category.name}}</span>
