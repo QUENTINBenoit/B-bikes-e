@@ -130,8 +130,12 @@
 {# Labels #}
 
 {%- block form_label -%}
+
 	{% if label is not same as(false) -%}
+   
+		
 		{%- set label_attr_class = (valid ? block('class_label') : block('class_label_error')) ~ ' ' ~ label_attr.class|default('') -%}
+		
 		{%- set label_attr = label_attr|merge({class: label_attr_class|trim}) -%}
 		{% if not compound -%}
 			{% set label_attr = label_attr|merge({'for': id}) %}
@@ -139,7 +143,10 @@
 		<{{ element|default('label') }}{% with { attr: label_attr } %}{{ block('attributes') }}{% endwith %}>
 		{{- block('form_label_content') -}}
 		</{{ element|default('label') }}>
+
+	
 	{%- endif -%}
+
 {%- endblock form_label -%}
 
 {%- block checkbox_radio_label -%}
@@ -244,8 +251,12 @@
 
 {# Class #}
 
+
+
+
+
 {% block class_label -%}
-	block mb-2 text-sm font-medium text-gray-900 md:text-white
+	block text-sm font-medium text-white font-gluten text-center mb-1
 {%- endblock class_label %}
 
 
@@ -253,12 +264,14 @@
 
 
 
+
+
 {% block class_input_radio_label -%}
-	ml-2 text-xs font-medium  text-gray-900 mb-1 md:text-white dark:text-gray-300
+	ml-2 text-xs font-medium  relative mb-1 text-white dark:text-gray-300 w-full
 {%- endblock class_input_radio_label %}
 
 {% block class_input_text -%}
-	text-gray-900 bg-gray-50 rounded-lg text-sm block w-full p-2.5 border border-gray-300 focus:z-10 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500
+	text-gray-900 bg-stone-50 font-gluten  rounded-lg text-sm block w-full p-2.5 border border-gray-300 focus:z-10 focus:ring-pink-700 focus:border-pink-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500
 {%- endblock class_input_text %}
 
 {% block class_input_range -%}
@@ -266,11 +279,11 @@
 {%- endblock class_input_range %}
 
 {% block class_input_file -%}
-	block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+	block w-auto text-sm text-gray-900 border-none rounded-lg  focus:z-10 focus:ring-pink-700  focus:border-pink-700 cursor-pointer  bg-gray-50 
 {%- endblock class_input_file %}
 
 {% block class_input_radio -%}
-	w-4 h-4 text-blue-600 mr-2  bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600
+	w-4 h-4 text-blue-600 mr-2  bg-gray-100 border-gray-300focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600
 {%- endblock class_input_radio %}
 
 {% block class_input_checkbox -%}

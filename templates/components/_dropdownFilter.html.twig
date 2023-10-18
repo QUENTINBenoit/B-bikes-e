@@ -1,6 +1,6 @@
-<ul class="transition  duration-700 -translate-x-[30rem] md:translate-x-0 w-2/4  z-30 h-full fixed  left-0 md:rounded-3xl md:sticky backdrop-blur-3xl bg-black/20 shadow-black shadow-sm top-28 md:flex md:flex-col md:w-1/6 self-start px-4 text-sm font-medium text-white md:mt-12 md:mb-6 md:ml-2" id="filtre">
+<ul class="transition  duration-700 -translate-x-[30rem] lg:translate-x-0 w-2/4  z-30 h-full shadow-xl shadow-black fixed  left-0 lg:rounded-3xl lg:sticky backdrop-blur-3xl bg-black/20  top-28 lg:flex lg:flex-col lg:w-1/6 self-start px-4 text-sm font-medium text-white lg:mt-12 lg:mb-6 lg:ml-2" id="filtre">
 	{{ form_start(form)}}
-	<li class="rounded-2xl flex items-center justify-between my-1 mt-4 px-2 py-1 cursor-pointer hover:text-slate-950" id="dropdownCatergories">
+	<li class="rounded-2xl flex items-center justify-between my-1 mt-4 px-2 py-1 cursor-pointer hover:text-stone-950" id="dropdownCatergories">
 		<h5 class="" id="colorsFiltersCategories">Catégories</h5>
 		<span class="duration-200 hover:text-stone-500" id="arrowCategories">
 			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6 text-pink-700">
@@ -12,7 +12,7 @@
 
 		{{ form_row(form.categories) }}
 	</div>
-	<li class="rounded-2xl flex items-center justify-between my-1 px-2 py-1 cursor-pointer hover:text-stone-500" id="dropdownMarques">
+	<li class="rounded-2xl flex items-center justify-between my-1 px-2 py-1 cursor-pointer hover:text-stone-950" id="dropdownMarques">
 		<h5 class="" id="colorsFiltersMarques">Marques</h5>
 		<span class="duration-200 hover:text-stone-400" id="arrowMarques">
 			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6 text-pink-700">
@@ -23,7 +23,7 @@
 	<div class="text-left text-sm font-thin hidden" id="submenuFiltreMarque">
 		{{form_row(form.marques )}}
 	</div>
-	<li class="rounded-2xl flex items-center justify-between my-1 px-2 py-1 cursor-pointer hover:text-stone-500" id="dropdownGenre">
+	<li class="rounded-2xl flex items-center justify-between my-1 px-2 py-1 cursor-pointer hover:text-stone-950" id="dropdownGenre">
 		<h5 class="" id="colorsFiltersGenre">Genre</h5>
 		<span class="duration-200 hover:text-stone-400" id="arrowGenre">
 			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6 text-pink-700">
@@ -34,7 +34,7 @@
 	<div class="text-left text-sm font-thin hidden" id="submenuFiltreGenre">
 		{{form_row(form.genres)}}
 	</div>
-	<li class="rounded-2xl flex items-center justify-between my-1 px-2 py-1 cursor-pointer hover:text-stone-500" id="dropdownCouleurs">
+	<li class="rounded-2xl flex items-center justify-between my-1 px-2 py-1 cursor-pointer hover:text-stone-950" id="dropdownCouleurs">
 		<h5 class="" id="colorsFiltersCouleur">Couleurs</h5>
 		<span class="duration-200 hover:text-stone-400" id="arrowCouleurs">
 			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6 text-pink-700">

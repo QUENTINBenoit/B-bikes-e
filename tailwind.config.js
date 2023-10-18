@@ -22,7 +22,7 @@ module.exports = {
       backgroundImage: {  
         'hero-pattern': "url('/assets/uploads/imagehome/homeimg.jpg')",
         'hero-admin': "url('/assets/imagehome/vttadmin.png')",
-        'hero-home': "url('/assets/imagehome/section_home.jpg')",
+        'hero-home': "url('/assets/imagehome/section_home.webp')",
         
         },
         corePlugins: {

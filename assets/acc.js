@@ -139,13 +139,19 @@ const acc = {
 
     document
       .querySelector("#colorsFiltersCouleur")
-      .classList.toggle("text-pink-900");
+      .classList.toggle("text-pink-800");
   },
 
   toggleFiltreMobile: function () {
     document
       .querySelector("#filtreMobile")
       .classList.toggle("rotate-180");
+      document
+      .querySelector("#filtreMobile")
+      .classList.toggle("translate-x-[8rem]");
+      document
+      .querySelector("#filtreMobile")
+      .classList.toggle("md:translate-x-[23rem]");
 
     document
       .querySelector("#filtre")
