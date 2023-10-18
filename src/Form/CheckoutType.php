@@ -4,11 +4,12 @@ namespace App\Form;
 
 use App\Entity\Adresse;
 use App\Entity\Transporteur;
+use Masterminds\HTML5\Entities;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
+use TalesFromADev\FlowbiteBundle\Form\Type\SwitchType;
 
 class CheckoutType extends AbstractType
 {
@@ -35,6 +36,8 @@ class CheckoutType extends AbstractType
                 'expanded' => true,
                 'choices' => $user->getAdresses(),
             ])
+    
+        
 
             ->add('transporteur', EntityType::class, [
                 'class' => Transporteur::class,
