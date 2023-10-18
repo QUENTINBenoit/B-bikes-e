@@ -3,8 +3,7 @@ import "./styles/app.css";
 const acc = {
   init: function () {
     console.log("initialisation page accueil");
-    console.log("initialisation back off de benoit "
-    );
+
 
     document
       .querySelector("#menu-btn")
@@ -65,9 +64,10 @@ const acc = {
     document
       .querySelector("#submenuFiltre")
       .classList.toggle("hidden");
-    document
+          document
       .querySelector("#submenuFiltre")
       .classList.toggle("duration-500");
+ 
 
     document
       .querySelector("#arrowCategories")
@@ -149,7 +149,7 @@ const acc = {
 
     document
       .querySelector("#filtre")
-      .classList.toggle("hidden");
+      .classList.toggle("translate-x-[0rem]");
   },
   /*
   toggleFrilterSelection: function () {
