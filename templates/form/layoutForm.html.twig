@@ -202,6 +202,7 @@
 	{%- endif -%}
 {%- endblock switch_label %}
 
+
 {# Help #}
 
 {% block form_help -%}
@@ -229,6 +230,14 @@
 		{{- form_help(form) -}}
 	</div>
 {%- endblock form_row -%}
+
+{% block dropzone_raw %}
+
+{#{%- set label_attr_class = (valid ? block('class_dropzone') : block('class_label_error')) ~ ' ' ~ label_attr.class|default('') -%}#}
+
+
+
+{% endblock %}
 
 {# Misc #}
 
@@ -280,8 +289,13 @@
 {%- endblock class_input_range %}
 
 {% block class_input_file -%}
-	block w-auto text-sm text-gray-900 border-none rounded-lg  focus:z-10 focus:ring-pink-700  focus:border-pink-700 cursor-pointer  bg-gray-50 
+	block w-auto  bg-green-400 mx-auto text-sm text-gray-900 border-none rounded-lg  focus:z-10 focus:ring-pink-700  focus:border-pink-700 cursor-pointer  bg-gray-50 
 {%- endblock class_input_file %}
+{% block class_dropzone %}
+    block  bg-green-600 border-2 border-dashed border-gray-300 rounded-lg p-7 flex flex-col justify-center items-center text-center text-gray-400
+
+{% endblock %}
+
 
 {% block class_input_radio -%}
 	w-4 h-4 text-blue-600 mr-2  bg-gray-100 border-gray-300 focus:ring-blue-500  focus:ring-2 

@@ -1,27 +1,24 @@
+
 <!DOCTYPE html>
-<html>
-	{% include "partials/_headHtml.html.twig" %}
+<html lang="fr">
 
-	<body>
-		{% block admin %}
+{% include "partials/_headHtml.html.twig" %}
+
+<body {{ stimulus_controller('symfony/ux-swup/swup', { containers: ['#admin', '#opt2'], cache: true, theme: 'slide', debug: true, } ) }}>
 			{% set currentPageAdmin = app.request.get('_route') %}
-
-			<div class="h-screen flex flex-col justify-center  items-center  bg-gradient-to-r from-slate-950 to-blue-500">
-				{% include "partials/_headerAdmin.html.twig" %}
-				<div class="flex w-full">
+			<div class="h-auto  flex flex-col justify-center  items-center bg-black">
+				<div class="flex w-full h-auto">
 					{% include "partials/_sideBar.html.twig" %}
+<div  class=" flex my-2 mx-2 flex-col h-auto min-h-[60rem]  w-full rounded-[50px] z-0  relative bg-gradient-to-br from-stone-950 from-10% via-stone-700 via-30% to-blue-950 to-90% ">
 
+						{% include "partials/_headerAdmin.html.twig" %}
+						<div id="admin">
+{% include "partials/_flashmessage.html.twig" %}
+{% block content %}{% endblock %}
 
-					<div class=" flex my-2 mx-2 flex-col h-[50rem]  w-full  rounded-[50px] z-0 overflow-auto relative bg-no-repeat bg-cover bg-hero-admin ">
-
-						{% include "partials/_flashmessage.html.twig" %}
-						{% block content %}{% endblock %}
+						</div>
+						
 					</div>
-
 				</div>
-
 			</div>
-		{% endblock %}
-	</body>
-
 </html>

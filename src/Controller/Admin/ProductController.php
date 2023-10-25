@@ -39,6 +39,18 @@ class ProductController extends AbstractController
         ]);
     }
 
+
+    #[Route('/opt2', name: 'opt2')]
+    public function listPorduct2(ProduitsRepository $produitsRepository): Response
+    {
+          dump($produitsRepository->findAll());
+        return $this->render('admin/product/listProductAdmin.html.twig', [
+            'produits' => $produitsRepository->findAll(),
+        ]);
+    }
+
+
+
     /**
      * Méthode d'ajout d'un produit 
      *

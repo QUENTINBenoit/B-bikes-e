@@ -2,27 +2,33 @@
 <html
 	lang="fr">
 	{# Head html #}
-
-
 	{% include "partials/_headHtml.html.twig" %}
 
 
-	<body>
-
-		{% set currentPage = app.request.get('_route') %}
+<body {{ stimulus_controller('symfony/ux-swup/swup', { containers: ['#swup', '#nav'], cache: true, theme: 'slide', debug: true, } ) }}>
 
 
-		<div class="flex flex-col justify-between  ">
 
-			{% include "partials/_header.html.twig"%}
+{% set currentPage = app.request.get('_route') %}
 
-
-			<main class=" w-full h-auto font-gluten font-medium bg-gradient-to-br from-stone-950 from-10% via-stone-700 via-30% to-blue-950 to-90%  "> {% block body %}{% endblock %}
-
-				</main>
+{% include "partials/_header.html.twig"%}
 
 
-				{% include "partials/_paymentByCard.html.twig" %}
-				{% include "partials/_footer.html.twig" %}</div>
-		</body>
-	</html>
+
+
+<div class="flex flex-col justify-between  " >
+
+
+	
+			<main class=" w-full h-auto font-gluten font-medium bg-gradient-to-br from-stone-950 from-10% via-stone-700 via-30% to-blue-950 to-90%  ">
+{% block body %}
+
+			{% endblock %}
+			</main>
+		{% include "partials/_paymentByCard.html.twig" %}
+		{% include "partials/_footer.html.twig" %}
+		</div>
+	
+</body>
+</html>
+

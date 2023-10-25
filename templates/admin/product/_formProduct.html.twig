@@ -1,9 +1,12 @@
 <div class="container mt-12 w-auto  rounded-3xl p-4 z-0 ">
+
+
 	<h6 class=" text-3xl font-gluten text-white my-6 text-center ">Produits</h6>
 	{{ form_start(formProducts, {'attr': {'
       novalidate': 'novalidate',
   }})}}
-	<div class="grid  md:grid-cols-4 gap-2">
+<div class="grid  md:grid-cols-4 gap-2" id="form">
+
 		<div class="col-span-2 shadow-lg shadow-black rounded-3xl p-2 backdrop-blur-3xl bg-white/20">
 			{{ form_row(formProducts.Name, )}}
 			{{ form_row(formProducts.reference)}}

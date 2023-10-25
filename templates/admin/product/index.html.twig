@@ -3,11 +3,24 @@
 {% endblock %}
 
 {% block content %}
-	<h1 class=" text-2xl font-gluten mx-auto mt-12 text-white ">
+<div class=" flex justify-center items-center  mt-12 ">
+	<h1 class=" text-2xl font-gluten  text-white ">
+
 		Liste des Produits
 	</h1>
-	<div class="relative overflow-x-auto shadow-2xl shadow-black sm:rounded-lg font-gluten  mx-auto w-[44rem] my-6 ">
-		<table class="w-full text-sm  text-pink-700 ">
+	<a href="{{ path('admin_product_opt2') }}" class="mx-4  text-white ml-8">
+		<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-8 h-8" >
+			<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z"/>
+		</svg>
+	</a>
+
+</div>
+
+
+<div class="relative  shadow-2xl shadow-black sm:rounded-lg font-gluten  mx-auto w-[48rem] my-6 ">
+<table  class="w-full text-sm  text-pink-700 ">
+
+
 			<thead class="text-x uppercase backdrop-blur-3xl bg-black/10 sticky top-0 ">
 				<tr class="divide-x  ">
 					<th scope="col" class="px-6 py-3  ">
@@ -43,9 +56,10 @@
 					</tr>
 				{% endfor %}
 			</tbody>
-		</table>
+</table>
 
-	</div>
+
+
 	<div class="flex  flex-row justify-around  items-center p-2  w-[44rem] h-auto my-2 mx-auto">
 		<a href="{{ path('admin_product_add') }}" class=" ">
 			<div class=" group buttonValid ">
@@ -74,4 +88,7 @@
 			</div>
 		</a>
 	</div>
+</div>
+
+
 {% endblock %}

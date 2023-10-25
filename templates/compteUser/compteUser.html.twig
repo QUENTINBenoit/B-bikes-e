@@ -20,11 +20,11 @@
 				 	{{ form_row(userCompteForm.firstname) }}
 					{{ form_row(userCompteForm.lastname)}}
 					{{ form_row(userCompteForm.email)}}
-			
 				</div>
 				<div class=" col-span-4 md:col-span-2  shadow-lg shadow-black rounded-3xl backdrop-blur-xl bg-black/20 p-2  ">
 					{{ form_row(userCompteForm.password)}}
 					{{ form_row(userCompteForm.avatar)}}
+
 				</div>
 				{% if user.adresses is empty %}
 					<div class=" col-start-1 col-end-5 flex flex-row  items-center justify-around  p-2 ">

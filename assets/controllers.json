@@ -5,7 +5,7 @@
                 "enabled": true,
                 "fetch": "eager",
                 "autoimport": {
-                    "@symfony/ux-dropzone/dist/style.min.css": true
+                    "@symfony/ux-dropzone/dist/style.min.css": false  
                 }
             }
         },
@@ -24,6 +24,12 @@
                 "fetch": "eager"
             }
         },
+        "@symfony/ux-swup": {
+            "swup": {
+                "enabled": true,
+                "fetch": "eager"
+            }
+        },
         "@symfony/ux-toggle-password": {
             "toggle-password": {
                 "enabled": true,
@@ -35,7 +41,7 @@
         },
         "@symfony/ux-turbo": {
             "turbo-core": {
-                "enabled": true,
+                "enabled": false,
                 "fetch": "eager"
             },
             "mercure-turbo-stream": {

@@ -1,0 +1,59 @@
+{% extends 'admin/layout.html.twig' %}
+{% block title %}Admin Produits
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+
+		<div class="flex justify-center items-center mt-12">
+			<h1 class="text-2xl font-gluten   text-white  mx-2">
+				Liste des Produits
+			</h1>
+			<a href="{{path('admin_product_list')}}" class=" rounded-full text-white  cursor-pointer ml-8">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-8 h-8">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/>
+				</svg>
+
+
+			</a>
+
+
+		</div>
+
+		<div class=" text-white w-full h-auto  rounded-3x flex flex-wrap  gap-4 p-12">
+			{% for produit in produits %}
+				<div class=" group mx-auto w-44 h-auto p-2 bg-stone-950 rounded-lg relative my-8 shadow-lg shadow-stone-400 cursor-pointer hover:scale-110 duration-75">
+					<div class="w-32 h-32 relative mx-auto -skew-y-3 group-hover:scale-125 group-hover:skew-y-0 duration-500  ">
+
+						<img src="{{ asset('assets/uploads/products/' ~ produit.images[1]) }}" alt="Image" class="rounded-lg  absolute -top-8  shadow-black shadow-lg">
+
+					</div>
+
+					{% for marque in produit.marques %}
+						<h2 class=" w-full text-center my-2 font-gluten font-semibold text-stone-400 ">{{marque.name| u.truncate(12,'...') }}</h2>
+					{% endfor %}
+					<h4 class="text-center my-2 font-gluten font-light">{{produit.name | u.truncate(20,'...') }}</h4>
+					<div class="flex justify-around my-2">
+						<a href="{{ path('admin_product_edit', {id:produit.id} ) }}">
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1.3" stroke="currentColor" class="w-8 h-8 mx-auto text-green-500 hover:scale-125 hover:-translate-y-2 duration-300">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/>
+							</svg>
+						</a>
+						<a href="{{ path('admin_product_delete', {id:produit.id} ) }}">
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1.3" stroke="currentColor" class="w-8 h-8 mx-auto text-red-600 hover:scale-125 hover:-translate-y-2 duration-300">
+
+								<path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"/>
+							</svg>
+						</a>
+
+					</div>
+
+
+				</div>
+			{% endfor %}
+
+
+		</div>
+	</div>
+{% endblock %}
+
