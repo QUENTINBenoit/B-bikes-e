@@ -42,16 +42,19 @@ class CheckoutController extends AbstractController
         $session = $cartService->getfullCart($produitsRepository);
         $form = $this->createForm(CheckoutType::class, null, [
             'user' => $this->getUser(),
+
         ]);
+    
         $form->handleRequest($request);
 
-
+   
         return $this->render('checkout/checkout.html.twig', [
             'user' => $this->getUser(),
             'infosSession' => $session['dataPanier'],
             'totalSession' => $session['total'],
             'formCheckout' => $form->createView()
-        ]);
+
+        ], new Response(null, $form->isSubmitted() && !$form->isValid() ? 422 : 200)); 
     }
 
 
@@ -63,13 +66,14 @@ class CheckoutController extends AbstractController
      * @param ProduitsRepository $produitsRepository
      * @return Response
      */
-    #[Route('/verify', name: 'prepare', methods: ['POST'])]
+    #[Route('/verify', name: 'prepare', methods: ['GET', 'POST'])]
     public function prepareOrder(CartService $cartService, Request $request, ProduitsRepository $produitsRepository): Response
     {
         $form = $this->createForm(CheckoutType::class, null, [
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
         ]);
         $form->handleRequest($request);
+     
 
         if ($form->isSubmitted() && $form->isValid()) {
           
@@ -101,6 +105,7 @@ class CheckoutController extends AbstractController
                 $recapOrder->setQuantity($productCart['quantite']);
             }
             $recapOrder->setTotalRecap($recupCart['total']);
+        
             $this->em->persist($recapOrder);
 
             $this->em->flush();
@@ -113,8 +118,10 @@ class CheckoutController extends AbstractController
                 'delivery' => $deliveryForOrder,
                 'reference' => $reference,
 
-            ]);
+                ],
+
+            );
         }
-        return $this->redirectToRoute('checkout_create');
+        return $this->redirectToRoute('checkout_create', [], Response::HTTP_SEE_OTHER);
     }
 }
