@@ -9,17 +9,17 @@
 
 	<section class="text-gray-200 h-[12rem] md:h-[30rem]  shadow-xl bg-hero-home bg-center bg-cover mt-20 flex justify-center items-center" style="url()">
 
-		<div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 text-black h-auto flex flex-col">
+		<div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 text-p_darck h-auto flex flex-col">
 			<h1 class="max-w-2xl mb-4 font-extrabold tracking-tight leading-none text-2xl md:text-3xl xl:text-4xl  font-gluten text-center">
 				Bienvenue sur
 				<span class=" font-bold ">
 					B
 					<strong>
-						<span class="text-pink-600 ">'</span>
+						<span class="text-s_middle">'</span>
 					</strong>
 					bikes
 					<strong>
-						<span class="text-pink-600">.</span>
+						<span class="text-s_middle">.</span>
 					</strong>
 					e
 				</span>
@@ -27,7 +27,7 @@
 
 			<p class="  text-center ">
 				Bonne visite sur notre application en
-				<span class="text-pink-800 uppercase animate-ping-slow text-lg">mode Démo</span>.
+				<span class="text-s_middle uppercase animate-ping-slow text-lg">mode Démo</span>.
 
 			</p>
 		</div>
@@ -37,7 +37,7 @@
 		class=" container flex flex-col flex-wrap items-center h-auto ">
 		{# liste des categories#}
 		<section class="  space-y-4 flex flex-col items-center justify-between   mt-4  ">
-			<h2 class=" text-slate-950 text-2xl sm:text-4xl font-gluten m-2 ">
+			<h2 class=" text-p_darck text-2xl sm:text-4xl font-gluten m-2 ">
 				Categories</h2>
 			<div class="  grid gap-4  grid-cols-2  md:grid-cols-3 lg:grid-cols-6  justify-center ">
 				{% for category in categories %}
@@ -54,7 +54,7 @@
 		</section>
 		{# liste des marques  #}
 		<section class=" container flex flex-col space-y-4  items-center justify-between w-full my-16 ">
-			<h2 class=" text-slate-950 text-2xl sm:text-4xl font-gluten mx-auto  ">
+			<h2 class=" text-p_darck text-2xl sm:text-4xl font-gluten mx-auto  ">
 				Nos Meilleures Marques</h2>
 			<div class=" flex  flex-wrap container  justify-around w-full ">
 				{% for marque in marques %}
@@ -67,7 +67,7 @@
 		</section>
 		{# lite des nouveautés   #}
 		<section class=" flex flex-col items-center justify-between w-full rounded-2xl mb-4 ">
-			<h2 class=" text-slate-950 text-2xl sm:text-4xl font-gluten m-4 ">
+			<h2 class=" text-p_darck text-2xl sm:text-4xl font-gluten m-4 ">
 				Les Nouveautés</h2>
 			<div class=" flex flex-wrap justify-center items-center">
 				{% for news in  product %}

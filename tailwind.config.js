@@ -9,6 +9,16 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        transparent: 'transparent',
+        current: 'currentColor',
+        p_darck: '#1C1918',
+        p_middle: '#3F3535',
+        p_ligth: '#63545B',
+        s_middle: '#847787',
+        s_ligth: '#9F9EB6',
+        s_Xligth: '#B2C9E5',
+      },
       maxWidth: {
         "8xl": "84rem",
         "10xl": "96rem",
