@@ -185,11 +185,26 @@ class ProduitsRepository extends ServiceEntityRepository
 
     public function searchDto(?SearchDto $searchDto): array
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.Name LIKE :search')
-            ->setParameter('search', '%' . $searchDto?->search . '%')
-            ->getQuery()
-            ->getResult();
+        $qb = $this->createQueryBuilder('p');
+
+        if ($searchDto->search) {
+            $qb->andWhere('p.Name LIKE :search')
+            ->setParameter('search', '%' . $searchDto->search . '%');
+        }
+
+        if ($searchDto->minPrice) {
+            $qb->andWhere('p.prix >= :minPrice')
+            ->setParameter('minPrice', $searchDto->minPrice);
+        }
+
+        if ($searchDto->maxPrice) {
+            $qb->andWhere('p.prix <= :maxPrice')
+            ->setParameter('maxPrice', $searchDto->maxPrice);
+        }
+
+
+        return $qb->getQuery()->getResult();
+         
     }
 
     /**

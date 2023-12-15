@@ -5,8 +5,9 @@
 
 {% block body %}
 
-	{% include "components/_fileAriane.html.twig" %}
-
+	{#{% include "components/_fileAriane.html.twig" %}#}
+	<twig:FilterButtons> </twig:FilterButtons>	<!-- Affichage des filtres -->	
+	<twig:FilterForm :searchDto="searchDto"></twig:FilterForm>
 	<div class="mx-auto h-auto   max-w-8xl  flex justify-center  z-20 mt-[5rem] mb-4  min-h-[31.9rem] ">
 
 		{% include "components/_dropdownFilter.html.twig"%}

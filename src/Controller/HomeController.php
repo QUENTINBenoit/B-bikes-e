@@ -56,7 +56,9 @@ class HomeController extends AbstractController
     ): Response
     {
 
+        $searchDto ??= new SearchDto();
         // recuperation des information saisie dans le formulaire
+        /*
         $searchVaule = $request->get('q');
 
         $data = $produitsRepository->findBySearchValue($searchVaule);
@@ -84,12 +86,12 @@ class HomeController extends AbstractController
             }
         }
 
-
+*/
 
         return $this->render('home/search.html.twig', [
             'searchDto' => $searchDto,
-            'searchValue' => $searchVaule,
-            'form' => $form->createView()   
+            //'searchValue' => $searchVaule,
+            // 'form' => $form->createView()   
         ]);
     }
 }

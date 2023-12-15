@@ -8,9 +8,11 @@
 
 {% block body %}
 
-	<!-- 	{# include "components/_dropdownFilter.html.twig"#} -->
+	{#{% 	include "components/_dropdownFilter.html.twig"%}#}
 		<!-- Affichage des produits -->
-
+			{#{% include "components/_fileAriane.html.twig" %}#}
+		<twig:FilterButtons></twig:FilterButtons>
+		<twig:FilterForm :searchDto="searchDto"></twig:FilterForm>
         <twig:ProductCards :searchDto="searchDto"></twig:ProductCards>
 		{#
 		    <div class="mx-auto max-w-8xl flex justify-center z-20 mt-24 mb-4 h-auto  min-h-[31.9rem]">
