@@ -15,13 +15,14 @@ class CartController extends AbstractController
      * Afficher le panier
      */
     #[Route('/', name: 'home')]
-    public function index(CartService $cartService, ProduitsRepository $produitsRepository): Response
+    public function index(CartService $cartService, ProduitsRepository $produitsRepository,): Response
     {
 
         $data = $cartService->getfullCart($produitsRepository);
         return $this->render('cart/index.html.twig', [
             'produitPanier' => $data['dataPanier'],
             'totalPanier' => $data['total']
+
         ]);
     }
 

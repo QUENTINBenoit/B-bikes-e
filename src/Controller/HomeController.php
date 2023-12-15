@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\DTO\SearchDto;
 use App\Entity\Produits;
 use App\Form\FiterType;
 use App\Repository\CategoryRepository;
@@ -13,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+use Symfony\Component\HttpKernel\Attribute\MapQueryString;
 
 class HomeController extends AbstractController
 {
@@ -28,7 +30,11 @@ class HomeController extends AbstractController
         ProduitsRepository $produitsRepository,
         CategoryRepository $categoryRepository,
         MarqueRepository $marqueRepository,
+        #[MapQueryString()] ?SearchDto $searchDto = null
+  
     ): Response {
+
+        
         $prod = $produitsRepository->findAll();
         $cat = $categoryRepository->findBy([], ['categoryOrder' => 'asc']);
         $maq = $marqueRepository->findAll();
@@ -36,17 +42,23 @@ class HomeController extends AbstractController
             'categories' => $cat,
             'product' => $prod,
             'marques' => $maq,
+            'searchDto' => $searchDto,
         ]);
     }
 
 
     #[Route('/search', name: 'search')]
     public function search(
-        Request $request, 
-        ProduitsRepository $produitsRepository, 
-        PaginatorInterface $paginator)
+        Request $request,
+        ProduitsRepository $produitsRepository,
+        PaginatorInterface $paginator,
+        #[MapQueryString()] ?SearchDto $searchDto = null
+    ): Response
     {
+
+        $searchDto ??= new SearchDto();
         // recuperation des information saisie dans le formulaire
+        /*
         $searchVaule = $request->get('q');
 
         $data = $produitsRepository->findBySearchValue($searchVaule);
@@ -74,12 +86,12 @@ class HomeController extends AbstractController
             }
         }
 
-
+*/
 
         return $this->render('home/search.html.twig', [
-            'product' => $product,
-            'searchValue' => $searchVaule,
-            'form' => $form->createView()   
+            'searchDto' => $searchDto,
+            //'searchValue' => $searchVaule,
+            // 'form' => $form->createView()   
         ]);
     }
 }

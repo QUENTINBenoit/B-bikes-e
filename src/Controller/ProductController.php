@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\DTO\SearchDto;
 use App\Entity\Produits;
 use App\Form\FiterType;
 use App\Repository\ProduitsRepository;
@@ -9,6 +10,7 @@ use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Attribute\MapQueryString;
 use Symfony\Component\Routing\Annotation\Route;
 
 
@@ -28,6 +30,8 @@ class ProductController extends AbstractController
         ProduitsRepository $produitsRepository,
         PaginatorInterface $paginator,
         Request $request,
+        #[MapQueryString()] ?SearchDto $searchDto = null
+    
        
     ): Response {
 
@@ -60,6 +64,7 @@ class ProductController extends AbstractController
 
         return $this->render('product/listProduits.html.twig', [
             'product' => $produits,
+            'searchDto' => $searchDto,
             'form' => $form->createView()
         ]);
     }
@@ -69,8 +74,11 @@ class ProductController extends AbstractController
     public function showAllProductVae(
         ProduitsRepository $produitsRepository,
         PaginatorInterface $paginator,
-        Request $request
+        Request $request,
+        #[MapQueryString()] ?SearchDto $searchDto = null
+       
     ): Response {
+
         $data = $produitsRepository->findByeVae();
         $produits = $paginator->paginate(
             $data,
@@ -96,8 +104,10 @@ class ProductController extends AbstractController
 
         return $this->render('product/listProduits.html.twig', [
             'product' => $produits,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'searchDto' => $searchDto,
         ]);
+    
     }
 
     /**
@@ -108,7 +118,7 @@ class ProductController extends AbstractController
      * @return Response
      */
     #[Route('/{id}', name: 'details', methods: ['GET'], requirements: ['id' => '\d+'])]
-    public function detailsProduct(int $id, ProduitsRepository $produitsRepository): Response
+    public function detailsProduct(int $id, ProduitsRepository $produitsRepository,): Response
     {
 
         $detailsProduct = $produitsRepository->findWithDetailsProduct($id);
@@ -116,6 +126,7 @@ class ProductController extends AbstractController
 
         return $this->render('product/detailsProduit.html.twig', [
             'productId' => $detailsProduct,
+    
         ]);
     }
 }

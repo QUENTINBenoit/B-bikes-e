@@ -207,3 +207,9 @@
 .buttonformBack{
 @apply mt-2 text-white bg-stone-950 hover:bg-pink-950 focus:ring-2 focus:outline-none focus:ring-pink-700 font-medium rounded-lg text-sm w-full sm:w-auto px-3 py-2 text-center;
 }
+
+/*live Component */
+
+.visible {
+  @apply block fixed inset-0 z-50 w-full h-full bg-black bg-opacity-50 overflow-auto;
+}
