@@ -17,7 +17,10 @@
 			</span>
 		</a>
 		<div class="hidden md:block">
-			{% include "components/_search.html.twig" %}
+	{#	{% include "components/_search.html.twig" %}#}
+	  
+         {# :searchDto="searchDto"   #}
+		<twig:MainSearch > </twig:MainSearch>
 
 		</div>
 
@@ -93,7 +96,7 @@
 					</a>
 				</li>
 				<li class="text-center py-3 md:py-0 md:mr-6 sm:hidden">
-					{% include "components/_search.html.twig" %}
+				<!--	{% include "components/_search.html.twig" %}-->
 				</li>
 
 			</ul>

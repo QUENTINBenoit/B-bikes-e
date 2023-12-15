@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use __TwigTemplate_dd85f86ae4ceaeb27bfff5ae9ccf061d;
+use App\DTO\SearchDto;
 use App\Entity\Produits;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -177,4 +178,32 @@ class ProduitsRepository extends ServiceEntityRepository
         $query = $qb->getQuery();
         return $query->getResult();
     }
+
+    /**
+     * Méthode permettant de récupérer les données de l'entité produit avec les liveComponent
+     */
+
+    public function searchDto(?SearchDto $searchDto): array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.Name LIKE :search')
+            ->setParameter('search', '%' . $searchDto?->search . '%')
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * Méthode permettant de récupérer les données de l'entité produit vae avec les liveComponent
+     */
+
+    public function searchDtoVae(?SearchDto $searchDto): array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.isVae = 1')
+            ->setParameter('search', '%' . $searchDto?->search . '%')
+            ->getQuery()
+            ->getResult();
+    }
+
+
 }
