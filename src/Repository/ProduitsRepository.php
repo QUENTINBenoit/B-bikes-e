@@ -186,11 +186,24 @@ class ProduitsRepository extends ServiceEntityRepository
     public function searchDto(?SearchDto $searchDto): array
     {
         $qb = $this->createQueryBuilder('p');
-
         if ($searchDto->search) {
+            $qb->leftJoin('p.categories', 'c');
+            $qb->leftJoin('p.genres', 'g');
+            $qb->leftJoin('p.marques', 'm');
+            $qb->addSelect('c', 'g', 'm');
             $qb->andWhere('p.Name LIKE :search')
-            ->setParameter('search', '%' . $searchDto->search . '%');
+            ->setParameter('search', "%$searchDto->search%");
+            $qb->orWhere('c.name LIKE :search')
+            ->setParameter('search', "%$searchDto->search%");
+            $qb->orWhere('g.name LIKE :search')
+            ->setParameter('search', "%$searchDto->search%");
+            $qb->orWhere('g.name LIKE :search')
+            ->setParameter('search', "%$searchDto->search%");
+            $qb->orWhere('m.name LIKE :search')
+            ->setParameter('search', "%$searchDto->search%");
         }
+  
+        
 
         if ($searchDto->minPrice) {
             $qb->andWhere('p.prix >= :minPrice')

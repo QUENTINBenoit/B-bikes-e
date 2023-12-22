@@ -10,6 +10,8 @@ class SearchDto
     public ?float $minPrice = null;
     public ?float $maxPrice = null;
 
+    public ?string $marques = null;
+
 
 
     /**
@@ -27,6 +29,9 @@ class SearchDto
         }
         if ($this->maxPrice) {
             $params['maxPrice'] = $this->maxPrice;
+        }
+        if ($this->marques) {
+            $params['marques'] = $this->marques;
         }
         return $params;
     }
