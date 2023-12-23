@@ -2,8 +2,8 @@
 
 namespace App\Repository;
 
-use __TwigTemplate_dd85f86ae4ceaeb27bfff5ae9ccf061d;
-use App\DTO\SearchDto;
+
+
 use App\Entity\Produits;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -41,24 +41,6 @@ class ProduitsRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
-
-
-    // public function findWinthBenoit()
-    // {
-    //     $qb = $this->createQueryBuilder('p');
-    //     // $qb->where('product.id = :id');
-    //     // $qb->setParameter(':id', $id);
-    //     $qb->leftJoin('p.equipements', 'e');
-    //     $qb->leftJoin('p.marques', 'm');
-    //     $qb->leftJoin('p.images', 'img');
-    //     $qb->leftJoin('p.roues', 'r');
-    //     $qb->leftJoin('p.motorisation', 'mot');
-    //     $qb->addSelect('e', 'm', 'r', 'img', 'mot');
-    //     $query = $qb->getQuery();
-    //     return $query->getResult();
-    // }
-
-
 
     /**
      * Méthode permettant de récupérer toutes les données via l'entité produit
@@ -178,60 +160,4 @@ class ProduitsRepository extends ServiceEntityRepository
         $query = $qb->getQuery();
         return $query->getResult();
     }
-
-    /**
-     * Méthode permettant de récupérer les données de l'entité produit avec les liveComponent
-     */
-
-    public function searchDto(?SearchDto $searchDto): array
-    {
-        $qb = $this->createQueryBuilder('p');
-        if ($searchDto->search) {
-            $qb->leftJoin('p.categories', 'c');
-            $qb->leftJoin('p.genres', 'g');
-            $qb->leftJoin('p.marques', 'm');
-            $qb->addSelect('c', 'g', 'm');
-            $qb->andWhere('p.Name LIKE :search')
-            ->setParameter('search', "%$searchDto->search%");
-            $qb->orWhere('c.name LIKE :search')
-            ->setParameter('search', "%$searchDto->search%");
-            $qb->orWhere('g.name LIKE :search')
-            ->setParameter('search', "%$searchDto->search%");
-            $qb->orWhere('g.name LIKE :search')
-            ->setParameter('search', "%$searchDto->search%");
-            $qb->orWhere('m.name LIKE :search')
-            ->setParameter('search', "%$searchDto->search%");
-        }
-  
-        
-
-        if ($searchDto->minPrice) {
-            $qb->andWhere('p.prix >= :minPrice')
-            ->setParameter('minPrice', $searchDto->minPrice);
-        }
-
-        if ($searchDto->maxPrice) {
-            $qb->andWhere('p.prix <= :maxPrice')
-            ->setParameter('maxPrice', $searchDto->maxPrice);
-        }
-
-
-        return $qb->getQuery()->getResult();
-         
-    }
-
-    /**
-     * Méthode permettant de récupérer les données de l'entité produit vae avec les liveComponent
-     */
-
-    public function searchDtoVae(?SearchDto $searchDto): array
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.isVae = 1')
-            ->setParameter('search', '%' . $searchDto?->search . '%')
-            ->getQuery()
-            ->getResult();
-    }
-
-
 }

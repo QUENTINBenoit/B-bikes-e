@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\DTO\SearchDto;
 use App\Entity\Produits;
 use App\Form\FiterType;
 use App\Repository\CategoryRepository;
@@ -13,8 +12,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
-use Symfony\Component\HttpKernel\Attribute\MapQueryString;
 
 class HomeController extends AbstractController
 {
@@ -30,8 +27,7 @@ class HomeController extends AbstractController
         ProduitsRepository $produitsRepository,
         CategoryRepository $categoryRepository,
         MarqueRepository $marqueRepository,
-        #[MapQueryString()] ?SearchDto $searchDto = null
-  
+
     ): Response {
 
         
@@ -42,7 +38,6 @@ class HomeController extends AbstractController
             'categories' => $cat,
             'product' => $prod,
             'marques' => $maq,
-            'searchDto' => $searchDto,
         ]);
     }
 
@@ -52,27 +47,21 @@ class HomeController extends AbstractController
         Request $request,
         ProduitsRepository $produitsRepository,
         PaginatorInterface $paginator,
-        #[MapQueryString()] ?SearchDto $searchDto = null
     ): Response
     {
-
-        $searchDto ??= new SearchDto();
         // recuperation des information saisie dans le formulaire
-        /*
         $searchVaule = $request->get('q');
-
         $data = $produitsRepository->findBySearchValue($searchVaule);
         $product = $paginator->paginate(
             $data,
             $request->query->getInt('page', 1),
             8
         ); 
-
-
         $productForm = new Produits();
         $filter = $request->query->all();
         $form = $this->createForm(FiterType::class, $productForm);
         $form->handleRequest($request);
+   
         if ($form->isSubmitted() && $form->isValid()) {
             if (isset($filter['fiter'])) {
                 $data = $produitsRepository->findByFilter($filter['fiter']);
@@ -82,16 +71,14 @@ class HomeController extends AbstractController
                     8
                 );
             } else {
+      
                 $product;
             }
         }
-
-*/
-
         return $this->render('home/search.html.twig', [
-            'searchDto' => $searchDto,
-            //'searchValue' => $searchVaule,
-            // 'form' => $form->createView()   
+            'searchValue' => $searchVaule,
+            'product' => $product,
+            'form' => $form->createView()   
         ]);
     }
 }

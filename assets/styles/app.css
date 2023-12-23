@@ -18,10 +18,7 @@
   @apply flex whitespace-nowrap  justify-center items-center;
 }
 
-
-
 /*Bouton de validation */
-
  .buttonValid {
   @apply  relative 
           md:h-10 

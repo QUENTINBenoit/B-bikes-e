@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\DTO\SearchDto;
 use App\Entity\Produits;
 use App\Form\FiterType;
 use App\Repository\ProduitsRepository;
@@ -10,7 +9,6 @@ use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Attribute\MapQueryString;
 use Symfony\Component\Routing\Annotation\Route;
 
 
@@ -30,7 +28,7 @@ class ProductController extends AbstractController
         ProduitsRepository $produitsRepository,
         PaginatorInterface $paginator,
         Request $request,
-        #[MapQueryString()] ?SearchDto $searchDto = null
+        
     
        
     ): Response {
@@ -64,7 +62,6 @@ class ProductController extends AbstractController
 
         return $this->render('product/listProduits.html.twig', [
             'product' => $produits,
-            'searchDto' => $searchDto,
             'form' => $form->createView()
         ]);
     }
@@ -75,7 +72,6 @@ class ProductController extends AbstractController
         ProduitsRepository $produitsRepository,
         PaginatorInterface $paginator,
         Request $request,
-        #[MapQueryString()] ?SearchDto $searchDto = null
        
     ): Response {
 
@@ -105,7 +101,6 @@ class ProductController extends AbstractController
         return $this->render('product/listProduits.html.twig', [
             'product' => $produits,
             'form' => $form->createView(),
-            'searchDto' => $searchDto,
         ]);
     
     }

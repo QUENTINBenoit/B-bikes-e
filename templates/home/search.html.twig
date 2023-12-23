@@ -1,25 +1,21 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}
 	{{parent()}}
 	Resultat de la recherche -
-	
 {% endblock %}
-
 {% block body %}
-
-	{#{% 	include "components/_dropdownFilter.html.twig"%}#}
+	{% include "components/_fileAriane.html.twig" %}
+	<div class="mx-auto h-auto   max-w-8xl  flex justify-center  z-20 mt-[5rem] mb-4  min-h-[31.9rem] ">
+		{% include "components/_dropdownFilter.html.twig"%}
 		<!-- Affichage des produits -->
-			{#{% include "components/_fileAriane.html.twig" %}#}
-		<twig:FilterButtons></twig:FilterButtons>
-		<twig:FilterForm :searchDto="searchDto"></twig:FilterForm>
-      <twig:ProductCards :searchDto="searchDto"></twig:ProductCards>
-		{#
-		    <div class="mx-auto max-w-8xl flex justify-center z-20 mt-24 mb-4 h-auto  min-h-[31.9rem]">
-    	<div class=" grid grid-cols-1  m-2 lg:grid-cols-4 md:grid-cols-3 w-full h-full p-12 gap-6">
+		<div class="grid grid-cols-1 mx-4 mt-4  lg:grid-cols-4 md:grid-cols-3 w-full h-full p-6 gap-4" >
 			{% for   productd in product %}
 				{% include "components/_cardsVtt.html.twig" %}
 			{% endfor %}
 		</div>
-    </div>#}
+	</div>
+	{#	Pagination#}
+	<div class="flex justify-center mb-8">
+		{{ knp_pagination_render(product) }}
+	</div>
 {% endblock %}

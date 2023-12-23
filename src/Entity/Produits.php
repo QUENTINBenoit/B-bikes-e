@@ -117,7 +117,7 @@ class Produits
     #[ORM\ManyToMany(targetEntity: Category::class, mappedBy: 'products')]
     private Collection $categories;
 
-    #[ORM\ManyToMany(targetEntity: Marque::class, mappedBy: 'products')]
+    #[ORM\ManyToMany(targetEntity: Marque::class, mappedBy: 'products', cascade: ['persist'])]
     private Collection $marques;
 
     #[ORM\ManyToMany(targetEntity: Genre::class, mappedBy: 'products')]

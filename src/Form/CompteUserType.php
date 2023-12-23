@@ -13,7 +13,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\UX\Dropzone\Form\DropzoneType;
 
 class CompteUserType extends AbstractType
 {
@@ -52,25 +51,6 @@ class CompteUserType extends AbstractType
                 'required' => false,
             ])
 
-               /*
-            ->add('avatar', DropzoneType::class, 
-             [
-                //'block_prefix' => 'dropzone',
-              
-                'label' => 'none',
-                'label_attr' => [
-                    'class' => 'flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600',
-                ],
-                 'mapped' => false,
-                'required' => false,
-                'attr' => [
-                    'data-controller' => 'dropzone',
-                    'class' => 'hidden',
-                ],
-               
-             ]
-            )
-*/
             // rendre le champ password optionnel
             ->addEventListener(
                 FormEvents::PRE_SET_DATA,

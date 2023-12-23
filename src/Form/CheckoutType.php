@@ -9,7 +9,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use TalesFromADev\FlowbiteBundle\Form\Type\SwitchType;
+
 
 class CheckoutType extends AbstractType
 {
@@ -52,8 +52,9 @@ class CheckoutType extends AbstractType
                         $transporteur->getContent() . ' [-br] ' .
                         $transporteur->getPrice() . ' '  . '€';
                 },
-            
+
             ]);
+            
     }
 
     public function configureOptions(OptionsResolver $resolver): void

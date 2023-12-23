@@ -1,36 +1,19 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Liste des produits
 {% endblock %}
-
 {% block body %}
-
-	{#{% include "components/_fileAriane.html.twig" %}#}
-	<twig:FilterButtons> </twig:FilterButtons>	<!-- Affichage des filtres -->	
-	<twig:FilterForm :searchDto="searchDto"></twig:FilterForm>
+	{% include "components/_fileAriane.html.twig" %}
 	<div class="mx-auto h-auto   max-w-8xl  flex justify-center  z-20 mt-[5rem] mb-4  min-h-[31.9rem] ">
-
 		{% include "components/_dropdownFilter.html.twig"%}
 		<!-- Affichage des produits -->
-
-
-<div class="grid grid-cols-1 mx-4 mt-4  lg:grid-cols-4 md:grid-cols-3 w-full h-full p-6 gap-4" >
-
-
+		<div class="grid grid-cols-1 mx-4 mt-4  lg:grid-cols-4 md:grid-cols-3 w-full h-full p-6 gap-4" >
 			{% for   productd in product %}
 				{% include "components/_cardsVtt.html.twig" %}
 			{% endfor %}
 		</div>
-
-
 	</div>
 	{#	Pagination#}
-
-<div class="flex justify-center mb-8">
-
-
+	<div class="flex justify-center mb-8">
 		{{ knp_pagination_render(product) }}
 	</div>
-
-
 {% endblock %}

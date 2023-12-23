@@ -1,15 +1,12 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Panier
 {% endblock %}
 {% block body %}
 	{% include "components/_fileAriane.html.twig" %}
 	<div class=" h-auto min-h-[38rem]  mt-24 " data-no-swup>
-
 		<div class="  h-44 w-5/6 backdrop-blur-sm bg-black/30 mx-auto  top-24 p-1 z-0 rounded-3xl ">
 			<h1 class="text-2xl font-bold text-center my-2">Mon Panier</h1>
 		</div>
-
 		{% if produitPanier %}
 			<div class=" relative  -mt-16 overflow-x-auto shadow-xl sm:rounded-lg  shadow-black  container">
 				<table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 mx-auto  ">

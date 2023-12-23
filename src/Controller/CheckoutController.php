@@ -76,6 +76,7 @@ class CheckoutController extends AbstractController
      
 
         if ($form->isSubmitted() && $form->isValid()) {
+         
           
             $datetime = new \DateTimeImmutable('now');            // recupere la date et l'heure
             $transporter = $form->get('transporteur')->getData(); // recupere le transporteur

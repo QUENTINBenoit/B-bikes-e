@@ -3,32 +3,17 @@
 	lang="fr">
 	{# Head html #}
 	{% include "partials/_headHtml.html.twig" %}
-
-
-<body>
-
-
-
-{% set currentPage = app.request.get('_route') %}
-
-{% include "partials/_header.html.twig"%}
-
-
-
-
-<div class="flex flex-col justify-between  " >
-
-
-	
+	<body>
+	{% set currentPage = app.request.get('_route') %}
+	{% include "partials/_header.html.twig"%}
+		<div class="flex flex-col justify-between  " >
 			<main class=" w-full h-auto font-gluten font-medium bg-gradient-to-tr from-p_darck from-5% via-p_ligth via-25% to-s_Xligth to-70%  ">
-{% block body %}
-
-			{% endblock %}
+				{% block body %}		
+				{% endblock %}
 			</main>
-		{% include "partials/_paymentByCard.html.twig" %}
-		{% include "partials/_footer.html.twig" %}
+			{% include "partials/_paymentByCard.html.twig" %}
+			{% include "partials/_footer.html.twig" %}
 		</div>
-	
-</body>
+	</body>
 </html>
 

@@ -1,9 +1,6 @@
 <header class="bg-p_darck top-0 w-full fixed h-20 z-50 ">
 <nav class="max-w-8xl mx-auto h-20  bg-p_darck text-white font-gluten  flex  justify-between items-center">
-
-<a href="{{path('home')}}" class="mx-4" aria-label="Page d'Accueil du site b'bikes.e" id="nav
-		">
-
+<a href="{{path('home')}}" class="mx-4" aria-label="Page d'Accueil du site b'bikes.e" id="nav">
 			<span class="text-xl md:text-2xl">
 				B
 				<strong>
@@ -17,13 +14,8 @@
 			</span>
 		</a>
 		<div class="hidden md:block">
-	{#	{% include "components/_search.html.twig" %}#}
-	  
-         {# :searchDto="searchDto"   #}
-	
-
+		{% include "components/_search.html.twig" %}  
 		</div>
-
 		<div class="flex justify-center items-center md:flex-row-reverse gap-2 mx-4 span-col-2">
 			<a href="{{path('cart_home') }}" class="hover:text-s_Xligth  -order-2 relative inline-flex items-center p-1 text-sm font-medium text-center  border-[0.1rem] border-stone-600 hover:border-s_Xligth rounded-lg focus:ring-2 focus:ring-stone-500 focus:outline-none   ">
 				<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor" class="w-6 h-6">
@@ -96,9 +88,8 @@
 					</a>
 				</li>
 				<li class="text-center py-3 md:py-0 md:mr-6 sm:hidden">
-				<!--	{% include "components/_search.html.twig" %}-->
+				{% include "components/_search.html.twig" %}
 				</li>
-
 			</ul>
 		</div>
 	</nav>
