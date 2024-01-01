@@ -3,8 +3,6 @@ import "./styles/app.css";
 const acc = {
   init: function () {
     console.log("initialisation page accueil");
-
-
     document
       .querySelector("#menu-btn")
       .addEventListener("click", acc.toggleNav);
@@ -12,7 +10,6 @@ const acc = {
     document
       .querySelector("#dropdownCatergories")
       .addEventListener("click", acc.toggleDropCategories);
-
     document
       .querySelector("#dropdownMarques")
       .addEventListener("click", acc.toggleDropMarques);
@@ -20,20 +17,20 @@ const acc = {
       .querySelector("#dropdownGenre")
       .addEventListener("click", acc.toggleDropGenre);
 
-    document
-      .querySelector("#dropdownCouleurs")
-      .addEventListener("click", acc.toggleDropCouleurs);
+    // document
+    //   .querySelector("#dropdownCouleurs")
+    //   .addEventListener("click", acc.toggleDropCouleurs);
 
     document
       .querySelector("#filtreMobile")
       .addEventListener("click", acc.toggleFiltreMobile);
 
-   document
-      .querySelector("#filterSelection")
-      .addEventListener(
-        "click",
-        acc.toggleFrilterSelection
-      );
+  //  document
+  //     .querySelector("#filterSelection")
+  //     .addEventListener(
+  //       "click",
+  //       acc.toggleFrilterSelection
+  //     );
 
     
   },
@@ -121,28 +118,29 @@ const acc = {
       .classList.toggle("text-pink-900");
   },
 
-  // fonction drop filtre Couleurs
-  toggleDropCouleurs: function () {
-    console.log("benoit");
-    document
-      .querySelector("#submenuFiltreCouleurs")
-      .classList.toggle("hidden");
-    document
-      .querySelector("#arrowCouleurs")
-      .classList.toggle("rotate-180");
-    document
-      .querySelector("#dropdownCouleurs")
-      .classList.toggle("backdrop-blur-3xl");
-    document
-      .querySelector("#dropdownCouleurs")
-      .classList.toggle("bg-white/25");
+  // // fonction drop filtre Couleurs
+  // toggleDropCouleurs: function () {
+  //   console.log("benoit");
+  //   document
+  //     .querySelector("#submenuFiltreCouleurs")
+  //     .classList.toggle("hidden");
+  //   document
+  //     .querySelector("#arrowCouleurs")
+  //     .classList.toggle("rotate-180");
+  //   document
+  //     .querySelector("#dropdownCouleurs")
+  //     .classList.toggle("backdrop-blur-3xl");
+  //   document
+  //     .querySelector("#dropdownCouleurs")
+  //     .classList.toggle("bg-white/25");
 
-    document
-      .querySelector("#colorsFiltersCouleur")
-      .classList.toggle("text-pink-800");
-  },
+  //   document
+  //     .querySelector("#colorsFiltersCouleur")
+  //     .classList.toggle("text-pink-800");
+  // },
 
   toggleFiltreMobile: function () {
+    console.log("click sur le filtre mobile");
     document
       .querySelector("#filtreMobile")
       .classList.toggle("rotate-180");
@@ -157,26 +155,26 @@ const acc = {
       .querySelector("#filtre")
       .classList.toggle("translate-x-[0rem]");
   },
-  /*
-  toggleFrilterSelection: function () {
-    const menuSelection = document.querySelector(
-      "#submenuFilterSelection"
-    );
-    const toggleFilterSelection =
-      menuSelection.classList.toggle("-translate-y-full");
 
-    if (toggleFilterSelection == true) {
-      menuSelection.classList.add("-translate-y-full");
-      menuSelection.classList.add("duration-700");
-    } else {
-      menuSelection.classList.remove("-translate-y-full");
-    }
+  // toggleFrilterSelection: function () {
+  //   const menuSelection = document.querySelector(
+  //     "#submenuFilterSelection"
+  //   );
+  //   const toggleFilterSelection =
+  //     menuSelection.classList.toggle("-translate-y-full");
+
+  //   if (toggleFilterSelection == true) {
+  //     menuSelection.classList.add("-translate-y-full");
+  //     menuSelection.classList.add("duration-700");
+  //   } else {
+  //     menuSelection.classList.remove("-translate-y-full");
+  //   }
  
-    document
-      .querySelector("#arrowFilterSelection")
-      .classList.toggle("rotate-180");
-  },
-  */
+  //   document
+  //     .querySelector("#arrowFilterSelection")
+  //     .classList.toggle("rotate-180");
+  // },
+
 
 
 

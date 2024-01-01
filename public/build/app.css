@@ -3192,6 +3192,11 @@ input:checked + .toggle-bg{
   color: rgb(178 201 229 / var(--tw-text-opacity));
 }
 
+.text-s_ligth{
+  --tw-text-opacity: 1;
+  color: rgb(159 158 182 / var(--tw-text-opacity));
+}
+
 .text-s_middle{
   --tw-text-opacity: 1;
   color: rgb(132 119 135 / var(--tw-text-opacity));
@@ -3250,21 +3255,6 @@ input:checked + .toggle-bg{
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-p_ligth{
-  --tw-text-opacity: 1;
-  color: rgb(99 84 91 / var(--tw-text-opacity));
-}
-
-.text-s_ligth{
-  --tw-text-opacity: 1;
-  color: rgb(159 158 182 / var(--tw-text-opacity));
-}
-
-.text-p_middle{
-  --tw-text-opacity: 1;
-  color: rgb(63 53 53 / var(--tw-text-opacity));
 }
 
 .underline{
