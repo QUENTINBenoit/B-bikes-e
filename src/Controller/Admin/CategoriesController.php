@@ -39,7 +39,11 @@ class CategoriesController extends AbstractController
      * @return void
      */
     #[Route('/add', name: 'add')]
-    public function addCategories(Request $request, ManagerRegistry $doctrine)
+    public function addCategories(
+        Request $request, 
+        ManagerRegistry $doctrine,
+        PictureService $pictureService
+        ): Response
     {
 
         $categories = new Category;
@@ -50,7 +54,7 @@ class CategoriesController extends AbstractController
             $imageCategory = $form->get('imageCatego')->getData();
             if ($imageCategory) {
                 $folder = 'imageCatego';
-                $pictureService = new PictureService($imageCategory, $folder, 300, 300);
+                //$pictureService = new PictureService($imageCategory, $folder, 300, 300);
                 $fichier = $pictureService->add($imageCategory, $folder, 300, 300);
                 $categories->setImageCatego($fichier);
             }
@@ -96,10 +100,16 @@ class CategoriesController extends AbstractController
      */
     #[Route('/edit/{id}',  name: 'edit')]
 
-    public function editCategories(Category $category, Request $request, ManagerRegistry $doctrine, PictureService $pictureService)
+    public function editCategories(
+        Category $category, 
+        Request $request, 
+        ManagerRegistry $doctrine, 
+        PictureService $pictureService
+        )
     {
         $form = $this->createForm(CategoriesType::class, $category);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $imageCategory = $form->get('imageCatego')->getData();
 

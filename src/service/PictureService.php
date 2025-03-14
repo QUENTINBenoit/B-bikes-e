@@ -39,6 +39,9 @@ class PictureService
     switch ($pictureInfo['mime']) {
       case 'image/jpeg':
         $pictueSource = imagecreatefromjpeg($picture);
+         if(!$pictueSource){
+          throw new \Exception('Échec de la création de l\'image à partir du JPEG.');
+        }
         break;
       case 'image/png':
         $pictueSource = imagecreatefrompng($picture);
